@@ -1,0 +1,81 @@
+.container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.thLeft{
+    background-color: #C5E8FC !important;
+    border-top-left-radius: 10px !important; 
+    font-family: 'Raleway', sans-serif;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); /* Agrega una sombra */
+
+
+}
+
+.thRight{
+    background-color: #C5E8FC !important;
+    border-top-right-radius: 10px !important; 
+    font-family: 'Raleway', sans-serif;
+
+}
+
+.thTable{
+    background-color: #C5E8FC !important; 
+    font-family: 'Raleway', sans-serif;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); /* Agrega una sombra */
+
+}
+
+.tdTableRow
+{
+    text-align: center;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 100;
+
+}
+
+.h3Table{
+    display: flex;
+    justify-content: center; /* Centrar horizontalmente */
+    align-items: center; /* Centrar verticalmente */
+    text-align: center;
+    font-family: 'Raleway', sans-serif;
+
+}
+
+.center-table {
+    display: inline-table;
+    justify-content: center; /* Centrar horizontalmente */
+    align-items: center; /* Centrar verticalmente */
+    height: 60vh; /* Ajusta la altura según tu diseño */
+    text-align: center;
+}
+
+.containerButtons {
+    display: flex;
+    flex-direction: row; /* Stack the buttons vertically */
+    justify-content: flex-end; /* Align items to the bottom */
+    align-items: flex-end; /* Center horizontally */
+    text-align: center;
+  }
+  
+.addButton
+{
+    background-color: #007BB8;
+    color: #ffffff;
+    border-radius: 15px !important; 
+    font-family: 'Raleway', sans-serif;
+}
+
+.showButton
+{
+    background-color: #6fc287;
+    color: #ffffff;
+    border-radius: 15px !important; 
+    font-family: 'Raleway', sans-serif;
+}
+
+
+
+  
