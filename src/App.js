@@ -13,6 +13,7 @@ import Programs from '../src/components/Dashboard/pages/Programs';
 function App() {
   return (
       <Router >
+        <div className="html">
             <div className="flex">
               <Sidebar/>
               <div className="content w-100">
@@ -30,6 +31,7 @@ function App() {
                 </Routes>
               </div>
             </div>
+          </div>
           </Router>
   );
 }
