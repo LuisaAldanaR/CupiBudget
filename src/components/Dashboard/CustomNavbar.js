@@ -13,7 +13,7 @@ function CustomNavbar() {
       <Container>
         <Navbar.Brand href="#home">
         <img
-            src="/sena-logo.png"
+            src="/img/Logo-sena.png"
             className="custom-logo" // Agrega la clase custom-logo aquí
             alt="SENA Logo"
           />

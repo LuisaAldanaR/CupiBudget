@@ -7,7 +7,7 @@ const CrudTable = ({ data, setDataToEdit, deleteData, showFormView }) => {
     return (
         // Contenedor principal del componente
         <div className="container">
-            <div className="card-body center-table">
+            <div className="card-body center-table background-gradient">
                 <div className="table-responsive">
                     {/* Encabezado de la tabla */}
                     <h3 className="h3Table">Instructores Contratistas :</h3>
