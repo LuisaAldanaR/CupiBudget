@@ -113,6 +113,7 @@ namespace APIPlanta.Controllers
                 _proyectoFormativoContext.FullTimeInstructors.Update(oInstructor);
                 _proyectoFormativoContext.SaveChanges();
 
+
                 return StatusCode(StatusCodes.Status200OK, new { mensaje = "ok" });
             }
 
