@@ -58,7 +58,7 @@
     flex-direction: row; /* Stack the buttons vertically */
     justify-content: flex-start; /* Align items to the bottom */
     text-align: center;
-    margin-left: 16px;
+    margin-left: 36px;
     margin-top: 24px;
   }
   

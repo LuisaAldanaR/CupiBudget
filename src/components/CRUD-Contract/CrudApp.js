@@ -5,6 +5,8 @@ import { helpHttp } from "../../helpers/helpHttp"; // Ajusta la ruta de importac
 import Loader from "./Loader"; // Importa el componente de carga
 import Message from "./Message"; // Importa el componente de mensajes
 import "./main.css";
+import Swal from 'sweetalert2';
+
 
 
 const CrudApp = () => {
@@ -76,30 +78,43 @@ const CrudApp = () => {
     });
   };
 
-  // Función para eliminar un instructor
   const deleteData = (idInstructor, data) => {
-    let isDelete = window.confirm(
-      `¿Estás seguro de eliminar al Instructor: '${data.name}'?`
-    );
-
-    if (isDelete) {
-      let urlDel = "http://www.mendezmrf10.somee.com/api/ContractInstructor/Delete";
-      let endPoint = `${urlDel}/${idInstructor}`;
-
-      let options = { headers: { "content-type": "application/json" } };
-
-      api.del(endPoint, options).then((res) => {
-        if (!res.err) {
-          let newData = db.filter((el) => el.idInstructor !== idInstructor);
-          setDb(newData); // Actualiza 'db' eliminando el instructor
-        } else {
-          setError(res);
-        }
-      });
-    } else {
-      return;
-    }
+    // Usa SweetAlert para mostrar un cuadro de diálogo de confirmación
+    Swal.fire({
+      title: '¿Estás seguro?',
+      text: `¿Estás seguro de eliminar al Instructor: '${data.name}'?`,
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Sí, eliminarlo',
+      cancelButtonText: 'Cancelar',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        let urlDel = "http://www.mendezmrf10.somee.com/api/ContractInstructor/Delete";
+        let endPoint = `${urlDel}/${idInstructor}`;
+  
+        let options = { headers: { "content-type": "application/json" } };
+  
+        api.del(endPoint, options).then((res) => {
+          if (!res.err) {
+            let newData = db.filter((el) => el.idInstructor !== idInstructor);
+            setDb(newData); // Actualiza 'db' eliminando el instructor
+            
+            // Muestra un mensaje SweetAlert de éxito
+            Swal.fire(
+              '¡Eliminado!',
+              'El registro ha sido eliminado exitosamente.',
+              'success'
+            );
+          } else {
+            setError(res);
+          }
+        });
+      }
+    });
   };
+  
 
   const showFormView = () => {
     setShowForm(true);
@@ -118,6 +133,7 @@ const CrudApp = () => {
 
   return (    
     <div>
+      <h3 className="h3Table">Instructores Contratistas</h3>
       <div className="containerButtons">
         <button className="btn addButton" onClick={showFormView}>
           Registrar Nuevo Instructor
@@ -138,6 +154,7 @@ const CrudApp = () => {
       )}
       {showRecords && (
         <div>
+
           {loading ? (
             <Loader />
           ) : error ? (

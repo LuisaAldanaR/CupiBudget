@@ -11,7 +11,6 @@ const CrudTable = ({ data, setDataToEdit, deleteData, showFormViewFullTimeInstru
             <div className="card-body center-table background-gradient">
                 <div className="table-responsive">
                     {/* Encabezado de la tabla */}
-                    <h3 className="h3Table">Instructores de Planta :</h3>
                     <br></br>
                     <table className="table center-table" >
                         <thead>

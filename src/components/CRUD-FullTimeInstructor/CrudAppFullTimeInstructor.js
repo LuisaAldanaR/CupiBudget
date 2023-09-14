@@ -118,6 +118,7 @@ const CrudAppFullTimeInstructor = () => {
 
   return (
     <div>
+      <h3 className="h3Table">Instructores de Planta</h3>
       <div className="containerButtons">
         <button className="btn addButton" onClick={showFormViewFullTimeInstructor}>
           Registrar Nuevo Instructor
@@ -126,6 +127,8 @@ const CrudAppFullTimeInstructor = () => {
         <button className="btn showButton" onClick={showRecordsViewFullTimeInstructor}>
           Ver Registros
         </button>
+
+        
       </div>
       
       {showForm && (

@@ -27,9 +27,9 @@ const CrudTableRow = ({ el, setDataToEdit, deleteData, showFormViewFullTimeInstr
         <button className="btn btn-warning" onClick={() => {
           setDataToEdit(el); // Establece el objeto 'el' como dato para editar
           showFormViewFullTimeInstructor(); // Llama a la función 'showFormViewFullTimeInstructor' para mostrar el formulario
-        }}><FontAwesomeIcon icon={faUserPen} />    </button>&nbsp; {/* Botón de eliminación que llama a la función 'deleteData' con 'idInstructor' como argumento */}
+        }}><FontAwesomeIcon icon={faUserPen}/></button>&nbsp; {/* Botón de eliminación que llama a la función 'deleteData' con 'idInstructor' como argumento */}
         <button className="btn btn-danger" onClick={() => deleteData(idInstructor, el)}>
-        <FontAwesomeIcon icon={faTrash} /></button>      </td>
+        <FontAwesomeIcon icon={faTrash}/></button></td>
     </tr>
   );
 };
