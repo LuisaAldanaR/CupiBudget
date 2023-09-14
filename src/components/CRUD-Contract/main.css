@@ -72,9 +72,10 @@
 .containerButtons {
     display: flex;
     flex-direction: row; /* Stack the buttons vertically */
-    justify-content: flex-end; /* Align items to the bottom */
-    align-items: flex-end; /* Center horizontally */
+    justify-content: flex-start; /* Align items to the bottom */
     text-align: center;
+    margin-left: 16px;
+    margin-top: 24px;
   }
   
 .addButton

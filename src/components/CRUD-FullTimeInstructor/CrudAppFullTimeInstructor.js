@@ -118,6 +118,16 @@ const CrudAppFullTimeInstructor = () => {
 
   return (
     <div>
+      <div className="containerButtons">
+        <button className="btn addButton" onClick={showFormViewFullTimeInstructor}>
+          Registrar Nuevo Instructor
+        </button>
+        &nbsp;
+        <button className="btn showButton" onClick={showRecordsViewFullTimeInstructor}>
+          Ver Registros
+        </button>
+      </div>
+      
       {showForm && (
         <CrudForm
           createData={createData}
@@ -142,16 +152,7 @@ const CrudAppFullTimeInstructor = () => {
           ) : null}
         </div>
       )}
-      <br></br>
-      <div className="containerButtons">
-        <button className="btn addButton" onClick={showFormViewFullTimeInstructor}>
-          Registrar Nuevo Instructor
-        </button>
-        &nbsp;
-        <button className="btn showButton" onClick={showRecordsViewFullTimeInstructor}>
-          Ver Registros
-        </button>
-      </div>
+   
     </div>
   );
 };

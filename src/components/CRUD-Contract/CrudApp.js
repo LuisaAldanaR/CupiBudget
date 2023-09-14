@@ -116,8 +116,18 @@ const CrudApp = () => {
     setDataToEdit(null);
   };
 
-  return (
+  return (    
     <div>
+      <div className="containerButtons">
+        <button className="btn addButton" onClick={showFormView}>
+          Registrar Nuevo Instructor
+        </button>
+        &nbsp;
+        <button className="btn showButton" onClick={showRecordsView}>
+          Ver Registros
+        </button>
+      </div>
+
       {showForm && (
         <CrudForm
           createData={createData}
@@ -142,16 +152,7 @@ const CrudApp = () => {
           ) : null}
         </div>
       )}
-      <br></br>
-      <div className="containerButtons">
-        <button className="btn addButton" onClick={showFormView}>
-          Registrar Nuevo Instructor
-        </button>
-        &nbsp;
-        <button className="btn showButton" onClick={showRecordsView}>
-          Ver Registros
-        </button>
-      </div>
+      
     </div>
   );
 };
