@@ -57,19 +57,19 @@ const Sidebar = () => {
         <li style={{ marginTop: "70px" }}>
           <div
             onClick={() => toggleOptions('option1')} 
-            NavLink to="/" exact className="text-dark rounded py-3 w-100 d-inline-block px-3" activeClassName="active"
+            navlink to="/" exact className="text-dark rounded py-3 w-100 d-inline-block px-3" activeclassname="active"
           >
             <FaIcons.FaHome /> Inicio <HiIcons.HiChevronRight id="chevronRight" />
           </div>
           {showOptions1 && (
             <ul className="submenu">
               <li>
-                <NavLink to="/" exact activeClassName="active">
+                <NavLink to="/" exact activeclassname="active">
                   Subopción 1
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/opcion2" exact activeClassName="active">
+                <NavLink to="/opcion2" exact activeclassname="active">
                   Subopción 2
                 </NavLink>
               </li>
@@ -87,12 +87,12 @@ const Sidebar = () => {
           {showOptions2 && (
             <ul className="submenu">
               <li>
-                <NavLink to="/opcion3" id="facto" exact activeClassName="active">
+                <NavLink to="/opcion3" id="facto" exact activeclassname="active">
                   Subopción 3
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/opcion4" exact activeClassName="active">
+                <NavLink to="/opcion4" exact activeclassname="active">
                   Subopción 4
                 </NavLink>
               </li>
@@ -109,12 +109,12 @@ const Sidebar = () => {
           {showOptions3 && (
             <ul className="submenu">
               <li>
-                <NavLink to="/opcion5" exact activeClassName="active">
+                <NavLink to="/opcion5" exact activeclassname="active">
                   Subopción 5
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/opcion6" exact activeClassName="active">
+                <NavLink to="/opcion6" exact activeclassname="active">
                   Subopción 6
                 </NavLink>
               </li>
@@ -131,12 +131,12 @@ const Sidebar = () => {
           {showOptions4 && (
             <ul className="submenu">
               <li>
-                <NavLink to="/opcion7" exact activeClassName="active">
+                <NavLink to="/opcion7" exact activeclassname="active">
                   Subopción 7
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/opcion8" exact activeClassName="active">
+                <NavLink to="/opcion8" exact activeclassname="active">
                   Subopción 8
                 </NavLink>
               </li>
@@ -153,12 +153,12 @@ const Sidebar = () => {
           {showOptions5 && (
             <ul className="submenu" id="submenu">
               <li>
-                <NavLink to="/CrudAppFullTimeInstructor" exact activeClassName="active" style={{ color: 'black' }}>
+                <NavLink to="/CrudAppFullTimeInstructor" exact activeclassname="active" style={{ color: 'black' }}>
                   Planta
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/CrudApp" exact activeClassName="active" style={{ color: 'black' }}>
+                <NavLink to="/CrudApp" exact activeclassname="active" style={{ color: 'black' }}>
                   Contrato
                 </NavLink>
               </li>

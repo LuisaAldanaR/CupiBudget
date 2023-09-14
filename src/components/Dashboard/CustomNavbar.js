@@ -5,7 +5,6 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import '../../App.scss';
 import * as FaIcons from 'react-icons/fa';
-import * as ImIcons from 'react-icons/im';
 
 function CustomNavbar() {
   return (

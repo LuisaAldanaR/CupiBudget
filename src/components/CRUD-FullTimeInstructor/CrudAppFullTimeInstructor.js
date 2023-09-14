@@ -5,8 +5,7 @@ import { helpHttp } from "../../helpers/helpHttp"; // Ajusta la ruta de importac
 import Loader from "./Loader"; // Importa el componente de carga
 import Message from "./Message"; // Importa el componente de mensajes
 import "./main.css";
-
-
+import Swal from 'sweetalert2';
 
 const CrudAppFullTimeInstructor = () => {
   const [db, setDb] = useState([]); // Estado para almacenar los datos de instructores
@@ -79,27 +78,40 @@ const CrudAppFullTimeInstructor = () => {
 
   // Función para eliminar un instructor
   const deleteData = (idInstructor, data) => {
-    let isDelete = window.confirm(
-      `¿Estás seguro de eliminar al Instructor: '${data.name}'?`
-    );
-
-    if (isDelete) {
-      let urlDel = "http://www.mendezmrf10.somee.com/api/FullTimeInstructor/Delete";
-      let endPoint = `${urlDel}/${idInstructor}`;
-
-      let options = { headers: { "content-type": "application/json" } };
-
-      api.del(endPoint, options).then((res) => {
-        if (!res.err) {
-          let newData = db.filter((el) => el.idInstructor !== idInstructor);
-          setDb(newData); // Actualiza 'db' eliminando el instructor
-        } else {
-          setError(res);
-        }
-      });
-    } else {
-      return;
-    }
+    // Usa SweetAlert para mostrar un cuadro de diálogo de confirmación
+    Swal.fire({
+      title: '¿Estás seguro?',
+      text: `¿Estás seguro de eliminar al Instructor: '${data.name}'?`,
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Sí, eliminarlo',
+      cancelButtonText: 'Cancelar',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        let urlDel = "http://www.mendezmrf10.somee.com/api/FullTimeInstructor/Delete";
+        let endPoint = `${urlDel}/${idInstructor}`;
+  
+        let options = { headers: { "content-type": "application/json" } };
+  
+        api.del(endPoint, options).then((res) => {
+          if (!res.err) {
+            let newData = db.filter((el) => el.idInstructor !== idInstructor);
+            setDb(newData); // Actualiza 'db' eliminando el instructor
+            
+            // Muestra un mensaje SweetAlert de éxito
+            Swal.fire(
+              '¡Eliminado!',
+              'El registro ha sido eliminado exitosamente.',
+              'success'
+            );
+          } else {
+            setError(res);
+          }
+        });
+      }
+    });
   };
 
    // Funciones para controlar las vistas
@@ -111,26 +123,19 @@ const CrudAppFullTimeInstructor = () => {
     }
   };
 
-  const showRecordsViewFullTimeInstructor = () => {
-    setShowForm(false);
-    setShowRecords(true);
-  };
-
   return (
     <div>
-      <h3 className="h3Table">Instructores de Planta</h3>
-      <div className="containerButtons">
-        <button className="btn addButton" onClick={showFormViewFullTimeInstructor}>
-          Registrar Nuevo Instructor
-        </button>
-        &nbsp;
-        <button className="btn showButton" onClick={showRecordsViewFullTimeInstructor}>
-          Ver Registros
-        </button>
-
-        
-      </div>
-      
+      {showRecords && (
+        <>
+          <h3 className="h3Table">Instructores De Planta</h3>
+          <div className="containerButtons">
+            <button className="btn addButton" onClick={showFormViewFullTimeInstructor}>
+              Registrar Nuevo Instructor
+            </button>
+          </div>
+        </>
+      )}
+  
       {showForm && (
         <CrudForm
           createData={createData}
@@ -139,25 +144,24 @@ const CrudAppFullTimeInstructor = () => {
           setDataToEdit={setDataToEdit}
         />
       )}
-      {showRecords && (
-        <div>
-          {loading ? (
-            <Loader />
-          ) : error ? (
-            <Message msg={`Error ${error.status}: ${error.statusText}`} bgColor="#dc3545" />
-          ) : db ? (
-            <CrudTable
-              data={db}
-              setDataToEdit={setDataToEdit}
-              deleteData={deleteData}
-              showFormViewFullTimeInstructor={showFormViewFullTimeInstructor}
-            />
-          ) : null}
-        </div>
+  
+      {showRecords && !loading && !error && db && (
+        <CrudTable
+          data={db}
+          setDataToEdit={setDataToEdit}
+          deleteData={deleteData}
+          showFormView={showFormViewFullTimeInstructor}
+        />
       )}
-   
+  
+      {loading && <Loader />}
+  
+      {error && (
+        <Message msg={`Error ${error.status}: ${error.statusText}`} bgColor="#dc3545" />
+      )}
     </div>
   );
 };
 
 export default CrudAppFullTimeInstructor;
+

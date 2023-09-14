@@ -3,6 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'; // Importa estilos de Bootstrap
 import { helpHttp } from "../../helpers/helpHttp"; // Importa una utilidad para realizar solicitudes HTTP
 import "./main.css";
 
+
 // Define un objeto con valores iniciales para el formulario
 const initialForm = {
   name: "",
@@ -137,7 +138,7 @@ const CrudForm = ({ createData, updateData, dataToEdit, setDataToEdit }) => {
           <button type="submit" className="btn btn-success">
             {dataToEdit ? "Editar" : "Agregar"}
           </button>&nbsp;
-          
+        
         </form>
       </div>
     </div>

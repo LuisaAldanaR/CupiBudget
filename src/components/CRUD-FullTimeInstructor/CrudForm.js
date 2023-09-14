@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css'; // Importa estilos de Bootstrap
 import { helpHttp } from "../../helpers/helpHttp"; // Importa una utilidad para realizar solicitudes HTTP
-
+import { NavLink } from 'react-router-dom';
 
 // Define un objeto con valores iniciales para el formulario
 const initialForm = {
@@ -55,8 +55,9 @@ const CrudForm = ({ createData, updateData, dataToEdit, setDataToEdit }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (!form.name.trim() || !form.position.trim()) {
+    if (!form.name.trim() || !form.position.trim() || !form.networkId) {
       alert("Datos incompletos");
+      console.log(form);
       return;
     }
 
@@ -96,15 +97,20 @@ const CrudForm = ({ createData, updateData, dataToEdit, setDataToEdit }) => {
             />
           </div>
           <div className="mb-3">
-            <input
-              type="text"
+            <select
               name="position"
-              placeholder="Posición"
-              className="form-control"
+              className="form-select"
               onChange={handleChange}
               value={form.position}
-            />
+            >
+              <option value="">Selecciona una posición</option>
+                <option>Instructor</option>
+                <option>Instructor Senova</option>
+                <option>Coordinador Academico</option>
+                <option>Otros</option>
+            </select>
           </div>
+
           <div className="mb-3">
             <select
               name="networkId"
@@ -123,6 +129,8 @@ const CrudForm = ({ createData, updateData, dataToEdit, setDataToEdit }) => {
           <button type="submit" className="btn btn-success">
             {dataToEdit ? "Editar" : "Agregar"}
           </button>&nbsp;
+
+        
         </form>
       </div>
     </div>

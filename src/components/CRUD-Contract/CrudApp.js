@@ -124,26 +124,19 @@ const CrudApp = () => {
     }
   };
 
-  const showRecordsView = () => {
-    setShowForm(false);
-    setShowRecords(true);
-    // Limpia el formulario cuando cambias a la vista de registros
-    setDataToEdit(null);
-  };
-
-  return (    
+  return (
     <div>
-      <h3 className="h3Table">Instructores Contratistas</h3>
-      <div className="containerButtons">
-        <button className="btn addButton" onClick={showFormView}>
-          Registrar Nuevo Instructor
-        </button>
-        &nbsp;
-        <button className="btn showButton" onClick={showRecordsView}>
-          Ver Registros
-        </button>
-      </div>
-
+      {showRecords && (
+        <>
+          <h3 className="h3Table">Instructores Contratistas</h3>
+          <div className="containerButtons">
+            <button className="btn addButton" onClick={showFormView}>
+              Registrar Nuevo Instructor
+            </button>
+          </div>
+        </>
+      )}
+  
       {showForm && (
         <CrudForm
           createData={createData}
@@ -152,26 +145,24 @@ const CrudApp = () => {
           setDataToEdit={setDataToEdit}
         />
       )}
-      {showRecords && (
-        <div>
-
-          {loading ? (
-            <Loader />
-          ) : error ? (
-            <Message msg={`Error ${error.status}: ${error.statusText}`} bgColor="#dc3545" />
-          ) : db ? (
-            <CrudTable
-              data={db}
-              setDataToEdit={setDataToEdit}
-              deleteData={deleteData}
-              showFormView={showFormView}
-            />
-          ) : null}
-        </div>
+  
+      {showRecords && !loading && !error && db && (
+        <CrudTable
+          data={db}
+          setDataToEdit={setDataToEdit}
+          deleteData={deleteData}
+          showFormView={showFormView}
+        />
       )}
-      
+  
+      {loading && <Loader />}
+  
+      {error && (
+        <Message msg={`Error ${error.status}: ${error.statusText}`} bgColor="#dc3545" />
+      )}
     </div>
   );
+  
 };
 
 export default CrudApp;
