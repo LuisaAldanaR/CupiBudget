@@ -1,47 +1,47 @@
 import React, { useEffect, useState } from "react";
-import CrudForm from "./CrudForm"; // Importa el componente de formulario
-import CrudTable from "./CrudTable"; // Importa el componente de tabla
-import { helpHttp } from "../../helpers/helpHttp"; // Ajusta la ruta de importación
-import Loader from "./Loader"; // Importa el componente de carga
-import Message from "./Message"; // Importa el componente de mensajes
+import CrudForm from "./CrudForm"; // Import the form component
+import CrudTable from "./CrudTable"; // Import the table component
+import { helpHttp } from "../../helpers/helpHttp"; // Adjust the import path
+import Loader from "./Loader"; // Import the loader component
+import Message from "./Message"; // Import the message component
 import "./main.css";
 import Swal from 'sweetalert2';
 
-
-
 const CrudApp = () => {
-  const [db, setDb] = useState([]); // Estado para almacenar los datos de instructores
-  const [dataToEdit, setDataToEdit] = useState(null); // Estado para datos de edición
-  const [error, setError] = useState(null); // Estado para gestionar errores
-  const [loading, setLoading] = useState(true); // Estado para mostrar una carga en progreso
+  // States for storing instructor data, edit data, errors, etc.
+  const [db, setDb] = useState([]); 
+  const [dataToEdit, setDataToEdit] = useState(null); 
+  const [error, setError] = useState(null); 
+  const [loading, setLoading] = useState(true); 
 
-  const [showForm, setShowForm] = useState(false); // Estado para mostrar el formulario
-  const [showRecords, setShowRecords] = useState(true); // Estado para mostrar registros
+  // States for showing/hiding the form and records
+  const [showForm, setShowForm] = useState(false); 
+  const [showRecords, setShowRecords] = useState(true); 
 
-  let api = helpHttp(); // Instancia de la utilidad de solicitud HTTP
+  let api = helpHttp(); // Instance of the HTTP request utility
 
   useEffect(() => {
-    loadTableData(); // Cuando el componente se monta, carga los datos iniciales
+    loadTableData(); // Load initial data when the component mounts
   }, []);
 
-  // Función para cargar los datos de la tabla
+  // Function to load table data
   const loadTableData = () => {
     let urlGet = "http://www.mendezmrf10.somee.com/api/ContractInstructor/List";
 
     api.get(urlGet).then((res) => {
       if (!res.err) {
-        setDb(res.response); // Almacena los datos en el estado 'db'
-        setError(null); // Limpia los errores
+        setDb(res.response); // Store data in the 'db' state
+        setError(null); // Clear errors
       } else {
-        setDb([]); // Establece un arreglo vacío en 'db' en caso de error
+        setDb([]); // Set an empty array in 'db' in case of an error
         setError(`Error ${res.status}: ${res.statusText}`);
       }
 
-      setLoading(false); // Establece 'loading' en falso después de cargar los datos
+      setLoading(false); // Set 'loading' to false after data is loaded
     });
   };
 
-  // Función para crear un nuevo instructor
+  // Function to create a new instructor
   const createData = (data) => {
     let urlPost = "http://www.mendezmrf10.somee.com/api/ContractInstructor/Save";
 
@@ -52,7 +52,7 @@ const CrudApp = () => {
 
     api.post(urlPost, options).then((res) => {
       if (!res.err) {
-        // Después de agregar un registro, recarga los datos
+        // After adding a record, reload the data
         loadTableData();
       } else {
         setError(res);
@@ -60,7 +60,7 @@ const CrudApp = () => {
     });
   };
 
-  // Función para actualizar un instructor existente
+  // Function to update an existing instructor
   const updateData = (data) => {
     let urlPut = "http://www.mendezmrf10.somee.com/api/ContractInstructor/Edit";
 
@@ -71,24 +71,25 @@ const CrudApp = () => {
         let newData = db.map((el) =>
           el.idInstructor === data.idInstructor ? data : el
         );
-        setDb(newData); // Actualiza 'db' con los nuevos datos
+        setDb(newData); // Update 'db' with the new data
       } else {
         setError(res);
       }
     });
   };
 
+  // Function to delete an instructor
   const deleteData = (idInstructor, data) => {
-    // Usa SweetAlert para mostrar un cuadro de diálogo de confirmación
+    // Use SweetAlert to show a confirmation dialog
     Swal.fire({
-      title: '¿Estás seguro?',
-      text: `¿Estás seguro de eliminar al Instructor: '${data.name}'?`,
+      title: 'Estas seguro?',
+      text: `Estas seguro de borrar al Instructor: '${data.name}'?`,
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
-      confirmButtonText: 'Sí, eliminarlo',
-      cancelButtonText: 'Cancelar',
+      confirmButtonText: 'Si, Borralo',
+      cancelButtonText: 'Cancel',
     }).then((result) => {
       if (result.isConfirmed) {
         let urlDel = "http://www.mendezmrf10.somee.com/api/ContractInstructor/Delete";
@@ -99,12 +100,12 @@ const CrudApp = () => {
         api.del(endPoint, options).then((res) => {
           if (!res.err) {
             let newData = db.filter((el) => el.idInstructor !== idInstructor);
-            setDb(newData); // Actualiza 'db' eliminando el instructor
+            setDb(newData); // Update 'db' by removing the instructor
             
-            // Muestra un mensaje SweetAlert de éxito
+            // Show a success SweetAlert message
             Swal.fire(
-              '¡Eliminado!',
-              'El registro ha sido eliminado exitosamente.',
+              'Borrado!',
+              'El registro fue borrado exitosamente.',
               'success'
             );
           } else {
@@ -115,13 +116,19 @@ const CrudApp = () => {
     });
   };
   
-
+  // Function to show the form
   const showFormView = () => {
     setShowForm(true);
     setShowRecords(false);
     if (dataToEdit) {
       setDataToEdit(null);
     }
+  };
+
+  // Function to show the record table
+  const showTable = () => {
+    setShowForm(false);
+    setShowRecords(true);
   };
 
   return (
@@ -131,21 +138,22 @@ const CrudApp = () => {
           <h3 className="h3Table">Instructores Contratistas</h3>
           <div className="containerButtons">
             <button className="btn addButton" onClick={showFormView}>
-              Registrar Nuevo Instructor
+              Registar Nuevo Instructor
             </button>
           </div>
         </>
       )}
-  
+
       {showForm && (
         <CrudForm
           createData={createData}
           updateData={updateData}
           dataToEdit={dataToEdit}
           setDataToEdit={setDataToEdit}
+          showTable={showTable} // Pass the showTable function to the CrudForm component
         />
       )}
-  
+
       {showRecords && !loading && !error && db && (
         <CrudTable
           data={db}
@@ -154,15 +162,14 @@ const CrudApp = () => {
           showFormView={showFormView}
         />
       )}
-  
+
       {loading && <Loader />}
-  
+
       {error && (
         <Message msg={`Error ${error.status}: ${error.statusText}`} bgColor="#dc3545" />
       )}
     </div>
   );
-  
 };
 
 export default CrudApp;

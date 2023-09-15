@@ -1,8 +1,8 @@
 import React from "react";
 
-// Definición de un componente Message que acepta dos propiedades: msg y bgColor
+// Definition of a Message component that accepts two props: msg and bgColor
 const Message = ({ msg, bgColor }) => {
-  // Definición de estilos para el componente
+  // Define styles for the component
   let styles = {
     padding: "1rem",
     marginBottom: "1rem",
@@ -13,13 +13,13 @@ const Message = ({ msg, bgColor }) => {
   };
 
   return (
-    // Renderización del componente
+    // Render the component
     <div style={styles}>
-      {/* Renderización del mensaje HTML de manera segura */}
+      {/* Render the HTML message safely */}
       <p dangerouslySetInnerHTML={{ __html: msg }} />
     </div>
   );
 };
 
-// Exportación del componente Message para su uso en otras partes de la aplicación
+// Export the Message component for use in other parts of the application
 export default Message;

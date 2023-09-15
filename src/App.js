@@ -1,5 +1,7 @@
 import React from "react";
 import CrudApp from "./components/CRUD-Contract/CrudApp";
+import CrudFormFullTimeInstructor from "./components/CRUD-FullTimeInstructor/CrudForm";
+import CrudForm from "./components/CRUD-Contract/CrudForm";
 import CrudAppFullTimeInstructor from "./components/CRUD-FullTimeInstructor/CrudAppFullTimeInstructor";
 import { BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import CustomNavbar from '../src/components/Dashboard/CustomNavbar'

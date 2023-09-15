@@ -2,41 +2,40 @@ import React from "react";
 import CrudTableRow from "./CrudTableRow";
 import "./main.css";
 
-
-// Definición del componente CrudTable
+// Definition of the CrudTable component
 const CrudTable = ({ data, setDataToEdit, deleteData, showFormViewFullTimeInstructor }) => {
     return (
-        // Contenedor principal del componente
+        // Main container of the component
         <div className="container">
             <div className="card-body center-table background-gradient">
                 <div className="table-responsive">
-                    {/* Encabezado de la tabla */}
+                    {/* Table header */}
                     <br></br>
-                    <table className="table center-table" >
+                    <table className="table center-table">
                         <thead>
                             <tr>
-                                <th className="thLeft">Nombre:</th>
-                                <th className="thTable">Posición:</th>
-                                <th className="thTable">Nombre de la Red:</th>
-                                <th className="thRight">Acciones</th>
+                                <th className="thLeft">Nombre:</th> 
+                                <th className="thTable">Posición:</th> 
+                                <th className="thTable">Nombre de la Red:</th> 
+                                <th className="thRight">Acciones</th> 
                             </tr>
                         </thead>
 
                         <tbody>
-                            {/* Condicional para manejar el caso en que no haya datos */}
+                            {/* Conditional to handle the case when there is no data */}
                             {data.length > 0 ? (
-                                // Mapeo de datos para renderizar filas de la tabla
+                                // Mapping of data to render table rows
                                 data.map((el) => (
                                     <CrudTableRow
                                         key={el.id}
                                         el={el}
                                         setDataToEdit={setDataToEdit}
                                         deleteData={deleteData}
-                                        showFormViewFullTimeInstructor={showFormViewFullTimeInstructor} // Asegúrate de pasar showFormView como prop
+                                        showFormViewFullTimeInstructor={showFormViewFullTimeInstructor} // Make sure to pass showFormView as a prop
                                     />
                                 ))
                             ) : (
-                                // Mostrar mensaje de "Sin datos" si no hay elementos en 'data'
+                                // Show "Sin datos" message if there are no elements in 'data'
                                 <tr>
                                     <td colSpan="3">Sin datos</td>
                                 </tr>
@@ -49,5 +48,5 @@ const CrudTable = ({ data, setDataToEdit, deleteData, showFormViewFullTimeInstru
     );
 };
 
-// Exporta el componente CrudTable para su uso en otras partes de la aplicación
+// Export the CrudTable component for use in other parts of the application
 export default CrudTable;

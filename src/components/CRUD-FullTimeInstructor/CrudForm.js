@@ -1,48 +1,45 @@
 import React, { useState, useEffect } from "react";
-import 'bootstrap/dist/css/bootstrap.min.css'; // Importa estilos de Bootstrap
-import { helpHttp } from "../../helpers/helpHttp"; // Importa una utilidad para realizar solicitudes HTTP
-import { NavLink } from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.min.css'; // Import Bootstrap styles
+import { helpHttp } from "../../helpers/helpHttp"; // Import a utility for making HTTP requests
 
-// Define un objeto con valores iniciales para el formulario
+// Define an object with initial values for the form
 const initialForm = {
   name: "",
   position: "",
   networkId: null,
 };
 
-
-const CrudForm = ({ createData, updateData, dataToEdit, setDataToEdit }) => {
-  // Define estados para el formulario y las opciones de red
+const CrudForm = ({ createData, updateData, dataToEdit, setDataToEdit, showTable }) => {
+  // Define states for the form and network options
   const [form, setForm] = useState(initialForm);
   const [networkOptions, setNetworkOptions] = useState([]);
-  const api = helpHttp(); // Instancia de la utilidad de solicitud HTTP
-  
-  // Efecto que actualiza el estado 'form' cuando 'dataToEdit' cambia
+  const api = helpHttp(); // Instance of the HTTP request utility
+
+  // Effect to update the 'form' state when 'dataToEdit' changes
   useEffect(() => {
     if (dataToEdit && dataToEdit.idInstructor !== undefined && dataToEdit.idInstructor !== "") {
-      // Si dataToEdit existe y tiene un idInstructor definido, establece el estado form en dataToEdit
+      // If dataToEdit exists and has a defined idInstructor, set the 'form' state to dataToEdit
       setForm(dataToEdit);
     } else {
-      // Si no estás editando, establece el estado form en el formulario inicial vacío
+      // If not editing, set the 'form' state to the initial empty form
       setForm(initialForm);
     }
   }, [dataToEdit]);
-  
 
-  // Efecto que carga las opciones de red desde una API al montar el componente
+  // Effect to load network options from an API when the component mounts
   useEffect(() => {
     const urlNetwork = "http://www.mendezmrf10.somee.com/api/Network/List";
-    
+
     api.get(urlNetwork).then((res) => {
       if (!res.err) {
-        setNetworkOptions(res.response); // Almacena las opciones de red en el estado
+        setNetworkOptions(res.response); // Store network options in the state
       } else {
         console.error("Error al obtener las opciones de red:", res.err);
       }
     });
   }, [api]);
 
-  // Función para manejar cambios en los campos del formulario
+  // Function to handle changes in form fields
   const handleChange = (e) => {
     const { name, value } = e.target;
     setForm({
@@ -50,18 +47,18 @@ const CrudForm = ({ createData, updateData, dataToEdit, setDataToEdit }) => {
       [name]: value,
     });
   };
-  
-  // Función para manejar el envío del formulario
+
+  // Function to handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
 
     if (!form.name.trim() || !form.position.trim() || !form.networkId) {
-      alert("Datos incompletos");
+      alert("Datos incompletos"); // Translate: Incomplete data
       console.log(form);
       return;
     }
 
-    // Llama a 'createData' o 'updateData' según si se está creando o actualizando
+    // Call 'createData' or 'updateData' based on whether creating or updating
     if (dataToEdit === null || form.idInstructor === undefined || form.idInstructor === "") {
       createData(form);
     } else {
@@ -69,72 +66,79 @@ const CrudForm = ({ createData, updateData, dataToEdit, setDataToEdit }) => {
       console.log(dataToEdit);
     }
 
-    handleReset(); // Limpia el formulario
-    
+    handleReset(); // Clear the form
   };
 
-  // Función para limpiar el formulario y los datos de edición
+  // Function to clear the form and data being edited
   const handleReset = (e) => {
     setForm(initialForm);
     setDataToEdit(null);
   };
 
+  const handleCancel = () => {
+    // Reset the form by calling the 'handleReset' function
+    showTable();
+  };
+
   return (
-  <div className="container">
-    <div className="card">
-      <div className="center-table-form">
-        <h3 className="h3Table">{dataToEdit ? "Editar" : "Agregar"}</h3>
-        <br></br>
-        <form onSubmit={handleSubmit}>
-          <div className="mb-3">
-            <input
-              type="text"
-              name="name"
-              placeholder="Nombre"
-              className="form-control"
-              onChange={handleChange}
-              value={form.name}
-            />
-          </div>
-          <div className="mb-3">
-            <select
-              name="position"
-              className="form-select"
-              onChange={handleChange}
-              value={form.position}
-            >
-              <option value="">Selecciona una posición</option>
+    <div className="container">
+      <div className="card">
+        <div className="center-table-form">
+          <h3 className="h3Table">{dataToEdit ? "Editar" : "Agregar"}</h3>
+          <br></br>
+          <form onSubmit={handleSubmit}>
+            <div className="mb-3">
+              <input
+                type="text"
+                name="name"
+                placeholder="Nombre"
+                className="form-control"
+                onChange={handleChange}
+                value={form.name}
+              />
+            </div>
+            <div className="mb-3">
+              <select
+                name="position"
+                className="form-select"
+                onChange={handleChange}
+                value={form.position}
+              >
+                <option value="">Selecciona una posición</option> 
                 <option>Instructor</option>
                 <option>Instructor Senova</option>
-                <option>Coordinador Academico</option>
-                <option>Otros</option>
-            </select>
-          </div>
+                <option>Coordinador Academico</option> 
+                <option>Otros</option> 
+              </select>
+            </div>
 
-          <div className="mb-3">
-            <select
-              name="networkId"
-              className="form-select"
-              onChange={handleChange}
-              value={form.networkId}
-            >
-              <option value="">Selecciona una red</option>
-              {networkOptions && networkOptions.map((option) => (
-                <option key={option.idNetwork} value={option.idNetwork}>
-                  {option.networkName}
-                </option>
-              ))}
-            </select>
-          </div>
-          <button type="submit" className="btn btn-success">
-            {dataToEdit ? "Editar" : "Agregar"}
-          </button>&nbsp;
-
-        
-        </form>
+            <div className="mb-3">
+              <select
+                name="networkId"
+                className="form-select"
+                onChange={handleChange}
+                value={form.networkId}
+              >
+                <option value="">Selecciona una red</option> 
+                {networkOptions &&
+                  networkOptions.map((option) => (
+                    <option key={option.idNetwork} value={option.idNetwork}>
+                      {option.networkName}
+                    </option>
+                  ))}
+              </select>
+            </div>
+            <button type="submit" className="btn btn-success">
+              {dataToEdit ? "Editar" : "Agregar"} 
+            </button>
+            &nbsp;
+            <button type="button" className="btn btn-danger" onClick={handleCancel}>
+              Regresar 
+            </button>
+          </form>
+        </div>
       </div>
     </div>
-  </div>
   );
 };
 

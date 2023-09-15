@@ -1,13 +1,13 @@
 import React from "react";
-import "./Loader.css"; // Se importa el archivo de hoja de estilo CSS para el componente Loader
+import "./Loader.css"; // Import the CSS stylesheet for the Loader component
 
-// Definición del componente Loader
+// Definition of the Loader component
 const Loader = () => {
     return (
-        // Renderización de un elemento div con la clase "lds-dual-ring" para mostrar el loader
+        // Render a div element with the "lds-dual-ring" class to display the loader
         <div className="lds-dual-ring"></div>
     );
 }
 
-// Exportación del componente Loader para su uso en otras partes de la aplicación
+// Export the Loader component for use in other parts of the application
 export default Loader;

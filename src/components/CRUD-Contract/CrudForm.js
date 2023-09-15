@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
-import 'bootstrap/dist/css/bootstrap.min.css'; // Importa estilos de Bootstrap
-import { helpHttp } from "../../helpers/helpHttp"; // Importa una utilidad para realizar solicitudes HTTP
+import 'bootstrap/dist/css/bootstrap.min.css'; // Import Bootstrap styles
+import { helpHttp } from "../../helpers/helpHttp"; // Import a utility for making HTTP requests
 import "./main.css";
 
-
-// Define un objeto con valores iniciales para el formulario
+// Define an object with initial values for the form
 const initialForm = {
   name: "",
   startDate: "",
@@ -12,44 +11,44 @@ const initialForm = {
   networkId: null,
 };
 
-const CrudForm = ({ createData, updateData, dataToEdit, setDataToEdit }) => {
-  // Define estados para el formulario y las opciones de red
+const CrudForm = ({ createData, updateData, dataToEdit, setDataToEdit, showTable }) => {
+  // Define states for the form and network options
   const [form, setForm] = useState(initialForm);
   const [networkOptions, setNetworkOptions] = useState([]);
-  const api = helpHttp(); // Instancia de la utilidad de solicitud HTTP
+  const api = helpHttp(); // Instance of the HTTP request utility
 
-  // Efecto que se ejecuta cuando cambia 'dataToEdit' para cargar datos de edición
+  // Effect that runs when 'dataToEdit' changes to load edit data
   useEffect(() => {
     if (dataToEdit) {
-      // Formatea las fechas al formato ISO 8601 antes de asignarlas al estado
+      // Format dates to ISO 8601 format before setting them to the state
       const formattedStartDate = new Date(dataToEdit.startDate).toISOString().split('T')[0];
       const formattedEndDate = new Date(dataToEdit.endDate).toISOString().split('T')[0];
   
-      // Asigna los datos de edición al estado del formulario
+      // Set edit data to the form state
       setForm({
         ...dataToEdit,
         startDate: formattedStartDate,
         endDate: formattedEndDate,
       });
     } else {
-      setForm(initialForm); // Si no hay datos de edición, reinicia el formulario
+      setForm(initialForm); // If there's no edit data, reset the form
     }
   }, [dataToEdit]);
 
-  // Efecto que carga las opciones de red desde una API al montar el componente
+  // Effect that loads network options from an API when the component mounts
   useEffect(() => {
     const urlNetwork = "http://www.mendezmrf10.somee.com/api/Network/List";
     
     api.get(urlNetwork).then((res) => {
       if (!res.err) {
-        setNetworkOptions(res.response); // Almacena las opciones de red en el estado
+        setNetworkOptions(res.response); // Store network options in the state
       } else {
-        console.error("Error al obtener las opciones de red:", res.err);
+        console.error("Error fetching network options:", res.err);
       }
     });
   }, [api]);
 
-  // Función para manejar cambios en los campos del formulario
+  // Function to handle changes in form fields
   const handleChange = (e) => {
     const { name, value } = e.target;
     setForm({
@@ -58,30 +57,36 @@ const CrudForm = ({ createData, updateData, dataToEdit, setDataToEdit }) => {
     });
   };
   
-  // Función para manejar el envío del formulario
+  // Function to handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
 
     if (!form.name.trim() || !form.startDate.trim() || !form.endDate.trim()) {
-      alert("Datos incompletos");
+      alert("Incomplete data");
       return;
     }
 
-    // Llama a 'createData' o 'updateData' según si se está creando o actualizando
+    // Call 'createData' or 'updateData' depending on whether it's creating or updating
     if (dataToEdit === null || form.idInstructor === undefined || form.idInstructor === "") {
       createData(form);
     } else {
       updateData(form);
     }
 
-    handleReset(); // Limpia el formulario
+    handleReset(); // Clear the form
   };
 
-  // Función para limpiar el formulario y los datos de edición
+  // Function to clear the form and edit data
   const handleReset = (e) => {
     setForm(initialForm);
     setDataToEdit(null);
   };
+
+  // Function to cancel and return to the table view
+  const handleCancel = () => {
+    showTable();
+  };
+  
 
   return (
   <div className="container">
@@ -94,7 +99,7 @@ const CrudForm = ({ createData, updateData, dataToEdit, setDataToEdit }) => {
             <input
               type="text"
               name="name"
-              placeholder="Nombre"
+              placeholder="Name"
               className="form-control inputForm"
               onChange={handleChange}
               value={form.name}
@@ -104,7 +109,7 @@ const CrudForm = ({ createData, updateData, dataToEdit, setDataToEdit }) => {
             <input
               type="date"
               name="startDate"
-              placeholder="Fecha de inicio de contrato"
+              placeholder="Contract Start Date"
               className="form-control"
               onChange={handleChange}
               value={form.startDate}
@@ -114,7 +119,7 @@ const CrudForm = ({ createData, updateData, dataToEdit, setDataToEdit }) => {
             <input
               type="date"
               name="endDate"
-              placeholder="Fecha fin de contrato"
+              placeholder="Contract End Date"
               className="form-control"
               onChange={handleChange}
               value={form.endDate}
@@ -138,7 +143,10 @@ const CrudForm = ({ createData, updateData, dataToEdit, setDataToEdit }) => {
           <button type="submit" className="btn btn-success">
             {dataToEdit ? "Editar" : "Agregar"}
           </button>&nbsp;
-        
+            <button type="button" className="btn btn-danger" onClick={handleCancel}>
+              Regresar
+            </button>
+
         </form>
       </div>
     </div>

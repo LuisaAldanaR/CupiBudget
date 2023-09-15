@@ -4,35 +4,35 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserPen } from "@fortawesome/free-solid-svg-icons";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 
-
 const CrudTableRow = ({ el, setDataToEdit, deleteData, showFormViewFullTimeInstructor }) => {
-  // Desestructura las propiedades del objeto 'el' pasado como argumento
+  // Destructure the properties of the 'el' object passed as an argument
   let { idInstructor, name, position, oNetwork } = el;
 
   return (
-    // Renderiza una fila de una tabla con los datos del objeto 'el'
+    // Render a table row with data from the 'el' object
     <tr>
-      <td className="tdTableRow">{name}</td>
-      <td className="tdTableRow">{position}</td>
-      {/* Renderiza el nombre de la red ('oNetwork.networkName') o un mensaje de carga si no está definido */}
+      <td className="tdTableRow">{name}</td> 
+      <td className="tdTableRow">{position}</td> 
+      {/* Render the network name ('oNetwork.networkName') or a loading message if not defined */}
       <td className="tdTableRow">
         {oNetwork ? (
           oNetwork.networkName
         ) : (
-          el.loading ? (<span>Cargando...</span>) : null // Verifica si el objeto 'el' tiene una propiedad 'loading'
+          el.loading ? (<span>Loading...</span>) : null 
         )}
       </td>
       <td className="tdTableRow">
-        {/* Botón de edición que llama a la función 'setDataToEdit' con el objeto 'el' */}
+        {/* Edit button that calls the 'setDataToEdit' function with the 'el' object */}
         <button className="btn btn-warning" onClick={() => {
-          setDataToEdit(el); // Establece el objeto 'el' como dato para editar
-          showFormViewFullTimeInstructor(); // Llama a la función 'showFormViewFullTimeInstructor' para mostrar el formulario
-        }}><FontAwesomeIcon icon={faUserPen}/></button>&nbsp; {/* Botón de eliminación que llama a la función 'deleteData' con 'idInstructor' como argumento */}
+          setDataToEdit(el); // Set the 'el' object as the data to edit
+          showFormViewFullTimeInstructor(); // Call the 'showFormViewFullTimeInstructor' function to show the form
+        }}><FontAwesomeIcon icon={faUserPen}/></button>&nbsp; 
+        {/* Delete button that calls the 'deleteData' function with 'idInstructor' as an argument */}
         <button className="btn btn-danger" onClick={() => deleteData(idInstructor, el)}>
-        <FontAwesomeIcon icon={faTrash}/></button></td>
+        <FontAwesomeIcon icon={faTrash}/></button></td> 
     </tr>
   );
 };
 
-// Exporta el componente CrudTableRow para su uso en otras partes de la aplicación
+// Export the CrudTableRow component for use in other parts of the application
 export default CrudTableRow;

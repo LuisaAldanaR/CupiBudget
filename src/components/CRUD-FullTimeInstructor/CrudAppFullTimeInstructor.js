@@ -1,45 +1,45 @@
 import React, { useEffect, useState } from "react";
-import CrudForm from "./CrudForm"; // Importa el componente de formulario
-import CrudTable from "./CrudTable"; // Importa el componente de tabla
-import { helpHttp } from "../../helpers/helpHttp"; // Ajusta la ruta de importación
-import Loader from "./Loader"; // Importa el componente de carga
-import Message from "./Message"; // Importa el componente de mensajes
+import CrudForm from "./CrudForm"; // Import the form component
+import CrudTable from "./CrudTable"; // Import the table component
+import { helpHttp } from "../../helpers/helpHttp"; // Adjust the import path
+import Loader from "./Loader"; // Import the loader component
+import Message from "./Message"; // Import the message component
 import "./main.css";
 import Swal from 'sweetalert2';
 
 const CrudAppFullTimeInstructor = () => {
-  const [db, setDb] = useState([]); // Estado para almacenar los datos de instructores
-  const [dataToEdit, setDataToEdit] = useState(null); // Estado para datos de edición
-  const [error, setError] = useState(null); // Estado para gestionar errores
-  const [loading, setLoading] = useState(true); // Estado para mostrar una carga en progreso
+  const [db, setDb] = useState([]); // State to store instructor data
+  const [dataToEdit, setDataToEdit] = useState(null); // State for edit data
+  const [error, setError] = useState(null); // State for error handling
+  const [loading, setLoading] = useState(true); // State to show loading state
 
-  const [showForm, setShowForm] = useState(false); // Estado para mostrar el formulario
-  const [showRecords, setShowRecords] = useState(true); // Estado para mostrar registros
+  const [showForm, setShowForm] = useState(false); // State to show the form
+  const [showRecords, setShowRecords] = useState(true); // State to show records
 
-  let api = helpHttp(); // Instancia de la utilidad de solicitud HTTP
+  let api = helpHttp(); // Instance of the HTTP request utility
 
   useEffect(() => {
-    loadTableData(); // Cuando el componente se monta, carga los datos iniciales
+    loadTableData(); // Load initial data when the component mounts
   }, []);
 
-  // Función para cargar los datos de la tabla
+  // Function to load table data
   const loadTableData = () => {
     let urlGet = "http://www.mendezmrf10.somee.com/api/FullTimeInstructor/List";
 
     api.get(urlGet).then((res) => {
       if (!res.err) {
-        setDb(res.response); // Almacena los datos en el estado 'db'
-        setError(null); // Limpia los errores
+        setDb(res.response); // Store the data in the 'db' state
+        setError(null); // Clear errors
       } else {
-        setDb([]); // Establece un arreglo vacío en 'db' en caso de error
+        setDb([]); // Set an empty array in 'db' in case of an error
         setError(`Error ${res.status}: ${res.statusText}`);
       }
 
-      setLoading(false); // Establece 'loading' en falso después de cargar los datos
+      setLoading(false); // Set 'loading' to false after loading the data
     });
   };
 
-  // Función para crear un nuevo instructor
+  // Function to create a new instructor
   const createData = (data) => {
     let urlPost = "http://www.mendezmrf10.somee.com/api/FullTimeInstructor/Save";
 
@@ -50,7 +50,7 @@ const CrudAppFullTimeInstructor = () => {
 
     api.post(urlPost, options).then((res) => {
       if (!res.err) {
-        // Después de agregar un registro, recarga los datos
+        // After adding a record, reload the data
         loadTableData();
       } else {
         setError(res);
@@ -58,7 +58,7 @@ const CrudAppFullTimeInstructor = () => {
     });
   };
 
-  // Función para actualizar un instructor existente
+  // Function to update an existing instructor
   const updateData = (data) => {
     let urlPut = "http://www.mendezmrf10.somee.com/api/FullTimeInstructor/Edit";
 
@@ -69,53 +69,53 @@ const CrudAppFullTimeInstructor = () => {
         let newData = db.map((el) =>
           el.idInstructor === data.idInstructor ? data : el
         );
-        setDb(newData); // Actualiza 'db' con los nuevos datos
+        setDb(newData); // Update 'db' with the new data
       } else {
         setError(res);
       }
     });
   };
 
-  // Función para eliminar un instructor
-  const deleteData = (idInstructor, data) => {
-    // Usa SweetAlert para mostrar un cuadro de diálogo de confirmación
-    Swal.fire({
-      title: '¿Estás seguro?',
-      text: `¿Estás seguro de eliminar al Instructor: '${data.name}'?`,
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Sí, eliminarlo',
-      cancelButtonText: 'Cancelar',
-    }).then((result) => {
-      if (result.isConfirmed) {
-        let urlDel = "http://www.mendezmrf10.somee.com/api/FullTimeInstructor/Delete";
-        let endPoint = `${urlDel}/${idInstructor}`;
-  
-        let options = { headers: { "content-type": "application/json" } };
-  
-        api.del(endPoint, options).then((res) => {
-          if (!res.err) {
-            let newData = db.filter((el) => el.idInstructor !== idInstructor);
-            setDb(newData); // Actualiza 'db' eliminando el instructor
-            
-            // Muestra un mensaje SweetAlert de éxito
-            Swal.fire(
-              '¡Eliminado!',
-              'El registro ha sido eliminado exitosamente.',
-              'success'
-            );
-          } else {
-            setError(res);
-          }
-        });
-      }
-    });
-  };
+  // Function to delete an instructor
+const deleteData = (idInstructor, data) => {
+  // Use SweetAlert to show a confirmation dialog
+  Swal.fire({
+    title: '¿Estás seguro?', // Translate: Are you sure?
+    text: `¿Estás seguro de eliminar al Instructor: '${data.name}'?`, // Translate: Are you sure you want to delete Instructor: '${data.name}'?
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Sí, eliminarlo', // Translate: Yes, delete it
+    cancelButtonText: 'Cancelar', // Translate: Cancel
+  }).then((result) => {
+    if (result.isConfirmed) {
+      let urlDel = "http://www.mendezmrf10.somee.com/api/FullTimeInstructor/Delete";
+      let endPoint = `${urlDel}/${idInstructor}`;
 
-   // Funciones para controlar las vistas
-   const showFormViewFullTimeInstructor = () => {
+      let options = { headers: { "content-type": "application/json" } };
+
+      api.del(endPoint, options).then((res) => {
+        if (!res.err) {
+          let newData = db.filter((el) => el.idInstructor !== idInstructor);
+          setDb(newData); // Update 'db' by removing the instructor
+
+          // Show a success SweetAlert message
+          Swal.fire(
+            '¡Eliminado!', // Translate: Deleted!
+            'El registro ha sido eliminado exitosamente.', // Translate: The record has been successfully deleted.
+            'success'
+          );
+        } else {
+          setError(res);
+        }
+      });
+    }
+  });
+};
+
+  // Functions to control views
+  const showFormViewFullTimeInstructor = () => {
     setShowForm(true);
     setShowRecords(false);
     if (dataToEdit) {
@@ -123,11 +123,16 @@ const CrudAppFullTimeInstructor = () => {
     }
   };
 
+  const showTable = () => {
+    setShowForm(false);
+    setShowRecords(true);
+  };
+
   return (
     <div>
       {showRecords && (
         <>
-          <h3 className="h3Table">Instructores De Planta</h3>
+          <h3 className="h3Table">Instructores de Planta</h3>
           <div className="containerButtons">
             <button className="btn addButton" onClick={showFormViewFullTimeInstructor}>
               Registrar Nuevo Instructor
@@ -142,6 +147,7 @@ const CrudAppFullTimeInstructor = () => {
           updateData={updateData}
           dataToEdit={dataToEdit}
           setDataToEdit={setDataToEdit}
+          showTable={showTable} // Pass the showTable function to the CrudForm component
         />
       )}
   
@@ -164,4 +170,3 @@ const CrudAppFullTimeInstructor = () => {
 };
 
 export default CrudAppFullTimeInstructor;
-
