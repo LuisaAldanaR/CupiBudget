@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Cors;
 using ProyectoFormativo.Modelos;
 
-namespace APIPlanta.Controllers
+namespace ProyectoFormativo.Controllers
 {
 
     [EnableCors("ReglasCors")]
