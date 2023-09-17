@@ -118,11 +118,12 @@ const CrudApp = () => {
   
   // Function to show the form
   const showFormView = () => {
-    setShowForm(true);
-    setShowRecords(false);
-    if (dataToEdit) {
+      if (dataToEdit) {
       setDataToEdit(null);
     }
+    setShowForm(true);
+    setShowRecords(false);
+  
   };
 
   // Function to show the record table

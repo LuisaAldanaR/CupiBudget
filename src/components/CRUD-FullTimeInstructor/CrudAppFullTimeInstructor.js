@@ -156,7 +156,7 @@ const deleteData = (idInstructor, data) => {
           data={db}
           setDataToEdit={setDataToEdit}
           deleteData={deleteData}
-          showFormView={showFormViewFullTimeInstructor}
+          showFormViewFullTimeInstructor={showFormViewFullTimeInstructor}
         />
       )}
   

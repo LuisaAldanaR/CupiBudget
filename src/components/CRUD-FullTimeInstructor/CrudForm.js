@@ -78,6 +78,8 @@ const CrudForm = ({ createData, updateData, dataToEdit, setDataToEdit, showTable
   const handleCancel = () => {
     // Reset the form by calling the 'handleReset' function
     showTable();
+    setForm(initialForm);
+    setDataToEdit(null);
   };
 
   return (
