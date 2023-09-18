@@ -60,21 +60,24 @@ const CrudForm = ({ createData, updateData, dataToEdit, setDataToEdit, showTable
   // Function to handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
-
+  
     if (!form.name.trim() || !form.startDate.trim() || !form.endDate.trim()) {
       alert("Incomplete data");
       return;
     }
-
+  
     // Call 'createData' or 'updateData' depending on whether it's creating or updating
-    if (dataToEdit === null || form.idInstructor === undefined || form.idInstructor === "") {
+    if (dataToEdit === null || dataToEdit.idInstructor === undefined) {
       createData(form);
     } else {
       updateData(form);
     }
-
-    handleReset(); // Clear the form
+  
+    // Clear the form and reset dataToEdit to null
+    handleReset();
   };
+  
+  
 
   // Function to clear the form and edit data
   const handleReset = (e) => {
@@ -85,6 +88,8 @@ const CrudForm = ({ createData, updateData, dataToEdit, setDataToEdit, showTable
   // Function to cancel and return to the table view
   const handleCancel = () => {
     showTable();
+    setForm(initialForm);
+    setDataToEdit(null);
   };
   
 
