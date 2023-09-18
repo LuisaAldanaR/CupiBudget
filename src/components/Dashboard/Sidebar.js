@@ -6,7 +6,7 @@ import * as HiIcons from 'react-icons/hi';
 import '../../App.scss';
 
 const Sidebar = () => {
-  // Crear un estado para controlar la visibilidad de cada opción
+  // Create state to control the visibility of each option
   const [optionVisibility, setOptionVisibility] = useState({
     option1: false,
     option2: false,
@@ -15,7 +15,7 @@ const Sidebar = () => {
     option5: false,
   });
 
-  // Manejar el evento onMouseEnter para cada opción
+  // Handle the onMouseEnter event for each option
   const handleMouseEnter = (option) => {
     setOptionVisibility((prevState) => ({
       ...prevState,
@@ -23,7 +23,7 @@ const Sidebar = () => {
     }));
   };
 
-  // Manejar el evento onMouseLeave para cada opción
+  // Handle the onMouseLeave event for each option
   const handleMouseLeave = (option) => {
     setOptionVisibility((prevState) => ({
       ...prevState,
@@ -31,7 +31,7 @@ const Sidebar = () => {
     }));
   };
 
-  // Función para determinar si una opción está activa
+  // Determine if an option is active
   const isOptionActive = (option) => {
     return optionVisibility[option];
   };
@@ -55,12 +55,12 @@ const Sidebar = () => {
             >
               <li>
                 <NavLink to="/" exact activeClassName="active">
-                  Suboption 1
+                  <span style={{ color: 'black' }}>Suboption 1</span>
                 </NavLink>
               </li>
               <li>
                 <NavLink to="/option2" exact activeClassName="active">
-                  Suboption 2
+                  <span style={{ color: 'black' }}>Suboption 2</span>
                 </NavLink>
               </li>
             </ul>
@@ -81,13 +81,13 @@ const Sidebar = () => {
               onMouseLeave={() => handleMouseLeave('option2')}
             >
               <li>
-                <NavLink to="/option3" id="facto" exact activeclassname="active">
-                  Suboption 3
+                <NavLink to="/option3" id="facto" exact activeClassName="active">
+                  <span style={{ color: 'black' }}>Suboption 3</span>
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/option4" exact activeclassname="active">
-                  Suboption 4
+                <NavLink to="/option4" exact activeClassName="active">
+                  <span style={{ color: 'black' }}>Suboption 4</span>
                 </NavLink>
               </li>
             </ul>
@@ -109,12 +109,12 @@ const Sidebar = () => {
             >
               <li>
                 <NavLink to="/option3" id="facto" exact activeClassName="active">
-                  Suboption 3
+                  <span style={{ color: 'black' }}>Suboption 3</span>
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/option3" exact activeClassName="active">
-                  Suboption 4
+                <NavLink to="/option4 " exact activeClassName="active">
+                  <span style={{ color: 'black' }}>Suboption 4</span>
                 </NavLink>
               </li>
             </ul>
@@ -136,12 +136,12 @@ const Sidebar = () => {
             >
               <li>
                 <NavLink to="/option4" id="facto" exact activeClassName="active">
-                  Suboption 3
+                  <span style={{ color: 'black' }}>Suboption 3</span>
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/option4" exact activeClassName="active">
-                  Suboption 4
+                <NavLink to="/option5" exact activeClassName="active">
+                  <span style={{ color: 'black' }}>Suboption 4</span>
                 </NavLink>
               </li>
             </ul>
@@ -163,12 +163,12 @@ const Sidebar = () => {
             >
               <li>
                 <NavLink to="/CrudAppFullTimeInstructor" id="facto" exact activeClassName="active">
-                  Planta
+                  <span style={{ color: 'black' }}>Planta</span>
                 </NavLink>
               </li>
               <li>
                 <NavLink to="/CrudApp" exact activeClassName="active">
-                  Contrato
+                  <span style={{ color: 'black' }}>Contrato</span>
                 </NavLink>
               </li>
             </ul>
