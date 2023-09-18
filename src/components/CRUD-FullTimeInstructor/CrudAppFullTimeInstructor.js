@@ -72,20 +72,29 @@ const CrudAppFullTimeInstructor = () => {
   // Function to update an existing instructor
   const updateData = (data) => {
     let urlPut = "http://www.mendezmrf10.somee.com/api/FullTimeInstructor/Edit";
-
+  
     let options = { body: data, headers: { "content-type": "application/json" } };
-
+  
     api.put(urlPut, options).then((res) => {
-      if (!res.err) {
-        let newData = db.map((el) =>
-          el.idInstructor === data.idInstructor ? data : el
-        );
-        setDb(newData); // Update 'db' with the new data
+      if (!res.error) { // Corregir la verificación de error
+        Swal.fire({
+          title: '¡Editado!', // Corregir el mensaje de éxito
+          text: 'El registro ha sido editado exitosamente.',
+          icon: 'success',
+          confirmButtonText: 'OK',
+        }).then(() => {
+          let newData = db.map((el) =>
+            el.idInstructor === data.idInstructor ? data : el
+          );
+          setDb(newData); // Actualizar 'db' con los nuevos datos
+          showTable();
+        });
       } else {
         setError(res);
       }
     });
   };
+  
 
   // Function to delete an instructor
 const deleteData = (idInstructor, data) => {

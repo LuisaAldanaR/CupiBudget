@@ -5,76 +5,61 @@ import * as ImIcons from 'react-icons/im';
 import * as HiIcons from 'react-icons/hi';
 import '../../App.scss';
 
-/**
- * The Sidebar component for navigation.
- * @returns {JSX.Element} The rendered Sidebar component.
- */
 const Sidebar = () => {
-  // State variables to control the visibility of sub-options
-  const [showOptions1, setShowOptions1] = useState(false);
-  const [showOptions2, setShowOptions2] = useState(false);
-  const [showOptions3, setShowOptions3] = useState(false);
-  const [showOptions4, setShowOptions4] = useState(false);
-  const [showOptions5, setShowOptions5] = useState(false);
+  // Crear un estado para controlar la visibilidad de cada opción
+  const [optionVisibility, setOptionVisibility] = useState({
+    option1: false,
+    option2: false,
+    option3: false,
+    option4: false,
+    option5: false,
+  });
 
-  /**
-   * Toggles the visibility of sub-options based on the selected option.
-   * @param {string} option - The selected option.
-   */
-  const toggleOptions = (option) => {
-    if (option === 'option1') {
-      setShowOptions1(!showOptions1);
-      setShowOptions2(false);
-      setShowOptions3(false);
-      setShowOptions4(false);
-      setShowOptions5(false);
-    } else if (option === 'option2') {
-      setShowOptions1(false);
-      setShowOptions2(!showOptions2);
-      setShowOptions3(false);
-      setShowOptions4(false);
-      setShowOptions5(false);
-    } else if (option === 'option3') {
-      setShowOptions1(false);
-      setShowOptions2(false);
-      setShowOptions3(!showOptions3);
-      setShowOptions4(false);
-      setShowOptions5(false);
-    } else if (option === 'option4') {
-      setShowOptions1(false);
-      setShowOptions2(false);
-      setShowOptions3(false);
-      setShowOptions4(!showOptions4);
-      setShowOptions5(false);
-    } else if (option === 'option5') {
-      setShowOptions1(false);
-      setShowOptions2(false);
-      setShowOptions3(false);
-      setShowOptions4(false);
-      setShowOptions5(!showOptions5);
-    }
+  // Manejar el evento onMouseEnter para cada opción
+  const handleMouseEnter = (option) => {
+    setOptionVisibility((prevState) => ({
+      ...prevState,
+      [option]: true,
+    }));
+  };
+
+  // Manejar el evento onMouseLeave para cada opción
+  const handleMouseLeave = (option) => {
+    setOptionVisibility((prevState) => ({
+      ...prevState,
+      [option]: false,
+    }));
+  };
+
+  // Función para determinar si una opción está activa
+  const isOptionActive = (option) => {
+    return optionVisibility[option];
   };
 
   return (
     <div className="sidebar">
       <ul>
-        {/* Sidebar items */}
         <li style={{ marginTop: "70px" }}>
           <div
-            onClick={() => toggleOptions('option1')} 
-            navlink to="/" exact className="text-dark rounded py-3 w-100 d-inline-block px-3" activeclassname="active"
+            onMouseEnter={() => handleMouseEnter('option1')}
+            onMouseLeave={() => handleMouseLeave('option1')}
+            className={`text-dark rounded py-3 w-100 d-inline-block px-3 ${isOptionActive('option1') ? 'active' : ''}`}
           >
-            <FaIcons.FaHome /> Home <HiIcons.HiChevronRight id="chevronRight" />
+            <FaIcons.FaHome /> Inicio {isOptionActive('option1') ? <HiIcons.HiChevronDown /> : <HiIcons.HiChevronRight />} 
           </div>
-          {showOptions1 && (
-            <ul className="submenu">
+          {isOptionActive('option1') && (
+            <ul
+              className="submenu"
+              onMouseEnter={() => handleMouseEnter('option1')}
+              onMouseLeave={() => handleMouseLeave('option1')}
+            >
               <li>
-                <NavLink to="/" exact activeclassname="active">
+                <NavLink to="/" exact activeClassName="active">
                   Suboption 1
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/option2" exact activeclassname="active">
+                <NavLink to="/option2" exact activeClassName="active">
                   Suboption 2
                 </NavLink>
               </li>
@@ -83,21 +68,25 @@ const Sidebar = () => {
         </li>
         <li style={{ marginTop: "70px" }}>
           <div
-            NavLink to="/budget"
-            onClick={() => toggleOptions('option2')}
-            className="text-dark rounded py-3 w-100 d-inline-block px-3"
+            onMouseEnter={() => handleMouseEnter('option2')}
+            onMouseLeave={() => handleMouseLeave('option2')}
+            className={`text-dark rounded py-3 w-100 d-inline-block px-3 ${isOptionActive('option2') ? 'active' : ''}`}
           >
-            <FaIcons.FaFileInvoiceDollar /> Budget <HiIcons.HiChevronRight id="chevronRight" />
+            <FaIcons.FaFileInvoiceDollar /> Presupuesto {isOptionActive('option2') ? <HiIcons.HiChevronDown /> : <HiIcons.HiChevronRight />} 
           </div>
-          {showOptions2 && (
-            <ul className="submenu">
+          {isOptionActive('option2') && (
+            <ul
+              className="submenu"
+              onMouseEnter={() => handleMouseEnter('option2')}
+              onMouseLeave={() => handleMouseLeave('option2')}
+            >
               <li>
-                <NavLink to="/option3" id="facto" exact activeclassname="active">
+                <NavLink to="/option3" id="facto" exact activeClassName="active">
                   Suboption 3
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/option4" exact activeclassname="active">
+                <NavLink to="/option4" exact activeClassName="active">
                   Suboption 4
                 </NavLink>
               </li>
@@ -106,21 +95,26 @@ const Sidebar = () => {
         </li>
         <li style={{ marginTop: "70px" }}>
           <div
-            onClick={() => toggleOptions('option3')}
-            className="text-dark rounded py-3 w-100 d-inline-block px-3"
+            onMouseEnter={() => handleMouseEnter('option3')}
+            onMouseLeave={() => handleMouseLeave('option3')}
+            className={`text-dark rounded py-3 w-100 d-inline-block px-3 ${isOptionActive('option3') ? 'active' : ''}`}
           >
-            <ImIcons.ImTarget /> Goals <HiIcons.HiChevronRight id="chevronRight" />
+            <ImIcons.ImTarget /> Metas {isOptionActive('option3') ? <HiIcons.HiChevronDown /> : <HiIcons.HiChevronRight />} 
           </div>
-          {showOptions3 && (
-            <ul className="submenu">
+          {isOptionActive('option3') && (
+            <ul
+              className="submenu"
+              onMouseEnter={() => handleMouseEnter('option3')}
+              onMouseLeave={() => handleMouseLeave('option3')}
+            >
               <li>
-                <NavLink to="/option5" exact activeclassname="active">
-                  Suboption 5
+                <NavLink to="/option3" id="facto" exact activeClassName="active">
+                  Suboption 3
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/option6" exact activeclassname="active">
-                  Suboption 6
+                <NavLink to="/option3" exact activeClassName="active">
+                  Suboption 4
                 </NavLink>
               </li>
             </ul>
@@ -128,21 +122,26 @@ const Sidebar = () => {
         </li>
         <li style={{ marginTop: "70px" }}>
           <div
-            onClick={() => toggleOptions('option4')}
-            className="text-dark rounded py-3 w-100 d-inline-block px-3"
+            onMouseEnter={() => handleMouseEnter('option4')}
+            onMouseLeave={() => handleMouseLeave('option4')}
+            className={`text-dark rounded py-3 w-100 d-inline-block px-3 ${isOptionActive('option4') ? 'active' : ''}`}
           >
-            <FaIcons.FaProjectDiagram /> Programs <HiIcons.HiChevronRight id="chevronRight" />
+            <FaIcons.FaProjectDiagram /> Programas {isOptionActive('option4') ? <HiIcons.HiChevronDown /> : <HiIcons.HiChevronRight />} 
           </div>
-          {showOptions4 && (
-            <ul className="submenu">
+          {isOptionActive('option4') && (
+            <ul
+              className="submenu"
+              onMouseEnter={() => handleMouseEnter('option4')}
+              onMouseLeave={() => handleMouseLeave('option4')}
+            >
               <li>
-                <NavLink to="/option7" exact activeclassname="active">
-                  Suboption 7
+                <NavLink to="/option4" id="facto" exact activeClassName="active">
+                  Suboption 3
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/option8" exact activeclassname="active">
-                  Suboption 8
+                <NavLink to="/option4" exact activeClassName="active">
+                  Suboption 4
                 </NavLink>
               </li>
             </ul>
@@ -150,21 +149,26 @@ const Sidebar = () => {
         </li>
         <li style={{ marginTop: "70px" }}>
           <div
-            onClick={() => toggleOptions('option5')}
-            className="text-dark rounded py-3 w-100 d-inline-block px-3"
+            onMouseEnter={() => handleMouseEnter('option5')}
+            onMouseLeave={() => handleMouseLeave('option5')}
+            className={`text-dark rounded py-3 w-100 d-inline-block px-3 ${isOptionActive('option5') ? 'active' : ''}`}
           >
-            <FaIcons.FaUserTie /> Instructors <HiIcons.HiChevronRight id="chevronRight" />
+            <FaIcons.FaUserTie /> Instructores {isOptionActive('option5') ? <HiIcons.HiChevronDown /> : <HiIcons.HiChevronRight />} 
           </div>
-          {showOptions5 && (
-            <ul className="submenu" id="submenu">
+          {isOptionActive('option5') && (
+            <ul
+              className="submenu"
+              onMouseEnter={() => handleMouseEnter('option5')}
+              onMouseLeave={() => handleMouseLeave('option5')}
+            >
               <li>
-                <NavLink to="/CrudAppFullTimeInstructor" exact activeclassname="active" style={{ color: 'black' }}>
-                  Full-Time
+                <NavLink to="/CrudAppFullTimeInstructor" id="facto" exact activeClassName="active">
+                  Planta
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/CrudApp" exact activeclassname="active" style={{ color: 'black' }}>
-                  Contract
+                <NavLink to="/CrudApp" exact activeClassName="active">
+                  Contrato
                 </NavLink>
               </li>
             </ul>
