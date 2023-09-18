@@ -5,14 +5,22 @@ import * as ImIcons from 'react-icons/im';
 import * as HiIcons from 'react-icons/hi';
 import '../../App.scss';
 
+/**
+ * The Sidebar component for navigation.
+ * @returns {JSX.Element} The rendered Sidebar component.
+ */
 const Sidebar = () => {
+  // State variables to control the visibility of sub-options
   const [showOptions1, setShowOptions1] = useState(false);
   const [showOptions2, setShowOptions2] = useState(false);
   const [showOptions3, setShowOptions3] = useState(false);
   const [showOptions4, setShowOptions4] = useState(false);
   const [showOptions5, setShowOptions5] = useState(false);
 
-
+  /**
+   * Toggles the visibility of sub-options based on the selected option.
+   * @param {string} option - The selected option.
+   */
   const toggleOptions = (option) => {
     if (option === 'option1') {
       setShowOptions1(!showOptions1);
@@ -26,51 +34,48 @@ const Sidebar = () => {
       setShowOptions3(false);
       setShowOptions4(false);
       setShowOptions5(false);
-
     } else if (option === 'option3') {
       setShowOptions1(false);
       setShowOptions2(false);
       setShowOptions3(!showOptions3);
       setShowOptions4(false);
       setShowOptions5(false);
-
     } else if (option === 'option4') {
       setShowOptions1(false);
       setShowOptions2(false);
       setShowOptions3(false);
       setShowOptions4(!showOptions4);
       setShowOptions5(false);
-
-    }
-    else if (option === 'option5') {
-    setShowOptions1(false);
-    setShowOptions2(false);
-    setShowOptions3(false);
-    setShowOptions4(false);
-    setShowOptions5(!showOptions5);
+    } else if (option === 'option5') {
+      setShowOptions1(false);
+      setShowOptions2(false);
+      setShowOptions3(false);
+      setShowOptions4(false);
+      setShowOptions5(!showOptions5);
     }
   };
 
   return (
     <div className="sidebar">
       <ul>
+        {/* Sidebar items */}
         <li style={{ marginTop: "70px" }}>
           <div
             onClick={() => toggleOptions('option1')} 
             navlink to="/" exact className="text-dark rounded py-3 w-100 d-inline-block px-3" activeclassname="active"
           >
-            <FaIcons.FaHome /> Inicio <HiIcons.HiChevronRight id="chevronRight" />
+            <FaIcons.FaHome /> Home <HiIcons.HiChevronRight id="chevronRight" />
           </div>
           {showOptions1 && (
             <ul className="submenu">
               <li>
                 <NavLink to="/" exact activeclassname="active">
-                  Subopción 1
+                  Suboption 1
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/opcion2" exact activeclassname="active">
-                  Subopción 2
+                <NavLink to="/option2" exact activeclassname="active">
+                  Suboption 2
                 </NavLink>
               </li>
             </ul>
@@ -82,18 +87,18 @@ const Sidebar = () => {
             onClick={() => toggleOptions('option2')}
             className="text-dark rounded py-3 w-100 d-inline-block px-3"
           >
-            <FaIcons.FaFileInvoiceDollar /> Presupuesto  <HiIcons.HiChevronRight id="chevronRight" />
+            <FaIcons.FaFileInvoiceDollar /> Budget <HiIcons.HiChevronRight id="chevronRight" />
           </div>
           {showOptions2 && (
             <ul className="submenu">
               <li>
-                <NavLink to="/opcion3" id="facto" exact activeclassname="active">
-                  Subopción 3
+                <NavLink to="/option3" id="facto" exact activeclassname="active">
+                  Suboption 3
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/opcion4" exact activeclassname="active">
-                  Subopción 4
+                <NavLink to="/option4" exact activeclassname="active">
+                  Suboption 4
                 </NavLink>
               </li>
             </ul>
@@ -104,18 +109,18 @@ const Sidebar = () => {
             onClick={() => toggleOptions('option3')}
             className="text-dark rounded py-3 w-100 d-inline-block px-3"
           >
-            <ImIcons.ImTarget /> Metas  <HiIcons.HiChevronRight id="chevronRight" />
+            <ImIcons.ImTarget /> Goals <HiIcons.HiChevronRight id="chevronRight" />
           </div>
           {showOptions3 && (
             <ul className="submenu">
               <li>
-                <NavLink to="/opcion5" exact activeclassname="active">
-                  Subopción 5
+                <NavLink to="/option5" exact activeclassname="active">
+                  Suboption 5
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/opcion6" exact activeclassname="active">
-                  Subopción 6
+                <NavLink to="/option6" exact activeclassname="active">
+                  Suboption 6
                 </NavLink>
               </li>
             </ul>
@@ -126,18 +131,18 @@ const Sidebar = () => {
             onClick={() => toggleOptions('option4')}
             className="text-dark rounded py-3 w-100 d-inline-block px-3"
           >
-            <FaIcons.FaProjectDiagram /> Programas  <HiIcons.HiChevronRight id="chevronRight" />
+            <FaIcons.FaProjectDiagram /> Programs <HiIcons.HiChevronRight id="chevronRight" />
           </div>
           {showOptions4 && (
             <ul className="submenu">
               <li>
-                <NavLink to="/opcion7" exact activeclassname="active">
-                  Subopción 7
+                <NavLink to="/option7" exact activeclassname="active">
+                  Suboption 7
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/opcion8" exact activeclassname="active">
-                  Subopción 8
+                <NavLink to="/option8" exact activeclassname="active">
+                  Suboption 8
                 </NavLink>
               </li>
             </ul>
@@ -148,28 +153,26 @@ const Sidebar = () => {
             onClick={() => toggleOptions('option5')}
             className="text-dark rounded py-3 w-100 d-inline-block px-3"
           >
-            <FaIcons.FaUserTie /> Instructores  <HiIcons.HiChevronRight id="chevronRight" />
+            <FaIcons.FaUserTie /> Instructors <HiIcons.HiChevronRight id="chevronRight" />
           </div>
           {showOptions5 && (
             <ul className="submenu" id="submenu">
               <li>
                 <NavLink to="/CrudAppFullTimeInstructor" exact activeclassname="active" style={{ color: 'black' }}>
-                  Planta
+                  Full-Time
                 </NavLink>
               </li>
               <li>
                 <NavLink to="/CrudApp" exact activeclassname="active" style={{ color: 'black' }}>
-                  Contrato
+                  Contract
                 </NavLink>
               </li>
             </ul>
           )}
         </li>
-        {/* Agrega más elementos de la lista y opciones adicionales según sea necesario */}
       </ul>
     </div>
   );
 };
 
 export default Sidebar;
-
