@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 
 const BudgetGenerator = () => {
+  const [db, setDb] = useState([]); 
   const [error, setError] = useState(null);
+  const [dataToEdit, setDataToEdit] = useState(null); 
+
 
   // Function to handle the budget report download
   const generateBudget = () => {
@@ -23,6 +26,7 @@ const BudgetGenerator = () => {
     
   };
 
+
   return (
     <div>
       <h1 className="h3Table">Generador de Reporte</h1>
@@ -30,13 +34,13 @@ const BudgetGenerator = () => {
         <button className="btn addButton" onClick={generateBudget}>
           Generar Reporte
         </button>
-
         {error && (
           <div className="alert alert-danger mt-2" role="alert">
             {error}
           </div>
         )}
       </div>
+
     </div>
   );
 };

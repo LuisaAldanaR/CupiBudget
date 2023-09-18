@@ -72,7 +72,7 @@ const Sidebar = () => {
             onMouseLeave={() => handleMouseLeave('option2')}
             className={`text-dark rounded py-3 w-100 d-inline-block px-3 ${isOptionActive('option2') ? 'active' : ''}`}
           >
-            <FaIcons.FaFileInvoiceDollar /> Presupuesto {isOptionActive('option2') ? <HiIcons.HiChevronDown /> : <HiIcons.HiChevronRight />} 
+            <FaIcons.FaFileInvoiceDollar /> Reporte {isOptionActive('option2') ? <HiIcons.HiChevronDown /> : <HiIcons.HiChevronRight />} 
           </div>
           {isOptionActive('option2') && (
             <ul
@@ -81,8 +81,8 @@ const Sidebar = () => {
               onMouseLeave={() => handleMouseLeave('option2')}
             >
               <li>
-                <NavLink to="/option3" id="facto" exact activeClassName="active">
-                  <span style={{ color: 'black' }}>Suboption 3</span>
+                <NavLink to="/BudgetGenerator" id="facto" exact activeClassName="active">
+                  <span style={{ color: 'black' }}>Ver reporte</span>
                 </NavLink>
               </li>
               <li>

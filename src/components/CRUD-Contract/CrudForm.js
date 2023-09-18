@@ -23,7 +23,7 @@ const CrudForm = ({ createData, updateData, dataToEdit, setDataToEdit, showTable
       // Format dates to ISO 8601 format before setting them to the state
       const formattedStartDate = new Date(dataToEdit.startDate).toISOString().split('T')[0];
       const formattedEndDate = new Date(dataToEdit.endDate).toISOString().split('T')[0];
-  
+
       // Set edit data to the form state
       setForm({
         ...dataToEdit,
@@ -47,6 +47,7 @@ const CrudForm = ({ createData, updateData, dataToEdit, setDataToEdit, showTable
       }
     });
   }, [api]);
+  
 
   // Function to handle changes in form fields
   const handleChange = (e) => {
@@ -114,7 +115,7 @@ const CrudForm = ({ createData, updateData, dataToEdit, setDataToEdit, showTable
             <input
               type="date"
               name="startDate"
-              placeholder="Contract Start Date"
+              placeholder="Fecha de inicio de contrato"
               className="form-control"
               onChange={handleChange}
               value={form.startDate}
@@ -124,7 +125,7 @@ const CrudForm = ({ createData, updateData, dataToEdit, setDataToEdit, showTable
             <input
               type="date"
               name="endDate"
-              placeholder="Contract End Date"
+              placeholder="Fecha fin de contrato"
               className="form-control"
               onChange={handleChange}
               value={form.endDate}
