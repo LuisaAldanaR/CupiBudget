@@ -185,12 +185,13 @@ const CrudApp = () => {
           showFormView={showFormView}
         />
       )}
-
+      <div className="loader">
       {loading && <Loader />}
 
       {error && (
         <Message msg={`Error ${error.status}: ${error.statusText}`} bgColor="#dc3545" />
       )}
+      </div>
     </div>
   );
 };
