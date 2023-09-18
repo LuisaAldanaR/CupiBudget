@@ -42,23 +42,35 @@ const CrudApp = () => {
   };
 
   // Function to create a new instructor
-  const createData = (data) => {
-    let urlPost = "http://www.mendezmrf10.somee.com/api/ContractInstructor/Save";
 
-    let options = {
-      body: data,
-      headers: { "content-type": "application/json" },
+    const createData = (data) => {
+      let urlPost = "http://www.mendezmrf10.somee.com/api/ContractInstructor/Save";
+    
+      let options = {
+        body: data,
+        headers: { "content-type": "application/json" },
+      };
+    
+      api.post(urlPost, options).then((res) => {
+        if (!res.err) {
+          // Show a success SweetAlert message for the record addition
+          Swal.fire({
+            title: '¡Agregado!', // Translate: Added!
+            text: 'El registro ha sido agregado exitosamente.', // Translate: The record has been successfully added.
+            icon: 'success',
+            confirmButtonText: 'OK', // Translate: OK
+          }).then(() => {
+            // After the user clicks OK in the success message, redirect to the table view
+            showTable();
+          });
+    
+          // After adding a record, reload the data
+          loadTableData();
+        } else {
+          setError(res);
+        }
+      });
     };
-
-    api.post(urlPost, options).then((res) => {
-      if (!res.err) {
-        // After adding a record, reload the data
-        loadTableData();
-      } else {
-        setError(res);
-      }
-    });
-  };
 
   // Function to update an existing instructor
   const updateData = (data) => {
