@@ -4,12 +4,15 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ProyectoFormativo.Modelos;
 using Microsoft.AspNetCore.Cors;
+using ProyectoFormativo.Data;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ProyectoFormativo.Controllers
 {
     [EnableCors("ReglasCors")]
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class ContractInstructorController : ControllerBase
     {
         public readonly ProyectoPruebaContext _dbcontext;
@@ -20,7 +23,7 @@ namespace ProyectoFormativo.Controllers
         }
 
         [HttpGet]
-        [Route("List")]
+        [Route("List"), AllowAnonymous]
         public IActionResult Get()
         {
             List<ContractInstructor> lista = new List<ContractInstructor>();  
@@ -37,7 +40,7 @@ namespace ProyectoFormativo.Controllers
         }
 
         [HttpGet]
-        [Route("GetId/{idInstructor:int}")]
+        [Route("GetId/{idInstructor:int}"), Authorize(Roles = "Admin")]
         public IActionResult Obtener(int idInstructor)
         {
             ContractInstructor oInstructor = new ContractInstructor();
@@ -60,7 +63,7 @@ namespace ProyectoFormativo.Controllers
         }
 
         [HttpPost]
-        [Route("Save")]
+        [Route("Save"), Authorize(Roles = "Admin")]
         public IActionResult Guardar([FromBody] ContractInstructor oInstructor)
         {
             try
@@ -78,7 +81,7 @@ namespace ProyectoFormativo.Controllers
 
         
         [HttpPut]
-        [Route("Edit")]
+        [Route("Edit"), Authorize(Roles = "Admin")]
         public IActionResult Editar([FromBody] ContractInstructor objeto)
         {
 
@@ -108,7 +111,7 @@ namespace ProyectoFormativo.Controllers
         }
 
         [HttpDelete]
-        [Route("Delete/{idInstructor:int}")]
+        [Route("Delete/{idInstructor:int}"), Authorize(Roles = "Admin")]
         public IActionResult Eliminar(int idInstructor)
         {
             

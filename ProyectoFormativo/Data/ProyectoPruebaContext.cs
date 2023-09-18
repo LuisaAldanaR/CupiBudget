@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
+using ProyectoFormativo.Modelos;
 
-namespace ProyectoFormativo.Modelos;
+namespace ProyectoFormativo.Data;
 
 public partial class ProyectoPruebaContext : DbContext
 {
@@ -20,6 +21,8 @@ public partial class ProyectoPruebaContext : DbContext
     public virtual DbSet<FullTimeInstructor> FullTimeInstructors { get; set; }
 
     public virtual DbSet<Network> Networks { get; set; }
+
+    public DbSet<User> Users { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) { }
 
@@ -79,6 +82,33 @@ public partial class ProyectoPruebaContext : DbContext
                 .HasMaxLength(255)
                 .IsUnicode(false)
                 .HasColumnName("networkName");
+        });
+
+        modelBuilder.Entity<User>(entity =>
+        {
+            entity.HasKey(e => e.Username).HasName("PK_User_Username");
+
+            entity.ToTable("Users");
+
+            entity.Property(e => e.Username)
+                .HasMaxLength(30)
+                .HasColumnName("Username");
+
+            entity.Property(e => e.PasswordHash)
+                .IsRequired()
+                .HasColumnName("PasswordHash");
+
+            entity.Property(e => e.PasswordSalt)
+                .IsRequired()
+                .HasColumnName("PasswordSalt");
+
+            entity.Property(e => e.Mail)
+                .HasMaxLength(30)
+                .HasColumnName("Mail");
+
+            entity.Property(e => e.Role)
+                .HasMaxLength(20)
+                .HasColumnName("Role");
         });
 
         OnModelCreatingPartial(modelBuilder);

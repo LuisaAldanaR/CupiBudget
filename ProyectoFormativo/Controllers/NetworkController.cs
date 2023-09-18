@@ -1,7 +1,9 @@
-﻿using Microsoft.AspNetCore.Cors;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using ProyectoFormativo.Data;
 using ProyectoFormativo.Modelos;
 
 namespace ProyectoFormativo.Controllers
@@ -9,6 +11,7 @@ namespace ProyectoFormativo.Controllers
     [EnableCors("ReglasCors")]
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class NetworkController : ControllerBase
     {
         public readonly ProyectoPruebaContext _dbcontext;
@@ -19,7 +22,7 @@ namespace ProyectoFormativo.Controllers
         }
 
         [HttpGet]
-        [Route("List")]
+        [Route("List"), AllowAnonymous]
         public IActionResult Get()
         {
             List<Network> lista = new List<Network>();
@@ -36,7 +39,7 @@ namespace ProyectoFormativo.Controllers
         }
 
         [HttpGet]
-        [Route("GetId/{idNetwork:int}")]
+        [Route("GetId/{idNetwork:int}"), Authorize(Roles = "Admin")]
         public IActionResult Obtener(int idNetwork)
         {
             Network oNetwork = new Network();
@@ -59,7 +62,7 @@ namespace ProyectoFormativo.Controllers
         }
 
         [HttpPost]
-        [Route("Save")]
+        [Route("Save"), Authorize(Roles = "Admin")]
         public IActionResult Guardar([FromBody] Network oNetwork)
         {
             try
@@ -75,7 +78,7 @@ namespace ProyectoFormativo.Controllers
         }
 
         [HttpDelete]
-        [Route("Delete/{idNetwork:int}")]
+        [Route("Delete/{idNetwork:int}"), Authorize(Roles = "Admin")]
         public IActionResult Eliminar(int idNetwork)
         {
 

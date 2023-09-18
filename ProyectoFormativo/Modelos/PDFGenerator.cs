@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Linq;
-
+using ProyectoFormativo.Data;
 using ProyectoFormativo.Modelos;
 using QuestPDF.Fluent;
 using QuestPDF.Helpers;

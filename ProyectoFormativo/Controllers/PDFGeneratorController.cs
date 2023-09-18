@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using ProyectoFormativo.Modelos;
 
 namespace ProyectoFormativo.Controllers
@@ -6,6 +7,7 @@ namespace ProyectoFormativo.Controllers
 
     [ApiController]
     [Route("api/[controller]")]
+    [Authorize]
     public class PDFGeneratorController : ControllerBase
     {
         private readonly IPDFGenerator _pdfGenerator;
@@ -16,7 +18,7 @@ namespace ProyectoFormativo.Controllers
         }
 
         [HttpGet]
-        [Route("Generate")]
+        [Route("Generate"), Authorize(Roles = "Admin")]
         public IActionResult GenerarPDF()
         {
             var data = _pdfGenerator.GeneratePDF();

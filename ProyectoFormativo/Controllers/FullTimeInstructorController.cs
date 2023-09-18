@@ -6,6 +6,8 @@ using Microsoft.EntityFrameworkCore;
 
 using Microsoft.AspNetCore.Cors;
 using ProyectoFormativo.Modelos;
+using ProyectoFormativo.Data;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ProyectoFormativo.Controllers
 {
@@ -13,6 +15,7 @@ namespace ProyectoFormativo.Controllers
     [EnableCors("ReglasCors")]
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class FullTimeInstructorController : ControllerBase
     {
         public readonly ProyectoPruebaContext _proyectoFormativoContext;
@@ -23,7 +26,7 @@ namespace ProyectoFormativo.Controllers
         }
 
         [HttpGet]
-        [Route("List")]
+        [Route("List"), AllowAnonymous]
 
         public IActionResult List()
         {
@@ -44,7 +47,7 @@ namespace ProyectoFormativo.Controllers
         }
 
         [HttpGet]
-        [Route("GetId/{idInstructor:int}")]
+        [Route("GetId/{idInstructor:int}"), Authorize(Roles = "Admin")]
 
         public IActionResult Get(int idInstructor)
         {
@@ -71,7 +74,7 @@ namespace ProyectoFormativo.Controllers
         }
 
         [HttpPost]
-        [Route("Save")]
+        [Route("Save"), Authorize(Roles = "Admin")]
 
         public IActionResult Save([FromBody] FullTimeInstructor Instructor)
         {
@@ -92,7 +95,7 @@ namespace ProyectoFormativo.Controllers
         }
 
         [HttpPut]
-        [Route("Edit")]
+        [Route("Edit"), Authorize(Roles = "Admin")]
 
         public IActionResult Edit([FromBody] FullTimeInstructor Instructor)
         {
@@ -125,7 +128,7 @@ namespace ProyectoFormativo.Controllers
         }
 
         [HttpDelete]
-        [Route("Delete/{idInstructor:int}")]
+        [Route("Delete/{idInstructor:int}"), Authorize(Roles = "Admin")]
 
         public IActionResult Delete(int idInstructor)
         {
