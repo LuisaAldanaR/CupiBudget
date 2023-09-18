@@ -10,22 +10,18 @@
     border-top-left-radius: 10px !important; 
     font-family: 'Raleway', sans-serif;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); /* Agrega una sombra */
-
-
 }
 
 .thRight{
     background-color: #C5E8FC !important;
     border-top-right-radius: 10px !important; 
     font-family: 'Raleway', sans-serif;
-
 }
 
 .thTable{
     background-color: #C5E8FC !important; 
     font-family: 'Raleway', sans-serif;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); /* Agrega una sombra */
-
 }
 
 .tdTableRow
@@ -33,7 +29,6 @@
     text-align: center;
     font-family: 'Raleway', sans-serif;
     font-weight: 100;
-
 }
 
 .h3Table{
@@ -42,7 +37,6 @@
     align-items: center; /* Centrar verticalmente */
     text-align: center;
     font-family: 'Raleway', sans-serif;
-
 }
 
 .center-table {
@@ -85,4 +79,10 @@
     background-size: 100% 16px; /* Ancho del borde inferior y altura (ajusta según tus necesidades) */
     background-position: 0 100%; /* Coloca el gradiente en la parte inferior */
   }
-  
+
+.loader{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    justify-items: center;
+}

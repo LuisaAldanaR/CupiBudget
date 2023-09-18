@@ -92,13 +92,13 @@ const Sidebar = () => {
           {showOptions2 && (
             <ul className="submenu">
               <li>
-                <NavLink to="/option3" id="facto" exact activeclassname="active">
-                  Suboption 3
+                <NavLink to="/budgetGenerator" exact activeclassname="active" style={{ color: 'black' }}>
+                  Generar Reporte Instructor Planta
                 </NavLink>
               </li>
               <li>
                 <NavLink to="/option4" exact activeclassname="active">
-                  Suboption 4
+                Generar Reporte Instructor Contratista
                 </NavLink>
               </li>
             </ul>
