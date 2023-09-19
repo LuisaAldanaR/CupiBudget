@@ -1,9 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import CrudTable from "./CrudTable";
+import { helpHttp } from "../../helpers/helpHttp"; // Adjust the import path
 
 const BudgetGenerator = () => {
   const [db, setDb] = useState([]); 
-  const [error, setError] = useState(null);
   const [dataToEdit, setDataToEdit] = useState(null); 
+  const [error, setError] = useState(null); 
+  const [loading, setLoading] = useState(true); 
 
 
   // Function to handle the budget report download
@@ -26,6 +29,29 @@ const BudgetGenerator = () => {
     
   };
 
+  let api = helpHttp(); // Instance of the HTTP request utility
+
+  useEffect(() => {
+    loadTableData(); // Load initial data when the component mounts
+  }, []);
+
+  // Function to load table data
+  const loadTableData = () => {
+    let urlGet = "http://www.mendezmrf10.somee.com/api/ContractInstructor/List";
+
+    api.get(urlGet).then((res) => {
+      if (!res.err) {
+        setDb(res.response); // Store data in the 'db' state
+        setError(null); // Clear errors
+      } else {
+        setDb([]); // Set an empty array in 'db' in case of an error
+        setError(`Error ${res.status}: ${res.statusText}`);
+      }
+
+      setLoading(false); // Set 'loading' to false after data is loaded
+    });
+  };
+
 
   return (
     <div>
@@ -40,6 +66,11 @@ const BudgetGenerator = () => {
           </div>
         )}
       </div>
+
+      <CrudTable
+          data={db}
+          setDataToEdit={setDataToEdit}
+        />
 
     </div>
   );

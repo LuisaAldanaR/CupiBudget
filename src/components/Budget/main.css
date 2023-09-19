@@ -46,7 +46,7 @@
 }
 
 .center-table {
-    display: inline-table;
+    display: flexbox;
     justify-content: center; /* Centrar horizontalmente */
     align-items: center; /* Centrar verticalmente */
     text-align: center;
