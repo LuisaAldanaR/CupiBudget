@@ -14,9 +14,9 @@ const CrudTable = ({ data, setDataToEdit, deleteData, showFormViewFullTimeInstru
                     <table className="table center-table">
                         <thead>
                             <tr>
-                                <th className="thLeft">Nombre:</th> 
-                                <th className="thTable">Posición:</th> 
-                                <th className="thTable">Nombre de la Red:</th> 
+                                <th className="thLeft">Nombre</th> 
+                                <th className="thTable">Posición</th> 
+                                <th className="thTable">Nombre de la Red</th> 
                                 <th className="thRight">Acciones</th> 
                             </tr>
                         </thead>

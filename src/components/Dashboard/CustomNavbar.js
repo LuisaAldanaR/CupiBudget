@@ -16,15 +16,7 @@ import * as FaIcons from 'react-icons/fa';
 function CustomNavbar() {
   return (
     <Navbar id="navbar" expand="lg" className="bg-body-tertiary">
-      <Container>
         {/* SENA Logo */}
-        <Navbar.Brand href="#home">
-          <img
-            src="/img/Logo-sena.png"
-            className="custom-logo" // Custom class for the logo
-            alt="SENA Logo"
-          />
-        </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto">
@@ -36,7 +28,7 @@ function CustomNavbar() {
             {/* User Profile Link */}
             <Nav.Link href="#link"><FaIcons.FaUserAlt/></Nav.Link>
             {/* User Menu Dropdown */}
-            <NavDropdown title="Oscar Peña" id="basic-nav-dropdown">
+            <NavDropdown title="Oscar Peña" id="basic-nav-dropdown" className='user-drop'>
               <NavDropdown.Item href="#action/3.1">My Profile</NavDropdown.Item>
               <NavDropdown.Item href="#action/3.2">Settings</NavDropdown.Item>
               <NavDropdown.Divider />
@@ -44,7 +36,6 @@ function CustomNavbar() {
             </NavDropdown>
           </Nav>
         </Navbar.Collapse>
-      </Container>
     </Navbar>
   );
 }

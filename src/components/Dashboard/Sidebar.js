@@ -38,6 +38,11 @@ const Sidebar = () => {
 
   return (
     <div className="sidebar">
+          <img
+            src="/img/Logo-sena.png"
+            className="custom-logo" // Custom class for the logo
+            alt="SENA Logo"
+          />
       <ul>
         <li style={{ marginTop: "70px" }}>
           <div
