@@ -22,7 +22,7 @@ namespace ProyectoFormativo.Controllers
         }
 
         [HttpGet]
-        [Route("List"), AllowAnonymous]
+        [Route("List"), Authorize(Roles = "Admin, Regular")]
         public IActionResult Get()
         {
             List<Network> lista = new List<Network>();

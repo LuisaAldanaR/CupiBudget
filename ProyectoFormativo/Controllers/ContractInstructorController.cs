@@ -23,7 +23,7 @@ namespace ProyectoFormativo.Controllers
         }
 
         [HttpGet]
-        [Route("List"), AllowAnonymous]
+        [Route("List"), Authorize(Roles = "Admin, Regular")]
         public IActionResult Get()
         {
             List<ContractInstructor> lista = new List<ContractInstructor>();  
@@ -40,7 +40,7 @@ namespace ProyectoFormativo.Controllers
         }
 
         [HttpGet]
-        [Route("GetId/{idInstructor:int}"), Authorize(Roles = "Admin")]
+        [Route("GetId/{idInstructor:int}"), Authorize(Roles = "Admin,Regular")]
         public IActionResult Obtener(int idInstructor)
         {
             ContractInstructor oInstructor = new ContractInstructor();
