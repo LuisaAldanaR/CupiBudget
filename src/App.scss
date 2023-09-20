@@ -326,8 +326,27 @@ td {
     text-align: center;
   }
 
-  /* Styling for the welcome container */
-  .welcomeContainer {
-    /* You can add custom styles here */
+  .logo-login{
+    margin-top: 10rem;
+    margin-left: 32rem;
+    width: 190px;
+    height: 160px;
+    .welcomeText{
+      margin-left: 30px;
+      font-size: 30px;
+    
+   }
+
+   .underLine {
+    border: 1.5px solid rgb(0, 0, 0);
+    width: 20rem;
+    margin-left: -60px;
+    color: rgba(0, 0, 0, 0); 
+    
   }
+  
+  
+  }
+
+ 
 }

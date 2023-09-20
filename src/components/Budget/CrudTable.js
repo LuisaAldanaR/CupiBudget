@@ -11,7 +11,9 @@ const CrudTable = ({ data, setDataToEdit }) => {
                 <div className="table-responsive">
                     {/* Table header */}
                     <br></br>
-                    <table className="table center-table">
+                    <table className="table center-
+                    
+                    table">
                         <thead>
                             <tr>
                                 <th className="thLeft">Nombre de la Red</th>

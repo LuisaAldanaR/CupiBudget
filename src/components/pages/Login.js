@@ -60,51 +60,58 @@ class Login extends Component {
     }
   }
 
-  render() {
-    return (
-      <div className="mainContainer">
-        <div className="welcomeContainer"> {/* New container for the logo and welcome message */}
-          <img src="path_to_logo.png" alt="Logo" className="logo" /> {/* Replace "path_to_logo.png" with the path to your logo */}
-          <p className="welcomeText">Bienvenido</p>
-        </div>
-        <div className="secondContainer">
-          <br />
-          <br />
-          <label className='l1'>Iniciar Sesión </label>
-          <br />
-          <br />
-          <br />
-          <div className="form-group">
-            <input
-              placeholder="Usuario"
-              type="text"
-              name="username"
-              onChange={this.handleChange}
-              className="rounded-input" // Apply the CSS class here
-            />
-            <input
-              placeholder="Contraseña"
-              type="password"
-              className="form-control rounded-input" // Apply the CSS class here
-              name="password"
-              onChange={this.handleChange}
-            />
+    
+    render() {
+    
+      return (
+        <div className="logo-login" >
+            <img src="/img/Logo-sena.png" alt="Logo"  />
+            <br/>
+            <br/>
+            <br/>
+            <hr className='underLine'></hr>
+            <p class="welcomeText">Bienvenido</p>
+        <div className="mainContainer">
+          <div className="secondContainer">
             <br />
-            <button
-              className="login-button"
-              onClick={() => this.iniciarSesion()}>
-              Siguiente
-            </button>
+            <br />
+            <label className='l1'>Iniciar Sesión </label>
             <br />
             <br />
             <br />
-            <br />
-            <label className='l2'>Cambiar contraseña </label>
+            <div className="form-group">
+              <input
+                placeholder="Usuario"
+                type="text"
+                name="username"
+                onChange={this.handleChange}
+                className="rounded-input" // Aplica la clase CSS aquí
+              />
+              <input
+                placeholder="Contraseña"
+                type="password"
+                className="form-control rounded-input" // Aplica la clase CSS aquí
+                name="password"
+                onChange={this.handleChange}
+              />
+              <br />
+              <button
+                className="login-button"
+                onClick={() => this.iniciarSesion()}>
+                Siguiente
+              </button>
+              <br />
+              <br />
+              <br />
+              <br />
+              <label className='l2'>Cambiar contraseña </label>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    );
+      );
+    }
   }
-}
-
-export default Login;
+  
+  export default Login;
+  
