@@ -37,6 +37,10 @@ $blue: #0000ff;
   height: 70px;
 }
 
+user-drop{
+  margin-left: 20px;
+}
+
 /* Main content */
 .content {
   background-color: rgba(0, 0, 0, 0.02);
@@ -114,10 +118,20 @@ ul {
   border-top: green;
 }
 
+
+
 /* Custom styling for a logo image */
 .custom-logo {
-  width: 82px;
-  height: 82px;
+  width: 98px;
+  height: 92px;
+  margin-left: 30px;
+
+}
+
+.navbar-container{
+  width: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 /* Global styles */
