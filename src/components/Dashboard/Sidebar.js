@@ -59,7 +59,7 @@ const Sidebar = () => {
               onMouseLeave={() => handleMouseLeave('option1')}
             >
               <li>
-                <NavLink to="/" exact activeClassName="active">
+                <NavLink to="/option1" exact activeClassName="active">
                   <span style={{ color: 'black' }}>Suboption 1</span>
                 </NavLink>
               </li>

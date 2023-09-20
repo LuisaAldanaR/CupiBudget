@@ -22,7 +22,7 @@ function App() {
       <div className="html">
         <Routes>
           {/* Route for the login page */}
-          <Route path='/login' element={<Login />} />
+          <Route path='/' element={<Login />} />
           {/* Default route with the sidebar and navbar */}
           <Route path='/*' element={
             <div className="flex">
@@ -55,3 +55,4 @@ function App() {
 }
 
 export default App;
+

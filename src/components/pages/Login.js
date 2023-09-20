@@ -3,6 +3,8 @@ import '../../../src/App.scss'; // Importa los estilos desde la ruta especificad
 import 'bootstrap/dist/css/bootstrap.min.css'; // Importa el CSS de Bootstrap
 import Cookies from 'universal-cookie'; // Importa la biblioteca universal-cookies para gestionar cookies
 import { helpHttp } from '../../helpers/helpHttp';
+import Swal from 'sweetalert2';
+
 
 const baseUrl = "http://www.mendezmrf10.somee.com/api/Auth/login"; // Define la URL base para la API
 const cookies = new Cookies(); // Crea una nueva instancia de la clase Cookies
@@ -28,11 +30,7 @@ class Login extends Component {
   // Función para iniciar el proceso de inicio de sesión
   iniciarSesion = async () => {
     const { post } = helpHttp(); // Destructura la función 'post' de tu helper
-
-    console.log("Valores de los campos de entrada:");
-    console.log("Nombre de usuario:", this.state.form.username);
-    console.log("Contraseña:", this.state.form.password);
-  
+      
     try {
       const response = await post(baseUrl, {
         headers: {
@@ -58,11 +56,20 @@ class Login extends Component {
         // Después de recibir el token JWT en la respuesta del servidor
         const jwtToken = response; // Obtener el token JWT de la respuesta
         localStorage.setItem('jwtToken', response); // Guarda el token JWT en el almacenamiento local    
-        alert(`Bienvenido`);
+        Swal.fire({
+          icon: 'success',
+          title: 'Your work has been saved',
+          showConfirmButton: false,
+          timer: 1500
+        })
         window.location.href = './CrudApp'; // Redirigir a la página de menú tras iniciar sesión con éxito
         console.log("token:" + jwtToken);
       } else {
-        alert('El nombre de usuario o la contraseña son incorrectos'); // Mostrar un mensaje de error si falla el inicio de sesión
+        Swal.fire({
+          icon: 'error',
+          title: 'Usuario Incorrecto',
+          text: 'Usuario no valido o contraseña incorrecta!',
+        })
       }
     } catch (error) {
       console.error(error);
@@ -77,12 +84,16 @@ class Login extends Component {
   }
 
   render() {
+    
     return (
+      <div className="logo-login" >
+          <img src="/img/Logo-sena.png" alt="Logo"  />
+          <br/>
+          <br/>
+          <br/>
+          <hr className='underLine'></hr>
+          <p class="welcomeText">Bienvenido</p>
       <div className="mainContainer">
-        <div className="welcomeContainer"> {/* New container for the logo and welcome message */}
-          <img src="path_to_logo.png" alt="Logo" className="logo" /> {/* Replace "path_to_logo.png" with the path to your logo */}
-          <p className="welcomeText">Bienvenido</p>
-        </div>
         <div className="secondContainer">
           <br />
           <br />
@@ -96,12 +107,12 @@ class Login extends Component {
               type="text"
               name="username"
               onChange={this.handleChange}
-              className="rounded-input" // Apply the CSS class here
+              className="rounded-input" // Aplica la clase CSS aquí
             />
             <input
               placeholder="Contraseña"
               type="password"
-              className="form-control rounded-input" // Apply the CSS class here
+              className="form-control rounded-input" // Aplica la clase CSS aquí
               name="password"
               onChange={this.handleChange}
             />
@@ -116,6 +127,7 @@ class Login extends Component {
             <br />
             <br />
             <label className='l2'>Cambiar contraseña </label>
+            </div>
           </div>
         </div>
       </div>
@@ -124,3 +136,4 @@ class Login extends Component {
 }
 
 export default Login;
+

@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css'; // Import Bootstrap styles
 import { helpHttp } from "../../helpers/helpHttp"; // Import a utility for making HTTP requests
 import "./main.css";
+import Swal from 'sweetalert2';
+
 
 // Define an object with initial values for the form
 const initialForm = {
@@ -63,7 +65,11 @@ const CrudForm = ({ createData, updateData, dataToEdit, setDataToEdit, showTable
     e.preventDefault();
   
     if (!form.name.trim() || !form.startDate.trim() || !form.endDate.trim()) {
-      alert("Incomplete data");
+      Swal.fire({
+        icon: 'error',
+        title: 'Datos Incompletos',
+        text: '',
+      })
       return;
     }
   
