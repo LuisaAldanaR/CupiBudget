@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
-import '../../../src/App.scss'; // Import styles from the specified path
-import 'bootstrap/dist/css/bootstrap.min.css'; // Import Bootstrap CSS
-import axios from 'axios'; // Import the axios library for making HTTP requests
-import md5 from 'md5'; // Import the md5 library for hashing passwords
-import Cookies from 'universal-cookie'; // Import the universal-cookies library for managing cookies
+import '../../../src/App.scss'; // Importa los estilos desde la ruta especificada
+import 'bootstrap/dist/css/bootstrap.min.css'; // Importa el CSS de Bootstrap
+import Cookies from 'universal-cookie'; // Importa la biblioteca universal-cookies para gestionar cookies
+import { helpHttp } from '../../helpers/helpHttp';
 
-const baseUrl = "http://www.mendezmrf10.somee.com/api/Auth/login"; // Define the base URL for the API
-const cookies = new Cookies(); // Create a new instance of the Cookies class
+const baseUrl = "http://www.mendezmrf10.somee.com/api/Auth/login"; // Define la URL base para la API
+const cookies = new Cookies(); // Crea una nueva instancia de la clase Cookies
 
 class Login extends Component {
   state = {
@@ -16,7 +15,7 @@ class Login extends Component {
     }
   }
 
-  // Function to handle input field changes
+  // Función para manejar cambios en los campos de entrada
   handleChange = async (e) => {
     await this.setState({
       form: {
@@ -26,92 +25,102 @@ class Login extends Component {
     });
   }
 
-  // Function to initiate the login process
+  // Función para iniciar el proceso de inicio de sesión
   iniciarSesion = async () => {
-    await axios
-      .get(baseUrl, { params: { username: this.state.form.username, password: md5(this.state.form.password) } })
-      .then((response) => {
-        return response.data;
-      })
-      .then((response) => {
-        if (response.length > 0) {
-          var respuesta = response[0];
-          // Set user information as cookies
-          cookies.set('id', respuesta.id, { path: '/' });
-          cookies.set('apellido_paterno', respuesta.apellido_paterno, { path: '/' });
-          cookies.set('apellido_materno', respuesta.apellido_materno, { path: '/' });
-          cookies.set('nombre', respuesta.nombre, { path: '/' });
-          cookies.set('username', respuesta.username, { path: '/' });
-          alert(`Welcome ${respuesta.nombre} ${respuesta.apellido_paterno}`);
-          window.location.href = './menu'; // Redirect to the menu page on successful login
-        } else {
-          alert('The username or password is incorrect'); // Show an error message if login fails
-        }
-      })
-      .catch((error) => {
-        console.log(error);
+    const { post } = helpHttp(); // Destructura la función 'post' de tu helper
+
+    console.log("Valores de los campos de entrada:");
+    console.log("Nombre de usuario:", this.state.form.username);
+    console.log("Contraseña:", this.state.form.password);
+  
+    try {
+      const response = await post(baseUrl, {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        
+        body: {
+          username: this.state.form.username,
+          password: this.state.form.password,
+        },
       });
+      console.log("Encabezados:", response);
+
+            
+      if (response.length > 0) {
+        const respuesta = response[0];
+        // Establecer la información del usuario como cookies
+        cookies.set('id', respuesta.id, { path: '/' });
+        cookies.set('apellido_paterno', respuesta.apellido_paterno, { path: '/' });
+        cookies.set('apellido_materno', respuesta.apellido_materno, { path: '/' });
+        cookies.set('nombre', respuesta.nombre, { path: '/' });
+        cookies.set('username', respuesta.username, { path: '/' });
+        // Después de recibir el token JWT en la respuesta del servidor
+        const jwtToken = response; // Obtener el token JWT de la respuesta
+        localStorage.setItem('jwtToken', response); // Guarda el token JWT en el almacenamiento local    
+        alert(`Bienvenido`);
+        window.location.href = './CrudApp'; // Redirigir a la página de menú tras iniciar sesión con éxito
+        console.log("token:" + jwtToken);
+      } else {
+        alert('El nombre de usuario o la contraseña son incorrectos'); // Mostrar un mensaje de error si falla el inicio de sesión
+      }
+    } catch (error) {
+      console.error(error);
+    }
   }
 
-  // Function to check if a user is already logged in
+  // Función para comprobar si un usuario ya ha iniciado sesión
   componentDidMount() {
     if (cookies.get('username')) {
-      window.location.href = './menu'; // Redirect to the menu page if the user is already logged in
+      
     }
   }
 
-    
-    render() {
-    
-      return (
-        <div className="logo-login" >
-            <img src="/img/Logo-sena.png" alt="Logo"  />
-            <br/>
-            <br/>
-            <br/>
-            <hr className='underLine'></hr>
-            <p class="welcomeText">Bienvenido</p>
-        <div className="mainContainer">
-          <div className="secondContainer">
+  render() {
+    return (
+      <div className="mainContainer">
+        <div className="welcomeContainer"> {/* New container for the logo and welcome message */}
+          <img src="path_to_logo.png" alt="Logo" className="logo" /> {/* Replace "path_to_logo.png" with the path to your logo */}
+          <p className="welcomeText">Bienvenido</p>
+        </div>
+        <div className="secondContainer">
+          <br />
+          <br />
+          <label className='l1'>Iniciar Sesión </label>
+          <br />
+          <br />
+          <br />
+          <div className="form-group">
+            <input
+              placeholder="Usuario"
+              type="text"
+              name="username"
+              onChange={this.handleChange}
+              className="rounded-input" // Apply the CSS class here
+            />
+            <input
+              placeholder="Contraseña"
+              type="password"
+              className="form-control rounded-input" // Apply the CSS class here
+              name="password"
+              onChange={this.handleChange}
+            />
+            <br />
+            <button
+              className="login-button"
+              onClick={() => this.iniciarSesion()}>
+              Siguiente
+            </button>
             <br />
             <br />
-            <label className='l1'>Iniciar Sesión </label>
             <br />
             <br />
-            <br />
-            <div className="form-group">
-              <input
-                placeholder="Usuario"
-                type="text"
-                name="username"
-                onChange={this.handleChange}
-                className="rounded-input" // Aplica la clase CSS aquí
-              />
-              <input
-                placeholder="Contraseña"
-                type="password"
-                className="form-control rounded-input" // Aplica la clase CSS aquí
-                name="password"
-                onChange={this.handleChange}
-              />
-              <br />
-              <button
-                className="login-button"
-                onClick={() => this.iniciarSesion()}>
-                Siguiente
-              </button>
-              <br />
-              <br />
-              <br />
-              <br />
-              <label className='l2'>Cambiar contraseña </label>
-              </div>
-            </div>
+            <label className='l2'>Cambiar contraseña </label>
           </div>
         </div>
-      );
-    }
+      </div>
+    );
   }
-  
-  export default Login;
-  
+}
+
+export default Login;

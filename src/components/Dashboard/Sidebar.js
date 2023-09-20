@@ -125,33 +125,7 @@ const Sidebar = () => {
             </ul>
           )}
         </li>
-        <li style={{ marginTop: "70px" }}>
-          <div
-            onMouseEnter={() => handleMouseEnter('option4')}
-            onMouseLeave={() => handleMouseLeave('option4')}
-            className={`text-dark rounded py-3 w-100 d-inline-block px-3 ${isOptionActive('option4') ? 'active' : ''}`}
-          >
-            <FaIcons.FaProjectDiagram /> Programas {isOptionActive('option4') ? <HiIcons.HiChevronDown /> : <HiIcons.HiChevronRight />} 
-          </div>
-          {isOptionActive('option4') && (
-            <ul
-              className="submenu"
-              onMouseEnter={() => handleMouseEnter('option4')}
-              onMouseLeave={() => handleMouseLeave('option4')}
-            >
-              <li>
-                <NavLink to="/option4" id="facto" exact activeClassName="active">
-                  <span style={{ color: 'black' }}>Suboption 3</span>
-                </NavLink>
-              </li>
-              <li>
-                <NavLink to="/option5" exact activeClassName="active">
-                  <span style={{ color: 'black' }}>Suboption 4</span>
-                </NavLink>
-              </li>
-            </ul>
-          )}
-        </li>
+
         <li style={{ marginTop: "70px" }}>
           <div
             onMouseEnter={() => handleMouseEnter('option5')}
