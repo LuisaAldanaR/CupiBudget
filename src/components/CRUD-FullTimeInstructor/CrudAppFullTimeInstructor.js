@@ -16,6 +16,7 @@ const CrudAppFullTimeInstructor = () => {
   const [showForm, setShowForm] = useState(false); // State to show the form
   const [showRecords, setShowRecords] = useState(true); // State to show records
 
+  const token = localStorage.getItem('jwtToken'); // Recupera el token JWT del almacenamiento local
   let api = helpHttp(); // Instance of the HTTP request utility
 
   useEffect(() => {
@@ -45,7 +46,7 @@ const CrudAppFullTimeInstructor = () => {
   
     let options = {
       body: data,
-      headers: { "content-type": "application/json" },
+      headers: { "content-type": "application/json",'Authorization': `Bearer ${token}`, },
     };
   
     api.post(urlPost, options).then((res) => {
@@ -73,7 +74,7 @@ const CrudAppFullTimeInstructor = () => {
   const updateData = (data) => {
     let urlPut = "http://www.mendezmrf10.somee.com/api/FullTimeInstructor/Edit";
   
-    let options = { body: data, headers: { "content-type": "application/json" } };
+    let options = { body: data, headers: { "content-type": "application/json" ,'Authorization': `Bearer ${token}`,} };
   
     api.put(urlPut, options).then((res) => {
       if (!res.error) { // Corregir la verificación de error
@@ -113,7 +114,7 @@ const deleteData = (idInstructor, data) => {
       let urlDel = "http://www.mendezmrf10.somee.com/api/FullTimeInstructor/Delete";
       let endPoint = `${urlDel}/${idInstructor}`;
 
-      let options = { headers: { "content-type": "application/json" } };
+      let options = { headers: { "content-type": "application/json",'Authorization': `Bearer ${token}`, } };
 
       api.del(endPoint, options).then((res) => {
         if (!res.err) {

@@ -17,6 +17,7 @@ const CrudTable = ({ data, setDataToEdit, deleteData, showFormView }) => {
                                 <th className="thLeft">Nombre</th>
                                 <th className="thTable">Fecha Inicio:</th>
                                 <th className="thTable">Fecha Fin:</th>
+                                <th className="thTable">Fecha Fin de Curso:</th> 
                                 <th className="thTable">Nombre de la Red:</th>
                                 <th className="thRight">Acciones:</th>
                             </tr>

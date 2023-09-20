@@ -6,19 +6,24 @@ import { faTrash } from "@fortawesome/free-solid-svg-icons";
 
 const CrudTableRow = ({ el, setDataToEdit, deleteData, showFormViewFullTimeInstructor }) => {
   // Destructure the properties of the 'el' object passed as an argument
-  let { idInstructor, name, position, oNetwork } = el;
+  let { idInstructor, name, position, oNetwork, endDateCourse } = el;
+  const endDateCourseAsDate = new Date(endDateCourse);
+
+  // Options to format the date in Spanish
+  const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
 
   return (
     // Render a table row with data from the 'el' object
     <tr>
       <td className="tdTableRow">{name}</td> 
       <td className="tdTableRow">{position}</td> 
+      <td className="tdTableRow">{endDateCourseAsDate.toLocaleDateString('es-ES', options)}</td>
       {/* Render the network name ('oNetwork.networkName') or a loading message if not defined */}
       <td className="tdTableRow">
         {oNetwork ? (
           oNetwork.networkName
         ) : (
-          el.loading ? (<span>Loading...</span>) : null 
+          el.loading ? (<span>Cargando...</span>) : null 
         )}
       </td>
       <td className="tdTableRow">

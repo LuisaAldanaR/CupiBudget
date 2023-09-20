@@ -1,7 +1,8 @@
-import React, {useState, useEffect} from "react";
+import React, { useState } from "react";
 import "./main.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPaperPlane } from '@fortawesome/free-solid-svg-icons';
+import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
+import Swal from "sweetalert2";
 
 // Define an object with initial values for the form
 const initialForm = {
@@ -10,28 +11,35 @@ const initialForm = {
   networkId: null,
 };
 
-const CrudTableRow = ({ el, setDataToEdit, }) => {
+const CrudTableRow = ({ el, setDataToEdit }) => {
   // Destructure the properties of the 'el' object passed as an argument
-  let {  oNetwork } = el;
+  let { oNetwork } = el;
   const [form, setForm] = useState(initialForm);
+
+  // Function to handle changes in form fields
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setForm({
+      ...form,
+      [name]: value,
+    });
+  };
 
   // Function to handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
-  
-    if (!form.goal.trim() || !form.cupos.trim() || !form.networkId.trim()) {
-      alert("Incomplete data");
+
+    if (!form.goal || !form.cupos) {
+      Swal.fire("¡Faltan campos por llenar!", "", "question");
       return;
     }
 
     // Clear the form and reset dataToEdit to null
     handleReset();
   };
-  
-  
 
   // Function to clear the form and edit data
-  const handleReset = (e) => {
+  const handleReset = () => {
     setForm(initialForm);
     setDataToEdit(null);
   };
@@ -53,27 +61,33 @@ const CrudTableRow = ({ el, setDataToEdit, }) => {
           name="goal"
           placeholder="Meta del trimestre"
           className="form-control"
-          onChange={handleSubmit}
+          onChange={handleChange}
           value={form.goal}
         />
       </td>
 
       <td className="tdTableRow">
-      <input
+        <input
           type="number"
           name="cupos"
           placeholder="Cupos Antiguos"
           className="form-control"
-          onChange={handleSubmit}
+          onChange={handleChange}
           value={form.cupos}
         />
       </td>
 
       <th className="tdTableRow">
-      {/* Edit button with FontAwesome icon */}
-        <button className="btn btn-success" onClick={() => {
-          setDataToEdit(el); // Set the 'el' object as the data to edit
-        }}><FontAwesomeIcon icon={faPaperPlane} /></button>&nbsp;
+        {/* Edit button with FontAwesome icon */}
+        <button
+          className="btn btn-success"
+          onClick={() => {
+            setDataToEdit(el); // Set the 'el' object as the data to edit
+          }}
+        >
+          <FontAwesomeIcon icon={faPaperPlane} />
+        </button>
+        &nbsp;
       </th>
     </tr>
   );
