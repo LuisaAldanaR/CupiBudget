@@ -64,10 +64,10 @@ function App() {
           <Route path='/' element={<Login />} />
           {/* Default route with the sidebar and navbar */}
           <Route path='/*' element={
-            <div className="flex">
-              <Sidebar />
-              <div className="content w-100">
-                <CustomNavbar />
+            <div>
+              <CustomNavbar />
+              <div className="flex contentApp">
+                <Sidebar />
                 <Routes>
                   {/* Nested route for the Home page */}
                   <Route path='/' element={
