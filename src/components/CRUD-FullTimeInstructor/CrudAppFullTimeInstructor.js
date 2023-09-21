@@ -27,7 +27,11 @@ const CrudAppFullTimeInstructor = () => {
   const loadTableData = () => {
     let urlGet = "http://www.mendezmrf10.somee.com/api/FullTimeInstructor/List";
 
-    api.get(urlGet).then((res) => {
+    let options = {
+      headers: {'Authorization': `Bearer ${token}`, },   
+    };
+    
+    api.get(urlGet, options).then((res) => {
       if (!res.err) {
         setDb(res.response); // Store the data in the 'db' state
         setError(null); // Clear errors

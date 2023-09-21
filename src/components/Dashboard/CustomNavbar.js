@@ -32,7 +32,7 @@ function CustomNavbar() {
               <NavDropdown.Item href="#action/3.1">My Profile</NavDropdown.Item>
               <NavDropdown.Item href="#action/3.2">Settings</NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.3">Log Out</NavDropdown.Item>
+              <NavDropdown.Item href="/">Log Out</NavDropdown.Item>
             </NavDropdown>
           </Nav>
         </Navbar.Collapse>
