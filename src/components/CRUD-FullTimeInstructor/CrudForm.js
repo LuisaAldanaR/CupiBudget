@@ -8,6 +8,7 @@ import Swal from 'sweetalert2';
 const initialForm = {
   name: "",
   position: "",
+  endDateCourse: "",
   networkId: null,
 };
 
@@ -100,6 +101,9 @@ const CrudForm = ({ createData, updateData, dataToEdit, setDataToEdit, showTable
           <br></br>
           <form onSubmit={handleSubmit}>
             <div className="mb-3">
+            <label className="label">
+                Nombre
+              </label>
               <input
                 type="text"
                 name="name"
@@ -110,6 +114,22 @@ const CrudForm = ({ createData, updateData, dataToEdit, setDataToEdit, showTable
               />
             </div>
             <div className="mb-3">
+              <label className="label">
+                Fecha fin de Ficha
+              </label>
+            <input
+              type="date"
+              name="endDateCourse"
+              placeholder="Fecha fin de Ficha"
+              className="form-control"
+              onChange={handleChange}
+              value={form.endDateCourse}
+            />
+          </div>
+            <div className="mb-3">
+            <label className="label">
+                Posición
+              </label>
               <select
                 name="position"
                 className="form-select"
@@ -125,6 +145,9 @@ const CrudForm = ({ createData, updateData, dataToEdit, setDataToEdit, showTable
             </div>
 
             <div className="mb-3">
+            <label className="label">
+                Red
+              </label>
               <select
                 name="networkId"
                 className="form-select"

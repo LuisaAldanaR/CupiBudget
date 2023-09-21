@@ -10,6 +10,7 @@ const initialForm = {
   name: "",
   startDate: "",
   endDate: "",
+  endDateCourse: "",
   networkId: null,
 };
 
@@ -71,6 +72,7 @@ const CrudForm = ({ createData, updateData, dataToEdit, setDataToEdit, showTable
     e.preventDefault();
   
     if (!form.name.trim() || !form.startDate.trim() || !form.endDate.trim()) {
+      
       Swal.fire({
         icon: 'error',
         title: 'Datos Incompletos',
@@ -114,6 +116,9 @@ const CrudForm = ({ createData, updateData, dataToEdit, setDataToEdit, showTable
         <br></br>
         <form onSubmit={handleSubmit}>
           <div className="mb-3">
+          <label className="label">
+                Nombre
+              </label>
             <input
               type="text"
               name="name"
@@ -124,6 +129,9 @@ const CrudForm = ({ createData, updateData, dataToEdit, setDataToEdit, showTable
             />
           </div>
           <div className="mb-3">
+          <label className="label">
+          Fecha de inicio de contrato
+              </label>
             <input
               type="date"
               name="startDate"
@@ -134,6 +142,9 @@ const CrudForm = ({ createData, updateData, dataToEdit, setDataToEdit, showTable
             />
           </div>
           <div className="mb-3">
+          <label className="label">
+          Fecha de fin de contrato
+              </label>
             <input
               type="date"
               name="endDate"
@@ -144,6 +155,22 @@ const CrudForm = ({ createData, updateData, dataToEdit, setDataToEdit, showTable
             />
           </div>
           <div className="mb-3">
+          <label className="label">
+          Fecha fin de ficha
+              </label>
+            <input
+              type="date"
+              name="endDateCourse"
+              placeholder="Fecha fin de Ficha"
+              className="form-control"
+              onChange={handleChange}
+              value={form.endDateCourse}
+            />
+          </div>
+          <div className="mb-3">
+          <label className="label">
+            Red
+              </label>
             <select
               name="networkId"
               className="form-select"
