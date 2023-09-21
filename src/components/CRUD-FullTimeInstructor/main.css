@@ -87,3 +87,11 @@
     justify-content: center;
     justify-items: center;
 }
+
+.label{
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    justify-items: start;
+    color: rgb(110, 110, 110);
+}

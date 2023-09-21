@@ -102,4 +102,12 @@
     background-size: 100% 16px; /* Ancho del borde inferior y altura (ajusta según tus necesidades) */
     background-position: 0 100%; /* Coloca el gradiente en la parte inferior */
   }
+
+.label{
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    justify-items: start;
+    color: rgb(110, 110, 110);
+}
   
