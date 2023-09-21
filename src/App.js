@@ -13,6 +13,7 @@ import CrudApp from "./components/CRUD-Contract/CrudApp";
 import CrudForm from "./components/CRUD-FullTimeInstructor/CrudForm";
 import CrudAppFullTimeInstructor from "./components/CRUD-FullTimeInstructor/CrudAppFullTimeInstructor";
 
+
 /**
  * The main application component.
  * @returns {JSX.Element} The rendered application.
@@ -63,33 +64,44 @@ function App() {
           {/* Route for the login page */}
           <Route path='/' element={<Login />} />
           {/* Default route with the sidebar and navbar */}
-          <Route path='/*' element={
-            <div className="flex">
-              <Sidebar />
-              <div className="content w-100">
-                <CustomNavbar />
-                <Routes>
-                  {/* Nested route for the Home page */}
-                  <Route path='/' element={
-                    <>
-                      {/* Add the Login component within the Home component */}
-                      <Home />
-                      <Login /> {/* This will render the Login component within the Home component */}
-                    </>
-                  } />
-                  <Route path="/BudgetGenerator" element={<ProtectedRoute element={<BudgetGenerator />} />} />
-                  {/* Otras rutas protegidas */}
-                  <Route path="/goals" element={<ProtectedRoute element={<Goals />} />} />
-                  <Route path="/programs" element={<ProtectedRoute element={<Programs />} />} />
-                  <Route path="/instructors" element={<ProtectedRoute element={<Instructors />} />} />
-                  <Route path="/CrudAppFullTimeInstructor" element={<ProtectedRoute element={<CrudAppFullTimeInstructor />} />} />
-                  <Route path="/CrudApp" element={<ProtectedRoute element={<CrudApp />} />} />
-                  <Route path="/CrudForm" element={<ProtectedRoute element={<CrudForm />} />} />
-                </Routes>
-              </div>
-            </div>
-          } />
+          <Route
+            path='/*'
+            element={
+              isAuthenticated() ? (
+                <div className="flex">
+                  <Sidebar />
+                  <div className="content w-100">
+                    <CustomNavbar />
+                    <Routes>
+                      {/* Nested route for the Home page */}
+                      <Route
+                        path='/'
+                        element={
+                          <>
+                            {/* Add the Login component within the Home component */}
+                            <Home />
+                            <Login /> {/* This will render the Login component within the Home component */}
+                          </>
+                        }
+                      />
+                      <Route path="/BudgetGenerator" element={<ProtectedRoute element={<BudgetGenerator />} />} />
+                      {/* Otras rutas protegidas */}
+                      <Route path="/goals" element={<ProtectedRoute element={<Goals />} />} />
+                      <Route path="/programs" element={<ProtectedRoute element={<Programs />} />} />
+                      <Route path="/instructors" element={<ProtectedRoute element={<Instructors />} />} />
+                      <Route path="/CrudAppFullTimeInstructor" element={<ProtectedRoute element={<CrudAppFullTimeInstructor />} />} />
+                      <Route path="/CrudApp" element={<ProtectedRoute element={<CrudApp />} />} />
+                      <Route path="/CrudForm" element={<ProtectedRoute element={<CrudForm />} />} />
+                    </Routes>
+                  </div>
+                </div>
+              ) : (
+                <Navigate to="/" /> // Redirige al usuario a la página de inicio de sesión si no ha iniciado sesión
+              )
+            }
+          />
         </Routes>
+
       </div>
     </Router>
   );

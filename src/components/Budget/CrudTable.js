@@ -19,7 +19,6 @@ const CrudTable = ({ data, setDataToEdit }) => {
                                 <th className="thLeft">Nombre de la Red</th>
                                 <th className="thTable">Metas</th>
                                 <th className="thTable">Cupos Antiguos</th>
-                                <th className="thRight">Acciones</th>
                             </tr>
                         </thead>
 

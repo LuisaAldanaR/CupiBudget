@@ -71,19 +71,31 @@
 }
 
 .containerButtons {
-    display: flex;
-    flex-direction: row; /* Stack the buttons vertically */
-    justify-content: flex-start; /* Align items to the bottom */
-    text-align: center;
-    margin-left: 16px;
-    margin-top: 24px;
-  }
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+  margin-left: 4.5%;
+  margin-right: 4.5%;
+  margin-top: 24px;
+}
+
+/* Estilo para el botón "Generar Reporte" */
+.btn-generate {
+  order: 1; /* Ordenar el botón "Generar Reporte" al principio */
+}
+
+/* Estilo para el botón "Enviar" */
+.btn-send {
+  order: 2; /* Ordenar el botón "Enviar" después del botón "Generar Reporte" */
+}
+
+  
   
 .addButton
 {
     background-color: #007BB8;
     color: #ffffff;
-    border-radius: 15px !important; 
+    border-radius: 10px !important; 
     font-family: 'Raleway', sans-serif;
 }
 

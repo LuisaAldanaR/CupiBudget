@@ -3,7 +3,6 @@ import '../../../src/App.scss'; // Importa los estilos desde la ruta especificad
 import 'bootstrap/dist/css/bootstrap.min.css'; // Importa el CSS de Bootstrap
 import Cookies from 'universal-cookie'; // Importa la biblioteca universal-cookies para gestionar cookies
 import { helpHttp } from '../../helpers/helpHttp';
-import { Navigate } from 'react-router-dom'; // Importa Navigate desde react-router-dom
 import Swal from 'sweetalert2';
 
 const baseUrl = "http://www.mendezmrf10.somee.com/api/Auth/login"; // Define la URL base para la API
@@ -57,7 +56,7 @@ function Login() {
           icon: 'success',
           title: 'Autenticación Exitosa',
           showConfirmButton: false,
-          timer: 1500
+          timer: 950
         }).then(() => {
           window.location.href = '/CrudApp'; // Redirige a la página '/CrudApp' después de la autenticación exitosa
         });
