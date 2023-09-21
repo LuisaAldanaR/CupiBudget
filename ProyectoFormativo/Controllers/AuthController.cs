@@ -21,53 +21,11 @@ namespace ParkingMentoring.Controllers
         private readonly ProyectoPruebaContext _context;
 
         public AuthController(IConfiguration configuration, ProyectoPruebaContext context) 
-        {
+        {   
             _configuration = configuration;
             _context = context;
         }
 
-
-        [HttpGet]
-        [Route("List")]
-        public async Task<IActionResult> Get()
-        {
-            List<User> lista = new List<User>();
-
-            try
-            {
-                lista = _context.Users.ToList();
-                return StatusCode(StatusCodes.Status200OK, new { mensaje = "ok", response = lista });
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(StatusCodes.Status200OK, new { mensaje = ex.Message, response = lista });
-            }
-        }
-
-        [HttpPost("Register")]
-        public async Task<ActionResult<User>> Register(UserDto request)
-        {
-            
-            var auth = new Auth(_context, _configuration);
-            auth.CreatePasswordHash(request.Password, out byte[] passwordHash, out byte[] passwordSalt);
-
-            user.Username = request.Username;
-            user.PasswordSalt = passwordSalt;
-            user.PasswordHash = passwordHash;
-            user.Mail = request.Mail;
-            user.Role = "Regular";
-
-            try
-            {
-                _context.Users.Add(user);
-                _context.SaveChanges();
-                return StatusCode(StatusCodes.Status200OK, new { mensaje = "Usuario agregado con exito" });
-            }
-            catch (Exception e)
-            {
-                return StatusCode(StatusCodes.Status200OK, new { mensaje = e.InnerException });
-            }
-        }
 
         [HttpPost("login")]
         public async Task<ActionResult<string>> Login(UserDto request)

@@ -9,92 +9,92 @@ namespace NetworkSimulator1
 {
     public class NetworkReport
     {
-        public int metaTotal { get; set; }
-        public int estudiantesAntiguos { get; set; }
-        public double presupuestoMensual { get; set; }
-        public double presupuestoAnual { get; set; }
-        public double presupuesto1T { get; set; }
-        public double presupuesto2T { get; set; }
-        public double presupuesto3T { get; set; }
-        public double presupuesto4T { get; set; }
-        public double idRed { get; set; }
-        public int plantaTotal { get; set; }
-        public int contratistaTotal { get; set; }
+        public int totalGoal { get; set; }
+        public int oldStudents { get; set; }
+        public double monthlyBudget { get; set; }
+        public double annualBudget { get; set; }
+        public double budget1T { get; set; }
+        public double budget2T { get; set; }
+        public double budget3T { get; set; }
+        public double budget4T { get; set; }
+        public double idNetwork { get; set; }
+        public int fullTimeTotal { get; set; }
+        public int contractTotal { get; set; }
 
-        public int[] contratistaT { get; set; } = new int[4];
-        public int[] fichas { get; set; } = new int[4];
-        public int[] planta { get; set; } = new int[4];
+        public int[] contractT { get; set; } = new int[4];
+        public int[] courses { get; set; } = new int[4];
+        public int[] fullTime { get; set; } = new int[4];
 
-        public int fichasAntiguas { get; set; }
-        public double fichasNuevas { get; set; }
-        public int fichasTotal { get; set; }
+        public int oldCourses { get; set; }
+        public double newCourses { get; set; }
+        public int totalCourses { get; set; }
 
-        public NetworkReport(int metaTotal, int estudiantesAntiguos, List<FullTimeInstructor> instructores, int idRed)
+        public NetworkReport(int totalGoal, int oldStudents, List<FullTimeInstructor> instructors, int idNetwork)
         {
-            this.metaTotal = metaTotal;
-            this.estudiantesAntiguos = estudiantesAntiguos;
-            this.fichas[0] = 0;
-            this.fichas[1] = 0;
-            this.fichas[2] = 0;
-            this.fichas[3] = 0;
+            this.totalGoal = totalGoal;
+            this.oldStudents = oldStudents;
+            this.courses[0] = 0;
+            this.courses[1] = 0;
+            this.courses[2] = 0;
+            this.courses[3] = 0;
 
-            this.idRed = idRed;
-            this.fichasAntiguas = estudiantesAntiguos / 25;
-            if (estudiantesAntiguos % 25 >= 15)
-                fichasAntiguas++;
+            this.idNetwork = idNetwork;
+            this.oldCourses = oldStudents / 25;
+            if (oldStudents % 25 >= 15)
+                oldCourses++;
 
-            this.fichasNuevas = (metaTotal - estudiantesAntiguos) / 30.0;
-            if ((metaTotal - estudiantesAntiguos) % 30 > 18)
-                fichasNuevas = Math.Ceiling(fichasNuevas);
+            this.newCourses = (totalGoal - oldStudents) / 30.0;
+            if ((totalGoal - oldStudents) % 30 > 18)
+                newCourses = Math.Ceiling(newCourses);
 
-            this.fichasTotal = fichasAntiguas + (int)fichasNuevas;
-            this.plantaTotal = 0;
+            this.totalCourses = oldCourses + (int)newCourses;
+            this.fullTimeTotal = 0;
 
-            meta70();
-            meta80();
-            meta90();
-            meta100();
-            calcularPresupuesto();
-            calcularContratistas(instructores, idRed);
+            goal70();
+            goal80();
+            goal90();
+            goal100();
+            calculateBudget();
+            calculateInstructors(instructors, idNetwork);
         }
 
-        public void meta70()
+        public void goal70()
         {
-            fichas[0] = (int)(fichasNuevas * 0.7);
-            if (fichasNuevas % 30 >= 21)
-                fichas[0]++;
+            courses[0] = (int)(newCourses * 0.7);
+            if (newCourses % 30 >= 21)
+                courses[0]++;
         }
-        public void meta80()
+        public void goal80()
         {
-            double f = (fichasNuevas * 0.8);
-            fichas[1] = (int)f - fichas[0];
+            double f = (newCourses * 0.8);
+            courses[1] = (int)f - courses[0];
             if (f * 30 % 30 >= 21)
-                fichas[1]++;
+                courses[1]++;
         }
-        public void meta90()
+        public void goal90()
         {
-            double f = (fichasNuevas * 0.9);
-            fichas[2] = (int)f - fichas[0] - fichas[1];
+            double f = (newCourses * 0.9);
+            courses[2] = (int)f - courses[0] - courses[1];
             if (f * 30 % 30 >= 21)
-                fichas[2]++;
+                courses[2]++;
         }
-        public void meta100()
+        public void goal100()
         {
-            fichas[3] = (int)fichasNuevas - (fichas[0] + fichas[1] + fichas[2]);
+            courses[3] = (int)newCourses - (courses[0] + courses[1] + courses[2]);
         }
 
-        public void calcularPresupuesto()
+        public void calculateBudget()
         {
-            presupuestoMensual = 4_000_000;
+            monthlyBudget = 4_000_000;
 
-            presupuesto1T = presupuestoMensual * fichas[0] * 10.5;
-            presupuesto2T = presupuestoMensual * fichas[1] * 7.875;
-            presupuesto3T = presupuestoMensual * fichas[2] * 5.25;
-            presupuesto4T = presupuestoMensual * fichas[3] * 2.625;
-            presupuestoAnual = presupuesto1T + presupuesto2T + presupuesto3T + presupuesto4T;
+            budget1T = monthlyBudget * courses[0] * 10.5;
+            budget2T = monthlyBudget * courses[1] * 7.875;
+            budget3T = monthlyBudget * courses[2] * 5.25;
+            budget4T = monthlyBudget * courses[3] * 2.625;
+            annualBudget = budget1T + budget2T + budget3T + budget4T;
         }
 
-        public void calcularContratistas(List<FullTimeInstructor> instructores, int idRed)
+        public void calculateInstructors(List<FullTimeInstructor> instructores, int idRed)
         {
             DateTime time = new DateTime(2022, 1, 1);
 
@@ -104,49 +104,49 @@ namespace NetworkSimulator1
                 for (int j = 0; j < instructores.Count; j++)
                 {
                     FullTimeInstructor aux = instructores[j];
-                    if (aux.NetworkId == idRed && aux.EndDateCourse < time && temporalInstructorDisponible < fichas[i]) // Se valida que tenga la misma red y no tenga programa activo
+                    if (aux.NetworkId == idRed && aux.EndDateCourse < time && temporalInstructorDisponible < courses[i]) // Se valida que tenga la misma red y no tenga programa activo
                     {
                         temporalInstructorDisponible++;
                         aux.EndDateCourse = aux.EndDateCourse.Value.AddYears(1); // Asigna el nuevo valor con un año agregado
                     }
                 }
                 time.AddMonths(3);
-                planta[i] = temporalInstructorDisponible;
-                plantaTotal += planta[i];
-                contratistaT[i] = fichas[i] - temporalInstructorDisponible;
-                contratistaT[i] = (contratistaT[i] < 0) ? 0 : contratistaT[i];
-                contratistaTotal += contratistaT[i];
+                fullTime[i] = temporalInstructorDisponible;
+                fullTimeTotal += fullTime[i];
+                contractT[i] = courses[i] - temporalInstructorDisponible;
+                contractT[i] = (contractT[i] < 0) ? 0 : contractT[i];
+                contractTotal += contractT[i];
             }
         }
 
         public override string ToString()
         {
-            return $"Meta Total: {metaTotal}\n" +
-                   $"Estudiantes Antiguos: {estudiantesAntiguos}\n" +
-                   $"Presupuesto Mensual: {presupuestoMensual}\n" +
-                   $"Presupuesto Anual: {presupuestoAnual}\n" +
-                   $"Presupuesto 1T: {presupuesto1T}\n" +
-                   $"Presupuesto 2T: {presupuesto2T}\n" +
-                   $"Presupuesto 3T: {presupuesto3T}\n" +
-                   $"Presupuesto 4T: {presupuesto4T}\n" +
-                   $"Planta: {plantaTotal}\n" +
-                   $"Contratista Total: {contratistaTotal}\n" +
-                   $"Planta 1T: {planta[0]}\n" +
-                   $"Planta 2T: {planta[1]}\n" +
-                   $"Planta 3T: {planta[2]}\n" +
-                   $"Planta 4T: {planta[3]}\n" +
-                   $"Contratista 1T: {contratistaT[0]}\n" +
-                   $"Contratista 2T: {contratistaT[1]}\n" +
-                   $"Contratista 3T: {contratistaT[2]}\n" +
-                   $"Contratista 4T: {contratistaT[3]}\n" +
-                   $"Fichas 70: {fichas[0]}\n" +
-                   $"Fichas 80: {fichas[1]}\n" +
-                   $"Fichas 90: {fichas[2]}\n" +
-                   $"Fichas 100: {fichas[3]}\n" +
-                   $"Fichas Antiguas: {fichasAntiguas}\n" +
-                   $"Fichas Nuevas: {fichasNuevas}\n" +
-                   $"Fichas Total: {fichasTotal}\n" +
-                   $"Id Red: {idRed}\n";
+            return $"Meta Total: {totalGoal}\n" +
+                   $"Estudiantes Antiguos: {oldStudents}\n" +
+                   $"Presupuesto Mensual: {monthlyBudget}\n" +
+                   $"Presupuesto Anual: {annualBudget}\n" +
+                   $"Presupuesto 1T: {budget1T}\n" +
+                   $"Presupuesto 2T: {budget2T}\n" +
+                   $"Presupuesto 3T: {budget3T}\n" +
+                   $"Presupuesto 4T: {budget4T}\n" +
+                   $"Planta: {fullTimeTotal}\n" +
+                   $"Contratista Total: {contractTotal}\n" +
+                   $"Planta 1T: {fullTime[0]}\n" +
+                   $"Planta 2T: {fullTime[1]}\n" +
+                   $"Planta 3T: {fullTime[2]}\n" +
+                   $"Planta 4T: {fullTime[3]}\n" +
+                   $"Contratista 1T: {contractT[0]}\n" +
+                   $"Contratista 2T: {contractT[1]}\n" +
+                   $"Contratista 3T: {contractT[2]}\n" +
+                   $"Contratista 4T: {contractT[3]}\n" +
+                   $"Fichas 70: {courses[0]}\n" +
+                   $"Fichas 80: {courses[1]}\n" +
+                   $"Fichas 90: {courses[2]}\n" +
+                   $"Fichas 100: {courses[3]}\n" +
+                   $"Fichas Antiguas: {oldCourses}\n" +
+                   $"Fichas Nuevas: {newCourses}\n" +
+                   $"Fichas Total: {totalCourses}\n" +
+                   $"Id Red: {idNetwork}\n";
 
         }
 

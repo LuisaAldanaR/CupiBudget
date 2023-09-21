@@ -18,24 +18,22 @@ namespace NetworkSimulator1
     {
         private List<NetworkReport> networks;
 
-        public InPerson(JsonElement json, List<FullTimeInstructor> instructores)
+        public InPerson(List<NetworkData> networkData, List<FullTimeInstructor> instructors)
         {
-            // Deserializa el JSON en una lista de objetos anónimos que coinciden con la estructura del JSON
-            List<dynamic> jsonList = JsonConvert.DeserializeObject<List<dynamic>>(json.ToString());
-            List<FullTimeInstructor> tempInstructors = instructores.ToList();
             // Inicializa la lista de NetworkReport
             networks = new List<NetworkReport>();
 
-            // Recorre la lista deserializada y construye objetos NetworkReport
-            foreach (var grupo in jsonList)
+            // Recorre la lista de NetworkData y construye objetos NetworkReport
+            foreach (var data in networkData)
             {
-                int metaTotal = grupo.metaTotal;
-                int estudiantesAntiguos = grupo.estudiantesAntiguos;
-                int idRed = grupo.idRed;
+                int totalGoal = data.totalGoal;
+                int oldStudents = data.oldStudents;
+                int idNetwork = data.idNetwork;
 
-                networks.Add(new NetworkReport(metaTotal, estudiantesAntiguos, tempInstructors, idRed));
+                networks.Add(new NetworkReport(totalGoal, oldStudents, instructors, idNetwork));
             }
         }
+
 
         public List<NetworkReport> GetNetworks()
         {

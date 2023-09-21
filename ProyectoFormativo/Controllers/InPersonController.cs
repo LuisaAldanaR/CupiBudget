@@ -23,14 +23,14 @@ namespace ProyectoFormativo.Controllers
 
         [HttpPost]
         [Route("List")]
-        public IActionResult Get([FromBody] JsonElement request)
+        public IActionResult Get([FromBody] DataModel request)
         {
             List<FullTimeInstructor> lista = new List<FullTimeInstructor>();
 
             try
             {
-                lista = _proyectoFormativoContext.FullTimeInstructors.ToList();
-                InPerson inPerson = new InPerson(request, lista);
+                lista = _proyectoFormativoContext.FullTimeInstructors.Include(c => c.oNetwork).ToList();
+                InPerson inPerson = new InPerson(request.data1, lista);
                 // Obtener la lista de NetworkReport
                 var networks = inPerson.GetNetworks();
 
