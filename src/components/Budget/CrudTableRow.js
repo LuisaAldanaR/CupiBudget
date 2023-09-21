@@ -13,7 +13,7 @@ const initialForm = {
 
 const CrudTableRow = ({ el, setDataToEdit }) => {
   // Destructure the properties of the 'el' object passed as an argument
-  let { oNetwork } = el;
+  let { networkName } = el;
   const [form, setForm] = useState(initialForm);
 
   // Function to handle changes in form fields
@@ -49,8 +49,8 @@ const CrudTableRow = ({ el, setDataToEdit }) => {
     <tr>
       {/* Render the network name ('oNetwork.networkName') or a loading message if it's not defined */}
       <td className="tdTableRow">
-        {oNetwork ? (
-          oNetwork.networkName
+        {networkName ? (
+          networkName
         ) : (
           el.loading ? (<span>Cargando...</span>) : null // Check if the 'el' object has a 'loading' property
         )}
@@ -76,19 +76,6 @@ const CrudTableRow = ({ el, setDataToEdit }) => {
           value={form.cupos}
         />
       </td>
-
-      <th className="tdTableRow">
-        {/* Edit button with FontAwesome icon */}
-        <button
-          className="btn btn-success"
-          onClick={() => {
-            setDataToEdit(el); // Set the 'el' object as the data to edit
-          }}
-        >
-          <FontAwesomeIcon icon={faPaperPlane} />
-        </button>
-        &nbsp;
-      </th>
     </tr>
   );
 };

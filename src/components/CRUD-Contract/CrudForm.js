@@ -19,6 +19,8 @@ const CrudForm = ({ createData, updateData, dataToEdit, setDataToEdit, showTable
   const [networkOptions, setNetworkOptions] = useState([]);
   const api = helpHttp(); // Instance of the HTTP request utility
 
+  const token = localStorage.getItem('jwtToken'); // Recupera el token JWT del almacenamiento local
+
   // Effect that runs when 'dataToEdit' changes to load edit data
   useEffect(() => {
     if (dataToEdit) {
@@ -39,9 +41,13 @@ const CrudForm = ({ createData, updateData, dataToEdit, setDataToEdit, showTable
 
   // Effect that loads network options from an API when the component mounts
   useEffect(() => {
+    let options = {
+      headers: {'Authorization': `Bearer ${token}`, },   
+    };
+
     const urlNetwork = "http://www.mendezmrf10.somee.com/api/Network/List";
     
-    api.get(urlNetwork).then((res) => {
+    api.get(urlNetwork, options).then((res) => {
       if (!res.err) {
         setNetworkOptions(res.response); // Store network options in the state
       } else {

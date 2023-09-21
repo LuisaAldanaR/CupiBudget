@@ -13,6 +13,7 @@ import CrudApp from "./components/CRUD-Contract/CrudApp";
 import CrudForm from "./components/CRUD-FullTimeInstructor/CrudForm";
 import CrudAppFullTimeInstructor from "./components/CRUD-FullTimeInstructor/CrudAppFullTimeInstructor";
 
+
 /**
  * The main application component.
  * @returns {JSX.Element} The rendered application.
@@ -90,6 +91,7 @@ function App() {
             </div>
           } />
         </Routes>
+
       </div>
     </Router>
   );
