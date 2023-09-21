@@ -269,28 +269,29 @@ td {
   }
 
  /* Styling for the main container */
+/* Styling for the main container */
 .mainContainer {
   position: absolute;
-  left: 65%; /* Centro horizontalmente */
+  left: 60%; /* Centro horizontalmente */
   top: 50%; /* Centro verticalmente */
   transform: translate(-50%, -50%);
-  padding: 5%;
+  padding: 2%; /* Utilizar unidades relativas */
   background-color: #88CB66;
   border-radius: 6%;
-  max-height: 65%; /* En lugar de una altura fija */
-  width: 24%; /* En lugar de un ancho fijo */
+  max-height: 80vh; /* Usar viewport height en lugar de porcentaje */
+  width: 23%; /* Utilizar unidades relativas */
 
   /* Styles for labels l1 and l2 */
   .l1 {
     color: #000000;
     font-weight: 500;
-    font-size: 1.5rem; /* Utilizar unidades relativas */
+    font-size: 2rem; /* Utilizar unidades relativas */
   }
 
   .l2 {
     color: #000000;
     font-weight: 400;
-    font-size: 1.2rem; /* Utilizar unidades relativas */
+    font-size: 1.3rem; /* Utilizar unidades relativas */
   }
 
   /* Styling for the login button */
@@ -299,14 +300,14 @@ td {
     background-color: rgba(251, 251, 226, 0.7);
     color: #000000;
     border: none;
-    padding: 2% 32%; /* Utilizar unidades relativas */
+    padding: 1.5% 10%; /* Utilizar unidades relativas */
   }
 
   /* Styling for rounded inputs */
   .rounded-input {
     border-radius: 1rem; /* Utilizar unidades relativas */
     background-color: white;
-    padding: 2%; /* Utilizar unidades relativas */
+    padding: 1.5%; /* Utilizar unidades relativas */
     border: 1px solid #ccc;
     /* Otros estilos según tus preferencias */
   }
@@ -318,20 +319,115 @@ td {
 }
 
 .logo-login {
-  margin-top: 20%; /* Ajusta según tu preferencia */
-  margin-left: 30%; /* Ajusta según tu preferencia */
-  width: 30%; /* Utilizar unidades relativas */
-  max-width: 190px; /* Máximo ancho para mantener proporciones */
+  margin-top: 18%; /* Ajusta según tu preferencia */
+  margin-left: 28%; /* Ajusta según tu preferencia */
+  width: 80%; /* Utilizar unidades relativas */
+  max-width: 200px; /* Máximo ancho para mantener proporciones */
   height: auto; /* Para mantener proporciones */
   .welcomeText {
-    margin-left: 2%; /* Utilizar unidades relativas */
-    font-size: 2.5rem; /* Utilizar unidades relativas */
+    margin-left: 15%; /* Utilizar unidades relativas */
+    font-size: 2rem; /* Utilizar unidades relativas */
   }
 
   .underLine {
     border: 1.5px solid rgb(0, 0, 0);
-    width: 180%; /* Utilizar unidades relativas */
-    margin-left: -40%; /* Ajusta según tu preferencia */
+    width: 125%; /* Utilizar unidades relativas */
+    margin-left: -10%; /* Ajusta según tu preferencia */
     color: rgba(0, 0, 0, 0);
+  }
+}
+
+
+@media screen and (width: 1280px) and (height: 832px) {
+  /* Styling for the main container */
+  .mainContainer {
+    position: absolute;
+    left: 70%; /* Centro horizontalmente */
+    top: 50%; /* Centro verticalmente */
+    transform: translate(-50%, -50%);
+    padding: 5%;
+    background-color: #88CB66;
+    border-radius: 6%;
+    max-height: 65vh; /* En lugar de una altura fija */
+    width: 30vw; /* En lugar de un ancho fijo */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    /* Styles for labels l1 and l2 */
+    .l1 {
+      color: #000000;
+      font-weight: 500;
+      font-size: 2.5vw; /* Utilizar unidades relativas */
+      max-width: 100%;
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+
+    .l2 {
+      color: #000000;
+      font-weight: 400;
+      font-size: 1.9vw; /* Utilizar unidades relativas */
+      max-width: 100%;
+      text-align: center;
+      margin-bottom: 1rem;
+      margin-right: 1vw;
+    }
+
+    /* Styling for the login button */
+    .login-button {
+      border-radius: 1rem;
+      background-color: rgba(251, 251, 226, 0.7);
+      color: #000000;
+      border: none;
+      padding: 2% 10%; /* Utilizar unidades relativas */
+      max-width: 100%;
+      text-align: center;
+      font-size: 2vw;
+      cursor: pointer;
+      margin-top: 5vh; /* Ajusta la distancia vertical */
+      margin-right: 1vw; /* Ajusta la distancia hacia la derecha */
+      margin-bottom: 1vh;
+    }
+
+    /* Styling for rounded inputs */
+    .rounded-input {
+      border-radius: 1rem; /* Utilizar unidades relativas */
+      background-color: white;
+      padding: 2%; /* Utilizar unidades relativas */
+      border: 1px solid #ccc;
+      max-width: 100%;
+      width: 90%; /* Controla el ancho de los inputs */
+      font-size: 2vw;
+      margin-bottom: 1rem;
+    }
+  }
+
+  /* Styling for the second container */
+  .secondContainer {
+    text-align: center;
+  }
+
+  .logo-login {
+    margin-top: 20%; /* Ajusta según tu preferencia */
+    width: 25%; /* Utilizar unidades relativas */
+    max-width: 190px; /* Máximo ancho para mantener proporciones */
+    height: auto; /* Para mantener proporciones */
+    text-align: center;
+    margin-left: 25%;
+
+    .welcomeText {
+      font-size: 2.5vw; /* Utilizar unidades relativas */
+      margin-bottom: 1rem;
+    }
+
+    .underLine {
+      border: 1.5px solid rgb(0, 0, 0);
+      width: 80%; /* Utilizar unidades relativas */
+      margin-left: auto;
+      margin-right: auto;
+      color: rgba(0, 0, 0, 0);
+    }
   }
 }
