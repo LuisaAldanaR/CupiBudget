@@ -16,6 +16,11 @@ function CustomNavbar() {
   return (
     <Navbar id="navbar" expand="lg" className="bg-body-tertiary">
         {/* SENA Logo */}
+        <img
+            src="/img/Logo-sena.png"
+            className="custom-logo" // Custom class for the logo
+            alt="SENA Logo"
+          />
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto">
