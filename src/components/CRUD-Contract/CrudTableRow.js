@@ -1,17 +1,32 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./main.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserPen } from "@fortawesome/free-solid-svg-icons";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import { faCircle } from "@fortawesome/free-solid-svg-icons";
 
 const CrudTableRow = ({ el, setDataToEdit, deleteData, showFormView }) => {
   // Destructure the properties of the 'el' object passed as an argument
-  let { idInstructor, name, startDate, endDate, oNetwork,endDateCourse } = el;
+  let { idInstructor, name, startDate, endDate, oNetwork, endDateCourse } = el;
 
   // Convert DateTime dates to Date objects
   const startDateAsDate = new Date(startDate);
   const endDateAsDate = new Date(endDate);
   const endDateCourseAsDate = new Date(endDateCourse);
+
+  // Use state to manage the icon to display based on the condition
+  const [iconToDisplay, setIconToDisplay] = useState(null);
+
+  // Calculate if endDateCourse is greater or less than the current date
+  const isEndDateCourseAvaliable = endDateAsDate > new Date();
+
+  useEffect(() => {
+    if (isEndDateCourseAvaliable) {
+      setIconToDisplay(<FontAwesomeIcon icon={faCircle} style={{ color: "#0aff00" }} />);
+    } else {
+      setIconToDisplay(<FontAwesomeIcon icon={faCircle} style={{ color: "#ff0000" }} />);
+    }
+  }, [isEndDateCourseAvaliable]);
 
   // Options to format the date in Spanish
   const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
@@ -19,6 +34,7 @@ const CrudTableRow = ({ el, setDataToEdit, deleteData, showFormView }) => {
   return (
     // Render a table row with the data from the 'el' object
     <tr>
+      <th className="tdTableRow">{iconToDisplay}</th>
       <th className="tdTableRow">{name}</th>
       <td className="tdTableRow">{startDateAsDate.toLocaleDateString('es-ES', options)}</td>
       <td className="tdTableRow">{endDateAsDate.toLocaleDateString('es-ES', options)}</td>

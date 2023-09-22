@@ -68,10 +68,11 @@ function App() {
             path='/*'
             element={
               isAuthenticated() ? (
-                <div className="">
-                  <CustomNavbar />
-                  <div className=" flex content w-100">
+                <div className="flex">
                   <Sidebar />
+
+                  <div className="content w-100">
+                  <CustomNavbar />
 
                     <Routes>
                       {/* Nested route for the Home page */}

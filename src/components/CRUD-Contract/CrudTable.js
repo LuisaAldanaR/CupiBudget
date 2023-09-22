@@ -14,7 +14,8 @@ const CrudTable = ({ data, setDataToEdit, deleteData, showFormView }) => {
                     <table className="table center-table">
                         <thead>
                             <tr> 
-                                <th className="thLeft">Nombre</th>
+                                <th className="thLeft">Contrato Vencido</th>
+                                <th className="thTable">Nombre</th>
                                 <th className="thTable">Fecha Inicio Contrato</th>
                                 <th className="thTable">Fecha Fin Contrato</th>
                                 <th className="thTable">Fecha Fin Curso</th>
