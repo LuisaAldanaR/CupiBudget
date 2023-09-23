@@ -3,6 +3,7 @@
     align-items: center;
     justify-content: center;
     justify-items: center;
+    margin-left: 25rem;
 }
 
 .thLeft{
@@ -38,6 +39,7 @@
     align-items: center; /* Centrar verticalmente */
     text-align: center;
     font-family: 'Raleway', sans-serif;
+    margin-bottom: 5rem;
 }
 
 .center-table {
@@ -63,6 +65,7 @@
     color: #ffffff;
     border-radius: 15px !important; 
     font-family: 'Raleway', sans-serif;
+    margin-left: 21rem;
 
 }
 
@@ -95,3 +98,4 @@
     justify-items: start;
     color: rgb(110, 110, 110);
 }
+

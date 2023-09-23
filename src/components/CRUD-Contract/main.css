@@ -1,34 +1,22 @@
-.container{
+.container {
     display: flex;
     align-items: center;
     justify-content: center;
     padding-top: 16px;
     max-width: 1270px;
+    margin-left: 15rem;
 }
 
-.thLeft{
+/* Estilos base para la tabla */
+.table {
     background-color: #C5E8FC !important;
-    border-top-left-radius: 10px !important; 
     font-family: 'Raleway', sans-serif;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); /* Agrega una sombra */
+    width: 100%;
+    margin: 0 auto;
 }
 
-.thRight{
-    background-color: #C5E8FC !important;
-    border-top-right-radius: 10px !important; 
-    font-family: 'Raleway', sans-serif;
-
-}
-
-.thTable{
-    background-color: #C5E8FC !important; 
-    font-family: 'Raleway', sans-serif;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); /* Agrega una sombra */
-
-}
-
-.tdTableRow
-{
+.tdTableRow {
     text-align: center;
     font-family: 'Raleway', sans-serif;
     font-weight: 100;
@@ -85,6 +73,7 @@
     color: #ffffff;
     border-radius: 15px !important; 
     font-family: 'Raleway', sans-serif;
+    margin-left: 12rem;
 }
 
 .showButton
@@ -110,4 +99,66 @@
     justify-items: start;
     color: rgb(110, 110, 110);
 }
-  
+
+.bg-table{
+    color: red;
+}
+
+/* Estilos para pantallas más pequeñas (1280x832 o menos) */
+@media screen and (width: 1280px) and (height: 832px) {
+    .container {
+        display: block; /* Cambia de flex a bloque para apilar elementos */
+        max-width: 2%; /* Ocupa todo el ancho disponible */
+        margin: 0 auto; /* Centra horizontalmente */
+        padding: 16px;
+        margin-left: 55%;
+    }
+
+    /* Estilos para la clase .table en pantallas más pequeñas */
+    .table {
+        font-size: 10px; /* Tamaño de fuente más pequeño */
+        width: 100%; /* Ocupa todo el ancho del contenedor */
+        margin: 0 auto; /* Centra la tabla horizontalmente */
+    }
+
+    /* Resto de tus estilos... */
+
+    /* Estilos para la clase .addButton y .showButton */
+    .addButton,
+    .showButton {
+        background-color: #007BB8;
+        color: #ffffff;
+        border-radius: 15px !important;
+        font-family: 'Raleway', sans-serif;
+        margin-left: 15rem;
+    }
+
+    /* Estilos para la clase .label */
+    .label {
+        display: flex;
+        align-items: start;
+        justify-content: start;
+        justify-items: start;
+        color: rgb(110, 110, 110);
+    }
+
+    .h3Table {
+        display: flex;
+        justify-content: center; /* Centrar horizontalmente */
+        align-items: center; /* Centrar verticalmente */
+        text-align: center;
+        font-family: 'Raleway', sans-serif;
+        margin-top: 12px; /* Reducir el margen superior */
+        font-size: 16px; /* Tamaño de fuente más pequeño */
+    }
+
+
+    .addButton,
+    .showButton {
+        background-color: #007BB8;
+        color: #ffffff;
+        border-radius: 15px !important;
+        font-family: 'Raleway', sans-serif;
+        margin-left: 15rem;
+    }
+}

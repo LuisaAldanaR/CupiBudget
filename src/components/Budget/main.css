@@ -87,6 +87,7 @@
 /* Estilo para el botón "Enviar" */
 .btn-send {
   order: 2; /* Ordenar el botón "Enviar" después del botón "Generar Reporte" */
+  margin-right: 10rem;
 }
 
   

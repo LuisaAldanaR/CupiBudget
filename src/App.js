@@ -68,7 +68,7 @@ function App() {
             path='/*'
             element={
               isAuthenticated() ? (
-                <div className="flex">
+                <div>
                   <Sidebar />
 
                   <div className="content w-100">

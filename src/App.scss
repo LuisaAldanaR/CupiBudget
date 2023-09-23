@@ -19,19 +19,8 @@ $light: #ffffff;
 $gray: #e7e9eb;
 $blue: #0000ff;
 
-/* Flex container */
-.flex {
-  display: flex;
-  margin: 0;
-  padding: 0;
-  width: 100%;
-}
 
-.contentApp{
-  background-color: rgb(242,242, 242 ) !important;
-  width: 100%;
-  
-}
+
 
 /* Top navigation bar */
 #navbar {
@@ -51,8 +40,8 @@ user-drop{
 
 /* Main content */
 .content {
-  background-color: rgba(0, 0, 0, 0.02);
   background-size: auto 100%;
+  height: auto;
 }
 
 /* Sidebar */
@@ -91,7 +80,7 @@ ul {
       top: 0px;
 
       &.active {
-        background-color: $gray;
+        background-color: rgb(219, 255, 220);
         position: sticky;
         top: 0px;
       }
@@ -131,11 +120,19 @@ ul {
 
 /* Custom styling for a logo image */
 .custom-logo {
-  width: 84px;
-  height: 80px;
-  margin-left: 30px;
+  width: 94px;
+  height: 88px;
+  margin-left: 0;
+
 
 }
+
+.sena-title{
+  margin-top: 1rem;
+  margin-left: 1rem;
+}
+
+
 
 .navbar-container{
   width: 100%;
@@ -152,6 +149,8 @@ ul {
   align-items: center;
   min-width: 100vh;
   width: 100%;
+  height: 65rem;
+  background-color: #eeeded;
 }
 
 /* Reset box-sizing and apply general styles to elements */
@@ -350,6 +349,42 @@ td {
 
 
 @media screen and (width: 1280px) and (height: 832px) {
+
+
+  
+  
+  ul {
+    list-style: none;
+    padding: 1rem 1rem;
+    position: sticky;
+    top: 0;
+    width: 16rem;
+  
+    li {
+      margin-bottom: 1rem;
+      position: sticky;
+      top: 0;
+      font-size: 1.2rem;
+  
+      .main-option {
+        font-weight: bold;
+      }
+      
+  
+      a {
+        text-decoration: none;
+        position: sticky;
+        top: 0px;
+  
+        &.active {
+          background-color: $gray;
+          position: sticky;
+          top: 0px;
+        }
+      }
+    }
+  }
+
   /* Styling for the main container */
   .mainContainer {
     position: absolute;
