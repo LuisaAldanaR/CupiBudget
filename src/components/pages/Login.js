@@ -1,18 +1,21 @@
 import React, { useState } from 'react';
-import '../../../src/App.scss'; // Importa los estilos desde la ruta especificada
-import 'bootstrap/dist/css/bootstrap.min.css'; // Importa el CSS de Bootstrap
-import Cookies from 'universal-cookie'; // Importa la biblioteca universal-cookies para gestionar cookies
+import '../../../src/App.scss';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Cookies from 'universal-cookie';
 import { helpHttp } from '../../helpers/helpHttp';
 import Swal from 'sweetalert2';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 
-const baseUrl = "http://www.mendezmrf10.somee.com/api/Auth/login"; // Define la URL base para la API
-const cookies = new Cookies(); // Crea una nueva instancia de la clase Cookies
+const baseUrl = "http://www.mendezmrf10.somee.com/api/Auth/login";
+const cookies = new Cookies();
 
 function Login() {
   const [form, setForm] = useState({
     username: '',
     password: ''
   });
+  const [showPassword, setShowPassword] = useState(false); // Agregamos el estado para mostrar/ocultar contraseña
 
   const handleChange = (e) => {
     setForm({
@@ -25,6 +28,10 @@ function Login() {
     localStorage.removeItem('jwtToken');
   }
 
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword); // Cambia el estado para mostrar/ocultar la contraseña
+  };
+
   const iniciarSesion = async () => {
     const { post } = helpHttp();
 
@@ -33,7 +40,6 @@ function Login() {
         headers: {
           'Content-Type': 'application/json',
         },
-        
         body: {
           username: form.username,
           password: form.password,
@@ -43,22 +49,20 @@ function Login() {
 
       if (response.length > 0) {
         const respuesta = response[0];
-        // Establecer la información del usuario como cookies
         cookies.set('id', respuesta.id, { path: '/' });
         cookies.set('apellido_paterno', respuesta.apellido_paterno, { path: '/' });
         cookies.set('apellido_materno', respuesta.apellido_materno, { path: '/' });
         cookies.set('nombre', respuesta.nombre, { path: '/' });
         cookies.set('username', respuesta.username, { path: '/' });
-        // Después de recibir el token JWT en la respuesta del servidor
-        const jwtToken = response; // Obtener el token JWT de la respuesta
-        localStorage.setItem('jwtToken', response); // Guarda el token JWT en el almacenamiento local    
+        const jwtToken = response;
+        localStorage.setItem('jwtToken', response);
         Swal.fire({
           icon: 'success',
           title: 'Autenticación Exitosa',
           showConfirmButton: false,
           timer: 950
         }).then(() => {
-          window.location.href = '/CrudApp'; // Redirige a la página '/CrudApp' después de la autenticación exitosa
+          window.location.href = '/CrudApp';
         });
       } else {
         Swal.fire({
@@ -72,47 +76,52 @@ function Login() {
     }
   }
 
-  // Función para comprobar si un usuario ya ha iniciado sesión
   React.useEffect(() => {
     clearAuthentication();
   }, []);
 
   return (
-    <div className="logo-login">
-      <img src="/img/Logo-sena.png" alt="Logo" />
-      <br />
-      <br />
-      <br />
-      <hr className='underLine'></hr>
-      <p className="welcomeText">Bienvenido</p>
-      <div className="mainContainer">
-        <div className="secondContainer">
-          <br />
-          <br />
-          <label className='l1'>Iniciar Sesión </label>
-          <br />
-          <br />
-          <br />
-          <div className="form-group">
-            <input
-              placeholder="Usuario"
-              type="text"
-              name="username"
-              onChange={handleChange}
-              className="rounded-input" // Aplica la clase CSS aquí
-            />
-            <input
-              placeholder="Contraseña"
-              type="password"
-              className="form-control rounded-input" // Aplica la clase CSS aquí
-              name="password"
-              onChange={handleChange}
-            />
+    <div className="login-container">
+      <div className="logo-login">
+        <img src="/img/Logo-sena.png" alt="Logo" />
+        <br />
+        <br />
+        <br />
+        <hr className='underLine'></hr>
+        <p className="welcomeText">Bienvenido</p>
+        <div id="mainContainer" className='filter'>
+          <div className="secondContainer">
+            <br />
+            <br />
+            <label className='l1'>Iniciar Sesión </label>
+            <br />
+            <br />
+            <br />
+            <div className="form-group">
+              <input
+                placeholder="Usuario"
+                type="text"
+                name="username"
+                onChange={handleChange}
+                className="rounded-input"
+              />
+              <input
+                placeholder="Contraseña"
+                type={showPassword ? 'text' : 'password'}
+                className="form-control rounded-input"
+                name="password"
+                value={form.password}
+                onChange={handleChange}
+              />
+              <span className={`password-toggle ${showPassword ? 'active' : ''}`} onClick={togglePasswordVisibility}>
+                <FontAwesomeIcon icon={showPassword ? faEye : faEyeSlash} />
+              </span>  
+            </div>
             <br />
             <button
               className="login-button"
               onClick={iniciarSesion}>
-              Siguiente
+              Ingresar
             </button>
             <br />
             <br />
