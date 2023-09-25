@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./main.css";
+import "../../App.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
 import Swal from "sweetalert2";

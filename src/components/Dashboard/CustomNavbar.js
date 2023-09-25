@@ -26,10 +26,7 @@ function CustomNavbar() {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto">
             {/* Notification Dropdown */}
-            <NavDropdown title=<FaIcons.FaBell/> id="basic-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">Notification 1</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">Notification 2</NavDropdown.Item>
-            </NavDropdown>
+            <FaIcons.FaBell className='notibell' style={{ marginRight: '50px', marginTop: '13px' }} />
             {/* User Profile Link */}
             <Nav.Link href="#link"><FaIcons.FaUserAlt/></Nav.Link>
             {/* User Menu Dropdown */}

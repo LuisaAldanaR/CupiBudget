@@ -1,6 +1,6 @@
 import React from "react";
 import CrudTableRow from "./CrudTableRow";
-import "./main.css";
+import "../../App.scss";
 
 // Definition of the CrudTable component
 const CrudTable = ({ data, setDataToEdit }) => {

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css'; // Import Bootstrap styles
 import { helpHttp } from "../../helpers/helpHttp"; // Import a utility for making HTTP requests
-import "./main.css";
+import "../../App.scss";
 import Swal from 'sweetalert2';
 
 

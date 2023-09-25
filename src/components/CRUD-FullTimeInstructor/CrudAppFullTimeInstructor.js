@@ -4,7 +4,7 @@ import CrudTable from "./CrudTable"; // Import the table component
 import { helpHttp } from "../../helpers/helpHttp"; // Adjust the import path
 import Loader from "./Loader"; // Import the loader component
 import Message from "./Message"; // Import the message component
-import "./main.css";
+import "../../App.scss";
 import Swal from 'sweetalert2';
 
 const CrudAppFullTimeInstructor = () => {

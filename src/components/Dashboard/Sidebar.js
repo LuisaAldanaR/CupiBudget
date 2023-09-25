@@ -42,13 +42,6 @@ const Sidebar = () => {
         <br/>
         <br/>
         <br/>
-            <div
-              className={`main-option ${isOptionActive('option1') ? 'active' : ''}`}
-              id='home'
-            >
-              <FaIcons.FaHome/> Inicio {isOptionActive('option1')} 
-            </div>
-        
         <li style={{ marginTop: "70px" }}>
           <div
             onMouseEnter={() => handleMouseEnter('option2')}
@@ -98,6 +91,34 @@ const Sidebar = () => {
               <li>
                 <NavLink to="/option4 " exact activeClassName="active">
                   <span style={{ color: 'black' }}>Suboption 4</span>
+                </NavLink>
+              </li>
+            </ul>
+          )}
+        </li>
+
+        <li style={{ marginTop: "70px" }}>
+          <div
+            onMouseEnter={() => handleMouseEnter('option4')}
+            onMouseLeave={() => handleMouseLeave('option4')}
+            className={`main-option ${isOptionActive('option4') ? 'active' : ''}`}
+          >
+            <FaIcons.FaFileInvoiceDollar /> Programas {isOptionActive('option4') ? <HiIcons.HiChevronDown style={{ color: 'green' }} /> : <HiIcons.HiChevronRight style={{ color: 'green' }} />} 
+          </div>
+          {isOptionActive('option4') && (
+            <ul
+              className="submenu"
+              onMouseEnter={() => handleMouseEnter('option4')}
+              onMouseLeave={() => handleMouseLeave('option4')}
+            >
+              <li>
+                <NavLink to="/programs" id="submenu" exact activeClassName="active">
+                  <span style={{ color: 'black' }}>Suboption</span>
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/option4" exact activeClassName="active">
+                  <span style={{ color: 'black' }}>Suboption</span>
                 </NavLink>
               </li>
             </ul>
