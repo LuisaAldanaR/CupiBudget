@@ -32,6 +32,8 @@ namespace ProyectoFormativo.Controllers
 
             // Crear una lista para almacenar los resultados JSON
             var results = new List<object>();
+            List <NetworkReport> networks1;
+            List<NetworkReport> networks2;
 
             try
             {
@@ -39,11 +41,11 @@ namespace ProyectoFormativo.Controllers
 
                 // Obtener la lista de NetworkReport para data1
                 InPerson inPerson1 = new InPerson(request.data1, lista);
-                var networks1 = inPerson1.GetNetworks();
+                networks1 = inPerson1.GetNetworks();
 
                 // Obtener la lista de NetworkReport para data2
                 InPerson inPerson2 = new InPerson(request.data2, lista);
-                var networks2 = inPerson2.GetNetworks();
+                networks2 = inPerson2.GetNetworks();
 
                 // Iterar a través de cada objeto NetworkReport y agregarlo a la lista de resultados
                 foreach (var network in networks1)
@@ -61,7 +63,7 @@ namespace ProyectoFormativo.Controllers
             }
 
 
-            var data = _pdfGenerator.GeneratePDF();
+            var data = _pdfGenerator.GeneratePDF(networks1, networks2);
             var stream = new MemoryStream(data);
 
             return File(stream, "application/pdf", "Reporte.pdf");

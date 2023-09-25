@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NetworkSimulator1;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,6 @@ namespace ProyectoFormativo.Modelos
 {
     public interface IPDFGenerator
     {
-        byte[] GeneratePDF();
+        byte[] GeneratePDF(List<NetworkReport> networks1, List<NetworkReport> networks2 );
     }
 }

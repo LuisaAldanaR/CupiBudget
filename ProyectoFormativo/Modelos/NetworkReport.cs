@@ -56,6 +56,13 @@ namespace NetworkSimulator1
             goal100();
             calculateBudget();
             calculateInstructors(instructors, idNetwork);
+
+
+            this.newCourses = (totalGoal - oldStudents) / 30.0;
+            if ((totalGoal - oldStudents) % 30 > 18)
+                newCourses = Math.Ceiling(newCourses);
+            else
+                newCourses = (int)newCourses;
         }
 
         public void goal70()
@@ -96,7 +103,7 @@ namespace NetworkSimulator1
 
         public void calculateInstructors(List<FullTimeInstructor> instructores, int idRed)
         {
-            DateTime time = new DateTime(2022, 1, 1);
+            DateTime time = new DateTime(DateTime.Now.Year, 1, 1);
 
             for (int i = 0; i < 4; i++)
             {

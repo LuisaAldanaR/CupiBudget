@@ -1,9 +1,15 @@
 ﻿using System;
+using System.Globalization;
 using System.Linq;
+using NetworkSimulator1;
+using ProyectoFormativo.Controllers;
 using ProyectoFormativo.Data;
 using ProyectoFormativo.Modelos;
 using QuestPDF.Fluent;
+using QuestPDF.Infrastructure;
 using QuestPDF.Helpers;
+using QuestPDF.Elements;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace PDFGenerator
 {
@@ -11,42 +17,42 @@ namespace PDFGenerator
     {
         public readonly ProyectoPruebaContext _proyectoFormativoContext;
 
-        public PDFGenerator (ProyectoPruebaContext proyectoFormativoContext)
+        public PDFGenerator(ProyectoPruebaContext proyectoFormativoContext)
         {
             _proyectoFormativoContext = proyectoFormativoContext;
         }
 
-        public byte[] GeneratePDF()
+        public byte[] GeneratePDF(List<NetworkReport> networks1, List<NetworkReport> networks2)
         {
-            
             var imagePath = "wwwroot/images/logo.png";
+            var networkList = _proyectoFormativoContext.Networks.ToList();
+            CultureInfo cultureInfo = new CultureInfo("es-ES");
+
             var data = Document.Create(document =>
             {
+
                 document.Page(page =>
                 {
-
+                    page.Size(PageSizes.A4.Portrait());
                     page.Margin(30);
 
                     page.Header().ShowOnce().Row(row =>
                     {
 
                         row.ConstantItem(70).Image(imagePath);
-
-                        row.RelativeColumn();
-
-                        row.RelativeItem().Column(col =>
+                        row.RelativeItem();
+                        row.RelativeItem().Padding(15).Column(col =>
                         {
                             col.Item().Border(1).BorderColor(Colors.Green.Medium).Background(Colors.Green.Medium).AlignCenter().Text("Servicio Nacional de Aprendizaje").Bold().FontSize(12).FontColor(Colors.White);
                             col.Item().Border(1).BorderColor(Colors.Green.Medium).AlignCenter().Text("Centro de Comercios y Servicios").FontSize(9);
                             col.Item().Border(1).BorderColor(Colors.Green.Medium).Background(Colors.Green.Medium).AlignCenter().Text("Ibagué - Tolima").FontSize(9).FontColor(Colors.White);
-                            col.Item().Border(1).BorderColor(Colors.Green.Medium).AlignCenter().Text("Tel. 111015496").FontSize(9);
-
+                            col.Item().Border(1).BorderColor(Colors.Green.Medium).AlignCenter().Text("Carrera 4°, Estadio Calle 44 Avenida Ferrocarril").FontSize(9);
 
                         });
 
                     });
 
-                    page.Content().PaddingVertical(10).Column(col1 =>
+                    page.Content().Column(col1 =>
                     {
                         col1.Item().Column(col2 =>
                         {
@@ -58,266 +64,198 @@ namespace PDFGenerator
                                 txt.Span("Yolanda Cardenas Villamarín").FontSize(10);
                             });
 
-                            col2.Item().Text(txt =>
-                            {
-                                txt.Span("Centro: ").SemiBold().FontSize(10);
-                                txt.Span("Comercios y Servicios").FontSize(10);
-                            });
-
-                            col2.Item().Text(txt =>
-                            {
-                                txt.Span("Ciudad: ").SemiBold().FontSize(10);
-                                txt.Span("Ibagué").FontSize(10);
-                            });
                         });
 
                         col1.Item().LineHorizontal(0.5f);
 
-                        col1.Item().Table(table =>
+                        for (int i = 0; i < networks1.Count; i++)
                         {
-                            table.ColumnsDefinition(columns =>
+                            var net = networks1[i];
+
+                            col1.Item().Table(table =>
                             {
-                                columns.RelativeColumn(2);
-                                columns.RelativeColumn();
-                                columns.RelativeColumn();
-                                columns.RelativeColumn();
+                                table.ColumnsDefinition(columns =>
+                                {
+                                    columns.RelativeColumn();
+                                    columns.RelativeColumn();
+                                    columns.RelativeColumn();
+                                    columns.RelativeColumn();
+                                    columns.RelativeColumn();
+                                    columns.RelativeColumn();
+                                });
+
+                                table.Cell().Column(1).Row(1).ColumnSpan(6).NetCell(networkList[i].NetworkName);
+
+                                table.Cell().Column(1).Row(2).LightCell("Meta");
+                                table.Cell().Column(2).Row(2).ValueCell(net.totalGoal.ToString());
+
+                                table.Cell().Column(1).Row(3).LightCell("Cupos Antiguos");
+                                table.Cell().Column(2).Row(3).ValueCell(net.oldStudents.ToString());
+
+                                table.Cell().Column(3).Row(2).LightCell("Fichas Antiguas");
+                                table.Cell().Column(4).Row(2).ValueCell(net.oldCourses.ToString());
+
+                                table.Cell().Column(3).Row(3).LightCell("Fichas Nuevas");
+                                table.Cell().Column(4).Row(3).ValueCell(net.newCourses.ToString());
+
+                                table.Cell().Column(5).Row(2).RowSpan(2)
+                                .Border(1)
+                                .BorderColor(Colors.Grey.Darken3)
+                                .Background(Colors.Green.Accent1)
+                                .AlignMiddle()
+                                .PaddingLeft(3)
+                                .Text("Fichas Totales")
+                                .FontColor(Colors.Grey.Darken3);
+
+                                table.Cell().Column(6).Row(2).RowSpan(2)
+                                .Border(1)
+                                .BorderColor(Colors.Grey.Darken3)
+                                .AlignMiddle().AlignCenter()
+                                .Text(net.totalCourses.ToString());
+
+                                table.Cell().Column(1).Row(4).LabelCell("Trimestre");
+                                table.Cell().Column(2).Row(4).LabelCell("Fichas");
+                                table.Cell().Column(3).Row(4).LabelCell("Planta");
+                                table.Cell().Column(4).Row(4).LabelCell("Contrato");
+                                table.Cell().Column(5).ColumnSpan(2).Row(4).LabelCell("Presupuesto");
+
+                                table.Cell().Column(1).Row(5).LightCell("Primero");
+                                table.Cell().Column(2).Row(5).ValueCell(net.courses[0].ToString());
+                                table.Cell().Column(3).Row(5).ValueCell(net.fullTime[0].ToString());
+                                table.Cell().Column(4).Row(5).ValueCell(net.contractT[0].ToString());
+                                table.Cell().Column(5).ColumnSpan(2).Row(5).ValueCell($"$ {net.budget1T.ToString("N0", cultureInfo)}");
+
+                                table.Cell().Column(1).Row(6).LightCell("Segundo");
+                                table.Cell().Column(2).Row(6).ValueCell(net.courses[1].ToString());
+                                table.Cell().Column(3).Row(6).ValueCell(net.fullTime[1].ToString());
+                                table.Cell().Column(4).Row(6).ValueCell(net.contractT[1].ToString());
+                                table.Cell().Column(5).ColumnSpan(2).Row(6).ValueCell($"$ {net.budget2T.ToString("N0", cultureInfo)}");
+
+                                table.Cell().Column(1).Row(7).LightCell("Tercero");
+                                table.Cell().Column(2).Row(7).ValueCell(net.courses[2].ToString());
+                                table.Cell().Column(3).Row(7).ValueCell(net.fullTime[2].ToString());
+                                table.Cell().Column(4).Row(7).ValueCell(net.contractT[2].ToString());
+                                table.Cell().Column(5).ColumnSpan(2).Row(7).ValueCell($"$ {net.budget3T.ToString("N0", cultureInfo)}");
+
+                                table.Cell().Column(1).Row(8).LightCell("Cuarto");
+                                table.Cell().Column(2).Row(8).ValueCell(net.courses[3].ToString());
+                                table.Cell().Column(3).Row(8).ValueCell(net.fullTime[3].ToString());
+                                table.Cell().Column(4).Row(8).ValueCell(net.contractT[3].ToString());
+                                table.Cell().Column(5).ColumnSpan(2).Row(8).ValueCell($"$ {net.budget4T.ToString("N0", cultureInfo)}");
+
+                                table.Cell().Column(4).Row(9).Background(Colors.Yellow.Accent1).TotalCell("Total");
+
+                                table.Cell().Column(5).ColumnSpan(2).Row(9).Background(Colors.Yellow.Accent1).TotalCell($"$ {net.annualBudget.ToString("N0", cultureInfo)}");
+
                             });
 
-                            table.Header(header =>
-                            {
-                                header.Cell().Background(Colors.Green.Medium).Padding(2).Text("Red de conocimiento").FontColor(Colors.White);
-                                header.Cell().Background(Colors.Green.Medium).Padding(2).Text("Meta").FontColor(Colors.White);
-                                header.Cell().Background(Colors.Green.Medium).Padding(2).Text("Número de instructores").FontColor(Colors.White);
-                                header.Cell().Background(Colors.Green.Medium).Padding(2).Text("Presupuesto").FontColor(Colors.White);
-                            });
+                            col1.Spacing(10);
+                        }
 
-                            var networks = _proyectoFormativoContext.Networks;
+                        col1.Item().PageBreak();
 
-                            foreach (var item in networks.ToList())
-                            {
-
-                                var red = item;
-                                var meta = new Random().Next(1, 5000);
-                                var numeroInstructores = meta / 30;
-                                var presupuesto = numeroInstructores * 4000000;
-
-                                table.Cell().BorderBottom(0.5f).BorderColor(Colors.LightGreen.Medium).Padding(2).Text(red.NetworkName).FontSize(10);
-                                table.Cell().BorderBottom(0.5f).BorderColor(Colors.LightGreen.Medium).Padding(2).Text(meta.ToString()).FontSize(10);
-                                table.Cell().BorderBottom(0.5f).BorderColor(Colors.LightGreen.Medium).Padding(2).Text(numeroInstructores.ToString()).FontSize(10);
-                                table.Cell().BorderBottom(0.5f).BorderColor(Colors.LightGreen.Medium).Padding(2).Text($"$ {presupuesto}").FontSize(10);
-                            }
-                        });
-
-                        col1.Item().AlignRight().Text("Total: $ 10000").FontSize(12);
-
-                        col1.Item().Background(Colors.Grey.Lighten3).Padding(10).Column(column =>
+                        col1.Item().Column(col3 =>
                         {
-                            column.Item().Text("Comentarios").FontSize(14);
-                            column.Item().Text(Placeholders.LoremIpsum());
-                            column.Spacing(5);
-                        });
+                            col3.Item().Text("Reporte Técnicos - Presencial").Bold();
 
-                        col1.Item().Column(col2 =>
-                        {
-                            col2.Item().Text("Reporte Tecnólogos - Virtual").Bold();
-
-                            col2.Item().Text(txt =>
+                            col3.Item().Text(txt =>
                             {
                                 txt.Span("Coordinadora Académica: ").SemiBold().FontSize(10);
                                 txt.Span("Yolanda Cardenas Villamarín").FontSize(10);
                             });
 
-                            col2.Item().Text(txt =>
-                            {
-                                txt.Span("Centro: ").SemiBold().FontSize(10);
-                                txt.Span("Comercios y Servicios").FontSize(10);
-                            });
-
-                            col2.Item().Text(txt =>
-                            {
-                                txt.Span("Ciudad: ").SemiBold().FontSize(10);
-                                txt.Span("Ibagué").FontSize(10);
-                            });
                         });
 
                         col1.Item().LineHorizontal(0.5f);
 
-                        col1.Item().Table(table =>
+                        for (int i = 0; i < networks2.Count; i++)
                         {
-                            table.ColumnsDefinition(columns =>
+                            if (i == 4)
                             {
-                                columns.RelativeColumn(2);
-                                columns.RelativeColumn();
-                                columns.RelativeColumn();
-                                columns.RelativeColumn();
-                            });
-
-                            table.Header(header =>
-                            {
-                                header.Cell().Background(Colors.Green.Medium).Padding(2).Text("Red de conocimiento").FontColor(Colors.White);
-                                header.Cell().Background(Colors.Green.Medium).Padding(2).Text("Meta").FontColor(Colors.White);
-                                header.Cell().Background(Colors.Green.Medium).Padding(2).Text("Número de instructores").FontColor(Colors.White);
-                                header.Cell().Background(Colors.Green.Medium).Padding(2).Text("Presupuesto").FontColor(Colors.White);
-                            });
-
-                            foreach (var item in Enumerable.Range(1, 12))
-                            {
-                                var red = Placeholders.Random.Next(1, 10);
-                                var meta = new Random().Next(1, 5000);
-                                var numeroInstructores = meta / 30;
-                                var presupuesto = numeroInstructores * 4000000;
-
-                                table.Cell().BorderBottom(0.5f).BorderColor(Colors.LightGreen.Medium).Padding(2).Text(Placeholders.Label()).FontSize(10);
-                                table.Cell().BorderBottom(0.5f).BorderColor(Colors.LightGreen.Medium).Padding(2).Text(meta.ToString()).FontSize(10);
-                                table.Cell().BorderBottom(0.5f).BorderColor(Colors.LightGreen.Medium).Padding(2).Text(numeroInstructores.ToString()).FontSize(10);
-                                table.Cell().BorderBottom(0.5f).BorderColor(Colors.LightGreen.Medium).Padding(2).Text($"$ {presupuesto}").FontSize(10);
+                                col1.Item().PageBreak();
                             }
-                        });
 
-                        col1.Item().AlignRight().Text("Total: $ 10000").FontSize(12);
+                            var net = networks2[i];
 
-                        col1.Item().Background(Colors.Grey.Lighten3).Padding(10).Column(column =>
-                        {
-                            column.Item().Text("Comentarios").FontSize(14);
-                            column.Item().Text(Placeholders.LoremIpsum());
-                            column.Spacing(5);
-                        });
-
-                        col1.Item().Column(col2 =>
-                        {
-                            col2.Item().Text("Reporte Técnico - Presencial").Bold();
-
-                            col2.Item().Text(txt =>
+                            col1.Item().Table(table =>
                             {
-                                txt.Span("Coordinadora Académica: ").SemiBold().FontSize(10);
-                                txt.Span("Yolanda Cardenas Villamarín").FontSize(10);
+                                table.ColumnsDefinition(columns =>
+                                {
+                                    columns.RelativeColumn();
+                                    columns.RelativeColumn();
+                                    columns.RelativeColumn();
+                                    columns.RelativeColumn();
+                                    columns.RelativeColumn();
+                                    columns.RelativeColumn();
+                                });
+
+                                table.Cell().Column(1).Row(1).ColumnSpan(6).NetCell(networkList[i].NetworkName);
+
+                                table.Cell().Column(1).Row(2).LightCell("Meta");
+                                table.Cell().Column(2).Row(2).ValueCell(net.totalGoal.ToString());
+
+                                table.Cell().Column(1).Row(3).LightCell("Cupos Antiguos");
+                                table.Cell().Column(2).Row(3).ValueCell(net.oldStudents.ToString());
+
+                                table.Cell().Column(3).Row(2).LightCell("Fichas Antiguas");
+                                table.Cell().Column(4).Row(2).ValueCell(net.oldCourses.ToString());
+
+                                table.Cell().Column(3).Row(3).LightCell("Fichas Nuevas");
+                                table.Cell().Column(4).Row(3).ValueCell(net.newCourses.ToString());
+
+                                table.Cell().Column(5).Row(2).RowSpan(2)
+                                .Border(1)
+                                .BorderColor(Colors.Grey.Darken3)
+                                .Background(Colors.Green.Accent1)
+                                .AlignMiddle()
+                                .PaddingLeft(3)
+                                .Text("Fichas Totales")
+                                .FontColor(Colors.Grey.Darken3);
+
+                                table.Cell().Column(6).Row(2).RowSpan(2)
+                                .Border(1)
+                                .BorderColor(Colors.Grey.Darken3)
+                                .AlignMiddle().AlignCenter()
+                                .Text(net.totalCourses.ToString());
+
+                                table.Cell().Column(1).Row(4).LabelCell("Trimestre");
+                                table.Cell().Column(2).Row(4).LabelCell("Fichas");
+                                table.Cell().Column(3).Row(4).LabelCell("Planta");
+                                table.Cell().Column(4).Row(4).LabelCell("Contrato");
+                                table.Cell().Column(5).ColumnSpan(2).Row(4).LabelCell("Presupuesto");
+
+                                table.Cell().Column(1).Row(5).LightCell("Primero");
+                                table.Cell().Column(2).Row(5).ValueCell(net.courses[0].ToString());
+                                table.Cell().Column(3).Row(5).ValueCell(net.fullTime[0].ToString());
+                                table.Cell().Column(4).Row(5).ValueCell(net.contractT[0].ToString());
+                                table.Cell().Column(5).ColumnSpan(2).Row(5).ValueCell($"$ {net.budget1T.ToString("N0", cultureInfo)}");
+
+                                table.Cell().Column(1).Row(6).LightCell("Segundo");
+                                table.Cell().Column(2).Row(6).ValueCell(net.courses[1].ToString());
+                                table.Cell().Column(3).Row(6).ValueCell(net.fullTime[1].ToString());
+                                table.Cell().Column(4).Row(6).ValueCell(net.contractT[1].ToString());
+                                table.Cell().Column(5).ColumnSpan(2).Row(6).ValueCell($"$ {net.budget2T.ToString("N0", cultureInfo)}");
+
+                                table.Cell().Column(1).Row(7).LightCell("Tercero");
+                                table.Cell().Column(2).Row(7).ValueCell(net.courses[2].ToString());
+                                table.Cell().Column(3).Row(7).ValueCell(net.fullTime[2].ToString());
+                                table.Cell().Column(4).Row(7).ValueCell(net.contractT[2].ToString());
+                                table.Cell().Column(5).ColumnSpan(2).Row(7).ValueCell($"$ {net.budget3T.ToString("N0", cultureInfo)}");
+
+                                table.Cell().Column(1).Row(8).LightCell("Cuarto");
+                                table.Cell().Column(2).Row(8).ValueCell(net.courses[3].ToString());
+                                table.Cell().Column(3).Row(8).ValueCell(net.fullTime[3].ToString());
+                                table.Cell().Column(4).Row(8).ValueCell(net.contractT[3].ToString());
+                                table.Cell().Column(5).ColumnSpan(2).Row(8).ValueCell($"$ {net.budget4T.ToString("N0", cultureInfo)}");
+
+                                table.Cell().Column(4).Row(9).Background(Colors.Yellow.Accent1).TotalCell("Total");
+
+                                table.Cell().Column(5).ColumnSpan(2).Row(9).Background(Colors.Yellow.Accent1).TotalCell($"$ {net.annualBudget.ToString("N0", cultureInfo)}");
+
                             });
+                        }
 
-                            col2.Item().Text(txt =>
-                            {
-                                txt.Span("Centro: ").SemiBold().FontSize(10);
-                                txt.Span("Comercios y Servicios").FontSize(10);
-                            });
-
-                            col2.Item().Text(txt =>
-                            {
-                                txt.Span("Ciudad: ").SemiBold().FontSize(10);
-                                txt.Span("Ibagué").FontSize(10);
-                            });
-                        });
-
-                        col1.Item().LineHorizontal(0.5f);
-
-                        col1.Item().Table(table =>
-                        {
-                            table.ColumnsDefinition(columns =>
-                            {
-                                columns.RelativeColumn(2);
-                                columns.RelativeColumn();
-                                columns.RelativeColumn();
-                                columns.RelativeColumn();
-                            });
-
-                            table.Header(header =>
-                            {
-                                header.Cell().Background(Colors.Green.Medium).Padding(2).Text("Red de conocimiento").FontColor(Colors.White);
-                                header.Cell().Background(Colors.Green.Medium).Padding(2).Text("Meta").FontColor(Colors.White);
-                                header.Cell().Background(Colors.Green.Medium).Padding(2).Text("Número de instructores").FontColor(Colors.White);
-                                header.Cell().Background(Colors.Green.Medium).Padding(2).Text("Presupuesto").FontColor(Colors.White);
-                            });
-
-                            foreach (var item in Enumerable.Range(1, 12))
-                            {
-                                var red = Placeholders.Random.Next(1, 10);
-                                var meta = new Random().Next(1, 5000);
-                                var numeroInstructores = meta / 30;
-                                var presupuesto = numeroInstructores * 4000000;
-
-                                table.Cell().BorderBottom(0.5f).BorderColor(Colors.LightGreen.Medium).Padding(2).Text(Placeholders.Label()).FontSize(10);
-                                table.Cell().BorderBottom(0.5f).BorderColor(Colors.LightGreen.Medium).Padding(2).Text(meta.ToString()).FontSize(10);
-                                table.Cell().BorderBottom(0.5f).BorderColor(Colors.LightGreen.Medium).Padding(2).Text(numeroInstructores.ToString()).FontSize(10);
-                                table.Cell().BorderBottom(0.5f).BorderColor(Colors.LightGreen.Medium).Padding(2).Text($"$ {presupuesto}").FontSize(10);
-                            }
-                        });
-
-                        col1.Item().AlignRight().Text("Total: $ 10000").FontSize(12);
-
-                        col1.Item().Background(Colors.Grey.Lighten3).Padding(10).Column(column =>
-                        {
-                            column.Item().Text("Comentarios").FontSize(14);
-                            column.Item().Text(Placeholders.LoremIpsum());
-                            column.Spacing(5);
-                        });
-
-                        col1.Item().Column(col2 =>
-                        {
-                            col2.Item().Text("Reporte Técnico - Virtual").Bold();
-
-                            col2.Item().Text(txt =>
-                            {
-                                txt.Span("Coordinadora Académica: ").SemiBold().FontSize(10);
-                                txt.Span("Yolanda Cardenas Villamarín").FontSize(10);
-                            });
-
-                            col2.Item().Text(txt =>
-                            {
-                                txt.Span("Centro: ").SemiBold().FontSize(10);
-                                txt.Span("Comercios y Servicios").FontSize(10);
-                            });
-
-                            col2.Item().Text(txt =>
-                            {
-                                txt.Span("Ciudad: ").SemiBold().FontSize(10);
-                                txt.Span("Ibagué").FontSize(10);
-                            });
-                        });
-
-                        col1.Item().LineHorizontal(0.5f);
-
-                        col1.Item().Table(table =>
-                        {
-                            table.ColumnsDefinition(columns =>
-                            {
-                                columns.RelativeColumn(2);
-                                columns.RelativeColumn();
-                                columns.RelativeColumn();
-                                columns.RelativeColumn();
-                            });
-
-                            table.Header(header =>
-                            {
-                                header.Cell().Background(Colors.Green.Medium).Padding(2).Text("Red de conocimiento").FontColor(Colors.White);
-                                header.Cell().Background(Colors.Green.Medium).Padding(2).Text("Meta").FontColor(Colors.White);
-                                header.Cell().Background(Colors.Green.Medium).Padding(2).Text("Número de instructores").FontColor(Colors.White);
-                                header.Cell().Background(Colors.Green.Medium).Padding(2).Text("Presupuesto").FontColor(Colors.White);
-                            });
-
-                            foreach (var item in Enumerable.Range(1, 12))
-                            {
-                                var red = Placeholders.Random.Next(1, 10);
-                                var meta = new Random().Next(1, 5000);
-                                var numeroInstructores = meta / 30;
-                                var presupuesto = numeroInstructores * 4000000;
-
-                                table.Cell().BorderBottom(0.5f).BorderColor(Colors.LightGreen.Medium).Padding(2).Text(Placeholders.Label()).FontSize(10);
-                                table.Cell().BorderBottom(0.5f).BorderColor(Colors.LightGreen.Medium).Padding(2).Text(meta.ToString()).FontSize(10);
-                                table.Cell().BorderBottom(0.5f).BorderColor(Colors.LightGreen.Medium).Padding(2).Text(numeroInstructores.ToString()).FontSize(10);
-                                table.Cell().BorderBottom(0.5f).BorderColor(Colors.LightGreen.Medium).Padding(2).Text($"$ {presupuesto}").FontSize(10);
-                            }
-                        });
-
-                        col1.Item().AlignRight().Text("Total: $ 10000").FontSize(12);
-
-                        col1.Item().Background(Colors.Grey.Lighten3).Padding(10).Column(column =>
-                        {
-                            column.Item().Text("Comentarios").FontSize(14);
-                            column.Item().Text(Placeholders.LoremIpsum());
-                            column.Spacing(5);
-                        });
-
-                        col1.Spacing(10);
                     });
-
 
                     page.Footer().AlignRight().Text(txt =>
                     {
