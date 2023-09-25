@@ -88,7 +88,7 @@ function Login() {
         <br />
         <br />
         <hr className='underLine'></hr>
-        <p className="welcomeText">Bienvenido</p>
+        <p className="welcomeText tracking-in-expand-forward-top">Bienvenido</p>
         <div id="mainContainer" className='filter'>
           <div className="secondContainer">
             <br />

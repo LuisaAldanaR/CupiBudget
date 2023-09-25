@@ -21,7 +21,7 @@ function CustomNavbar() {
             className="custom-logo" // Custom class for the logo
             alt="SENA Logo"
           />
-          <p className='sena-title'>Servicio nacional de aprendizaje</p>
+          <p className='sena-title'>Servicio Nacional De Aprendizaje</p>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto">
