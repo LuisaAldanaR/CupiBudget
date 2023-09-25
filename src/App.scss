@@ -1,5 +1,5 @@
 /* Import fonts from Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;400;700&family=Raleway:wght@400;600&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@100;400;700&family=Raleway:wght@400;600&display=swap");
 
 /* General styles */
 
@@ -9,8 +9,8 @@
 }
 
 body {
-  font-family: 'Lato', sans-serif; /* Use Lato font as the default font */
-  font-family: 'Raleway', sans-serif; /* Use Raleway font as the second option */
+  font-family: "Lato", sans-serif; /* Use Lato font as the default font */
+  font-family: "Raleway", sans-serif; /* Use Raleway font as the second option */
   margin: 0;
   padding: 0;
 }
@@ -20,12 +20,9 @@ $light: #ffffff;
 $gray: #e7e9eb;
 $blue: #0000ff;
 
-
-
-
 /* Top navigation bar */
 #navbar {
-  background-color: $light !important;
+  background-color: #39A900 !important;
   padding: 1rem 2rem;
   border-bottom: 1px solid #aca7a7;
   position: sticky;
@@ -33,62 +30,63 @@ $blue: #0000ff;
   z-index: 2;
   width: 100%;
   height: 90px;
+}
 
+.white-text {
+  color: white;
 }
 
 /* Custom styling for navigation button */
+/* Custom styling for navigation button */
+.user {
+  color: $light;
+}
 #basic-nav-dropdown::after {
   content: "";
   display: inline-block;
   vertical-align: middle;
-  border-top: 8px solid green;
+  border-top: 8px solid #000;
   border-left: 6px solid transparent;
   border-right: 6px solid transparent;
   margin-left: 5px;
   margin-right: 40px;
   border-width: 10px 6px;
   overflow: visible;
-  
+}
 
+/* Style for the user name inside the dropdown */
+#basic-nav-dropdown .nav-link {
+  color: $light !important;
 }
 
 /* Custom styling for a logo image */
 .sena-title {
   font-size: 25px;
-  color: #3ba559;
+  color: #ffffff;
   white-space: nowrap; /* Evita que el texto se divida en varias líneas */
   overflow: hidden; /* Oculta cualquier contenido desbordado */
   text-overflow: ellipsis; /* Añade puntos suspensivos (...) si el texto se desborda */
-  margin-left: 2rem;
+  margin-left: 1rem;
   margin-top: 1rem;
 }
 
 .custom-logo {
-  width: 102px;
+  width: 130px;
   height: auto; /* Ajusta la altura automáticamente según el ancho */
   max-width: 100%; /* Evita que la imagen sea más ancha que su contenedor */
 }
 
-
-.navbar-container{
+.navbar-container {
   width: 100%;
   margin: 0;
   padding: 0;
 }
 
-
-  
-
-
-
-
 /* Main content */
 .content {
-  
   background-color: #f3f1f1;
   background-size: 100%;
   min-height: 61rem;
-  
 }
 
 /* Sidebar */
@@ -98,22 +96,31 @@ $blue: #0000ff;
   flex-direction: column;
   background-color: $light !important;
   align-items: center;
-  justify-content: center; 
+  justify-content: center;
   width: 100%;
   height: 100%;
-  border-right: 1px solid #aca7a7;
+  border-right: 1px solid #a7a7a7;
   position: fixed;
-  z-index: 2; 
-  max-width: 18rem;
-  
+  z-index: 2;
+  max-width: 14rem;
 }
+
+/* Estilo de sombreado gris claro para la opción principal activa */
+.main-option.active {
+  background-color: #dcffe3; /* Puedes ajustar el color gris claro según tus preferencias */
+  width: 222px;
+  margin: 0;
+  box-shadow: 1px 1px 0px 0px gray; /* Ajusta la sombra según sea necesario */
+}
+
+
 
 ul {
   list-style: none;
   padding: 1rem 1rem;
   position: sticky;
   top: 0;
-  width: 16rem;
+  width: 20rem;
   margin-left: 2rem !important;
   margin-bottom: 4rem !important;
 
@@ -121,8 +128,7 @@ ul {
     margin-bottom: 1rem;
     font-size: 1.2rem;
     margin-bottom: 0rem;
-
-  
+    width: 10rem;
 
     a {
       text-decoration: none;
@@ -138,10 +144,6 @@ ul {
   }
 }
 
-
-
-
-
 /* Global styles */
 .html {
   box-sizing: border-box;
@@ -151,9 +153,7 @@ ul {
   align-items: center;
   min-width: 100vh;
   width: 100%;
-  height: 100%;  
-  
-
+  height: 100%;
 }
 
 ////////////////////////  LOGIN STYLES //////////////////////////////////
@@ -200,8 +200,7 @@ input[type="reset"] {
   cursor: pointer;
 }
 
-
- /* Styling for the main container */
+/* Styling for the main container */
 /* Styling for the main container */
 #mainContainer {
   position: absolute;
@@ -214,13 +213,12 @@ input[type="reset"] {
   width: 23%; /* Utilizar unidades relativas */
   box-shadow: 0 2px 8px #000;
   border: 1px solid #ffffff40;
-  background-color: #88cb66a2;
-  
+  background-color: #38a9009f;
 
-  .filter{
-  -webkit-backdrop-filter: blur(15px);
-  backdrop-filter: blur(15px);
-  background-color: rgba(243,243,243,0.2);
+  .filter {
+    -webkit-backdrop-filter: blur(15px);
+    backdrop-filter: blur(15px);
+    background-color: rgba(243, 243, 243, 0.2);
   }
 
   /* Styles for labels l1 and l2 */
@@ -233,7 +231,7 @@ input[type="reset"] {
   .l2 {
     color: #000000;
     font-weight: 400;
-    font-size: 1.3rem; /* Utilizar unidades relativas */
+    font-size: 1.1rem; /* Utilizar unidades relativas */
   }
 
   /* Styling for the login button */
@@ -243,6 +241,8 @@ input[type="reset"] {
     color: #000000;
     border: none;
     padding: 5% 10%; /* Utilizar unidades relativas */
+    font-size: 18px;
+    font-weight: 400;
   }
 
   /* Styling for rounded inputs */
@@ -264,7 +264,7 @@ input[type="reset"] {
 
 /* En App.scss o en un archivo separado (por ejemplo, Login.css) */
 .login-container {
-  background-image: url('../public/img/background-login.png'); /* Reemplaza 'fondo.jpg' con la URL de tu imagen de fondo */
+  background-image: url("../public/img/background-login.png"); /* Reemplaza 'fondo.jpg' con la URL de tu imagen de fondo */
   background-size: cover; /* Ajusta el tamaño de la imagen para cubrir todo el contenedor */
   background-repeat: no-repeat; /* Evita que la imagen de fondo se repita */
   background-position: center; /* Centra la imagen de fondo horizontal y verticalmente */
@@ -272,7 +272,7 @@ input[type="reset"] {
   height: 100%;
   position: absolute;
   top: 0; /* Ajusta la posición vertical hacia arriba */
-  left: 0; 
+  left: 0;
 }
 
 .logo-login {
@@ -284,8 +284,45 @@ input[type="reset"] {
   .welcomeText {
     margin-left: 15%; /* Utilizar unidades relativas */
     font-size: 2rem; /* Utilizar unidades relativas */
-    animation:bounce-bottom 1.5s linear both} @keyframes bounce-bottom{0%{transform:translateY(45px);animation-timing-function:ease-in;opacity:1}24%{opacity:1}40%{transform:translateY(24px);animation-timing-function:ease-in}65%{transform:translateY(12px);animation-timing-function:ease-in}82%{transform:translateY(6px);animation-timing-function:ease-in}93%{transform:translateY(4px);animation-timing-function:ease-in}25%,55%,75%,87%{transform:translateY(0);animation-timing-function:ease-out}100%{transform:translateY(0);animation-timing-function:ease-out;opacity:1}
-    
+    animation: bounce-bottom 1.5s linear both;
+  }
+  @keyframes bounce-bottom {
+    0% {
+      transform: translateY(45px);
+      animation-timing-function: ease-in;
+      opacity: 1;
+    }
+    24% {
+      opacity: 1;
+    }
+    40% {
+      transform: translateY(24px);
+      animation-timing-function: ease-in;
+    }
+    65% {
+      transform: translateY(12px);
+      animation-timing-function: ease-in;
+    }
+    82% {
+      transform: translateY(6px);
+      animation-timing-function: ease-in;
+    }
+    93% {
+      transform: translateY(4px);
+      animation-timing-function: ease-in;
+    }
+    25%,
+    55%,
+    75%,
+    87% {
+      transform: translateY(0);
+      animation-timing-function: ease-out;
+    }
+    100% {
+      transform: translateY(0);
+      animation-timing-function: ease-out;
+      opacity: 1;
+    }
   }
 
   .underLine {
@@ -325,27 +362,27 @@ input[type="reset"] {
 }
 
 .thLeft {
-  background-color: #C5E8FC !important;
+  background-color: #c5e8fc !important;
   border-top-left-radius: 10px !important;
-  font-family: 'Raleway', sans-serif;
+  font-family: "Raleway", sans-serif;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); /* Agrega una sombra */
 }
 
 .thRight {
-  background-color: #C5E8FC !important;
+  background-color: #c5e8fc !important;
   border-top-right-radius: 10px !important;
-  font-family: 'Raleway', sans-serif;
+  font-family: "Raleway", sans-serif;
 }
 
 .thTable {
-  background-color: #C5E8FC !important;
-  font-family: 'Raleway', sans-serif;
+  background-color: #c5e8fc !important;
+  font-family: "Raleway", sans-serif;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); /* Agrega una sombra */
 }
 
 .tdTableRow {
   text-align: center;
-  font-family: 'Raleway', sans-serif;
+  font-family: "Raleway", sans-serif;
   font-weight: 100;
   min-width: 115px;
 }
@@ -355,7 +392,7 @@ input[type="reset"] {
   justify-content: center; /* Centrar horizontalmente */
   align-items: center; /* Centrar verticalmente */
   text-align: center;
-  font-family: 'Raleway', sans-serif;
+  font-family: "Raleway", sans-serif;
   margin-bottom: 5rem;
   margin-top: 3rem;
   font-weight: bold;
@@ -387,29 +424,26 @@ input[type="reset"] {
 
 .containerButtons {
   display: flex !important;
-justify-content: space-between !important;
-text-align: center !important;
-margin-left: 4.5% !important;
-margin-right: 4.5% !important;
-margin-top: 24px !important;
+  justify-content: space-between !important;
+  text-align: center !important;
+  margin-left: 4.5% !important;
+  margin-right: 4.5% !important;
+  margin-top: 24px !important;
 }
 
-.addButton
-{
-    background-color: #007BB8 !important;
-    color: #ffffff !important;
-    border-radius: 15px !important; 
-    font-family: 'Raleway', sans-serif !important;
-    margin-left: 18rem;
-
-}
-
-.showButton
-{
-  background-color: #6fc287!important;
+.addButton {
+  background-color: #007bb8 !important;
   color: #ffffff !important;
-  border-radius: 15px !important; 
-  font-family: 'Raleway', sans-serif!important;
+  border-radius: 15px !important;
+  font-family: "Raleway", sans-serif !important;
+  margin-left: 18rem;
+}
+
+.showButton {
+  background-color: #6fc287 !important;
+  color: #ffffff !important;
+  border-radius: 15px !important;
+  font-family: "Raleway", sans-serif !important;
 }
 
 .btn-generate {
@@ -421,22 +455,25 @@ margin-top: 24px !important;
   margin-right: 10rem;
 }
 
-
 .background-gradient {
-  background-image: linear-gradient(to bottom, #C5E8FC, #C5E8FC); /* Color de fondo */
+  background-image: linear-gradient(
+    to bottom,
+    #c5e8fc,
+    #c5e8fc
+  ); /* Color de fondo */
   background-repeat: no-repeat;
   background-size: 100% 16px; /* Ancho del borde inferior y altura (ajusta según tus necesidades) */
   background-position: 0 100%; /* Coloca el gradiente en la parte inferior */
 }
 
-.loader{
+.loader {
   display: flex;
   align-items: center;
   justify-content: center;
   justify-items: center;
 }
 
-.label{
+.label {
   display: flex;
   align-items: start;
   justify-content: start;
@@ -448,7 +485,6 @@ margin-top: 24px !important;
 
 @media screen and (max-width: 1919px) and (max-height: 1079px) {
   /* Responsive styles for smaller screens */
-
 
   /* Table styles */
 
@@ -463,46 +499,45 @@ margin-top: 24px !important;
     position: relative;
     z-index: 1;
   }
-  
+
   .thLeft {
-    background-color: #C5E8FC !important;
+    background-color: #c5e8fc !important;
     border-top-left-radius: 10px !important;
-    font-family: 'Raleway', sans-serif;
+    font-family: "Raleway", sans-serif;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); /* Agrega una sombra */
   }
-  
+
   .thRight {
-    background-color: #C5E8FC !important;
+    background-color: #c5e8fc !important;
     border-top-right-radius: 10px !important;
-    font-family: 'Raleway', sans-serif;
+    font-family: "Raleway", sans-serif;
   }
-  
+
   .thTable {
-    background-color: #C5E8FC !important;
-    font-family: 'Raleway', sans-serif;
+    background-color: #c5e8fc !important;
+    font-family: "Raleway", sans-serif;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); /* Agrega una sombra */
   }
-  
+
   .tdTableRow {
     text-align: center;
-    font-family: 'Raleway', sans-serif;
+    font-family: "Raleway", sans-serif;
     font-weight: 100;
     min-width: 115px;
   }
-  
+
   .h3Table {
     display: flex;
     justify-content: center; /* Centrar horizontalmente */
     align-items: center; /* Centrar verticalmente */
     text-align: center;
-    font-family: 'Raleway', sans-serif;
+    font-family: "Raleway", sans-serif;
     margin-bottom: 5rem;
     margin-top: 3rem;
     font-weight: bold;
     font-size: 27px;
-    margin-left: 10rem;
   }
-  
+
   .center-table {
     display: inline-table;
     justify-content: center; /* Centrar horizontalmente */
@@ -510,7 +545,7 @@ margin-top: 24px !important;
     height: 60vh; /* Ajusta la altura según tu diseño */
     text-align: center;
   }
-  
+
   .center-table-form {
     display: inline-table;
     justify-content: center; /* Centrar horizontalmente */
@@ -520,70 +555,70 @@ margin-top: 24px !important;
     width: 400px;
     margin: 16px;
   }
-  
+
   .card {
     margin-top: 4rem;
   }
-  
+
   .containerButtons {
     display: flex !important;
-  justify-content: space-between !important;
-  text-align: center !important;
-  margin-left: 4.5% !important;
-  margin-right: 4.5% !important;
-  margin-top: 24px !important;
+    justify-content: space-between !important;
+    text-align: center !important;
+    margin-left: 4.5% !important;
+    margin-right: 4.5% !important;
+    margin-top: 24px !important;
   }
-  
-  .addButton
-  {
-      background-color: #007BB8 !important;
-      color: #ffffff !important;
-      border-radius: 15px !important; 
-      font-family: 'Raleway', sans-serif !important;
-      margin-left: 16rem;
-  
-  }
-  
-  .showButton
-  {
-    background-color: #6fc287!important;
+
+  .addButton {
+    background-color: #007bb8 !important;
     color: #ffffff !important;
-    border-radius: 15px !important; 
-    font-family: 'Raleway', sans-serif!important;
+    border-radius: 15px !important;
+    font-family: "Raleway", sans-serif !important;
+    margin-left: 16rem;
   }
-  
+
+  .showButton {
+    background-color: #6fc287 !important;
+    color: #ffffff !important;
+    border-radius: 15px !important;
+    font-family: "Raleway", sans-serif !important;
+  }
+
   .btn-generate {
     order: 1; /* Ordenar el botón "Generar Reporte" al principio */
   }
-  
+
   .btn-send {
     order: 2; /* Ordenar el botón "Enviar" después del botón "Generar Reporte" */
     margin-right: 10rem;
   }
-  
-  
+
   .background-gradient {
-    background-image: linear-gradient(to bottom, #C5E8FC, #C5E8FC); /* Color de fondo */
+    background-image: linear-gradient(
+      to bottom,
+      #c5e8fc,
+      #c5e8fc
+    ); /* Color de fondo */
     background-repeat: no-repeat;
     background-size: 100% 16px; /* Ancho del borde inferior y altura (ajusta según tus necesidades) */
     background-position: 0 100%; /* Coloca el gradiente en la parte inferior */
   }
-  
-  .loader{
+
+  .loader {
     display: flex;
     align-items: center;
     justify-content: center;
     justify-items: center;
   }
-  
-  .label{
+
+  .label {
     display: flex;
     align-items: start;
     justify-content: start;
     justify-items: start;
     color: rgb(110, 110, 110);
   }
-}  
+}
 
 /* Responsive styles for smartphonex */
 
@@ -605,43 +640,43 @@ margin-top: 24px !important;
   }
 
   .thLeft {
-    background-color: #C5E8FC !important;
+    background-color: #c5e8fc !important;
     border-top-left-radius: 10px !important;
-    font-family: 'Raleway', sans-serif;
+    font-family: "Raleway", sans-serif;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); /* Agrega una sombra */
   }
-  
+
   .thRight {
-    background-color: #C5E8FC !important;
+    background-color: #c5e8fc !important;
     border-top-right-radius: 10px !important;
-    font-family: 'Raleway', sans-serif;
+    font-family: "Raleway", sans-serif;
   }
-  
+
   .thTable {
-    background-color: #C5E8FC !important;
-    font-family: 'Raleway', sans-serif;
+    background-color: #c5e8fc !important;
+    font-family: "Raleway", sans-serif;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); /* Agrega una sombra */
   }
-  
+
   .tdTableRow {
     text-align: center;
-    font-family: 'Raleway', sans-serif;
+    font-family: "Raleway", sans-serif;
     font-weight: 100;
     min-width: 115px;
   }
-  
+
   .h3Table {
     display: flex;
     justify-content: center; /* Centrar horizontalmente */
     align-items: center; /* Centrar verticalmente */
     text-align: center;
-    font-family: 'Raleway', sans-serif;
+    font-family: "Raleway", sans-serif;
     margin-bottom: 5rem;
     margin-top: 3rem;
     font-weight: bold;
     font-size: 2rem;
   }
-  
+
   .center-table {
     display: inline-table;
     justify-content: center; /* Centrar horizontalmente */
@@ -649,7 +684,7 @@ margin-top: 24px !important;
     height: 60vh; /* Ajusta la altura según tu diseño */
     text-align: center;
   }
-  
+
   .center-table-form {
     display: inline-table;
     justify-content: center; /* Centrar horizontalmente */
@@ -659,101 +694,95 @@ margin-top: 24px !important;
     width: 400px;
     margin: 16px;
   }
-  
+
   .card {
     margin-top: 4rem;
   }
-  
+
   .containerButtons {
     display: flex !important;
-  justify-content: space-between !important;
-  text-align: center !important;
-  margin-left: 4.5% !important;
-  margin-right: 4.5% !important;
-  margin-top: 24px !important;
+    justify-content: space-between !important;
+    text-align: center !important;
+    margin-left: 4.5% !important;
+    margin-right: 4.5% !important;
+    margin-top: 24px !important;
   }
-  
-  .addButton
-  {
-      background-color: #007BB8 !important;
-      color: #ffffff !important;
-      border-radius: 15px !important; 
-      font-family: 'Raleway', sans-serif !important;
-      margin-left: 18rem;
-  
-  }
-  
-  .showButton
-  {
-    background-color: #6fc287!important;
+
+  .addButton {
+    background-color: #007bb8 !important;
     color: #ffffff !important;
-    border-radius: 15px !important; 
-    font-family: 'Raleway', sans-serif!important;
+    border-radius: 15px !important;
+    font-family: "Raleway", sans-serif !important;
+    margin-left: 18rem;
   }
-  
+
+  .showButton {
+    background-color: #6fc287 !important;
+    color: #ffffff !important;
+    border-radius: 15px !important;
+    font-family: "Raleway", sans-serif !important;
+  }
+
   .btn-generate {
     order: 1; /* Ordenar el botón "Generar Reporte" al principio */
   }
-  
+
   .btn-send {
     order: 2; /* Ordenar el botón "Enviar" después del botón "Generar Reporte" */
     margin-right: 10rem;
   }
-  
-  
+
   .background-gradient {
-    background-image: linear-gradient(to bottom, #C5E8FC, #C5E8FC); /* Color de fondo */
+    background-image: linear-gradient(
+      to bottom,
+      #c5e8fc,
+      #c5e8fc
+    ); /* Color de fondo */
     background-repeat: no-repeat;
     background-size: 100% 16px; /* Ancho del borde inferior y altura (ajusta según tus necesidades) */
     background-position: 0 100%; /* Coloca el gradiente en la parte inferior */
   }
-  
-  .loader{
+
+  .loader {
     display: flex;
     align-items: center;
     justify-content: center;
     justify-items: center;
   }
-  
-  .label{
+
+  .label {
     display: flex;
     align-items: start;
     justify-content: start;
     justify-items: start;
     color: rgb(110, 110, 110);
   }
-}  
-
+}
 
 /* Responsive styles for login */
 @media screen and (width: 1280px) and (height: 832px) {
-
-
-  
-  
   ul {
     list-style: none;
     padding: 1rem 1rem;
     position: sticky;
     top: 0;
     width: 16rem;
-  
+
     li {
       margin-bottom: 1rem;
       position: sticky;
       top: 0;
       font-size: 1.2rem;
-  
+
       .main-option {
         font-weight: bold;
       }
-      
-  
+
       a {
         text-decoration: none;
         position: sticky;
         top: 0px;
-  
+
         &.active {
           background-color: $gray;
           position: sticky;
@@ -770,7 +799,7 @@ margin-top: 24px !important;
     top: 50%; /* Centro verticalmente */
     transform: translate(-50%, -50%);
     padding: 5%;
-    background-color: #88CB66;
+    background-color: #88cb66;
     border-radius: 6%;
     max-height: 65vh; /* En lugar de una altura fija */
     width: 30vw; /* En lugar de un ancho fijo */
@@ -787,7 +816,6 @@ margin-top: 24px !important;
       max-width: 100%;
       text-align: center;
       margin-bottom: 1rem;
-     
     }
 
     .l2 {
