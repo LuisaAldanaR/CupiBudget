@@ -58,7 +58,7 @@ const Sidebar = () => {
             >
               <li>
                 <NavLink to="/BudgetGenerator" id="submenu" exact activeClassName="active">
-                  <span style={{ color: 'black' }}>Ver reporte</span>
+                  <span style={{ color: 'black' }}>Generar reporte</span>
                 </NavLink>
               </li>
               <li>
