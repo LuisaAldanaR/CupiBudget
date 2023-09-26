@@ -4,8 +4,6 @@ import CrudTableRowContract from "./CrudTableRowContract";
 import { helpHttp } from "../../helpers/helpHttp"; // Ajusta la importación según tu estructura de archivos
 import axios, { all } from "axios";
 import Swal from "sweetalert2";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
 
 const BudgetGenerator = () => {
   const [db, setDb] = useState([]);
@@ -19,33 +17,67 @@ const BudgetGenerator = () => {
   const [pdfLink, setPdfLink] = useState(null);
 
   // Función para manejar la descarga del informe de presupuesto
-  const generateBudget = async () => {
-    const data1 = [];
-    const data2 = [];
 
-    db.forEach((el) => {
-      const rowData1 = {
-        totalGoal: Number(formData[el.idNetwork]?.data1?.totalGoal || 0),
-        oldStudents: Number(formData[el.idNetwork]?.data1?.oldStudents || 0),
-        idNetwork: Number(el.idNetwork),
-      };
-
-      const rowData2 = {
-        totalGoal: Number(formData[el.idNetwork]?.data2?.totalGoal || 0),
-        oldStudents: Number(formData[el.idNetwork]?.data2?.oldStudents || 0),
-        idNetwork: Number(el.idNetwork),
-      };
-
-      data1.push(rowData1);
-      data2.push(rowData2);
-    });
-
-    const requestData = {
-      data1,
-      data2,
-    };
-
+  const loadPdfGeneratorData = async () => {
     try {
+      const response = await fetch(
+        "http://www.mendezmrf10.somee.com/api/PDFGenerator/Generate",
+        {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
+  
+      if (response.status === 200) {
+        const data = await response.json();
+        setDb(data); // Actualizar el estado db con los datos recuperados
+      } else {
+        console.error("Error en la solicitud:", response.status);
+      }
+    } catch (error) {
+      console.error("Error al enviar la solicitud:", error);
+    }
+  };
+  
+  // Llamar a la función loadPdfGeneratorData cuando sea necesario, por ejemplo, en un botón o en useEffect:
+  useEffect(() => {
+    loadPdfGeneratorData(); // Cargar datos de la API al montar el componente
+  }, []);
+  
+  const generateBudget = async () => {
+    try {
+      const data1 = [];
+      const data2 = [];
+      console.log("formData:", formData);
+      console.log("db: " ,db);
+
+      db.forEach((el) => {
+        const rowData1 = {
+          totalGoal: document.getElementById(`totalGoal${el.idNetwork}`).value,
+          oldStudents: document.getElementById(`oldStudents_${el.idNetwork}`).value,
+          idNetwork: Number(el.idNetwork),
+        };
+
+        const rowData2 = {
+          totalGoal: document.getElementById(`totalGoal${el.idNetwork}`).value,
+          oldStudents: document.getElementById(`oldStudents_${el.idNetwork}`).value,
+          idNetwork: Number(el.idNetwork),
+        };
+
+        data1.push(rowData1);
+        data2.push(rowData2);
+      });
+
+      const requestData = {
+        data1,
+        data2,
+      };
+
+      console.log("requestData:", requestData);
+
       const response = await fetch(
         "http://www.mendezmrf10.somee.com/api/PDFGenerator/Generate",
         {
@@ -63,16 +95,16 @@ const BudgetGenerator = () => {
         const url = window.URL.createObjectURL(blob);
 
         // Forzar la descarga del archivo PDF
-        const a = document.createElement('a');
-        a.style.display = 'none';
+        const a = document.createElement("a");
+        a.style.display = "none";
         a.href = url;
-        a.download = 'Reporte.pdf';
+        a.download = "Reporte.pdf";
         document.body.appendChild(a);
         a.click();
         window.URL.revokeObjectURL(url);
 
         setPdfLink(url);
-        
+
         Swal.fire({
           title: "Éxito",
           text: "Informe generado y enviado correctamente.",
@@ -88,21 +120,16 @@ const BudgetGenerator = () => {
       setFormData({});
     }
   };
-  
-
-  useEffect(() => {
-    loadTableData(); // Carga los datos iniciales cuando el componente se monta
-  }, []);
 
   // Función para cargar datos en la tabla
   const loadTableData = () => {
-    let urlPost = "http://www.mendezmrf10.somee.com/api/Network/List";
+    let urlGet = "http://www.mendezmrf10.somee.com/api/Network/List";
 
     let options = {
       headers: { Authorization: `Bearer ${token}` },
     };
 
-    api.get(urlPost, options).then((res) => {
+    api.get(urlGet, options).then((res) => {
       if (!res.err) {
         setDb(res.response); // Store data in the 'db' state
         setError(null); // Clear errors
@@ -114,6 +141,11 @@ const BudgetGenerator = () => {
       setLoading(false); // Set 'loading' to false after data is loaded
     });
   };
+
+  useEffect(() => {
+    loadTableData(); // Carga los datos iniciales cuando el componente se monta
+  }, []);
+
 
   // Function to update an existing instructor
   const updateData = (data) => {
@@ -143,9 +175,8 @@ const BudgetGenerator = () => {
     });
   };
 
-  // Function to handle changes in form fields
+// Function to handle changes in form fields
 const handleFormChange = (idNetwork, name, value) => {
-  
   // Crear una copia del estado formData
   const updatedFormData = { ...formData };
 
@@ -161,13 +192,7 @@ const handleFormChange = (idNetwork, name, value) => {
   // Actualizar el estado formData con los nuevos datos
   setFormData(updatedFormData);
 
- // Agregar algunos console.log para verificar los valores
-   console.log("formData:", updatedFormData);
-   console.log("idNetwork:", idNetwork);
-   console.log("name:", name);
-   console.log("value:", value);
 };
-
 
 
   return (
@@ -196,8 +221,3 @@ const handleFormChange = (idNetwork, name, value) => {
 };
 
 export default BudgetGenerator;
-
-
-
-
-

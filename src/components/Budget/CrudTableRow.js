@@ -21,50 +21,11 @@ const CrudTableRow = ({ el, setDataToEdit, updateData,  handleFormChange, formDa
       ...form,
       [name]: value,
     });
-
-    handleFormChange(el.idNetwork, name, value);
-
-  };
-
-  // Function to handle form submission
-  const handleSubmit = (e) => {
-    e.preventDefault();
   
-    if (!form.totalGoal || !form.oldStudents) {
-      Swal.fire("¡Faltan campos por llenar!", "", "question");
-      return;
-    }
-  
-    // Create an object with the desired structure
-    const newData = {
-      data1: [
-        {
-          totalGoal: Number(form.totalGoal),
-          oldStudents: Number(form.oldStudents),
-          idNetwork: Number(el.idNetwork),
-        },
-      ],
-    };
-  
-    // Convert newData to a JSON string with quotes around keys
-    const newDataString = JSON.stringify(newData);
-  
-    // You can access the newDataString here and send it to your API
-    console.log(newDataString);
-  
-    updateData(newDataString); // Send the JSON string to your API
-  
-    // Clear the form and reset dataToEdit to null
-    handleReset();
+    handleFormChange(el.idNetwork, name, value); // Envía el valor actualizado
   };
   
-
-  // Function to clear the form and edit data
-  const handleReset = () => {
-    setForm(initialForm);
-    setDataToEdit(null);
-  };
-
+  
   return (
     // Render a table row with the data from the 'el' object
     <tr>
@@ -80,6 +41,7 @@ const CrudTableRow = ({ el, setDataToEdit, updateData,  handleFormChange, formDa
         <input
           type="number"
           name="totalGoal"
+          id={`totalGoal${el.idNetwork}`} // Add the ID to the input ID property          
           placeholder="Meta del trimestre"
           className="form-control"
           onChange={handleChange}
@@ -91,6 +53,7 @@ const CrudTableRow = ({ el, setDataToEdit, updateData,  handleFormChange, formDa
         <input
           type="number"
           name="oldStudents"
+          id={`oldStudents_${el.idNetwork}`} // Add the ID to the input ID property          
           placeholder="cupos Antiguos"
           className="form-control"
           onChange={handleChange}
