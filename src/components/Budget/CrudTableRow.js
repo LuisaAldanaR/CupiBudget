@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import "../../App.scss";
-import Swal from "sweetalert2";
 
 // Define an object with initial values for the form
 const initialForm = {
@@ -9,9 +8,9 @@ const initialForm = {
   networkId: null,
 };
 
-const CrudTableRow = ({ el, setDataToEdit, updateData,  handleFormChange, formData }) => {
+const CrudTableRow = ({ el }) => {
   // Destructure the properties of the 'el' object passed as an argument
-  let { networkName, idNetwork } = el;
+  let { networkName } = el;
   const [form, setForm] = useState(initialForm);
 
   // Function to handle changes in form fields
@@ -21,8 +20,6 @@ const CrudTableRow = ({ el, setDataToEdit, updateData,  handleFormChange, formDa
       ...form,
       [name]: value,
     });
-  
-    handleFormChange(el.idNetwork, name, value); // Envía el valor actualizado
   };
   
   
@@ -38,28 +35,29 @@ const CrudTableRow = ({ el, setDataToEdit, updateData,  handleFormChange, formDa
         )}
       </td>
       <td className="tdTableRow">
-        <input
-          type="number"
-          name="totalGoal"
-          id={`totalGoal${el.idNetwork}`} // Add the ID to the input ID property          
-          placeholder="Meta del trimestre"
-          className="form-control"
-          onChange={handleChange}
-          value={form.totalGoal}
-        />
-      </td>
+  <input
+    type="number"
+    name={`totalGoalTechnological${el.idNetwork}`} 
+    id={`totalGoalTechnological${el.idNetwork}`}
+    placeholder="Meta del trimestre"
+    className="form-control"
+    onChange={handleChange}
+    value={form[`totalGoalTechnological${el.idNetwork}`]} 
+  />
+</td>
 
-      <td className="tdTableRow">
-        <input
-          type="number"
-          name="oldStudents"
-          id={`oldStudents_${el.idNetwork}`} // Add the ID to the input ID property          
-          placeholder="cupos Antiguos"
-          className="form-control"
-          onChange={handleChange}
-          value={form.oldStudents}
-        />
-      </td>
+<td className="tdTableRow">
+  <input
+    type="number"
+    name={`oldStudentsTechnological${el.idNetwork}`} 
+    id={`oldStudentsTechnological${el.idNetwork}`}
+    placeholder="cupos Antiguos"
+    className="form-control"
+    onChange={handleChange}
+    value={form[`oldStudentsTechnological${el.idNetwork}`]} // Cambia el valor para la tabla 1
+  />
+</td>
+
     </tr>
   );
 };

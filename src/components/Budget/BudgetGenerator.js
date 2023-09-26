@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import CrudTable from "./CrudTable";
-import CrudTableRowContract from "./CrudTableRowContract";
 import { helpHttp } from "../../helpers/helpHttp"; // Ajusta la importación según tu estructura de archivos
-import axios, { all } from "axios";
 import Swal from "sweetalert2";
 
 const BudgetGenerator = () => {
@@ -16,54 +14,42 @@ const BudgetGenerator = () => {
   const api = helpHttp(); // Instancia de la utilidad de solicitud HTTP
   const [pdfLink, setPdfLink] = useState(null);
 
-  // Función para manejar la descarga del informe de presupuesto
-
-  const loadPdfGeneratorData = async () => {
-    try {
-      const response = await fetch(
-        "http://www.mendezmrf10.somee.com/api/PDFGenerator/Generate",
-        {
-          method: "GET",
-          headers: {
-            Authorization: `Bearer ${token}`,
-            "Content-Type": "application/json",
-          },
-        }
-      );
-  
-      if (response.status === 200) {
-        const data = await response.json();
-        setDb(data); // Actualizar el estado db con los datos recuperados
-      } else {
-        console.error("Error en la solicitud:", response.status);
-      }
-    } catch (error) {
-      console.error("Error al enviar la solicitud:", error);
-    }
-  };
-  
-  // Llamar a la función loadPdfGeneratorData cuando sea necesario, por ejemplo, en un botón o en useEffect:
-  useEffect(() => {
-    loadPdfGeneratorData(); // Cargar datos de la API al montar el componente
-  }, []);
-  
   const generateBudget = async () => {
     try {
       const data1 = [];
       const data2 = [];
-      console.log("formData:", formData);
-      console.log("db: " ,db);
+
+      // Obtén el mes actual como una cadena (por ejemplo, "enero", "febrero", etc.)
+      const monthNames = [
+        "enero", "febrero", "marzo", "abril", "mayo", "junio",
+        "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"
+      ];
+      const currentMonth = monthNames[new Date().getMonth()];
 
       db.forEach((el) => {
+        const totalGoalInputTechnological = document.getElementById(`totalGoalTechnological${el.idNetwork}`);
+        const oldStudentsInputTechnological = document.getElementById(`oldStudentsTechnological${el.idNetwork}`);
+
+        // Obtén el valor del campo de entrada o establece 0 si está vacío
+        const totalGoalValueTechnological = totalGoalInputTechnological.value.trim() !== '' ? parseFloat(totalGoalInputTechnological.value) : 0;
+        const oldStudentsValueTechnological = oldStudentsInputTechnological.value.trim() !== '' ? parseFloat(oldStudentsInputTechnological.value) : 0;
+
+        const totalGoalInputTechnical = document.getElementById(`totalGoalTechnical${el.idNetwork}`);
+        const oldStudentsInputTechnical = document.getElementById(`oldStudentsTechnical${el.idNetwork}`);
+
+        // Obtén el valor del campo de entrada o establece 0 si está vacío
+        const totalGoalValueTechnical = totalGoalInputTechnical.value.trim() !== '' ? parseFloat(totalGoalInputTechnical.value) : 0;
+        const oldStudentsValueTechnical = oldStudentsInputTechnical.value.trim() !== '' ? parseFloat(oldStudentsInputTechnical.value) : 0;
+
         const rowData1 = {
-          totalGoal: document.getElementById(`totalGoal${el.idNetwork}`).value,
-          oldStudents: document.getElementById(`oldStudents_${el.idNetwork}`).value,
+          totalGoal: totalGoalValueTechnological,
+          oldStudents: oldStudentsValueTechnological,
           idNetwork: Number(el.idNetwork),
         };
 
         const rowData2 = {
-          totalGoal: document.getElementById(`totalGoal${el.idNetwork}`).value,
-          oldStudents: document.getElementById(`oldStudents_${el.idNetwork}`).value,
+          totalGoal: totalGoalValueTechnical, // Cambia esta línea si deseas diferentes valores para data2
+          oldStudents: oldStudentsValueTechnical, // Cambia esta línea si deseas diferentes valores para data2
           idNetwork: Number(el.idNetwork),
         };
 
@@ -94,11 +80,13 @@ const BudgetGenerator = () => {
         const blob = await response.blob();
         const url = window.URL.createObjectURL(blob);
 
+        const pdfFileName = `Reporte_${currentMonth}.pdf`;
+
         // Forzar la descarga del archivo PDF
         const a = document.createElement("a");
         a.style.display = "none";
         a.href = url;
-        a.download = "Reporte.pdf";
+        a.download = pdfFileName;
         document.body.appendChild(a);
         a.click();
         window.URL.revokeObjectURL(url);
@@ -120,6 +108,8 @@ const BudgetGenerator = () => {
       setFormData({});
     }
   };
+
+
 
   // Función para cargar datos en la tabla
   const loadTableData = () => {
@@ -175,34 +165,34 @@ const BudgetGenerator = () => {
     });
   };
 
-// Function to handle changes in form fields
-const handleFormChange = (idNetwork, name, value) => {
-  // Crear una copia del estado formData
-  const updatedFormData = { ...formData };
+  // Function to handle changes in form fields
+  const handleFormChange = (idNetwork, name, value) => {
+    // Crear una copia del estado formData
+    const updatedFormData = { ...formData };
 
-  // Crear un objeto de datos para esta fila
-  const rowData = {
-    ...updatedFormData[idNetwork],
-    [name]: value,
+    // Crear un objeto de datos para esta fila
+    const rowData = {
+      ...updatedFormData[idNetwork],
+      [name]: value,
+    };
+
+    // Actualizar el estado con los datos de esta fila
+    updatedFormData[idNetwork] = rowData;
+
+    // Actualizar el estado formData con los nuevos datos
+    setFormData(updatedFormData);
+
   };
-
-  // Actualizar el estado con los datos de esta fila
-  updatedFormData[idNetwork] = rowData;
-
-  // Actualizar el estado formData con los nuevos datos
-  setFormData(updatedFormData);
-
-};
 
 
   return (
     <div>
-      <h1 className="h3Table">Generador de Reporte</h1>
+
       <div className="containerButtons">
         <button className="btn addButton btn-generate" onClick={generateBudget}>
           Generar Reporte
         </button>
-    
+
         {error && (
           <div className="alert alert-danger mt-2" role="alert">
             {error}
@@ -210,12 +200,12 @@ const handleFormChange = (idNetwork, name, value) => {
         )}
       </div>
 
-      <CrudTable 
-      data={db} 
-      setDataToEdit={setDataToEdit} 
-      updateData={updateData} 
-      handleFormChange={handleFormChange} 
-      formData={formData} />
+      <CrudTable
+        data={db}
+        setDataToEdit={setDataToEdit}
+        updateData={updateData}
+        handleFormChange={handleFormChange}
+        formData={formData} />
     </div>
   );
 };

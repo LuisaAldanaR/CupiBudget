@@ -80,7 +80,7 @@ const Sidebar = () => {
               </li>
               <li>
                 <NavLink to="/option4" exact activeClassName="active">
-                  <span style={{ color: "black" }}>Suboption 4</span>
+                  <span style={{ color: "black" }}>Historial</span>
                 </NavLink>
               </li>
             </ul>
@@ -115,12 +115,12 @@ const Sidebar = () => {
                   exact
                   activeClassName="active"
                 >
-                  <span style={{ color: "black" }}>Suboption 3</span>
+                  <span style={{ color: "black" }}>Planta</span>
                 </NavLink>
               </li>
               <li>
                 <NavLink to="/option4 " exact activeClassName="active">
-                  <span style={{ color: "black" }}>Suboption 4</span>
+                  <span style={{ color: "black" }}>Contratista</span>
                 </NavLink>
               </li>
             </ul>
