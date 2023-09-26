@@ -37,10 +37,10 @@ const Sidebar = () => {
   return (
     <div className="sidebar">
       <ul>
-        <li style={{ marginTop: "70px" }}>
-          <div
-            onMouseEnter={() => handleMouseEnter("option1")}
-            onMouseLeave={() => handleMouseLeave("option1")}
+      <li style={{ marginTop: "70px" }}>
+          {/* Utiliza NavLink para redirigir a "/ruta-de-home" al hacer clic en "Inicio" */}
+          <NavLink
+            to="./home" // Reemplaza "/ruta-de-home" con la ruta real de tu componente Home.js
             className={`main-option ${
               isOptionActive("option1") ? "active" : ""
             }`}
@@ -49,7 +49,7 @@ const Sidebar = () => {
             <FaIcons.FaHome />{" "}
             <span style={{ marginLeft: "30px" }}>Inicio</span>{" "}
             {isOptionActive("option1")}
-          </div>
+          </NavLink>
         </li>
         <li style={{ marginTop: "70px" }}>
           <div
