@@ -16,51 +16,79 @@ const BudgetGenerator = () => {
 
   const token = localStorage.getItem("jwtToken"); // Recupera el token JWT del almacenamiento local
   const api = helpHttp(); // Instancia de la utilidad de solicitud HTTP
+  const [pdfLink, setPdfLink] = useState(null);
 
   // Función para manejar la descarga del informe de presupuesto
-  const generateBudget = () => {
-    const currentDate = new Date();
-    const month = currentDate.toLocaleString("default", {
-      month: "long",
-    }); // Obtiene el nombre completo del mes actual
-    const fileName = `Reporte_${month}.pdf`; // Nombre del archivo con el mes
+  const generateBudget = async () => {
+    const data1 = [];
+    const data2 = [];
 
-    const urlGet = "http://www.mendezmrf10.somee.com/api/PDFGenerator/Generate";
-    const downloadOptions = {
-      headers: { Authorization: `Bearer ${token}` },
-      responseType: "blob", // Indica que esperamos una respuesta binaria (blob)
+    db.forEach((el) => {
+      const rowData1 = {
+        totalGoal: Number(formData[el.idNetwork]?.data1?.totalGoal || 0),
+        oldStudents: Number(formData[el.idNetwork]?.data1?.oldStudents || 0),
+        idNetwork: Number(el.idNetwork),
+      };
+
+      const rowData2 = {
+        totalGoal: Number(formData[el.idNetwork]?.data2?.totalGoal || 0),
+        oldStudents: Number(formData[el.idNetwork]?.data2?.oldStudents || 0),
+        idNetwork: Number(el.idNetwork),
+      };
+
+      data1.push(rowData1);
+      data2.push(rowData2);
+    });
+
+    const requestData = {
+      data1,
+      data2,
     };
 
-    axios
-      .get(urlGet, downloadOptions)
-      .then((res) => {
-        // Verifica si la respuesta es un archivo PDF (content-type: application/pdf)
-        const contentType = res.headers["content-type"];
-        if (contentType === "application/pdf") {
-          // Crea un objeto Blob a partir de la respuesta
-          const blob = new Blob([res.data], { type: contentType });
-
-          // Crea un objeto URL para el Blob
-          const url = window.URL.createObjectURL(blob);
-
-          // Crea un enlace <a> para descargar el archivo con el nombre personalizado
-          const a = document.createElement("a");
-          a.href = url;
-          a.download = fileName; // Establece el nombre de archivo personalizado
-
-          // Dispara el evento de clic en el enlace para iniciar la descarga
-          a.click();
-
-          // Libera el objeto URL creado
-          window.URL.revokeObjectURL(url);
-        } else {
-          console.error("La respuesta no es un archivo PDF.");
+    try {
+      const response = await fetch(
+        "http://www.mendezmrf10.somee.com/api/PDFGenerator/Generate",
+        {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(requestData),
         }
-      })
-      .catch((error) => {
-        console.error("Error al descargar el archivo PDF:", error);
-      });
+      );
+
+      if (response.status === 200) {
+        const blob = await response.blob();
+        const url = window.URL.createObjectURL(blob);
+
+        // Forzar la descarga del archivo PDF
+        const a = document.createElement('a');
+        a.style.display = 'none';
+        a.href = url;
+        a.download = 'Reporte.pdf';
+        document.body.appendChild(a);
+        a.click();
+        window.URL.revokeObjectURL(url);
+
+        setPdfLink(url);
+        
+        Swal.fire({
+          title: "Éxito",
+          text: "Informe generado y enviado correctamente.",
+          icon: "success",
+          confirmButtonText: "OK",
+        });
+      } else {
+        console.error("Error en la solicitud:", response.status);
+      }
+    } catch (error) {
+      console.error("Error al enviar la solicitud:", error);
+    } finally {
+      setFormData({});
+    }
   };
+  
 
   useEffect(() => {
     loadTableData(); // Carga los datos iniciales cuando el componente se monta
@@ -68,13 +96,13 @@ const BudgetGenerator = () => {
 
   // Función para cargar datos en la tabla
   const loadTableData = () => {
-    let urlGet = "http://www.mendezmrf10.somee.com/api/Network/List";
+    let urlPost = "http://www.mendezmrf10.somee.com/api/Network/List";
 
     let options = {
       headers: { Authorization: `Bearer ${token}` },
     };
 
-    api.get(urlGet, options).then((res) => {
+    api.get(urlPost, options).then((res) => {
       if (!res.err) {
         setDb(res.response); // Store data in the 'db' state
         setError(null); // Clear errors
@@ -89,7 +117,7 @@ const BudgetGenerator = () => {
 
   // Function to update an existing instructor
   const updateData = (data) => {
-    let urlPost = "http://www.mendezmrf10.somee.com/api/InPerson/List";
+    const urlPost = "http://www.mendezmrf10.somee.com/api/PDFGenerator/Generate";
 
     let options = {
       body: data,
@@ -140,47 +168,6 @@ const handleFormChange = (idNetwork, name, value) => {
    console.log("value:", value);
 };
 
-const handleAllSubmit = () => {
-  // Crear arreglos para almacenar los datos de todas las filas
-  const data1 = [];
-  const data2 = [];
-
-  // Recorrer las filas y agregar sus datos a los arreglos correspondientes
-  db.forEach((el) => {
-    const rowData1 = {
-      totalGoal: Number(formData[el.idNetwork]?.data1?.totalGoal || 0),
-      oldStudents: Number(formData[el.idNetwork]?.data1?.oldStudents || 0),
-      idNetwork: Number(el.idNetwork),
-    };
-
-    const rowData2 = {
-      totalGoal: Number(formData[el.idNetwork]?.data2?.totalGoal || 0),
-      oldStudents: Number(formData[el.idNetwork]?.data2?.oldStudents || 0),
-      idNetwork: Number(el.idNetwork),
-    };
-
-    // Agregar datos de la primera tabla al arreglo data1
-    data1.push(rowData1);
-
-    // Agregar datos de la segunda tabla al arreglo data2
-    data2.push(rowData2);
-  });
-
-  // Crear el objeto con la estructura esperada
-  const requestData = {
-    data1,
-    data2,
-  };
-
-  // Ahora tienes los datos de ambas tablas en la estructura esperada
-  console.log("requestData:", requestData);
-
-  // Llama al método updateData con el objeto requestData como argumento
-  updateData(requestData);
-
-  // Limpiar el estado formData
-  setFormData({});
-};
 
 
   return (
@@ -190,11 +177,7 @@ const handleAllSubmit = () => {
         <button className="btn addButton btn-generate" onClick={generateBudget}>
           Generar Reporte
         </button>
-        <button className="btn btn-success btn-send" onClick={handleAllSubmit}>
-          Enviar Todos &nbsp;
-          <FontAwesomeIcon icon={faPaperPlane} />
-        </button>
-
+    
         {error && (
           <div className="alert alert-danger mt-2" role="alert">
             {error}

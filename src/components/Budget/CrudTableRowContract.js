@@ -85,14 +85,6 @@ const CrudTableRow2 = ({ el, setDataToEdit, updateData,  handleFormChange, formD
           value={form.oldStudents}
         />
       </td>
-      <td className="tdTableRow">
-        <button
-          className="btn btn-success btn-send"
-          onClick={handleSubmit}
-        >
-          Enviar
-        </button>
-      </td>
     </tr>
   );
 };

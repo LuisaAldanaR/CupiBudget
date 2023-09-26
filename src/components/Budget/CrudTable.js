@@ -10,16 +10,14 @@ const CrudTable = ({ data, setDataToEdit, updateData, handleFormChange, formData
         <div className="container">
             <div className="card-body center-table background-gradient">
                 <div className="table-responsive">
-                    {/* Table header */}
-                    <br></br>
-                    <table className="table center-
-                    
-                    table">
+                    {/* Table header for the first table */}
+                    <h2>Datos de Redes Tecnológicas</h2>
+                    <table className="table center-table">
                         <thead>
                             <tr>
                                 <th className="thLeft">Nombre de la Red</th>
                                 <th className="thTable">Metas</th>
-                                <th className="thTable">Cupos Antiguos</th>
+                                <th className="thRight">Cupos Antiguos</th>
                             </tr>
                         </thead>
 
@@ -36,7 +34,6 @@ const CrudTable = ({ data, setDataToEdit, updateData, handleFormChange, formData
                                         handleFormChange={handleFormChange}
                                         formData={formData}
                                     />
-
                                 ))
                             ) : (
                                 // Display "No data" message if there are no elements in 'data'
@@ -44,9 +41,25 @@ const CrudTable = ({ data, setDataToEdit, updateData, handleFormChange, formData
                                     <td colSpan="3">Sin datos</td>
                                 </tr>
                             )}
+                        </tbody>
+                    </table>
 
+                    {/* Table header for the second table */}
+                    <h2>Datos de Redes Técnicas</h2>
+                    <table className="table center-table">
+                        <thead>
+                            <tr>
+                                {/* Add column headers for the second table as needed */}
+                                <th className="thLeft">Nombre de la Red</th>
+                                <th className="thTable">Metas</th>
+                                <th className="thRight">Cupos Antiguos</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            {/* Conditional to handle the case when there is no data */}
                             {data.length > 0 ? (
-                                // Mapping data to render table rows
+                                // Mapping data to render table rows for the second table
                                 data.map((el) => (
                                     <CrudTableRowContract
                                         key={el.id}
@@ -56,7 +69,6 @@ const CrudTable = ({ data, setDataToEdit, updateData, handleFormChange, formData
                                         handleFormChange={handleFormChange}
                                         formData={formData}
                                     />
-
                                 ))
                             ) : (
                                 // Display "No data" message if there are no elements in 'data'
