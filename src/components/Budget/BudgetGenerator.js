@@ -56,14 +56,14 @@ const BudgetGenerator = () => {
 
       db.forEach((el) => {
         const rowData1 = {
-          totalGoal: document.getElementById(`oldStudents_${el.idNetwork}`).value,
-          oldStudents: Number(formData[el.idNetwork]?.data1?.oldStudents || 0),
+          totalGoal: document.getElementById(`totalGoal${el.idNetwork}`).value,
+          oldStudents: document.getElementById(`oldStudents_${el.idNetwork}`).value,
           idNetwork: Number(el.idNetwork),
         };
 
         const rowData2 = {
-          totalGoal: Number(formData[el.idNetwork]?.data2?.totalGoal || 0),
-          oldStudents: Number(formData[el.idNetwork]?.data2?.oldStudents || 0),
+          totalGoal: document.getElementById(`totalGoal${el.idNetwork}`).value,
+          oldStudents: document.getElementById(`oldStudents_${el.idNetwork}`).value,
           idNetwork: Number(el.idNetwork),
         };
 

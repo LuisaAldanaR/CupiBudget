@@ -41,6 +41,7 @@ const CrudTableRow = ({ el, setDataToEdit, updateData,  handleFormChange, formDa
         <input
           type="number"
           name="totalGoal"
+          id={`totalGoal${el.idNetwork}`} // Add the ID to the input ID property          
           placeholder="Meta del trimestre"
           className="form-control"
           onChange={handleChange}
