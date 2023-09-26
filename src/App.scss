@@ -103,17 +103,21 @@ $blue: #0000ff;
   position: fixed;
   z-index: 2;
   max-width: 14rem;
+  box-shadow: 5px 0px 10px rgba(0, 0, 0, 0.2); /* Añadir sombra al lado derecho */
 }
+
 
 /* Estilo de sombreado gris claro para la opción principal activa */
 .main-option.active {
   background-color: #dcffe3; /* Puedes ajustar el color gris claro según tus preferencias */
-  width: 222px;
+  width: 206px;
   margin: 0;
   box-shadow: 1px 1px 0px 0px gray; /* Ajusta la sombra según sea necesario */
 }
 
-
+.main-option{
+  width: 300px;
+}
 
 ul {
   list-style: none;
@@ -121,7 +125,7 @@ ul {
   position: sticky;
   top: 0;
   width: 20rem;
-  margin-left: 2rem !important;
+  margin-left: 4rem !important;
   margin-bottom: 4rem !important;
 
   li {
@@ -140,10 +144,15 @@ ul {
         position: sticky;
         top: 0px;
       }
+
+     
     }
   }
 }
 
+#home{
+  font-size: 20px;
+}
 /* Global styles */
 .html {
   box-sizing: border-box;

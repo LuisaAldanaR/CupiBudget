@@ -39,18 +39,33 @@ const Sidebar = () => {
       <ul>
         <li style={{ marginTop: "70px" }}>
           <div
+            onMouseEnter={() => handleMouseEnter("option1")}
+            onMouseLeave={() => handleMouseLeave("option1")}
+            className={`main-option ${
+              isOptionActive("option1") ? "active" : ""
+            }`}
+            id="home"
+          >
+            <FaIcons.FaHome />{" "}
+            <span style={{ marginLeft: "30px" }}>Inicio</span>{" "}
+            {isOptionActive("option1")}
+          </div>
+        </li>
+        <li style={{ marginTop: "70px" }}>
+          <div
             onMouseEnter={() => handleMouseEnter("option2")}
             onMouseLeave={() => handleMouseLeave("option2")}
             className={`main-option ${
               isOptionActive("option2") ? "active" : ""
             }`}
           >
-            <FaIcons.FaFileInvoiceDollar /> Reporte{" "}
+            <FaIcons.FaFileInvoiceDollar />{" "}
+            <span style={{ marginLeft: "25px" }}>Reporte</span>{" "}
             {isOptionActive("option2") ? (
-              <HiIcons.HiChevronDown style={{ color: "green" }} />
-            ) : (
-              <HiIcons.HiChevronRight style={{ color: "green" }} />
-            )}
+              <HiIcons.HiChevronDown style={{ color: "green", marginLeft: "65px" }} />
+              ) : (
+                <HiIcons.HiChevronRight style={{ color: "green", marginLeft: "65px" }} />
+              )}
           </div>
           {isOptionActive("option2") && (
             <ul
@@ -84,12 +99,13 @@ const Sidebar = () => {
               isOptionActive("option3") ? "active" : ""
             }`}
           >
-            <ImIcons.ImTarget /> Metas{" "}
+            <ImIcons.ImTarget />{" "}
+            <span style={{ marginLeft: "25px" }}>Metas</span>{" "}
             {isOptionActive("option3") ? (
-              <HiIcons.HiChevronDown style={{ color: "green" }} />
-            ) : (
-              <HiIcons.HiChevronRight style={{ color: "green" }} />
-            )}
+              <HiIcons.HiChevronDown style={{ color: "green", marginLeft: "79px" }} />
+              ) : (
+                <HiIcons.HiChevronRight style={{ color: "green", marginLeft: "79px" }} />
+              )}
           </div>
           {isOptionActive("option3") && (
             <ul
@@ -123,11 +139,12 @@ const Sidebar = () => {
               isOptionActive("option5") ? "active" : ""
             }`}
           >
-            <FaIcons.FaUserTie /> Instructores{" "}
+            <FaIcons.FaUserTie />{" "}
+            <span style={{ marginLeft: "25px" }}>Instructores</span>{" "}
             {isOptionActive("option5") ? (
-              <HiIcons.HiChevronDown style={{ color: "green" }} />
+              <HiIcons.HiChevronDown style={{ color: "green", marginLeft: "30px" }} />
             ) : (
-              <HiIcons.HiChevronRight style={{ color: "green" }} />
+              <HiIcons.HiChevronRight style={{ color: "green", marginLeft: "30px" }} />
             )}
           </div>
           {isOptionActive("option5") && (
