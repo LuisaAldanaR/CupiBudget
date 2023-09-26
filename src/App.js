@@ -59,54 +59,47 @@ function App() {
 
   return (
     <Router>
-      <div className="html">
-        <Routes>
-          {/* Route for the login page */}
-          <Route path='/' element={<Login />} />
-          {/* Default route with the sidebar and navbar */}
-          <Route
-            path='/*'
-            element={
-              isAuthenticated() ? (
-                <div>
-                  <Sidebar />
-
-                  <div className="content w-100">
+    <div className="html">
+      <Routes>
+        {/* Route for the login page */}
+        <Route path='/' element={<Login />} />
+        {/* Default route with the sidebar and navbar */}
+        <Route
+          path='/*'
+          element={
+            isAuthenticated() ? (
+              <div className="">
+                <Sidebar />
+                <div className="content w-100">
                   <CustomNavbar />
-
-                    <Routes>
-                      {/* Nested route for the Home page */}
-                      <Route
-                        path='/'
-                        element={
-                          <>
-                            {/* Add the Login component within the Home component */}
-                            <Home />
-                            <Login /> {/* This will render the Login component within the Home component */}
-                          </>
-                        }
-                      />
-                      <Route path="/BudgetGenerator" element={<ProtectedRoute element={<BudgetGenerator />} />} />
-                      {/* Otras rutas protegidas */}
-                      <Route path="/goals" element={<ProtectedRoute element={<Goals />} />} />
-                      <Route path="/programs" element={<ProtectedRoute element={<Programs />} />} />
-                      <Route path="/instructors" element={<ProtectedRoute element={<Instructors />} />} />
-                      <Route path="/CrudAppFullTimeInstructor" element={<ProtectedRoute element={<CrudAppFullTimeInstructor />} />} />
-                      <Route path="/CrudApp" element={<ProtectedRoute element={<CrudApp />} />} />
-                      <Route path="/CrudForm" element={<ProtectedRoute element={<CrudForm />} />} />
-                    </Routes>
-                  </div>
+                  <Routes>
+                    {/* Ruta para la página Home */}
+                    <Route
+                      path='/home'
+                      element={<Home />} // Renderizar la página Home directamente aquí
+                    />
+                    <Route path="/BudgetGenerator" element={<ProtectedRoute element={<BudgetGenerator />} />} />
+                    {/* Otras rutas protegidas */}
+                    <Route path="/goals" element={<ProtectedRoute element={<Goals />} />} />
+                    <Route path="/programs" element={<ProtectedRoute element={<Programs />} />} />
+                    <Route path="/instructors" element={<ProtectedRoute element={<Instructors />} />} />
+                    <Route path="/CrudAppFullTimeInstructor" element={<ProtectedRoute element={<CrudAppFullTimeInstructor />} />} />
+                    <Route path="/CrudApp" element={<ProtectedRoute element={<CrudApp />} />} />
+                    <Route path="/CrudForm" element={<ProtectedRoute element={<CrudForm />} />} />
+                  </Routes>
                 </div>
-              ) : (
-                <Navigate to="/" /> // Redirige al usuario a la página de inicio de sesión si no ha iniciado sesión
-              )
-            }
-          />
-        </Routes>
+              </div>
+            ) : (
+              <Navigate to="/" /> // Redirige al usuario a la página de inicio de sesión si no ha iniciado sesión
+            )
+          }
+        />
+      </Routes>
+    </div>
+  </Router>
+  
+);
 
-      </div>
-    </Router>
-  );
 }
 
 export default App;

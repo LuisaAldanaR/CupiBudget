@@ -8,12 +8,30 @@
   padding: 0;
 }
 
+.flex{
+  display:flex;
+}
+
+
+
 body {
   font-family: "Lato", sans-serif; /* Use Lato font as the default font */
   font-family: "Raleway", sans-serif; /* Use Raleway font as the second option */
   margin: 0;
   padding: 0;
 }
+
+.grid-container{
+  display: grid;
+  grid-template-columns: 260px 1fr 1fr 1fr;
+  grid-template-rows: 0.2fr 3fr;
+  grid-template-areas: 
+      'sidebar header header header'
+      'sidebar main main main';
+  height: 100vh;
+}
+
+
 
 /* Color variables */
 $light: #ffffff;
@@ -108,7 +126,7 @@ $blue: #0000ff;
 /* Estilo de sombreado gris claro para la opción principal activa */
 .main-option.active {
   background-color: #dcffe3; /* Puedes ajustar el color gris claro según tus preferencias */
-  width: 206px;
+  width: 214px;
   margin: 0;
   box-shadow: 1px 1px 0px 0px gray; /* Ajusta la sombra según sea necesario */
 }
@@ -352,9 +370,127 @@ input[type="reset"] {
   z-index: 1; /* Coloca el ícono por encima del campo de contraseña */
 }
 
+
+//Home css 
+
+.main-container {
+  grid-area: main;
+  overflow-y: auto;
+  padding: 20px 20px;
+  color: rgba(255, 255, 255, 0.95);
+  margin-left: 30rem;
+}
+
+.H3{
+  font-size: 10px;
+}
+
+.main-title {
+  display: flex;
+  justify-content: space-between;
+  color: #000;
+}
+
+.main-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 20px;
+  margin: 15px 0;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 8px 15px;
+  border-radius: 5px;
+}
+
+.card:first-child {
+  background-color: #FEFEC2;
+}
+
+.card:nth-child(2) {
+  background-color: #EFD6D1;
+}
+
+.card:nth-child(3) {
+  background-color: #D9F5FA;
+}
+
+.card:nth-child(4) {
+  background-color: #d50000;
+}
+
+.card-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.card-inner > .card_icon {
+  font-size:20px;
+}
+
+.charts {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-top: 60px;
+  height: 300px;
+}
+
+/* End Main  */
+
+
+/* Medium <= 992px */
+  
+@media screen and (max-width: 992px) {
+  .grid-container {
+    grid-template-columns: 1fr;
+    grid-template-rows: 0.2fr 3fr;
+    grid-template-areas:
+      'header'
+      'main';
+  }
+
+  #sidebar {
+    display: none;
+  }
+
+  .menu-icon {
+    display: inline;
+  }
+
+  .sidebar-title > span {
+    display: inline;
+  }
+}
+/* Small <= 768px */
+  
+@media screen and (max-width: 768px) {
+  .main-cards {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin-bottom: 0;
+  }
+
+  .charts {
+    grid-template-columns: 1fr;
+    margin-top: 30px;
+  }
+}
+
+/* Extra Small <= 576px */
+
+@media screen and (max-width: 576px) {
+  .hedaer-left {
+    display: none;
+  }
+}
+
 /* Table Instructors and report styles */
 
-/* Responsive styles 1920 x 1080 */
 
 .container {
   display: flex;
