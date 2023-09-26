@@ -1,20 +1,17 @@
+// CrudTableRow2.js
 import React, { useState } from "react";
-import "../../App.scss";
 import Swal from "sweetalert2";
 
-// Define an object with initial values for the form
 const initialForm = {
   oldStudents: "",
   totalGoal: "",
   networkId: null,
 };
 
-const CrudTableRow = ({ el, setDataToEdit, updateData,  handleFormChange, formData }) => {
-  // Destructure the properties of the 'el' object passed as an argument
+const CrudTableRow2 = ({ el, setDataToEdit, updateData,  handleFormChange, formData }) => {
   let { networkName, idNetwork } = el;
   const [form, setForm] = useState(initialForm);
 
-  // Function to handle changes in form fields
   const handleChange = (e) => {
     const { name, value } = e.target;
     setForm({
@@ -26,7 +23,6 @@ const CrudTableRow = ({ el, setDataToEdit, updateData,  handleFormChange, formDa
 
   };
 
-  // Function to handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
   
@@ -35,9 +31,8 @@ const CrudTableRow = ({ el, setDataToEdit, updateData,  handleFormChange, formDa
       return;
     }
   
-    // Create an object with the desired structure
     const newData = {
-      data1: [
+      data2: [
         {
           totalGoal: Number(form.totalGoal),
           oldStudents: Number(form.oldStudents),
@@ -46,34 +41,27 @@ const CrudTableRow = ({ el, setDataToEdit, updateData,  handleFormChange, formDa
       ],
     };
   
-    // Convert newData to a JSON string with quotes around keys
     const newDataString = JSON.stringify(newData);
   
-    // You can access the newDataString here and send it to your API
     console.log(newDataString);
   
-    updateData(newDataString); // Send the JSON string to your API
+    updateData(newDataString);
   
-    // Clear the form and reset dataToEdit to null
     handleReset();
   };
   
-
-  // Function to clear the form and edit data
   const handleReset = () => {
     setForm(initialForm);
     setDataToEdit(null);
   };
 
   return (
-    // Render a table row with the data from the 'el' object
     <tr>
-      {/* Render the network name ('oNetwork.networkName') or a loading message if it's not defined */}
       <td className="tdTableRow">
         {networkName ? (
           networkName
         ) : (
-          el.loading ? (<span>Cargando...</span>) : null // Check if the 'el' object has a 'loading' property
+          el.loading ? (<span>Cargando...</span>) : null
         )}
       </td>
       <td className="tdTableRow">
@@ -109,5 +97,4 @@ const CrudTableRow = ({ el, setDataToEdit, updateData,  handleFormChange, formDa
   );
 };
 
-// Export the CrudTableRow component for use in other parts of the application
-export default CrudTableRow;
+export default CrudTableRow2;

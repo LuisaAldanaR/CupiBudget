@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import CrudTable from "./CrudTable";
+import CrudTableRowContract from "./CrudTableRowContract";
 import { helpHttp } from "../../helpers/helpHttp"; // Ajusta la importación según tu estructura de archivos
-import axios from "axios";
+import axios, { all } from "axios";
 import Swal from "sweetalert2";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
@@ -115,66 +116,71 @@ const BudgetGenerator = () => {
   };
 
   // Function to handle changes in form fields
-  const handleFormChange = (idNetwork, name, value) => {
-    // Crear una copia del estado formData
-    const updatedFormData = { ...formData };
+const handleFormChange = (idNetwork, name, value) => {
+  
+  // Crear una copia del estado formData
+  const updatedFormData = { ...formData };
 
-    // Crear un objeto de datos para esta fila
-    const rowData = {
-      ...updatedFormData[idNetwork],
-      [name]: value,
-    };
-
-    // Actualizar el estado con los datos de esta fila
-    updatedFormData[idNetwork] = rowData;
-
-    // Actualizar el estado formData con los nuevos datos
-    setFormData(updatedFormData);
+  // Crear un objeto de datos para esta fila
+  const rowData = {
+    ...updatedFormData[idNetwork],
+    [name]: value,
   };
 
+  // Actualizar el estado con los datos de esta fila
+  updatedFormData[idNetwork] = rowData;
 
- // Function to handle form submission for all rows
+  // Actualizar el estado formData con los nuevos datos
+  setFormData(updatedFormData);
+
+ // Agregar algunos console.log para verificar los valores
+   console.log("formData:", updatedFormData);
+   console.log("idNetwork:", idNetwork);
+   console.log("name:", name);
+   console.log("value:", value);
+};
+
 const handleAllSubmit = () => {
-  // Crear un array para almacenar los datos de todas las filas
-  const allData = [];
+  // Crear arreglos para almacenar los datos de todas las filas
+  const data1 = [];
+  const data2 = [];
 
-  // Recorrer las filas y agregar sus datos al array
+  // Recorrer las filas y agregar sus datos a los arreglos correspondientes
   db.forEach((el) => {
-    const data1 = {
-      totalGoal: Number(formData[el.idNetwork]?.totalGoal || 0),
-      oldStudents: Number(formData[el.idNetwork]?.oldStudents || 0),
+    const rowData1 = {
+      totalGoal: Number(formData[el.idNetwork]?.data1?.totalGoal || 0),
+      oldStudents: Number(formData[el.idNetwork]?.data1?.oldStudents || 0),
       idNetwork: Number(el.idNetwork),
     };
 
-    const data2 = {
-      totalGoal: Number(formData[el.idNetwork]?.totalGoal || 0),
-      oldStudents: Number(formData[el.idNetwork]?.oldStudents || 0),
+    const rowData2 = {
+      totalGoal: Number(formData[el.idNetwork]?.data2?.totalGoal || 0),
+      oldStudents: Number(formData[el.idNetwork]?.data2?.oldStudents || 0),
       idNetwork: Number(el.idNetwork),
     };
 
-    allData.push(data1, data2);
+    // Agregar datos de la primera tabla al arreglo data1
+    data1.push(rowData1);
+
+    // Agregar datos de la segunda tabla al arreglo data2
+    data2.push(rowData2);
   });
 
-  // Crear un objeto con la estructura esperada
+  // Crear el objeto con la estructura esperada
   const requestData = {
-    data1: allData,
-    data2: allData
+    data1,
+    data2,
   };
 
-  // Convertir el objeto requestData a una cadena JSON
-  const jsonData = JSON.stringify(requestData);
+  // Ahora tienes los datos de ambas tablas en la estructura esperada
+  console.log("requestData:", requestData);
 
-  // Ahora tienes todos los datos de todas las filas en el formato JSON correcto
-  console.log(jsonData);
-
-  // Llama al método updateData con la cadena JSON como argumento
-  updateData(jsonData);
+  // Llama al método updateData con el objeto requestData como argumento
+  updateData(requestData);
 
   // Limpiar el estado formData
   setFormData({});
 };
-
-
 
 
   return (
@@ -207,3 +213,8 @@ const handleAllSubmit = () => {
 };
 
 export default BudgetGenerator;
+
+
+
+
+

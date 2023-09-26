@@ -1,5 +1,6 @@
 import React from "react";
 import CrudTableRow from "./CrudTableRow";
+import CrudTableRowContract from "./CrudTableRowContract";
 import "../../App.scss";
 
 // Definition of the CrudTable component
@@ -32,9 +33,30 @@ const CrudTable = ({ data, setDataToEdit, updateData, handleFormChange, formData
                                         el={el}
                                         setDataToEdit={setDataToEdit}
                                         updateData={updateData}
-                                        handleFormChange={handleFormChange} 
+                                        handleFormChange={handleFormChange}
                                         formData={formData}
                                     />
+
+                                ))
+                            ) : (
+                                // Display "No data" message if there are no elements in 'data'
+                                <tr>
+                                    <td colSpan="3">Sin datos</td>
+                                </tr>
+                            )}
+
+                            {data.length > 0 ? (
+                                // Mapping data to render table rows
+                                data.map((el) => (
+                                    <CrudTableRowContract
+                                        key={el.id}
+                                        el={el}
+                                        setDataToEdit={setDataToEdit}
+                                        updateData={updateData}
+                                        handleFormChange={handleFormChange}
+                                        formData={formData}
+                                    />
+
                                 ))
                             ) : (
                                 // Display "No data" message if there are no elements in 'data'
@@ -46,7 +68,7 @@ const CrudTable = ({ data, setDataToEdit, updateData, handleFormChange, formData
                     </table>
                 </div>
             </div>
-         </div> 
+        </div>
     );
 };
 
