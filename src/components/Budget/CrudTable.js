@@ -3,7 +3,7 @@ import CrudTableRow from "./CrudTableRow";
 import "../../App.scss";
 
 // Definition of the CrudTable component
-const CrudTable = ({ data, setDataToEdit }) => {
+const CrudTable = ({ data, setDataToEdit, updateData, handleFormChange, formData }) => {
     return (
         // Main container of the component
         <div className="container">
@@ -31,6 +31,9 @@ const CrudTable = ({ data, setDataToEdit }) => {
                                         key={el.id}
                                         el={el}
                                         setDataToEdit={setDataToEdit}
+                                        updateData={updateData}
+                                        handleFormChange={handleFormChange} 
+                                        formData={formData}
                                     />
                                 ))
                             ) : (
