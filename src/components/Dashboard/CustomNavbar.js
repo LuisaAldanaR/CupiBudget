@@ -24,16 +24,17 @@ function CustomNavbar() {
           <NavDropdown
             title={
               <span>
-                <FaIcons.FaUserAlt style={{ marginRight: "5px" }} />{" "}
-                <span className="white-text">Oscar Peña</span>
+                <FaIcons.FaUserAlt style={{ marginRight: "5px", width: "40px" }} />{" "}
+                <span className="oscar-text">
+                  Oscar Peña
+                </span>
               </span>
             }
             id="basic-nav-dropdown"
             itemID="user-name"
           >
-          <NavDropdown.Item href="/">Cerrar Sesión</NavDropdown.Item>
-        </NavDropdown>
-
+            <NavDropdown.Item href="/">Cerrar Sesión</NavDropdown.Item>
+          </NavDropdown>
         </Nav>
       </Navbar.Collapse>
     </Navbar>

@@ -32,15 +32,13 @@ $blue: #0000ff;
   height: 90px;
 }
 
-.white-text {
+.oscar-text {
   color: white;
+  font-size: 18px;
 }
 
 /* Custom styling for navigation button */
 /* Custom styling for navigation button */
-.user {
-  color: $light;
-}
 #basic-nav-dropdown::after {
   content: "";
   display: inline-block;
@@ -125,7 +123,7 @@ ul {
   position: sticky;
   top: 0;
   width: 20rem;
-  margin-left: 4rem !important;
+  margin-left: 3rem !important;
   margin-bottom: 4rem !important;
 
   li {
