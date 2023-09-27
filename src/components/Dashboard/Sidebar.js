@@ -126,12 +126,12 @@ const Sidebar = () => {
                   exact
                   activeClassName="active"
                 >
-                  <span style={{ color: "black", fontSize: "17px"}}>Suboption 3</span>
+                  <span style={{ color: "black", fontSize: "17px"}}>Anual</span>
                 </NavLink>
               </li>
               <li>
                 <NavLink to="/option4 " exact activeClassName="active">
-                  <span style={{ color: "black", fontSize: "17px" }}>Suboption 4</span>
+                  <span style={{ color: "black", fontSize: "17px" }}>Mensual</span>
                 </NavLink>
               </li>
             </ul>

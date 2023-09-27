@@ -60,7 +60,7 @@ function Login() {
           icon: 'success',
           title: 'Autenticación Exitosa',
           showConfirmButton: false,
-          timer: 950
+          timer: 650
         }).then(() => {
           window.location.href = '/Home';
         });
