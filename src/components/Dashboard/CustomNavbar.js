@@ -19,12 +19,12 @@ function CustomNavbar() {
         <Nav className="ms-auto">
           <FaIcons.FaBell
             className="notibell"
-            style={{ marginRight: "50px", marginTop: "16px" }}
+            style={{ marginRight: "45px", marginTop: "13px", color: "white", fontSize: "20px" }}
           />
           <NavDropdown
             title={
               <span>
-                <FaIcons.FaUserAlt style={{ marginRight: "4px", width: "40px" }} />{" "}
+                <FaIcons.FaUserAlt style={{ width: "40px", color: "white", fontSize: "20px", marginBottom: "5px" }} />{" "}
                 <span className="oscar-text" style={{ marginRight: "10px"}}>
                     Oscar Peña
                   </span>
@@ -32,8 +32,9 @@ function CustomNavbar() {
             }
             id="basic-nav-dropdown"
             itemID="user-name"
+            
           >
-            <NavDropdown.Item href="/">Cerrar Sesión</NavDropdown.Item>
+            <NavDropdown.Item  href="/">Cerrar Sesión</NavDropdown.Item >
           </NavDropdown>
         </Nav>
       </Navbar.Collapse>

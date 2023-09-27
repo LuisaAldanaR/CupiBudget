@@ -62,13 +62,14 @@ $blue: #0000ff;
   content: "";
   display: inline-block;
   vertical-align: middle;
-  border-top: 8px solid #000;
+  border-top: 8px solid #ffffff;
   border-left: 6px solid transparent;
   border-right: 6px solid transparent;
   margin-left: 5px;
   margin-right: 40px;
   border-width: 10px 6px;
   overflow: visible;
+  margin-bottom: 2px;
 }
 
 /* Style for the user name inside the dropdown */
