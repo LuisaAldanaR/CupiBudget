@@ -2,11 +2,13 @@ import React, { useState, useEffect } from "react";
 import CrudTable from "./CrudTable";
 import { helpHttp } from "../../helpers/helpHttp"; // Ajusta la importación según tu estructura de archivos
 import Swal from "sweetalert2";
+import Loader from "./Loader"; // Import the loader component
+import Message from "./Message"; // Import the message component
 
 const BudgetGenerator = () => {
   const [db, setDb] = useState([]);
   const [dataToEdit, setDataToEdit] = useState(null);
-  const [error, setError] = useState(null);
+  const [errorMessage, setErrorMessage] = useState(null);
   const [loading, setLoading] = useState(true);
   const [formData, setFormData] = useState({}); // Nuevo estado para los datos de los formularios
 
@@ -100,10 +102,10 @@ const BudgetGenerator = () => {
           confirmButtonText: "OK",
         });
       } else {
-        console.error("Error en la solicitud:", response.status);
-      }
+        throw new Error(`Error en la solicitud: ${response.status}`);     
+       }
     } catch (error) {
-      console.error("Error al enviar la solicitud:", error);
+      setErrorMessage(`Error en la solicitud: ${error.message}`);;
     } finally {
       setFormData({});
     }
@@ -122,10 +124,10 @@ const BudgetGenerator = () => {
     api.get(urlGet, options).then((res) => {
       if (!res.err) {
         setDb(res.response); // Store data in the 'db' state
-        setError(null); // Clear errors
+        setErrorMessage(null); // Clear errors
       } else {
         setDb([]); // Set an empty array in 'db' in case of an error
-        setError(`Error ${res.status}: ${res.statusText}`);
+        setErrorMessage(`Error ${res.status}: ${res.statusText}`);
       }
 
       setLoading(false); // Set 'loading' to false after data is loaded
@@ -160,7 +162,7 @@ const BudgetGenerator = () => {
           setDb(newData); // Actualizar 'db' con los nuevos datos
         });
       } else {
-        setError(res);
+        setErrorMessage(res);
       }
     });
   };
@@ -189,23 +191,36 @@ const BudgetGenerator = () => {
     <div>
 
       <div className="containerButtons">
+      
         <button className="btn addButton btn-generate" onClick={generateBudget}>
           Generar Reporte
         </button>
+      
 
-        {error && (
+        {errorMessage && (
           <div className="alert alert-danger mt-2" role="alert">
-            {error}
+            {errorMessage}
           </div>
         )}
       </div>
 
+      { !loading && !errorMessage && db && (
       <CrudTable
         data={db}
         setDataToEdit={setDataToEdit}
         updateData={updateData}
         handleFormChange={handleFormChange}
         formData={formData} />
+      )}
+      
+      <div className="loader">
+      {loading && <Loader />}
+
+      {errorMessage && (
+        <Message msg={`Error ${errorMessage}: ${errorMessage}`} bgColor="#dc3545" />
+      )}
+      </div>
+
     </div>
   );
 };
