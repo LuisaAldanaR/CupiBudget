@@ -19,15 +19,15 @@ function CustomNavbar() {
         <Nav className="ms-auto">
           <FaIcons.FaBell
             className="notibell"
-            style={{ marginRight: "50px", marginTop: "13px" }}
+            style={{ marginRight: "50px", marginTop: "16px" }}
           />
           <NavDropdown
             title={
               <span>
-                <FaIcons.FaUserAlt style={{ marginRight: "5px", width: "40px" }} />{" "}
-                <span className="oscar-text">
-                  Oscar Peña
-                </span>
+                <FaIcons.FaUserAlt style={{ marginRight: "4px", width: "40px" }} />{" "}
+                <span className="oscar-text" style={{ marginRight: "10px"}}>
+                    Oscar Peña
+                  </span>
               </span>
             }
             id="basic-nav-dropdown"

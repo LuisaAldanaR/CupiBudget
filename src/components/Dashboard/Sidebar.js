@@ -37,19 +37,20 @@ const Sidebar = () => {
   return (
     <div className="sidebar">
       <ul>
-      <li style={{ marginTop: "70px" }}>
+        <li style={{ marginTop: "70px" }}>
           {/* Utiliza NavLink para redirigir a "/ruta-de-home" al hacer clic en "Inicio" */}
           <NavLink
-            to="./home" // Reemplaza "/ruta-de-home" con la ruta real de tu componente Home.js
-            className={`main-option ${
-              isOptionActive("option1") ? "active" : ""
-            }`}
-            id="home"
-          >
-            <FaIcons.FaHome />{" "}
-            <span style={{ marginLeft: "30px" }}>Inicio</span>{" "}
-            {isOptionActive("option1")}
-          </NavLink>
+              to="./home"
+              className={`main-option ${
+                isOptionActive("option0") ? "active" : ""
+              } nav-link`}
+            >
+              <FaIcons.FaHome />
+              <span style={{ marginLeft: "10px", color: 'black' }}>Inicio</span>{" "}
+              <HiIcons.HiChevronRight
+                style={{ color: "green", marginLeft: "108px", marginBottom: "0" }}
+              />
+            </NavLink>
         </li>
         <li style={{ marginTop: "70px" }}>
           <div
@@ -62,10 +63,14 @@ const Sidebar = () => {
             <FaIcons.FaFileInvoiceDollar />{" "}
             <span style={{ marginLeft: "25px" }}>Reporte</span>{" "}
             {isOptionActive("option2") ? (
-              <HiIcons.HiChevronDown style={{ color: "green", marginLeft: "65px" }} />
-              ) : (
-                <HiIcons.HiChevronRight style={{ color: "green", marginLeft: "65px" }} />
-              )}
+              <HiIcons.HiChevronDown
+                style={{ color: "green", marginLeft: "65px" }}
+              />
+            ) : (
+              <HiIcons.HiChevronRight
+                style={{ color: "green", marginLeft: "65px" }}
+              />
+            )}
           </div>
           {isOptionActive("option2") && (
             <ul
@@ -74,15 +79,17 @@ const Sidebar = () => {
               onMouseLeave={() => handleMouseLeave("option2")}
             >
               <li>
-                <NavLink to="/BudgetGenerator" id="submenu" exact activeClassName="active">
-                  <span style={{ color: 'black' }}>Generar reporte</span>                
+                <NavLink
+                  to="/BudgetGenerator"
+                  id="submenu"
+                  exact
+                  activeClassName="active"
+                >
+                 <span style={{ color: "black", marginRight: "16px", fontSize: "17px" }}>Generar reporte</span>
+
                 </NavLink>
               </li>
-              <li>
-                <NavLink to="/option4" exact activeClassName="active">
-                  <span style={{ color: "black" }}>Suboption 4</span>
-                </NavLink>
-              </li>
+            
             </ul>
           )}
         </li>
@@ -97,10 +104,14 @@ const Sidebar = () => {
             <ImIcons.ImTarget />{" "}
             <span style={{ marginLeft: "25px" }}>Metas</span>{" "}
             {isOptionActive("option3") ? (
-              <HiIcons.HiChevronDown style={{ color: "green", marginLeft: "79px" }} />
-              ) : (
-                <HiIcons.HiChevronRight style={{ color: "green", marginLeft: "79px" }} />
-              )}
+              <HiIcons.HiChevronDown
+                style={{ color: "green", marginLeft: "79px" }}
+              />
+            ) : (
+              <HiIcons.HiChevronRight
+                style={{ color: "green", marginLeft: "79px" }}
+              />
+            )}
           </div>
           {isOptionActive("option3") && (
             <ul
@@ -115,12 +126,12 @@ const Sidebar = () => {
                   exact
                   activeClassName="active"
                 >
-                  <span style={{ color: "black" }}>Suboption 3</span>
+                  <span style={{ color: "black", fontSize: "17px"}}>Suboption 3</span>
                 </NavLink>
               </li>
               <li>
                 <NavLink to="/option4 " exact activeClassName="active">
-                  <span style={{ color: "black" }}>Suboption 4</span>
+                  <span style={{ color: "black", fontSize: "17px" }}>Suboption 4</span>
                 </NavLink>
               </li>
             </ul>
@@ -137,9 +148,13 @@ const Sidebar = () => {
             <FaIcons.FaUserTie />{" "}
             <span style={{ marginLeft: "25px" }}>Instructores</span>{" "}
             {isOptionActive("option5") ? (
-              <HiIcons.HiChevronDown style={{ color: "green", marginLeft: "30px" }} />
+              <HiIcons.HiChevronDown
+                style={{ color: "green", marginLeft: "30px" }}
+              />
             ) : (
-              <HiIcons.HiChevronRight style={{ color: "green", marginLeft: "30px" }} />
+              <HiIcons.HiChevronRight
+                style={{ color: "green", marginLeft: "30px" }}
+              />
             )}
           </div>
           {isOptionActive("option5") && (
@@ -155,12 +170,12 @@ const Sidebar = () => {
                   exact
                   activeClassName="active"
                 >
-                  <span style={{ color: "black" }}>Planta</span>
+                  <span style={{ color: "black", fontSize: "17px"}}>Planta</span>
                 </NavLink>
               </li>
               <li>
                 <NavLink to="/CrudApp" exact activeClassName="active">
-                  <span style={{ color: "black" }}>Contrato</span>
+                  <span style={{ color: "black", fontSize: "17px" }}>Contrato</span>
                 </NavLink>
               </li>
             </ul>

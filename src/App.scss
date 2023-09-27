@@ -51,8 +51,9 @@ $blue: #0000ff;
 }
 
 .oscar-text {
-  color: white;
-  font-size: 18px;
+  color: rgb(255, 255, 255);
+  font-size: 17px;
+  margin-top: 40rem !important;
 }
 
 /* Custom styling for navigation button */
@@ -122,13 +123,13 @@ $blue: #0000ff;
   box-shadow: 5px 0px 10px rgba(0, 0, 0, 0.2); /* Añadir sombra al lado derecho */
 }
 
-
 /* Estilo de sombreado gris claro para la opción principal activa */
 .main-option.active {
   background-color: #dcffe3; /* Puedes ajustar el color gris claro según tus preferencias */
-  width: 214px;
+  width: 215px;
   margin: 0;
   box-shadow: 1px 1px 0px 0px gray; /* Ajusta la sombra según sea necesario */
+  height: 30px;
 }
 
 .main-option{
@@ -167,7 +168,7 @@ ul {
 }
 
 #home{
-  font-size: 20px;
+  font-size: 15px;
 }
 /* Global styles */
 .html {
@@ -361,7 +362,7 @@ input[type="reset"] {
 /* Estilo para el ícono del ojo */
 .password-toggle {
   position: absolute;
-  top: 52%;
+  top: 53%;
   right: 5rem; /* Ajusta la posición del ícono a tu preferencia */
   transform: translateY(-50%);
   cursor: pointer;
@@ -371,7 +372,8 @@ input[type="reset"] {
 }
 
 
-//Home css 
+/* Home.css */
+
 
 .main-container {
   grid-area: main;
@@ -379,9 +381,11 @@ input[type="reset"] {
   padding: 20px 20px;
   color: rgba(255, 255, 255, 0.95);
   margin-left: 30rem;
+  padding-bottom: 15rem;
+  margin-top: 50px;
 }
 
-.H3{
+.h3 {
   font-size: 10px;
 }
 
@@ -392,47 +396,107 @@ input[type="reset"] {
 }
 
 .main-cards {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  position: relative; /* Set relative positioning for the container */
+  display: flex;
+  flex-wrap: wrap;
   gap: 20px;
   margin: 15px 0;
 }
 
-.card {
+.card1 {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 4px 15px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  background-color: #FEFEC2;
+  max-width: 20rem; /* Limit the maximum width */
+  max-height: 10rem; /* Limit the maximum height */
+}
+
+
+.card1:nth-child(2) {
+  background-color: #EFD6D1;
+}
+
+.card1:nth-child(3) {
+  background-color: #D9F5FA;
+}
+
+.card-special {
+  position: absolute;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   padding: 8px 15px;
   border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  background-color: #caf3b6;
+  top: 100%;
+  left: 0;
+  width: 41.2rem;
+  height: 10rem;
+  margin-top: 1.5rem;
 }
 
-.card:first-child {
-  background-color: #FEFEC2;
+.card-go {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 8px 15px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  background-color: #a7c7b4;
+  top: 19.5rem;
+  left: 0;
+  width: 41.2rem;
+  height: 10rem;
+  margin-top: 0;
 }
 
-.card:nth-child(2) {
-  background-color: #EFD6D1;
+.card-report {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 8px 15px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  background-color: #f0dfd3;
+  top: 8rem;
+  left:42.5rem;
+  width: 20rem;
+  height: 21.5rem;
+  margin-top: 0;
 }
 
-.card:nth-child(3) {
-  background-color: #D9F5FA;
-}
 
-.card:nth-child(4) {
-  background-color: #d50000;
+/* Agrega estos estilos a tu archivo CSS */
+.card-description  {
+  color: black;
+  margin-right: 20rem;
+  width: 30rem;
+  font-size: 16px;
 }
-
 .card-inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.card-inner > .card_icon {
-  font-size:20px;
+.icon_report{
+  margin-bottom: 3rem;
+  font-size: 20px;
 }
 
-.charts {
+.card-inner > .card_icon {
+  font-size: 20px;
+}
+
+.shortcuts {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 20px;
