@@ -62,7 +62,7 @@ function Login() {
           showConfirmButton: false,
           timer: 950
         }).then(() => {
-          window.location.href = '/CrudApp';
+          window.location.href = '/Home';
         });
       } else {
         Swal.fire({

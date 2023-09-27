@@ -1,6 +1,4 @@
-// CrudTableRow2.js
 import React, { useState } from "react";
-import Swal from "sweetalert2";
 
 const initialForm = {
   oldStudents: "",
@@ -8,8 +6,8 @@ const initialForm = {
   networkId: null,
 };
 
-const CrudTableRow2 = ({ el, setDataToEdit, updateData,  handleFormChange, formData }) => {
-  let { networkName, idNetwork } = el;
+const CrudTableRow2 = ({ el }) => {
+  let { networkName } = el;
   const [form, setForm] = useState(initialForm);
 
   const handleChange = (e) => {
@@ -18,41 +16,6 @@ const CrudTableRow2 = ({ el, setDataToEdit, updateData,  handleFormChange, formD
       ...form,
       [name]: value,
     });
-
-    handleFormChange(el.idNetwork, name, value);
-
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-  
-    if (!form.totalGoal || !form.oldStudents) {
-      Swal.fire("¡Faltan campos por llenar!", "", "question");
-      return;
-    }
-  
-    const newData = {
-      data2: [
-        {
-          totalGoal: Number(form.totalGoal),
-          oldStudents: Number(form.oldStudents),
-          idNetwork: Number(el.idNetwork),
-        },
-      ],
-    };
-  
-    const newDataString = JSON.stringify(newData);
-  
-    console.log(newDataString);
-  
-    updateData(newDataString);
-  
-    handleReset();
-  };
-  
-  const handleReset = () => {
-    setForm(initialForm);
-    setDataToEdit(null);
   };
 
   return (
@@ -65,28 +28,29 @@ const CrudTableRow2 = ({ el, setDataToEdit, updateData,  handleFormChange, formD
         )}
       </td>
       <td className="tdTableRow">
-        <input
-          type="number"
-          name="totalGoal"
-          id={`totalGoal${el.idNetwork}`} // Add the ID to the input ID property          
-          placeholder="Meta del trimestre"
-          className="form-control"
-          onChange={handleChange}
-          value={form.totalGoal}
-        />
-      </td>
+  <input
+    type="number"
+    name={`totalGoalTechnical${el.idNetwork}`} 
+    id={`totalGoalTechnical${el.idNetwork}`}
+    placeholder="Meta del trimestre"
+    className="form-control"
+    onChange={handleChange}
+    value={form[`totalGoalTechnical${el.idNetwork}`]} 
+  />
+</td>
 
-      <td className="tdTableRow">
-        <input
-          type="number"
-          name="oldStudents"
-          id={`oldStudents_${el.idNetwork}`} // Add the ID to the input ID property          
-          placeholder="cupos Antiguos"
-          className="form-control"
-          onChange={handleChange}
-          value={form.oldStudents}
-        />
-      </td>
+<td className="tdTableRow">
+  <input
+    type="number"
+    name={`oldStudentsTechnical${el.idNetwork}`} 
+    id={`oldStudentsTechnical${el.idNetwork}`}
+    placeholder="cupos Antiguos"
+    className="form-control"
+    onChange={handleChange}
+    value={form[`oldStudentsTechnical${el.idNetwork}`]} 
+  />
+</td>
+
     </tr>
   );
 };
