@@ -195,13 +195,7 @@ const BudgetGenerator = () => {
         <button className="btn addButton btn-generate" onClick={generateBudget}>
           Generar Reporte
         </button>
-      
 
-        {errorMessage && (
-          <div className="alert alert-danger mt-2" role="alert">
-            {errorMessage}
-          </div>
-        )}
       </div>
 
       { !loading && !errorMessage && db && (
@@ -217,7 +211,7 @@ const BudgetGenerator = () => {
       {loading && <Loader />}
 
       {errorMessage && (
-        <Message msg={`Error ${errorMessage}: ${errorMessage}`} bgColor="#dc3545" />
+        <Message msg={`${errorMessage}`} bgColor="#dc3545" />
       )}
       </div>
 
