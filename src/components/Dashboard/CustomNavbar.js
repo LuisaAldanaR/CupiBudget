@@ -7,7 +7,7 @@ import * as FaIcons from "react-icons/fa";
 
 function CustomNavbar() {
   return (
-    <Navbar id="navbar" expand="lg" className="bg-body-tertiary">
+    <Navbar id="navbar">
       <img
         src="/img/logo-sena-white.png"
         className="custom-logo"

@@ -34,7 +34,8 @@ const CrudTableRow = ({ el, setDataToEdit, deleteData, showFormViewFullTimeInstr
         }}><FontAwesomeIcon icon={faUserPen}/></button>&nbsp; 
         {/* Delete button that calls the 'deleteData' function with 'idInstructor' as an argument */}
         <button className="btn btn-danger" onClick={() => deleteData(idInstructor, el)}>
-        <FontAwesomeIcon icon={faTrash}/></button></td> 
+        <FontAwesomeIcon icon={faTrash}/></button>
+      </td> 
     </tr>
   );
 };

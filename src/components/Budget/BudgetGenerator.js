@@ -188,7 +188,7 @@ const BudgetGenerator = () => {
 
 
   return (
-    <div>
+    <div className="container">
 
       <div className="containerButtons">
       

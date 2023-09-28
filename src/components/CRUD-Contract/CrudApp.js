@@ -166,7 +166,7 @@ const CrudApp = () => {
   };
 
   return (
-    <div>
+    <div className="container">
       {showRecords && (
         <>
           <h3 className="h3Table">Instructores Contratistas</h3>

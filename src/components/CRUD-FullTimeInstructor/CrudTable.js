@@ -6,13 +6,13 @@ import "../../App.scss";
 const CrudTable = ({ data, setDataToEdit, deleteData, showFormViewFullTimeInstructor }) => {
     return (
         // Main container of the component
-        <div className="container">
-            <div className="card-body center-table background-gradient">
-                <div className="table-responsive">
+        <div className="">
+            <div className="card-body background-gradient">
+                <div className="">
                     {/* Table header */}
                     <br></br>
-                    <table className="table center-table">
-                        <thead>
+                    <table className="table">
+                        <thead className="text-center">
                             <tr>
                                 <th className="thLeft">Nombre</th> 
                                 <th className="thTable">Posición</th> 
