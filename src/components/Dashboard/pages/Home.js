@@ -5,7 +5,7 @@ const Home = () => {
   return (
     <main className='main-container'>
       <div className='main-title' style={{ marginBottom: '70px' }}>
-        <h3>TABLERO GENERAL</h3>
+        <h3 className='main-title'>TABLERO GENERAL</h3>
       </div>
 
       <div className='main-cards'>
@@ -38,6 +38,14 @@ const Home = () => {
           <p className='card-description' >Visualiza, elimina o edita información de instructor.</p>
         </div>
         
+        <div className='card-report'>
+          <div className='card-inner'>
+            <p style={{ color: 'black', fontSize: '18px', marginTop: '10px', fontWeight: 'bold' }}>IR A REPORTE</p>
+            <FaIcons.FaSquareArrowUpRight className='icon_report' style={{ color: 'black', marginRight: '40px', marginTop: '45px' }} />
+          </div>
+          <p className='card-description' > Genera el reporte necesario.</p>
+        </div>
+
         <div className='card-go'>
           <div className='card-inner'>
             <p style={{ color: 'black', fontSize: '18px', marginTop: '10px', fontWeight: 'bold' }}>IR A INSTRUCTORES CONTRATISTAS</p>
@@ -46,13 +54,7 @@ const Home = () => {
           <p className='card-description' > Visualiza, elimina o edita información de instructor.</p>
         </div>
 
-        <div className='card-report'>
-          <div className='card-inner'>
-            <p style={{ color: 'black', fontSize: '18px', marginTop: '10px', fontWeight: 'bold' }}>IR A REPORTE</p>
-            <FaIcons.FaSquareArrowUpRight className='icon_report' style={{ color: 'black', marginRight: '40px', marginTop: '45px' }} />
-          </div>
-          <p className='card-description' > Genera el reporte necesario.</p>
-        </div>
+     
 
       </div>
 
