@@ -8,7 +8,7 @@ const CrudTable = ({ data, setDataToEdit, deleteData, showFormView }) => {
         // Main container of the component
         <div className="">
             <div className="card-body background-gradient">
-                <div className="">
+                <div className="table-responsive">
                     {/* Table header */}
                     <br></br>
                     <table className="table">

@@ -154,7 +154,7 @@ const deleteData = (idInstructor, data) => {
   };
 
   return (
-    <div className="container">
+    <div className="content">
       {showRecords && (
         <>
           <h3 className="h3Table">Instructores de Planta</h3>

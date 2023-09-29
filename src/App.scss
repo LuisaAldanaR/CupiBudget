@@ -99,14 +99,20 @@ $blue: #0000ff;
 }
 
 /* Main content */
+
 .content {
-  display: flex;
-  flex-wrap: wrap;
+  flex-grow: 1;
+  flex-basis: 200 ; /* Stack elements vertically on smaller screens */  
+  position: sticky;
   background-size: 100%;
   min-height: 61rem;
-  z-index: 2;
-  background-color: #f3f1f1;
+  position: sticky;
+  z-index: 1;
+  width: 100%; /* Cambia min-width a width */
+  margin-left: 17rem; /* Ajustar según el ancho de la barra lateral */
+  padding-right: 1rem; /* Agregar un margen izquierdo para el contenido */
 }
+
 
 /* Sidebar */
 /* Estilos para la barra lateral */
@@ -129,16 +135,18 @@ $blue: #0000ff;
 /* Table Instructors and report styles */
 
 
+/* Contenedor principal */
 .container {
-  flex-grow: 1;
-  flex-basis: 200 ; /* Stack elements vertically on smaller screens */
-  align-items: center;
-  justify-content: center;
-  margin-left: 20rem !important; /* Reduce left margin on smaller screens */
-  width: 100% !important; /* Full width on smaller screens */
-  z-index: 0;
-
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start; /* Alinea los elementos en la parte superior del contenedor */
+  justify-content: flex-start; /* Alinea los elementos a la izquierda del contenedor */
+  width: 100% !important; /* Full width en pantallas más pequeñas */
+  background-color: #f3f1f1;
+  z-index: 1;
+  padding-left: 14rem; /* Añade un margen izquierdo para dar espacio a la barra lateral */
 }
+
 
 .thLeft {
   background-color: #c5e8fc !important;
@@ -495,10 +503,10 @@ input[type="reset"] {
   flex-wrap: wrap;
   padding: 20px 20px;
   color: rgba(255, 255, 255, 0.95);
-  margin-left: 30rem;
+  margin-left: 15rem;
   padding-bottom: 15rem;
   margin-top: 50px;
-  padding-right: 20rem;
+  justify-content: center;
 }
 
 .h3 {
@@ -506,17 +514,18 @@ input[type="reset"] {
 }
 
 .main-title {
-  flex-grow: 1;
-  flex-basis: 200;
+  
   justify-content: space-between;
   color: #000;
+  justify-content: center;
+  max-height: 5vh;
 }
 
 .main-cards {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
-  margin: 15px 0;
+  margin-left: 30vh;
 }
 
 .card1 {
@@ -527,7 +536,7 @@ input[type="reset"] {
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   background-color: #FEFEC2;
-  max-width: 20rem; /* Limit the maximum width */
+  max-width: 35vh; /* Limit the maximum width */
   max-height: 10rem; /* Limit the maximum height */
 }
 
@@ -543,16 +552,16 @@ input[type="reset"] {
 .card-special {
   flex-grow: 1;
   flex-basis: 200;
-  justify-content: space-around;
+  justify-content: flex-start;
   padding: 8px 15px;
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   background-color: #caf3b6;
   top: 100%;
   left: 0;
-  max-width: 640px;
-  height: 10rem;
-  margin-top: 1.5rem;
+  min-width: 73vh;
+  max-width: 111vh;
+  height: 28vh;
 }
 
 .card-go {
@@ -565,8 +574,9 @@ input[type="reset"] {
   background-color: #a7c7b4;
   top: 19.5rem;
   left: 0;
-  width: 41.2rem;
-  height: 10rem;
+  max-width: 73vh;
+  max-width: 111vh;
+  height: 28vh;
   margin-top: 0;
 }
 
@@ -580,7 +590,8 @@ input[type="reset"] {
   background-color: #f0dfd3;
   top: 8rem;
   left:42.5rem;
-  width: 15vh;
+  max-width: 73vh;
+  max-width: 111vh;
   height: 28vh;
   margin-top: 0;
 }
@@ -588,25 +599,27 @@ input[type="reset"] {
 
 /* Agrega estos estilos a tu archivo CSS */
 .card-description  {
+  
   color: black;
   margin-right: 20rem;
-  width: 30rem;
+  width: 10rem;
   font-size: 16px;
 }
 .card-inner {
-  flex-grow: 1;
-  flex-basis: 200;
+  
   align-items: center;
   justify-content: space-between;
+  min-width: 30vh;
+  max-height: 5rem;
 }
 
 .icon_report{
-  margin-bottom: 3rem;
   font-size: 20px;
 }
 
 .card-inner > .card_icon {
   font-size: 20px;
+  padding: 0%;
 }
 
 .shortcuts {

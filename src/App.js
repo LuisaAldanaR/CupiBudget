@@ -59,7 +59,7 @@ function App() {
 
   return (
     <Router>
-    <div className="content">
+    <div className="">
       <Routes>
         {/* Route for the login page */}
         <Route path='/' element={<Login />} />
@@ -70,7 +70,7 @@ function App() {
             isAuthenticated() ? (
               <div className="">
                 <Sidebar />
-                <div className="content min-vw-100">
+                <div className="container min-vw-100">
                   <CustomNavbar />
                   <Routes>
                     {/* Ruta para la página Home */}

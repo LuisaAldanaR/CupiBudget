@@ -4,11 +4,13 @@ import * as FaIcons from 'react-icons/fa6';
 const Home = () => {
   return (
     <main className='main-container'>
+      
       <div className='main-title' style={{ marginBottom: '70px' }}>
         <h3 className='main-title'>TABLERO GENERAL</h3>
       </div>
-
+      
       <div className='main-cards'>
+        
         <div className='card1'>
           <div className='card-inner'>
             <p style={{ color: 'black' }}>INSTRUCTORES DE PLANTA</p>
