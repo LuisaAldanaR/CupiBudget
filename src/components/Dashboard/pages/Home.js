@@ -33,7 +33,7 @@ const Home = () => {
           <br/>
           <br/>
           <br/>
-          <p className='card-description' > Generar reporte </p>
+          <p className='card-description' > Puedes generar un reporte PDF</p>
         </div>
         <div className='card1'>
           <div className='card-inner'>
