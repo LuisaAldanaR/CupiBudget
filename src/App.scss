@@ -536,18 +536,30 @@ input[type="reset"] {
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   background-color: #FEFEC2;
+  max-width: 20rem; /* Limit the maximum width */
+  max-height: 24rem; /* Limit the maximum height */
   max-width: 35vh; /* Limit the maximum width */
   max-height: 10rem; /* Limit the maximum height */
 }
 
 
 .card1:nth-child(2) {
+  
   background-color: #EFD6D1;
 }
 
-.card1:nth-child(3) {
-  background-color: #D9F5FA;
+.card1:nth-child(4) {
+ background-color: #ffda9b;
+
 }
+
+.card1:nth-child(3) {
+  margin-top: 1.5rem;
+  order: 2;
+  background-color: #D9F5FA;
+  height: 23rem;
+}
+
 
 .card-special {
   flex-grow: 1;
@@ -559,9 +571,9 @@ input[type="reset"] {
   background-color: #caf3b6;
   top: 100%;
   left: 0;
-  min-width: 73vh;
-  max-width: 111vh;
-  height: 28vh;
+  max-width: 640px;
+  height: 10rem;
+  margin-top: 1.5rem;
 }
 
 .card-go {
@@ -574,9 +586,8 @@ input[type="reset"] {
   background-color: #a7c7b4;
   top: 19.5rem;
   left: 0;
-  max-width: 73vh;
-  max-width: 111vh;
-  height: 28vh;
+  width: 41.2rem;
+  height: 10rem;
   margin-top: 0;
 }
 
@@ -590,8 +601,7 @@ input[type="reset"] {
   background-color: #f0dfd3;
   top: 8rem;
   left:42.5rem;
-  max-width: 73vh;
-  max-width: 111vh;
+  width: 15vh;
   height: 28vh;
   margin-top: 0;
 }
@@ -602,7 +612,7 @@ input[type="reset"] {
   
   color: black;
   margin-right: 20rem;
-  width: 10rem;
+  width: 30rem;
   font-size: 16px;
 }
 .card-inner {
@@ -619,16 +629,9 @@ input[type="reset"] {
 
 .card-inner > .card_icon {
   font-size: 20px;
-  padding: 0%;
 }
 
-.shortcuts {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
-  margin-top: 60px;
-  height: 300px;
-}
+
 
 /* End Main  */
 

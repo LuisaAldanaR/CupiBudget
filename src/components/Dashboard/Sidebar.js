@@ -37,7 +37,7 @@ const Sidebar = () => {
   return (
     <div className="sidebar">
       <ul>
-        <li style={{ marginTop: "70px" }}>
+        <li style={{ marginTop: "50px" }}>
           {/* Utiliza NavLink para redirigir a "/ruta-de-home" al hacer clic en "Inicio" */}
           <NavLink
               to="./home"
@@ -45,14 +45,14 @@ const Sidebar = () => {
                 isOptionActive("option0") ? "active" : ""
               } nav-link`}
             >
-              <FaIcons.FaHome />
-              <span style={{ marginLeft: "10px", color: 'black' }}>Inicio</span>{" "}
+              <FaIcons.FaHome style={{marginLeft:"10px"}} />
+              <span style={{ marginLeft: "20px", color: 'black' }}>Inicio</span>{" "}
               <HiIcons.HiChevronRight
-                style={{ color: "green", marginLeft: "108px", marginBottom: "0" }}
+                style={{ color: "green", marginLeft: "88px", marginBottom: "0" }}
               />
             </NavLink>
         </li>
-        <li style={{ marginTop: "70px" }}>
+        <li style={{ marginTop: "50px" }}>
           <div
             onMouseEnter={() => handleMouseEnter("option2")}
             onMouseLeave={() => handleMouseLeave("option2")}
@@ -60,15 +60,15 @@ const Sidebar = () => {
               isOptionActive("option2") ? "active" : ""
             }`}
           >
-            <FaIcons.FaFileInvoiceDollar />{" "}
+            <FaIcons.FaFileInvoiceDollar style={{marginLeft:"10px"}}  />{" "}
             <span style={{ marginLeft: "25px" }}>Reporte</span>{" "}
             {isOptionActive("option2") ? (
               <HiIcons.HiChevronDown
-                style={{ color: "green", marginLeft: "65px" }}
+                style={{ color: "green", marginLeft: "55px" }}
               />
             ) : (
               <HiIcons.HiChevronRight
-                style={{ color: "green", marginLeft: "65px" }}
+                style={{ color: "green", marginLeft: "55px" }}
               />
             )}
           </div>
@@ -93,7 +93,7 @@ const Sidebar = () => {
             </ul>
           )}
         </li>
-        <li style={{ marginTop: "70px" }}>
+        <li style={{ marginTop: "50px" }}>
           <div
             onMouseEnter={() => handleMouseEnter("option3")}
             onMouseLeave={() => handleMouseLeave("option3")}
@@ -101,15 +101,15 @@ const Sidebar = () => {
               isOptionActive("option3") ? "active" : ""
             }`}
           >
-            <ImIcons.ImTarget />{" "}
+            <ImIcons.ImTarget style={{marginLeft:"10px"}}/>{" "}
             <span style={{ marginLeft: "25px" }}>Metas</span>{" "}
             {isOptionActive("option3") ? (
               <HiIcons.HiChevronDown
-                style={{ color: "green", marginLeft: "79px" }}
+                style={{ color: "green", marginLeft: "69px" }}
               />
             ) : (
               <HiIcons.HiChevronRight
-                style={{ color: "green", marginLeft: "79px" }}
+                style={{ color: "green", marginLeft: "69px" }}
               />
             )}
           </div>
@@ -137,7 +137,7 @@ const Sidebar = () => {
             </ul>
           )}
         </li>
-        <li style={{ marginTop: "70px" }}>
+        <li style={{ marginTop: "50px" }}>
           <div
             onMouseEnter={() => handleMouseEnter("option5")}
             onMouseLeave={() => handleMouseLeave("option5")}
@@ -145,15 +145,15 @@ const Sidebar = () => {
               isOptionActive("option5") ? "active" : ""
             }`}
           >
-            <FaIcons.FaUserTie />{" "}
+            <FaIcons.FaUserTie style={{marginLeft:"10px"}} />{" "}
             <span style={{ marginLeft: "25px" }}>Instructores</span>{" "}
             {isOptionActive("option5") ? (
               <HiIcons.HiChevronDown
-                style={{ color: "green", marginLeft: "30px" }}
+                style={{ color: "green", marginLeft: "20px" }}
               />
             ) : (
               <HiIcons.HiChevronRight
-                style={{ color: "green", marginLeft: "30px" }}
+                style={{ color: "green", marginLeft: "20px" }}
               />
             )}
           </div>
