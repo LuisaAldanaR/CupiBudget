@@ -99,20 +99,18 @@ $blue: #0000ff;
 }
 
 /* Main content */
-
 .content {
-  flex-grow: 1;
-  flex-basis: 200 ; /* Stack elements vertically on smaller screens */  
   position: sticky;
   background-size: 100%;
   min-height: 61rem;
   position: sticky;
+  top: 0;
   z-index: 1;
   width: 100%; /* Cambia min-width a width */
-  margin-left: 17rem; /* Ajustar según el ancho de la barra lateral */
-  padding-right: 1rem; /* Agregar un margen izquierdo para el contenido */
+  margin-left: 14rem; /* Ajustar según el ancho de la barra lateral */
+  padding-left: 1rem; /* Agregar un margen izquierdo para el contenido */
+  margin-right: 1rem;
 }
-
 
 /* Sidebar */
 /* Estilos para la barra lateral */
@@ -132,9 +130,6 @@ $blue: #0000ff;
   margin-top: 10vh;
 }
 
-/* Table Instructors and report styles */
-
-
 /* Contenedor principal */
 .container {
   display: flex;
@@ -147,7 +142,7 @@ $blue: #0000ff;
   padding-left: 14rem; /* Añade un margen izquierdo para dar espacio a la barra lateral */
 }
 
-
+/* Table Instructors and report styles */
 .thLeft {
   background-color: #c5e8fc !important;
   border-top-left-radius: 10px !important;
