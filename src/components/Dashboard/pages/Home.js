@@ -7,9 +7,8 @@ const Home = () => {
       <div className='main-title' style={{ marginBottom: '50px', marginTop:"-60px" }}>
         <h3 className='main-title'>TABLERO GENERAL</h3>
       </div>
-      
+
       <div className='main-cards'>
-        
         <div className='card1'>
           <div className='card-inner'>
             <p style={{ color: 'black', fontWeight: "bold"  }}>INSTRUCTORES DE PLANTA</p>
@@ -65,13 +64,7 @@ const Home = () => {
         </div>
         </div>
 
-        
-        
-
-
       </div>
-
-      
 
       <div className='shortcuts'></div>
     </main>
