@@ -70,7 +70,7 @@ function App() {
             isAuthenticated() ? (
               <div className="">
                 <Sidebar />
-                <div className="container min-vw-100">
+                <div className="container min-vw-100" style={{padding:"0", margin:"0"}}>
                   <CustomNavbar />
                   <Routes>
                     {/* Ruta para la página Home */}

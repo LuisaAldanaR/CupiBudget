@@ -12,21 +12,21 @@ const Home = () => {
         <div className='card1'>
           <div className='card-inner'>
             <p style={{ color: 'black', fontWeight: "bold"  }}>INSTRUCTORES DE PLANTA</p>
-            <FaIcons.FaClipboardUser className='card_icon' style={{ color: 'black', marginLeft: "16rem", marginTop: '8px'}}  />
+            <FaIcons.FaClipboardUser className='card_icon' style={{ color: 'black', marginLeft: "25vh", marginTop: '8px'}}  />
           </div>
           <h1 style={{ color: 'black' }}>47</h1>
         </div>
         <div className='card1'>
           <div className='card-inner'>
             <p style={{ color: 'black', fontWeight: "bold"  }}>INSTRUCTORES DE CONTRATO</p>
-            <FaIcons.FaClipboardUser className='card_icon' style={{ color: 'black', marginLeft: "16rem", marginTop: '8px'}}  />
+            <FaIcons.FaClipboardUser className='card_icon' style={{ color: 'black', marginLeft: "25vh", marginTop: '8px'}}  />
           </div>
           <h1 style={{ color: 'black' }}>4</h1>
         </div>
         <div className='card1'>
           <div className='card-inner'> 
             <p style={{ color: 'black', fontSize: "20px", fontWeight: "bold" }}>REPORTE</p>
-            <FaIcons.FaFileContract className='card_icon' style={{ color: 'black', marginLeft: "16rem", marginTop: '8px'}}  />
+            <FaIcons.FaFileContract className='card_icon' style={{ color: 'black', marginLeft: "25vh", marginTop: '5vh'}}  />
           </div>
           <br/>
           <br/>
@@ -37,7 +37,7 @@ const Home = () => {
         <div className='card1'>
           <div className='card-inner'>
             <p style={{ color: 'black', fontWeight: "bold"  }}>PROGRAMAS</p>
-            <FaIcons.FaFileContract className='card_icon' style={{ color: 'black', marginLeft: "16rem", marginTop: '8px'}} />
+            <FaIcons.FaFileContract className='card_icon' style={{ color: 'black', marginLeft: "25vh", marginTop: '1vh'}} />
           </div>
           <h1 style={{ color: 'black' }}>120</h1>
         </div>
@@ -50,7 +50,7 @@ const Home = () => {
         <div className='card-special'>
           <div className='card-inner'>
             <p style={{ color: 'black', fontSize: '18px', marginTop: '10px', fontWeight: 'bold' }}>IR A INSTRUCTORES DE PLANTA</p>
-            <FaIcons.FaArrowRightToBracket className='card_icon' style={{ color: 'black', marginLeft: "37rem", marginTop: '8px' }} />
+            <FaIcons.FaArrowRightToBracket className='card_icon' style={{ color: 'black', marginLeft: "60vh", marginTop: '1vh' }} />
           </div>
           <p className='card-description' >Visualiza, elimina o edita información de instructor.</p>
         </div>
@@ -58,7 +58,7 @@ const Home = () => {
         <div className='card-go'>
           <div className='card-inner'>
             <p style={{ color: 'black', fontSize: '18px', marginTop: '10px', fontWeight: 'bold' }}>IR A INSTRUCTORES CONTRATISTAS</p>
-            <FaIcons.FaArrowRightToBracket className='card_icon' style={{ color: 'black', marginLeft: "37rem", marginTop: '8px' }} />
+            <FaIcons.FaArrowRightToBracket className='card_icon' style={{ color: 'black', marginLeft: "60vh", marginTop: '1vh' }} />
           </div>
           <p className='card-description' > Visualiza, elimina o edita información de instructor.</p>
         </div>
