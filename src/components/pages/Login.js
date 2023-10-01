@@ -81,22 +81,19 @@ function Login() {
   }, []);
 
   return (
-    <div className="login-container">
-      <div className="logo-login">
+    <div className="login-container" >
+      <div className="logo-login" >
         <img src="/img/Logo-sena.png" alt="Logo" />
         <br />
         <br />
         <br />
         <hr className='underLine'></hr>
         <p className="welcomeText tracking-in-expand-forward-top">Bienvenido</p>
-        <div id="mainContainer" className='filter'>
-          <div className="secondContainer">
-            <br />
-            <br />
-            <label className='l1'>Iniciar Sesión </label>
-            <br />
-            <br />
-            <br />
+        <div id="mainContainer" className='filter' >
+          <div className="secondContainer" style={{marginTop:"5vh"}} >
+            
+            <label style={{marginBottom:"5vh", userSelect:"none"}} className='l1'>Iniciar Sesión </label>
+            
             <div className="form-group">
               <input
                 placeholder="Usuario"
@@ -104,6 +101,8 @@ function Login() {
                 name="username"
                 onChange={handleChange}
                 className="rounded-input"
+                style={{userSelect: "none"}}
+                
               />
               <input
                 placeholder="Contraseña"
@@ -112,22 +111,20 @@ function Login() {
                 name="password"
                 value={form.password}
                 onChange={handleChange}
+                style={{userSelect: "none"}}
               />
-              <span className={`password-toggle ${showPassword ? 'active' : ''}`} onClick={togglePasswordVisibility}>
-                <FontAwesomeIcon icon={showPassword ? faEye : faEyeSlash} />
+              <span style={{userSelect:"none"}}className={`password-toggle ${showPassword ? 'active' : ''}`} onClick={togglePasswordVisibility}>
+                <FontAwesomeIcon  icon={showPassword ? faEye : faEyeSlash} style={{width: "20px", height: "20px"}} />
               </span>  
             </div>
-            <br />
+            
             <button
               className="login-button"
+              style={{marginTop:"4vh", userSelect: "none"}}
               onClick={iniciarSesion}>
               Ingresar
             </button>
-            <br />
-            <br />
-            <br />
-            <br />
-            <label className='l2'>Cambiar contraseña </label>
+            <p style={{marginTop:"4vh", userSelect: "none"}} className='l2'>Cambiar contraseña </p>
           </div>
         </div>
       </div>

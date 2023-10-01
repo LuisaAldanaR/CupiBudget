@@ -348,7 +348,7 @@ input[type="reset"] {
 /* Styling for the main container */
 /* Styling for the main container */
 #mainContainer {
-  position: absolute;
+  position: fixed;
   left: 60%; /* Centro horizontalmente */
   top: 50%; /* Centro verticalmente */
   transform: translate(-50%, -50%);
@@ -359,6 +359,8 @@ input[type="reset"] {
   box-shadow: 0 2px 8px #000;
   border: 1px solid #ffffff40;
   background-color: #38a9009f;
+  
+ 
 
   .filter {
     -webkit-backdrop-filter: blur(15px);
@@ -388,6 +390,7 @@ input[type="reset"] {
     padding: 5% 10%; /* Utilizar unidades relativas */
     font-size: 18px;
     font-weight: 400;
+    
   }
 
   /* Styling for rounded inputs */
@@ -480,7 +483,7 @@ input[type="reset"] {
 
 /* Estilo para el ícono del ojo */
 .password-toggle {
-  position: absolute;
+  position: fixed;
   top: 53%;
   right: 5rem; /* Ajusta la posición del ícono a tu preferencia */
   transform: translateY(-50%);
@@ -489,6 +492,8 @@ input[type="reset"] {
   font-size: 1rem; /* Ajusta el tamaño del ícono (más pequeño) */
   z-index: 1; /* Coloca el ícono por encima del campo de contraseña */
 }
+
+
 
 
 /* Home.css */
