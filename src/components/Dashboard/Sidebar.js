@@ -46,7 +46,7 @@ const Sidebar = () => {
               } nav-link`}
             >
               <FaIcons.FaHome style={{marginLeft:"10px"}} />
-              <span style={{ marginLeft: "30px", color: 'black', fontWeight:"bold"}}>Inicio</span>{" "}
+              <span style={{ marginLeft: "30px", color: 'black', fontWeight:"600"}}>Inicio</span>{" "}
               
             </NavLink>
         </li>
@@ -81,7 +81,7 @@ const Sidebar = () => {
                   to="/BudgetGenerator"
                   id="submenu"
                   exact
-                  activeClassName="active"
+                  activeclassname ="active"
                 >
                  <span style={{ color: "black", fontSize: "17px"}}>Generar Reporte</span>
 
@@ -100,7 +100,7 @@ const Sidebar = () => {
             }`}
           >
             <ImIcons.ImTarget style={{marginLeft:"10px"}}/>{" "}
-            <span style={{ marginLeft: "25px" }}>Metas</span>{" "}
+            <span style={{ marginLeft: "25px", fontWeight:"600" }}>Metas</span>{" "}
             {isOptionActive("option3") ? (
               <HiIcons.HiChevronDown
                 style={{ color: "green", marginLeft: "69px" }}
@@ -121,14 +121,14 @@ const Sidebar = () => {
                 <NavLink
                   to="/option3"
                   id="submenu"
-                  exact
-                  activeClassName="active"
+                  exact="true"
+                  activeclassname ="active"
                 >
                   <span style={{ color: "black", fontSize: "17px"}}>Anual</span>
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/option4 " exact activeClassName="active">
+                <NavLink to="/option4 " exact activeclassname ="active">
                   <span style={{ color: "black", fontSize: "17px" }}>Mensual</span>
                 </NavLink>
               </li>
@@ -145,7 +145,7 @@ const Sidebar = () => {
             }`} 
           > 
             <FaIcons.FaUserTie style={{marginLeft:"10px"}} />{" "}
-            <span style={{ marginLeft: "25px"}} >Instructores</span>{" "}
+            <span style={{ marginLeft: "25px", fontWeight:"600"}} >Instructores</span>{" "}
             {isOptionActive("option5") ? (
               <HiIcons.HiChevronDown
                 style={{ color: "green", marginLeft: "20px" }}
@@ -167,13 +167,13 @@ const Sidebar = () => {
                   to="/CrudAppFullTimeInstructor"
                   id="submenu"
                   exact
-                  activeClassName="active"
+                  activeclassname ="active"
                 >
                   <span style={{ color: "black", fontSize: "17px"}}>Planta</span>
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/CrudApp" exact activeClassName="active">
+                <NavLink to="/CrudApp" exact activeclassname ="active">
                   <span style={{ color: "black", fontSize: "17px" }}>Contrato</span>
                 </NavLink>
               </li>
