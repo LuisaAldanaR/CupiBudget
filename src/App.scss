@@ -374,7 +374,7 @@ input[type="reset"] {
 /* Styling for the main container */
 /* Styling for the main container */
 #mainContainer {
-  position: fixed;
+  position:fixed;
   left: 60%; /* Centro horizontalmente */
   top: 50%; /* Centro verticalmente */
   transform: translate(-50%, -50%);
@@ -386,7 +386,7 @@ input[type="reset"] {
   border: 1px solid #ffffff40;
   background-color: #38a9009f;
   
- 
+  
 
   .filter {
     -webkit-backdrop-filter: blur(15px);
@@ -427,6 +427,8 @@ input[type="reset"] {
     border: 1px solid #ccc;
     width: 90%;
     margin-left: 5%;
+    position: "fixed"
+    
     /* Otros estilos según tus preferencias */
   }
 }
@@ -454,6 +456,7 @@ input[type="reset"] {
 
 
 .logo-login {
+  position:a;
   margin-top: 18%; /* Ajusta según tu preferencia */
   margin-left: 28%; /* Ajusta según tu preferencia */
   width: 80%; /* Utilizar unidades relativas */
@@ -514,7 +517,7 @@ input[type="reset"] {
 /* Estilo para el ícono del ojo */
 .password-toggle {
   position: fixed;
-  top: 53%;
+  top:55%;
   right: 5rem; /* Ajusta la posición del ícono a tu preferencia */
   transform: translateY(-50%);
   cursor: pointer;

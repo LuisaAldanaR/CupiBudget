@@ -101,7 +101,7 @@ function Login() {
                 name="username"
                 onChange={handleChange}
                 className="rounded-input"
-                style={{userSelect: "none"}}
+                style={{userSelect: "none", }}
                 
               />
               <input
@@ -111,18 +111,18 @@ function Login() {
                 name="password"
                 value={form.password}
                 onChange={handleChange}
-                style={{userSelect: "none"}}
+                style={{userSelect: "none", position: "fixed", width:"34vh"}}
               />
               <span style={{userSelect:"none"}}className={`password-toggle ${showPassword ? 'active' : ''}`} onClick={togglePasswordVisibility}>
-                <FontAwesomeIcon  icon={showPassword ? faEye : faEyeSlash} style={{width: "20px", height: "20px"}} />
+                <FontAwesomeIcon  icon={showPassword ? faEye : faEyeSlash} style={{width: "20px", height: "20px",}} />
               </span>  
             </div>
             
             <button
-              className="login-button"
-              style={{marginTop:"4vh", userSelect: "none"}}
-              onClick={iniciarSesion}>
-              Ingresar
+                className="login-button"
+                style={{marginTop:"10vh", userSelect: "none"}}
+                onClick={iniciarSesion}>
+                Ingresar
             </button>
             <p style={{marginTop:"4vh", userSelect: "none"}} className='l2'>Cambiar contraseña </p>
           </div>
