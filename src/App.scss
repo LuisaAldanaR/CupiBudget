@@ -128,7 +128,28 @@ $blue: #0000ff;
   z-index: 2;
   max-width: 14rem;
   box-shadow: 5px 0px 10px rgba(0, 0, 0, 0.2); /* Añadir sombra al lado derecho */
-  margin-top: 10vh;
+  margin-top: 90px;
+
+  
+}
+
+.sidebar-ul {
+  max-height: 200px; /* Establece una altura máxima para la lista */
+  padding: 0; /* Elimina el espacio interno predeterminado de la lista */
+  margin: 0; /* Elimina el margen predeterminado de la lista */
+  margin-left: 7rem !important;
+  margin-top:-45rem;
+}
+
+.sidebar-li{
+ 
+  padding: 0; /* Elimina el espacio interno predeterminado de la lista */
+  margin: 0; /* Elimina el margen predeterminado de la lista */
+  margin-top: 25px;
+}
+
+.submenu{
+  margin: 0 !important;
 }
 
 /* Contenedor principal */
@@ -257,13 +278,16 @@ $blue: #0000ff;
   background-color: #dcffe3; /* Puedes ajustar el color gris claro según tus preferencias */
   width: 215px;
   margin: 0;
+  padding: 0;
   box-shadow: 1px 1px 0px 0px gray; /* Ajusta la sombra según sea necesario */
   height: 30px;
 }
 
 .main-option{
-  width: 300px;
+  width: 215px;
 }
+
+
 
 ul {
   list-style: none;
@@ -421,7 +445,11 @@ input[type="reset"] {
   position: absolute;
   top: 0; /* Ajusta la posición vertical hacia arriba */
   left: 0;
+    
+  
 }
+
+
 
 .logo-login {
   margin-top: 18%; /* Ajusta según tu preferencia */

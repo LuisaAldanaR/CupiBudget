@@ -36,8 +36,8 @@ const Sidebar = () => {
 
   return (
     <div className="sidebar">
-      <ul>
-        <li style={{ marginTop: "50px" }}>
+      <ul className="sidebar-ul">
+        <li className="sidebar-li">
           {/* Utiliza NavLink para redirigir a "/ruta-de-home" al hacer clic en "Inicio" */}
           <NavLink
               to="./home"
@@ -46,13 +46,11 @@ const Sidebar = () => {
               } nav-link`}
             >
               <FaIcons.FaHome style={{marginLeft:"10px"}} />
-              <span style={{ marginLeft: "20px", color: 'black' }}>Inicio</span>{" "}
-              <HiIcons.HiChevronRight
-                style={{ color: "green", marginLeft: "88px", marginBottom: "0" }}
-              />
+              <span style={{ marginLeft: "30px", color: 'black', fontWeight:"bold"}}>Inicio</span>{" "}
+              
             </NavLink>
         </li>
-        <li style={{ marginTop: "50px" }}>
+        <li className="sidebar-li">
           <div
             onMouseEnter={() => handleMouseEnter("option2")}
             onMouseLeave={() => handleMouseLeave("option2")}
@@ -61,7 +59,7 @@ const Sidebar = () => {
             }`}
           >
             <FaIcons.FaFileInvoiceDollar style={{marginLeft:"10px"}}  />{" "}
-            <span style={{ marginLeft: "25px" }}>Reporte</span>{" "}
+            <span style={{ marginLeft: "25px", fontWeight:"600" }}>Reporte</span>{" "}
             {isOptionActive("option2") ? (
               <HiIcons.HiChevronDown
                 style={{ color: "green", marginLeft: "55px" }}
@@ -85,7 +83,7 @@ const Sidebar = () => {
                   exact
                   activeClassName="active"
                 >
-                 <span style={{ color: "black", marginRight: "16px", fontSize: "17px" }}>Generar reporte</span>
+                 <span style={{ color: "black", fontSize: "17px"}}>Generar Reporte</span>
 
                 </NavLink>
               </li>
@@ -93,7 +91,7 @@ const Sidebar = () => {
             </ul>
           )}
         </li>
-        <li style={{ marginTop: "50px" }}>
+        <li className="sidebar-li">
           <div
             onMouseEnter={() => handleMouseEnter("option3")}
             onMouseLeave={() => handleMouseLeave("option3")}
@@ -114,7 +112,7 @@ const Sidebar = () => {
             )}
           </div>
           {isOptionActive("option3") && (
-            <ul
+            <ul 
               className="submenu"
               onMouseEnter={() => handleMouseEnter("option3")}
               onMouseLeave={() => handleMouseLeave("option3")}
@@ -137,16 +135,17 @@ const Sidebar = () => {
             </ul>
           )}
         </li>
-        <li style={{ marginTop: "50px" }}>
+        <li className="sidebar-li">
           <div
+            style={{margin:0, padding:0}}
             onMouseEnter={() => handleMouseEnter("option5")}
             onMouseLeave={() => handleMouseLeave("option5")}
             className={`main-option ${
               isOptionActive("option5") ? "active" : ""
-            }`}
-          >
+            }`} 
+          > 
             <FaIcons.FaUserTie style={{marginLeft:"10px"}} />{" "}
-            <span style={{ marginLeft: "25px" }}>Instructores</span>{" "}
+            <span style={{ marginLeft: "25px"}} >Instructores</span>{" "}
             {isOptionActive("option5") ? (
               <HiIcons.HiChevronDown
                 style={{ color: "green", marginLeft: "20px" }}
