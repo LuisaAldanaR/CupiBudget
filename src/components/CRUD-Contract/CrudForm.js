@@ -18,6 +18,7 @@ const CrudForm = ({ createData, updateData, dataToEdit, setDataToEdit, showTable
   // Define states for the form and network options
   const [form, setForm] = useState(initialForm);
   const [networkOptions, setNetworkOptions] = useState([]);
+  const [instructorNames, setInstructorNames] = useState([]); // Estado para almacenar los nombres de los instructores
   const api = helpHttp(); // Instance of the HTTP request utility
 
   const token = localStorage.getItem('jwtToken'); // Recupera el token JWT del almacenamiento local
@@ -71,6 +72,8 @@ const CrudForm = ({ createData, updateData, dataToEdit, setDataToEdit, showTable
   const handleSubmit = (e) => {
     e.preventDefault();
     
+    const token = localStorage.getItem('jwtToken'); // Recupera el token JWT del almacenamiento local
+
     const inputEndDateCourse= form.endDateCourse.toString();
     const inputEndDate= form.endDate.toString();
     const inputStartDate= form.startDate.toString();
@@ -82,40 +85,53 @@ const CrudForm = ({ createData, updateData, dataToEdit, setDataToEdit, showTable
     const isStartDateAvaliable = inputStartDate > currentDate;
     const isStartDateValid = inputStartDate < inputEndDate;
 
-    if (!form.name.trim() || !form.startDate.trim() || !form.endDate.trim()) {
-      
+     // Verifica si el nombre ya existe en la lista de nombres de instructores
+     if (instructorNames.includes(form.name)) {
       Swal.fire({
         icon: 'error',
-        title: 'Datos Incompletos',
+        title: 'El instructor ya existe',
         text: '',
-      })
-      return;
-    }
-    
-    if (!isEndDateCourseAvaliable || !isEndDateAvaliable || !isStartDateAvaliable || !isStartDateValid)
-    {
-      Swal.fire({
-        icon: 'error',
-        title: 'La fecha digitada no puede ser anterior a la fecha actual',
-        text: '',
-      })
-      console.log(currentDate);
-      console.log(isEndDateCourseAvaliable);
-      console.log(isEndDateAvaliable);
-      console.log(isStartDateAvaliable);
-      console.log(isStartDateValid);
-      return;
+      });
+      return; // Detén la ejecución si el nombre ya existe
     }
 
-    // Call 'createData' or 'updateData' depending on whether it's creating or updating
-    if (dataToEdit === null || dataToEdit.idInstructor === undefined) {
-      createData(form);
-    } else {
-      updateData(form);
-    }
+    if (token){
+      if (!form.name.trim() || !form.startDate.trim() || !form.endDate.trim()) {
+      
+        Swal.fire({
+          icon: 'error',
+          title: 'Datos Incompletos',
+          text: '',
+        })
+        return;
+      }
+      
+      if (!isEndDateCourseAvaliable || !isEndDateAvaliable || !isStartDateAvaliable || !isStartDateValid)
+      {
+        Swal.fire({
+          icon: 'error',
+          title: 'La fecha digitada no puede ser anterior a la fecha actual',
+          text: '',
+        })
+        return;
+      }
   
-    // Clear the form and reset dataToEdit to null
-    handleReset();
+      // Call 'createData' or 'updateData' depending on whether it's creating or updating
+      if (dataToEdit === null || dataToEdit.idInstructor === undefined) {
+        createData(form);
+      } else {
+        updateData(form);
+      }
+    
+      // Clear the form and reset dataToEdit to null
+      handleReset();
+    }else{
+      Swal.fire({
+        icon: 'error',
+        title: 'Actualmente no tienes permisos para esta acción',
+        text: '',
+      })
+    }    
   };
   
   

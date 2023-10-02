@@ -16,6 +16,7 @@ const CrudForm = ({ createData, updateData, dataToEdit, setDataToEdit, showTable
   // Define states for the form and network options
   const [form, setForm] = useState(initialForm);
   const [networkOptions, setNetworkOptions] = useState([]);
+  const [instructorNames, setInstructorNames] = useState([]); // Estado para almacenar los nombres de los instructores
   const api = helpHttp(); // Instance of the HTTP request utility
   const token = localStorage.getItem('jwtToken'); // Recupera el token JWT del almacenamiento local
 
@@ -33,11 +34,11 @@ const CrudForm = ({ createData, updateData, dataToEdit, setDataToEdit, showTable
   // Effect to load network options from an API when the component mounts
   useEffect(() => {
     const urlNetwork = "http://www.mendezmrf10.somee.com/api/Network/List";
-
+  
     let options = {
       headers: {'Authorization': `Bearer ${token}`, },   
     };
-
+  
     api.get(urlNetwork, options).then((res) => {
       if (!res.err) {
         setNetworkOptions(res.response); // Store network options in the state
@@ -45,8 +46,9 @@ const CrudForm = ({ createData, updateData, dataToEdit, setDataToEdit, showTable
         console.error("Error al obtener las opciones de red:", res.err);
       }
     });
-  }, [api]);
-
+  }, [api, token]);
+  
+  
   // Function to handle changes in form fields
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -60,40 +62,53 @@ const CrudForm = ({ createData, updateData, dataToEdit, setDataToEdit, showTable
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    const token = localStorage.getItem('jwtToken'); // Recupera el token JWT del almacenamiento local
+
     const inputDate = form.endDateCourse.toString();
     const currentDate = new Date().toISOString();
     const isEndDateCourseAvaliable = inputDate > currentDate;
 
-    if (!form.name.trim() || !form.position.trim() || !form.networkId) {
+    if (token){
+      if (!form.name.trim() || !form.position.trim() || !form.networkId) {
+        Swal.fire({
+          icon: 'error',
+          title: 'Datos Incompletos',
+          text: '',
+        })
+        return;
+      }
+  
+      if (!isEndDateCourseAvaliable)
+      {
+        Swal.fire({
+          icon: 'error',
+          title: 'La fecha digitada no puede ser anterior a la fecha actual',
+          text: '',
+        })
+        console.log(currentDate);
+        console.log(inputDate);
+        return;
+      }
+  
+      // Call 'createData' or 'updateData' based on whether creating or updating
+      if (dataToEdit === null || form.idInstructor === undefined || form.idInstructor === "") {
+        createData(form);
+      } else {
+        updateData(form);
+        console.log(dataToEdit);
+      }
+
+      // Verifica si el nombre ya existe en la lista de nombres de instructores
+    if (instructorNames.includes(form.name)) {
       Swal.fire({
         icon: 'error',
-        title: 'Datos Incompletos',
+        title: 'El instructor ya existe',
         text: '',
-      })
-      return;
+      });
+      return; // Detén la ejecución si el nombre ya existe
     }
-
-    if (!isEndDateCourseAvaliable)
-    {
-      Swal.fire({
-        icon: 'error',
-        title: 'La fecha digitada no puede ser anterior a la fecha actual',
-        text: '',
-      })
-      console.log(currentDate);
-      console.log(inputDate);
-      return;
-    }
-
-    // Call 'createData' or 'updateData' based on whether creating or updating
-    if (dataToEdit === null || form.idInstructor === undefined || form.idInstructor === "") {
-      createData(form);
-    } else {
-      updateData(form);
-      console.log(dataToEdit);
-    }
-
-    handleReset(); // Clear the form
+      handleReset(); // Clear the form
+    } 
   };
 
   // Function to clear the form and data being edited
