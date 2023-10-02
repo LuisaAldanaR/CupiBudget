@@ -70,7 +70,18 @@ const CrudForm = ({ createData, updateData, dataToEdit, setDataToEdit, showTable
   // Function to handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
-  
+    
+    const inputEndDateCourse= form.endDateCourse.toString();
+    const inputEndDate= form.endDate.toString();
+    const inputStartDate= form.startDate.toString();
+
+    const currentDate = new Date().toISOString();
+
+    const isEndDateCourseAvaliable = inputEndDateCourse > currentDate;
+    const isEndDateAvaliable = inputEndDate > currentDate;
+    const isStartDateAvaliable = inputStartDate > currentDate;
+    const isStartDateValid = inputStartDate < inputEndDate;
+
     if (!form.name.trim() || !form.startDate.trim() || !form.endDate.trim()) {
       
       Swal.fire({
@@ -80,7 +91,22 @@ const CrudForm = ({ createData, updateData, dataToEdit, setDataToEdit, showTable
       })
       return;
     }
-  
+    
+    if (!isEndDateCourseAvaliable || !isEndDateAvaliable || !isStartDateAvaliable || !isStartDateValid)
+    {
+      Swal.fire({
+        icon: 'error',
+        title: 'La fecha digitada no puede ser anterior a la fecha actual',
+        text: '',
+      })
+      console.log(currentDate);
+      console.log(isEndDateCourseAvaliable);
+      console.log(isEndDateAvaliable);
+      console.log(isStartDateAvaliable);
+      console.log(isStartDateValid);
+      return;
+    }
+
     // Call 'createData' or 'updateData' depending on whether it's creating or updating
     if (dataToEdit === null || dataToEdit.idInstructor === undefined) {
       createData(form);

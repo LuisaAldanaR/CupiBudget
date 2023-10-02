@@ -60,12 +60,28 @@ const CrudForm = ({ createData, updateData, dataToEdit, setDataToEdit, showTable
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    const inputDate = form.endDateCourse.toString();
+    const currentDate = new Date().toISOString();
+    const isEndDateCourseAvaliable = inputDate > currentDate;
+
     if (!form.name.trim() || !form.position.trim() || !form.networkId) {
       Swal.fire({
         icon: 'error',
         title: 'Datos Incompletos',
         text: '',
       })
+      return;
+    }
+
+    if (!isEndDateCourseAvaliable)
+    {
+      Swal.fire({
+        icon: 'error',
+        title: 'La fecha digitada no puede ser anterior a la fecha actual',
+        text: '',
+      })
+      console.log(currentDate);
+      console.log(inputDate);
       return;
     }
 
