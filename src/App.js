@@ -19,11 +19,11 @@ import CrudAppFullTimeInstructor from "./components/CRUD-FullTimeInstructor/Crud
  * @returns {JSX.Element} The rendered application.
  */
 function App() {
+  const jwtToken = localStorage.getItem('jwtToken');
 
   // Función para verificar si el usuario ha iniciado sesión
   const isAuthenticated = () => {
     // Obtiene el token JWT del almacenamiento local
-    const jwtToken = localStorage.getItem('jwtToken');
   
     if (jwtToken) {
       try {
