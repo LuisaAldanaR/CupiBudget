@@ -6,13 +6,8 @@
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
-
-.flex{
-  display:flex;
-}
-
-
 
 body {
   font-family: "Lato", sans-serif; /* Use Lato font as the default font */
@@ -99,9 +94,22 @@ $blue: #0000ff;
   min-width: 100%;
 }
 
+
+/* Contenedor principal */
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100% !important; /* Full width en pantallas más pequeñas */
+  background-color: #f3f1f1;
+  z-index: 1;
+  padding-left: 14rem; /* Añade un margen izquierdo para dar espacio a la barra lateral */
+}
+
 /* Main content */
 .content {
   position: sticky;
+  align-items: center;
+  justify-content: center;
   background-size: 100%;
   min-height: 61rem;
   position: sticky;
@@ -109,8 +117,8 @@ $blue: #0000ff;
   z-index: 1;
   width: 100%; /* Cambia min-width a width */
   margin-left: 14rem; /* Ajustar según el ancho de la barra lateral */
-  padding-left: 1rem; /* Agregar un margen izquierdo para el contenido */
-  margin-right: 1rem;
+  padding-left: 2rem; /* Agregar un margen izquierdo para el contenido */
+  margin-right: 2rem;
 }
 
 /* Sidebar */
@@ -152,17 +160,6 @@ $blue: #0000ff;
   margin: 0 !important;
 }
 
-/* Contenedor principal */
-.container {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: flex-start; /* Alinea los elementos en la parte superior del contenedor */
-  justify-content: flex-start; /* Alinea los elementos a la izquierda del contenedor */
-  width: 100% !important; /* Full width en pantallas más pequeñas */
-  background-color: #f3f1f1;
-  z-index: 1;
-  padding-left: 14rem; /* Añade un margen izquierdo para dar espacio a la barra lateral */
-}
 
 /* Table Instructors and report styles */
 .thLeft {
@@ -214,17 +211,22 @@ $blue: #0000ff;
 }
 
 .center-table-form {
-  display: inline-table;
+  display: flex;
   justify-content: center; /* Centrar horizontalmente */
   align-items: center; /* Centrar verticalmente */
   text-align: center;
-  height: 300px;
-  width: 400px;
   margin: 16px;
 }
 
 .card {
+  display: flex;
+  justify-content: center; /* Centrar horizontalmente */
+  align-items: center; /* Centrar verticalmente */
+  text-align: center;
+  height: 22rem;
+  width: 32rem;
   margin-top: 4rem;
+  padding: 2rem;
 }
 
 

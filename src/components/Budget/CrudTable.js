@@ -11,7 +11,7 @@ const CrudTable = ({ data, setDataToEdit, updateData, handleFormChange, formData
             <div className="card-body background-gradient">
                 <div className="">
                     {/* Table header for the first table */}
-                    <h2>Datos de Redes Tecnológicas</h2>
+                    <h2 className="h3Table">Datos de Redes Tecnológicas</h2>
                     <table className="table">
                         <thead className="text-center">
                             <tr>
@@ -45,9 +45,9 @@ const CrudTable = ({ data, setDataToEdit, updateData, handleFormChange, formData
                     </table>
 
                     {/* Table header for the second table */}
-                    <h2>Datos de Redes Técnicas</h2>
-                    <table className="table center-table">
-                        <thead>
+                    <h2 className="h3Table">Datos de Redes Técnicas</h2>
+                    <table className="table">
+                        <thead className="text-center">
                             <tr>
                                 {/* Add column headers for the second table as needed */}
                                 <th className="thLeft">Nombre de la Red</th>
