@@ -2,6 +2,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Lato:wght@100;400;700&family=Raleway:wght@400;600&display=swap");
 
 /* General styles */
+html{
+  width: 100%;
+  height: 100%;
+  min-width: 1100px;
+  background-color: #f3f1f1;
+}
 
 * {
   margin: 0;
@@ -39,7 +45,8 @@ $blue: #0000ff;
   position: sticky;
   top: 0;
   z-index: 2;
-  min-width: 100vw;
+  width: 100%;
+  min-width: 1100px;
   height: 10vh;
   margin-bottom: 5vh;
   
@@ -100,9 +107,9 @@ $blue: #0000ff;
   display: flex;
   flex-wrap: wrap;
   width: 100% !important; /* Full width en pantallas más pequeñas */
-  background-color: #f3f1f1;
   z-index: 1;
   padding-left: 14rem; /* Añade un margen izquierdo para dar espacio a la barra lateral */
+  min-width: 500px;
 }
 
 /* Main content */
