@@ -15,6 +15,7 @@ const BudgetGenerator = () => {
   const token = localStorage.getItem("jwtToken"); // Recupera el token JWT del almacenamiento local
   const api = helpHttp(); // Instancia de la utilidad de solicitud HTTP
   const [pdfLink, setPdfLink] = useState(null);
+  
 
   const generateBudget = async () => {
     try {

@@ -107,6 +107,7 @@ $blue: #0000ff;
 }
   /* Contenedor principal */
 .container {
+  background-color: #f3f1f1;
   display: flex;
   flex-wrap: wrap;
   width: 100% !important; /* Full width en pantallas más pequeñas */
@@ -226,6 +227,7 @@ $blue: #0000ff;
   width: 100% !important; /* Full width en pantallas más pequeñas */
   z-index: 1;
   min-width: 500px;
+  background-color: #f3f1f1;
 }
 
   /* Main content */
@@ -543,12 +545,25 @@ input[type="reset"] {
     background-color: white;
     padding: 5%; /* Utilizar unidades relativas */
     border: 1px solid #ccc;
-    width: 90%;
-    margin-left: 5%;
+    width: 88%;
+    margin-left: 6%;
     position: "fixed"
-    
-    /* Otros estilos según tus preferencias */
-  }
+  
+  /* Otros estilos según tus preferencias */
+}
+
+.form-control{
+  position:fixed;
+  border-radius: 1rem; /* Utilizar unidades relativas */
+  background-color: white;
+  padding: 5%; /* Utilizar unidades relativas */
+  border: 1px solid #ccc;
+  width: 73%;
+  margin-left: 5%;
+  
+ 
+}
+
 }
 
 /* Styling for the second container */
