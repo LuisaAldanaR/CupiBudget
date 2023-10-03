@@ -69,9 +69,9 @@ function App() {
           element={
             isAuthenticated() ? (
               <div className="">
-                <Sidebar />
-                <div className="container min-vw-100" style={{padding:"0", margin:"0"}}>
                   <CustomNavbar />
+                  <Sidebar />
+                <div className="container min-vw-100" style={{padding:"0", margin:"0"}}>
                   <Routes>
                     {/* Ruta para la página Home */}
                     <Route

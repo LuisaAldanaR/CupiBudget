@@ -37,20 +37,6 @@ $light: #ffffff;
 $gray: #e7e9eb;
 $blue: #0000ff;
 
-/* Top navigation bar */
-#navbar {
-  background-color: #39A900 !important;
-  padding: 1rem 2rem;
-  border-bottom: 1px solid #aca7a7;
-  position: sticky;
-  top: 0;
-  z-index: 2;
-  width: 100%;
-  min-width: 1100px;
-  height: 10vh;
-  margin-bottom: 5vh;
-  
-}
 
 .oscar-text {
   color: rgb(255, 255, 255);
@@ -102,7 +88,24 @@ $blue: #0000ff;
 }
 
 
-/* Contenedor principal */
+/* Sidebar */
+/* Estilos para la barra lateral */
+
+@media (min-width: 840px) {
+
+  /* Top navigation bar */
+#navbar {
+  background-color: #39A900 !important;
+  padding: 1rem 2rem;
+  border-bottom: 1px solid #aca7a7;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  width: 100%;
+  min-width: 1100px;
+  height: 4rem;
+}
+  /* Contenedor principal */
 .container {
   display: flex;
   flex-wrap: wrap;
@@ -112,7 +115,7 @@ $blue: #0000ff;
   min-width: 500px;
 }
 
-/* Main content */
+  /* Main content */
 .content {
   position: sticky;
   align-items: center;
@@ -128,8 +131,6 @@ $blue: #0000ff;
   margin-right: 2rem;
 }
 
-/* Sidebar */
-/* Estilos para la barra lateral */
 .sidebar {
   display: flex;
   flex-direction: column;
@@ -140,31 +141,175 @@ $blue: #0000ff;
   height: 100%;
   border-right: 1px solid #a7a7a7;
   position: fixed;
-  z-index: 2;
+  z-index: 1;
   max-width: 14rem;
   box-shadow: 5px 0px 10px rgba(0, 0, 0, 0.2); /* Añadir sombra al lado derecho */
-  margin-top: 4%;
   padding-top: 2rem;
-}
+  }
 
 .sidebar-ul {
   max-height: 12.5rem; /* Establece una altura máxima para la lista */
   padding: 0; /* Elimina el espacio interno predeterminado de la lista */
   margin: 0; /* Elimina el margen predeterminado de la lista */
   margin-left: 7rem !important;
+  }
+
+  ul {
+    list-style: none;
+    padding: 1rem 1rem;
+    position: sticky;
+    top: 0;
+    width: 20rem;
+    margin-left: 3rem !important;
+    margin-bottom: 4rem !important;
+  
+    li {
+      margin-bottom: 1rem;
+      font-size: 1.2rem;
+      margin-bottom: 0rem;
+      width: 10rem;
+  
+      a {
+        text-decoration: none;
+        position: sticky;
+        top: 0px;
+  
+        &.active {
+          background-color: rgb(219, 255, 220);
+          position: sticky;
+          top: 0px;
+        }
+  
+       
+      }
+    }
+  }
+
+  .main-option{
+    width: 215px;
+  }
+
+  .sidebar-li{
+    width: 100%;
+    padding: 0; /* Elimina el espacio interno predeterminado de la lista */
+    margin: 0; /* Elimina el margen predeterminado de la lista */
+    margin-top: 1.5rem;
+  }
+
+  .submenu{
+    margin: 0 !important;
+  }
+
 }
 
-.sidebar-li{
- 
-  padding: 0; /* Elimina el espacio interno predeterminado de la lista */
-  margin: 0; /* Elimina el margen predeterminado de la lista */
-  margin-top: 25px;
+
+
+@media (max-width: 840px) {
+
+  /* Top navigation bar */
+#navbar {
+  background-color: #39A900 !important;
+  padding: 1rem 2rem;
+  border-bottom: 1px solid #aca7a7;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  width: 100%;
+  min-width: 1100px;
+  height: 4rem;
+  
+}
+  /* Contenedor principal */
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100% !important; /* Full width en pantallas más pequeñas */
+  z-index: 1;
+  min-width: 500px;
 }
 
-.submenu{
-  margin: 0 !important;
+  /* Main content */
+.content {
+  position: sticky;
+  align-items: center;
+  justify-content: center;
+  background-size: 100%;
+  min-height: 61rem;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  width: 100%; /* Cambia min-width a width */
+  padding-left: 2rem; /* Agregar un margen izquierdo para el contenido */
+  margin-right: 2rem;
 }
 
+  .sidebar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: $light !important;
+    width: 100%;
+    height: 100%;   
+    max-height: 7vh;
+    border-right: 1px solid #a7a7a7;
+    z-index: 1;
+    box-shadow: 5px 0px 10px rgba(0, 0, 0, 0.2); /* Añadir sombra al lado derecho */
+    transition: width 0.3s; /* Agrega una transición suave al ancho */
+    margin-bottom: 2rem;
+    }
+
+    .sidebar-ul {
+      display: flex;
+      flex-direction: row;
+      max-height: 8vh; /* Establece una altura máxima para la lista */
+      padding: 0; /* Elimina el espacio interno predeterminado de la lista */
+      margin: 2rem; /* Elimina el margen predeterminado de la lista */
+    }
+
+    ul {
+      list-style: none;
+      position: sticky;
+      top: 0;
+      width: 25rem;
+      margin-bottom: 4rem !important;
+    
+      li {
+        margin-bottom: 1rem;
+        font-size: 1.2rem;
+        margin-bottom: 0rem;
+        width: 9rem;
+    
+        a {
+          text-decoration: none;
+          position: sticky;
+          top: 0px;
+    
+          &.active {
+            background-color: rgb(219, 255, 220);
+            position: sticky;
+            top: 0px;
+          }
+        }
+      }
+    }
+
+    .main-option{
+      width: 15rem;
+    }
+
+    .sidebar-li{
+      width: 15rem;
+      padding: 0; /* Elimina el espacio interno predeterminado de la lista */
+      margin: 0; /* Elimina el margen predeterminado de la lista */
+      margin-top: 1.5rem;
+    }
+
+    .submenu{
+      display: flex;
+      max-width: 15rem;
+    }
+
+  }
 
 /* Table Instructors and report styles */
 .thLeft {
@@ -234,6 +379,9 @@ $blue: #0000ff;
   padding: 2rem;
 }
 
+.containerButtons{
+  margin-top: 1.2rem;
+}
 
 .addButton {
   background-color: #007bb8 !important;
@@ -290,42 +438,7 @@ $blue: #0000ff;
   height: 30px;
 }
 
-.main-option{
-  width: 215px;
-}
 
-
-
-ul {
-  list-style: none;
-  padding: 1rem 1rem;
-  position: sticky;
-  top: 0;
-  width: 20rem;
-  margin-left: 3rem !important;
-  margin-bottom: 4rem !important;
-
-  li {
-    margin-bottom: 1rem;
-    font-size: 1.2rem;
-    margin-bottom: 0rem;
-    width: 10rem;
-
-    a {
-      text-decoration: none;
-      position: sticky;
-      top: 0px;
-
-      &.active {
-        background-color: rgb(219, 255, 220);
-        position: sticky;
-        top: 0px;
-      }
-
-     
-    }
-  }
-}
 
 #home{
   font-size: 15px;
@@ -458,8 +571,6 @@ input[type="reset"] {
   
 }
 
-
-
 .logo-login {
   position:a;
   margin-top: 18%; /* Ajusta según tu preferencia */
@@ -555,6 +666,7 @@ input[type="reset"] {
   flex-basis: 200;
   justify-content: space-between;
   color: #000;
+  margin-top: 1rem;
 }
 
 .main-cards {
