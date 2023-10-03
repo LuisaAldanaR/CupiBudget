@@ -158,6 +158,18 @@ $blue: #0000ff;
   margin: 0 !important;
 }
 
+/* Estilo de sombreado gris claro para la opción principal activa */
+.main-option.active {
+  background-color: #dcffe3; /* Puedes ajustar el color gris claro según tus preferencias */
+  width: 215px;
+  margin: 0;
+  padding: 0;
+  box-shadow: 2px 1px 0px 0px gray; /* Ajusta la sombra según sea necesario */
+  height: 30px;
+  
+}
+
+
 
 /* Table Instructors and report styles */
 .thLeft {
@@ -273,15 +285,6 @@ $blue: #0000ff;
   color: rgb(110, 110, 110);
 }
 
-/* Estilo de sombreado gris claro para la opción principal activa */
-.main-option.active {
-  background-color: #dcffe3; /* Puedes ajustar el color gris claro según tus preferencias */
-  width: 215px;
-  margin: 0;
-  padding: 0;
-  box-shadow: 1px 1px 0px 0px gray; /* Ajusta la sombra según sea necesario */
-  height: 30px;
-}
 
 .main-option{
   width: 215px;
@@ -419,17 +422,31 @@ input[type="reset"] {
 
   /* Styling for rounded inputs */
   .rounded-input {
+      border-radius: 1rem; /* Utilizar unidades relativas */
+      background-color: white;
+      padding: 5%; /* Utilizar unidades relativas */
+      border: 1px solid #ccc;
+      width: 88%;
+      margin-left: 6%;
+      position: "fixed"
+    
+    /* Otros estilos según tus preferencias */
+  }
+
+  .form-control{
+    position:fixed;
     border-radius: 1rem; /* Utilizar unidades relativas */
     background-color: white;
     padding: 5%; /* Utilizar unidades relativas */
     border: 1px solid #ccc;
-    width: 90%;
+    width: 73%;
     margin-left: 5%;
-    position: "fixed"
     
-    /* Otros estilos según tus preferencias */
+   
   }
+  
 }
+
 
 /* Styling for the second container */
 .secondContainer {

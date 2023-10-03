@@ -80,6 +80,13 @@ function Login() {
     clearAuthentication();
   }, []);
 
+  const handleKeyDown = (event) => {
+    if (event.key === 'Enter') {
+      event.preventDefault(); // Prevent form submission
+      iniciarSesion();
+    }
+  };
+
   return (
     <div className="login-container" >
       <div className="logo-login" >
@@ -100,6 +107,7 @@ function Login() {
                 type="text"
                 name="username"
                 onChange={handleChange}
+                onKeyDown={handleKeyDown}
                 className="rounded-input"
                 style={{userSelect: "none", }}
                 
@@ -107,11 +115,12 @@ function Login() {
               <input
                 placeholder="Contraseña"
                 type={showPassword ? 'text' : 'password'}
-                className="form-control rounded-input"
+                className="form-control "
                 name="password"
                 value={form.password}
                 onChange={handleChange}
-                style={{userSelect: "none", position: "fixed", width:"34vh"}}
+                onKeyDown={handleKeyDown}
+                style={{userSelect: "none", position: "fixed"}}
               />
               <span style={{userSelect:"none"}}className={`password-toggle ${showPassword ? 'active' : ''}`} onClick={togglePasswordVisibility}>
                 <FontAwesomeIcon  icon={showPassword ? faEye : faEyeSlash} style={{width: "20px", height: "20px",}} />
