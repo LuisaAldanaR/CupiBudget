@@ -85,7 +85,7 @@ const Home = () => {
           </div>
           <div className='card1' onClick={redirectToReporte} style={{cursor:"pointer"}}>
             <div className='card-inner' > 
-              <p style={{ color: 'black', fontSize: "20px", fontWeight: "bold"  }}>REPORTE</p>
+              <p style={{ color: 'black', fontSize: "20px", fontWeight: "bold"  }}>PROGRAMACIÓN</p>
               <FaIcons.FaFileContract className='card_icon' style={{ color: 'black', marginLeft: "25vh", marginTop: '5vh'}}  />
             </div>
             <br/>

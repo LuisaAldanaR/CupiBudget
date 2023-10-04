@@ -78,7 +78,7 @@ const CrudForm = ({ createData, updateData, dataToEdit, setDataToEdit, showTable
         return;
       }
   
-      if (!isEndDateCourseAvaliable)
+      if (!isEndDateCourseAvaliable && !dataToEdit)
       {
         Swal.fire({
           icon: 'error',
@@ -93,6 +93,7 @@ const CrudForm = ({ createData, updateData, dataToEdit, setDataToEdit, showTable
       // Call 'createData' or 'updateData' based on whether creating or updating
       if (dataToEdit === null || form.idInstructor === undefined || form.idInstructor === "") {
         createData(form);
+        console.log(dataToEdit);
       } else {
         updateData(form);
         console.log(dataToEdit);

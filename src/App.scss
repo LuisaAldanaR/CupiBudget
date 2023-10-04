@@ -174,7 +174,7 @@ $blue: #0000ff;
         text-decoration: none;
         position: sticky;
         top: 0px;
-  
+        
         &.active {
           background-color: rgb(219, 255, 220);
           position: sticky;
@@ -865,6 +865,7 @@ input[type="reset"] {
           background-color: $gray;
           position: sticky;
           top: 0px;
+          
         }
       }
     }

@@ -59,7 +59,7 @@ const Sidebar = () => {
             }`}
           >
             <FaIcons.FaFileInvoiceDollar style={{marginLeft:"10px"}}  />{" "}
-            <span style={{ marginLeft: "25px", fontWeight:"600" }}>Reporte</span>{" "}
+            <span style={{ marginLeft: "25px", fontWeight:"600" }}>Programación</span>{" "}
             {isOptionActive("option2") ? (
               <HiIcons.HiChevronDown
                 style={{ color: "green", marginLeft: "55px" }}
@@ -83,7 +83,7 @@ const Sidebar = () => {
                   exact
                   activeclassname ="active"
                 >
-                 <span style={{ color: "black", fontSize: "17px"}}>Generar Reporte</span>
+                 <span style={{ color: "black", fontSize: "17px"}}>Programación</span>
 
                 </NavLink>
               </li>
