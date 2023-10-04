@@ -170,8 +170,6 @@ const CrudAppFullTimeInstructor = () => {
         </>
       )}
 
-
-  
       {showForm && (
         <CrudForm
           createData={createData}
