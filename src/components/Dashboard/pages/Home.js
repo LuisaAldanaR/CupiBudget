@@ -92,7 +92,7 @@ const Home = () => {
             <br/>
             <br/>
             <br/>
-            <p className='card-description' > Puedes generar un reporte PDF</p>
+            <p className='card-description' style={{marginTop:"0.5vh"}}> Puedes generar un reporte PDF</p>
           </div>
           <div className='card1'>
             <div className='card-inner'>
