@@ -86,13 +86,13 @@ const Home = () => {
           <div className='card1' onClick={redirectToReporte} style={{cursor:"pointer"}}>
             <div className='card-inner' > 
               <p style={{ color: 'black', fontSize: "20px", fontWeight: "bold"  }}>REPORTE</p>
-              <FaIcons.FaFileContract className='card_icon' style={{ color: 'black', marginLeft: "25vh", marginTop: '5vh'}}  />
+              <FaIcons.FaFileContract className='card_icon' style={{ color: 'black', marginLeft: "25vh", marginTop: '0.5vh'}}  />
             </div>
             <br/>
             <br/>
             <br/>
             <br/>
-            <p className='card-description' > Puedes generar un reporte PDF</p>
+            <p className='card-description' style={{marginTop:"0.5vh"}}> Puedes generar un reporte PDF</p>
           </div>
           <div className='card1'>
             <div className='card-inner'>
