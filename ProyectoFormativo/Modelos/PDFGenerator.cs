@@ -71,7 +71,8 @@ namespace PDFGenerator
                         for (int i = 0; i < networks1.Count; i++)
                         {
                             var net = networks1[i];
-
+                            if (net.totalGoal == 0)
+                                continue;
                             col1.Item().Table(table =>
                             {
                                 table.ColumnsDefinition(columns =>
@@ -89,7 +90,7 @@ namespace PDFGenerator
                                 table.Cell().Column(1).Row(2).LightCell("Meta");
                                 table.Cell().Column(2).Row(2).ValueCell(net.totalGoal.ToString());
 
-                                table.Cell().Column(1).Row(3).LightCell("Cupos Antiguos");
+                                table.Cell().Column(1).Row(3).LightCell("Cupos Pasan");
                                 table.Cell().Column(2).Row(3).ValueCell(net.oldStudents.ToString());
 
                                 table.Cell().Column(3).Row(2).LightCell("Fichas Antiguas");
@@ -115,8 +116,8 @@ namespace PDFGenerator
 
                                 table.Cell().Column(1).Row(4).LabelCell("Trimestre");
                                 table.Cell().Column(2).Row(4).LabelCell("Fichas");
-                                table.Cell().Column(3).Row(4).LabelCell("Planta");
-                                table.Cell().Column(4).Row(4).LabelCell("Contrato");
+                                table.Cell().Column(3).Row(4).LabelCell("Instr Planta");
+                                table.Cell().Column(4).Row(4).LabelCell("Instr Contrato");
                                 table.Cell().Column(5).ColumnSpan(2).Row(4).LabelCell("Presupuesto");
 
                                 table.Cell().Column(1).Row(5).LightCell("Primero");
@@ -170,12 +171,15 @@ namespace PDFGenerator
 
                         for (int i = 0; i < networks2.Count; i++)
                         {
+                            var net = networks2[i];
+                            if (net.totalGoal == 0)
+                                continue;
+
                             if (i == 4)
                             {
                                 col1.Item().PageBreak();
                             }
 
-                            var net = networks2[i];
 
                             col1.Item().Table(table =>
                             {
@@ -194,7 +198,7 @@ namespace PDFGenerator
                                 table.Cell().Column(1).Row(2).LightCell("Meta");
                                 table.Cell().Column(2).Row(2).ValueCell(net.totalGoal.ToString());
 
-                                table.Cell().Column(1).Row(3).LightCell("Cupos Antiguos");
+                                table.Cell().Column(1).Row(3).LightCell("Cupos Pasan");
                                 table.Cell().Column(2).Row(3).ValueCell(net.oldStudents.ToString());
 
                                 table.Cell().Column(3).Row(2).LightCell("Fichas Antiguas");
@@ -220,8 +224,8 @@ namespace PDFGenerator
 
                                 table.Cell().Column(1).Row(4).LabelCell("Trimestre");
                                 table.Cell().Column(2).Row(4).LabelCell("Fichas");
-                                table.Cell().Column(3).Row(4).LabelCell("Planta");
-                                table.Cell().Column(4).Row(4).LabelCell("Contrato");
+                                table.Cell().Column(3).Row(4).LabelCell("Instr Planta");
+                                table.Cell().Column(4).Row(4).LabelCell("Instr Contrato");
                                 table.Cell().Column(5).ColumnSpan(2).Row(4).LabelCell("Presupuesto");
 
                                 table.Cell().Column(1).Row(5).LightCell("Primero");

@@ -39,6 +39,8 @@ namespace ProyectoFormativo.Controllers
             {
                 lista = _proyectoFormativoContext.FullTimeInstructors.Include(c => c.oNetwork).ToList();
 
+                // Clonar la lista
+
                 // Obtener la lista de NetworkReport para data1
                 InPerson inPerson1 = new InPerson(request.data1, lista);
                 networks1 = inPerson1.GetNetworks();
@@ -63,8 +65,27 @@ namespace ProyectoFormativo.Controllers
             }
 
 
+            // Generar el PDF
             var data = _pdfGenerator.GeneratePDF(networks1, networks2);
+
+            // Crear un MemoryStream a partir de los datos del PDF
             var stream = new MemoryStream(data);
+
+            int id = (int)DateTime.Now.Ticks;
+            // Crear un objeto que represente la entrada de la base de datos
+            var pdfEntry = new ArchivoPDF
+            {
+                ID = id,
+                NombreArchivo = "Reporte.pdf", // Nombre del archivo PDF
+                PDFData = stream.ToArray() // Convierte el MemoryStream en un array de bytes
+            };
+
+            // Agregar el objeto a la base de datos
+            _proyectoFormativoContext.ArchivosPDF.Add(pdfEntry);
+            //_proyectoFormativoContext.SaveChanges();
+
+            // Devolver alguna respuesta si es necesario
+
 
             return File(stream, "application/pdf", "Reporte.pdf");
         }

@@ -21,8 +21,10 @@ public partial class ProyectoPruebaContext : DbContext
     public virtual DbSet<FullTimeInstructor> FullTimeInstructors { get; set; }
 
     public virtual DbSet<Network> Networks { get; set; }
+    public virtual DbSet<TrainingProgram> Programs { get; set; }
 
     public DbSet<User> Users { get; set; }
+    public virtual DbSet<ArchivoPDF> ArchivosPDF { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) { }
 
@@ -84,6 +86,42 @@ public partial class ProyectoPruebaContext : DbContext
                 .HasColumnName("networkName");
         });
 
+        modelBuilder.Entity<TrainingProgram>(entity =>
+        {
+            entity.ToTable("Programs");
+
+            entity.HasKey(e => e.Id);
+
+            entity.Property(e => e.Id)
+                .HasColumnName("Id");
+
+            entity.Property(e => e.Level)
+                .HasMaxLength(255)
+                .HasColumnName("level");
+
+            entity.Property(e => e.Mode)
+                .HasMaxLength(255)
+                .HasColumnName("mode");
+
+            entity.Property(e => e.Name)
+                .HasMaxLength(255)
+                .HasColumnName("name");
+
+            entity.Property(e => e.ValidUntil)
+                .HasMaxLength(255)
+                .HasColumnName("validUntil");
+
+            entity.Property(e => e.SniesCode)
+                .HasColumnName("sniesCode");
+
+            entity.Property(e => e.ResolutionNumber)
+                .HasColumnName("resolutionNumber");
+
+            entity.Property(e => e.ResolutionDate)
+                .HasColumnType("date")
+                .HasColumnName("resolutionDate");
+        });
+
         modelBuilder.Entity<User>(entity =>
         {
             entity.HasKey(e => e.Username).HasName("PK_User_Username");
@@ -110,6 +148,17 @@ public partial class ProyectoPruebaContext : DbContext
                 .HasMaxLength(20)
                 .HasColumnName("Role");
         });
+
+        modelBuilder.Entity<ArchivoPDF>(entity =>
+        {
+            entity.ToTable("ArchivosPDF"); // Nombre de la tabla en la base de datos
+
+            entity.Property(e => e.ID).HasColumnName("ID"); // Nombre de la columna de ID
+            entity.Property(e => e.NombreArchivo).HasColumnName("NombreArchivo");
+            entity.Property(e => e.PDFData).HasColumnName("PDFData");
+        });
+
+       
 
         OnModelCreatingPartial(modelBuilder);
     }

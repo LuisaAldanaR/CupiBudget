@@ -8,6 +8,8 @@ using Microsoft.AspNetCore.Cors;
 using ProyectoFormativo.Modelos;
 using ProyectoFormativo.Data;
 using Microsoft.AspNetCore.Authorization;
+using System;
+using SkiaSharp;
 
 namespace ProyectoFormativo.Controllers
 {
@@ -78,6 +80,10 @@ namespace ProyectoFormativo.Controllers
 
         public IActionResult Save([FromBody] FullTimeInstructor Instructor)
         {
+            var aInstructor = _proyectoFormativoContext.FullTimeInstructors.Where(c => c.Name == Instructor.Name).FirstOrDefault();
+
+            if (aInstructor != null)
+                return BadRequest("El instructor ya existe");
 
             try
             {
@@ -105,6 +111,10 @@ namespace ProyectoFormativo.Controllers
             {
                 return BadRequest("Instructor no encontrado");
             }
+
+            var aInstructor = _proyectoFormativoContext.FullTimeInstructors.Where(c => c.Name == Instructor.Name && c.IdInstructor != Instructor.IdInstructor).FirstOrDefault();
+            if (aInstructor != null)
+                return BadRequest("El instructor ya existe");
 
             try
             {

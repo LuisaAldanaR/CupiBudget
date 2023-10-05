@@ -68,6 +68,11 @@ namespace ProyectoFormativo.Controllers
         {
             try
             {
+                var aInstructor = _dbcontext.ContractInstructors.Where(c => c.Name == oInstructor.Name).FirstOrDefault();
+
+                if (aInstructor != null)
+                    return BadRequest("El instructor ya existe");
+
                 _dbcontext.ContractInstructors.Add(oInstructor);
                 _dbcontext.SaveChanges();
                 return StatusCode(StatusCodes.Status200OK, new { mensaje = "ok" });
@@ -84,13 +89,19 @@ namespace ProyectoFormativo.Controllers
         [Route("Edit"), Authorize(Roles = "Admin")]
         public IActionResult Editar([FromBody] ContractInstructor objeto)
         {
-
             ContractInstructor oInstructor = _dbcontext.ContractInstructors.Find(objeto.IdInstructor);
 
             if (oInstructor == null)
             {
                 return BadRequest("Instructor not found");
             }
+
+            var aInstructor = _dbcontext.ContractInstructors.Where(c => c.Name == objeto.Name && c.IdInstructor != objeto.IdInstructor).FirstOrDefault();
+
+            if (aInstructor != null)
+                return BadRequest("El instructor ya existe");
+
+
 
             try
             {

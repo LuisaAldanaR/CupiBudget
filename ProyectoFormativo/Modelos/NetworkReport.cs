@@ -103,7 +103,7 @@ namespace NetworkSimulator1
 
         public void calculateInstructors(List<FullTimeInstructor> instructores, int idRed)
         {
-            DateTime time = new DateTime(DateTime.Now.Year, 1, 1);
+            DateTime time = new DateTime(2024, 1, 1);
 
             for (int i = 0; i < 4; i++)
             {
