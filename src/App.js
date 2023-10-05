@@ -4,7 +4,7 @@ import CustomNavbar from '../src/components/Dashboard/CustomNavbar';
 import Sidebar from '../src/components/Dashboard/Sidebar';
 import Home from '../src/components/Dashboard/pages/Home';
 import Budget from '../src/components/Dashboard/pages/Budget';
-import Goals from '../src/components/Dashboard/pages/Goals';
+import GoalsDashboard from '../src/components/Dashboard/pages/Goals';
 import Instructors from '../src/components/Dashboard/pages/Instructors';
 import Programs from '../src/components/Dashboard/pages/Programs';
 import BudgetGenerator from "./components/Budget/BudgetGenerator";
@@ -12,7 +12,7 @@ import Login from "./components/pages/Login";
 import CrudApp from "./components/CRUD-Contract/CrudApp";
 import CrudForm from "./components/CRUD-FullTimeInstructor/CrudForm";
 import CrudAppFullTimeInstructor from "./components/CRUD-FullTimeInstructor/CrudAppFullTimeInstructor";
-
+import Goals from "./components/Goals/Goals";
 
 /**
  * The main application component.

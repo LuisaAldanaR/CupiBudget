@@ -119,19 +119,15 @@ const Sidebar = () => {
             >
               <li>
                 <NavLink
-                  to="/option3"
+                  to="/Goals"
                   id="submenu"
                   exact="true"
                   activeclassname ="active"
                 >
-                  <span style={{ color: "black", fontSize: "17px"}}>Anual</span>
+                  <span style={{ color: "black", fontSize: "17px"}}>Metas</span>
                 </NavLink>
               </li>
-              <li>
-                <NavLink to="/option4 " exact activeclassname ="active">
-                  <span style={{ color: "black", fontSize: "17px" }}>Mensual</span>
-                </NavLink>
-              </li>
+             
             </ul>
           )}
         </li>
