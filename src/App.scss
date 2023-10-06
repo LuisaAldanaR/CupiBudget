@@ -85,7 +85,7 @@ $blue: #0000ff;
 /* Sidebar */
 /* Estilos para la barra lateral */
 
-@media (min-width: 840px) {
+@media (min-width: 1100px) {
 
   html{
     width: 100%;
@@ -206,7 +206,7 @@ $blue: #0000ff;
 
 
 
-@media (max-width: 840px) {
+@media (max-width: 1100px) {
 
   html{
     width: 100%;
@@ -248,8 +248,9 @@ $blue: #0000ff;
   top: 0;
   z-index: 1;
   width: 100%; /* Cambia min-width a width */
-  padding-left: 2rem; /* Agregar un margen izquierdo para el contenido */
+  margin-left: 2rem; /* Agregar un margen izquierdo para el contenido */
   margin-right: 2rem;
+
 }
 
   .sidebar {
@@ -259,7 +260,7 @@ $blue: #0000ff;
     background-color: $light !important;
     width: 100%;
     height: 100%;   
-    max-height: 7vh;
+    max-height: 9vh;
     border-right: 1px solid #a7a7a7;
     z-index: 1;
     box-shadow: 5px 0px 10px rgba(0, 0, 0, 0.2); /* Añadir sombra al lado derecho */
@@ -279,7 +280,7 @@ $blue: #0000ff;
       list-style: none;
       position: sticky;
       top: 0;
-      width: 25rem;
+      width: 20rem;
       margin-bottom: 4rem !important;
     
       li {
@@ -303,11 +304,15 @@ $blue: #0000ff;
     }
 
     .main-option{
-      width: 15rem;
+      width: 14rem;
+    }
+
+    .main-option.nav-link{
+      width: 10rem;
     }
 
     .sidebar-li{
-      width: 15rem;
+      width: 14rem;
       padding: 0; /* Elimina el espacio interno predeterminado de la lista */
       margin: 0; /* Elimina el margen predeterminado de la lista */
       margin-top: 1.5rem;

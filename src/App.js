@@ -13,6 +13,8 @@ import CrudApp from "./components/CRUD-Contract/CrudApp";
 import CrudForm from "./components/CRUD-FullTimeInstructor/CrudForm";
 import CrudAppFullTimeInstructor from "./components/CRUD-FullTimeInstructor/CrudAppFullTimeInstructor";
 import Goals from "./components/Goals/Goals";
+import SchedulingTechnological from "./components/Scheduling/SchedulingTechnological/SchedulingTechnological";
+import SchedulingTechnical from "./components/Scheduling/SchedulingTechnical/SchedulingTechnical";
 
 /**
  * The main application component.
@@ -86,6 +88,8 @@ function App() {
                     <Route path="/CrudAppFullTimeInstructor" element={<ProtectedRoute element={<CrudAppFullTimeInstructor />} />} />
                     <Route path="/CrudApp" element={<ProtectedRoute element={<CrudApp />} />} />
                     <Route path="/CrudForm" element={<ProtectedRoute element={<CrudForm />} />} />
+                    <Route path="/SchedulingTechnological" element={<ProtectedRoute element={<SchedulingTechnological />} />} />
+                    <Route path="/SchedulingTechnical" element={<ProtectedRoute element={<SchedulingTechnical />} />} />
                   </Routes>
                 </div>
               </div>

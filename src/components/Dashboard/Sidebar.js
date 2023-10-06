@@ -50,6 +50,53 @@ const Sidebar = () => {
               
             </NavLink>
         </li>
+
+        <li className="sidebar-li">
+          <div
+            style={{margin:0, padding:0}}
+            onMouseEnter={() => handleMouseEnter("option6")}
+            onMouseLeave={() => handleMouseLeave("option6")}
+            className={`main-option ${
+              isOptionActive("option6") ? "active" : ""
+            }`} 
+          > 
+            <FaIcons.FaBook style={{marginLeft:"10px"}} />{" "}
+            <span style={{ marginLeft: "25px", fontWeight:"600"}} >Planeación</span>{" "}
+            {isOptionActive("option6") ? (
+              <HiIcons.HiChevronDown
+                style={{ color: "green", marginLeft: "20px" }}
+              />
+            ) : (
+              <HiIcons.HiChevronRight
+                style={{ color: "green", marginLeft: "20px" }}
+              />
+            )}
+          </div>
+          {isOptionActive("option6") && (
+            <ul
+              className="submenu"
+              onMouseEnter={() => handleMouseEnter("option6")}
+              onMouseLeave={() => handleMouseLeave("option6")}
+            >
+              <li>
+                <NavLink
+                  to="/SchedulingTechnological"
+                  id="submenu"
+                  exact
+                  activeclassname ="active"
+                >
+                  <span style={{ color: "black", fontSize: "17px"}}>Tecnológo</span>
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/SchedulingTechnical" exact activeclassname ="active">
+                  <span style={{ color: "black", fontSize: "17px" }}>Técnico</span>
+                </NavLink>
+              </li>
+            </ul>
+          )}
+        </li>
+
         <li className="sidebar-li">
           <div
             onMouseEnter={() => handleMouseEnter("option2")}
