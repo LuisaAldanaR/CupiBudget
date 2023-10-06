@@ -5,7 +5,7 @@ using System.Security.Cryptography;
 using System;
 using System.Text;
 
-namespace ProyectoFormativo.Controllers
+namespace ProyectoFormativo.Controllers.PDF
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -36,7 +36,7 @@ namespace ProyectoFormativo.Controllers
                 // Devolver el archivo PDF como una respuesta
                 return File(pdfStream, "application/pdf", archivoPDF.NombreArchivo);
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 return BadRequest(e.Message);
             }

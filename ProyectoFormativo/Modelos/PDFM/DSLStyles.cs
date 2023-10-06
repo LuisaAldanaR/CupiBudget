@@ -4,7 +4,7 @@ using QuestPDF.Infrastructure;
 using QuestPDF.Elements;
 using QuestPDF.Helpers;
 
-namespace ProyectoFormativo.Modelos
+namespace ProyectoFormativo.Modelos.PDFM
 {
     public static class DSLStyles
     {
@@ -17,7 +17,7 @@ namespace ProyectoFormativo.Modelos
                 .Background(Colors.Green.Medium)
                 .AlignCenter()
                 .Padding(2);
-                
+
         }
 
         // Estilo para las celdas del total de presupuestos
@@ -27,7 +27,7 @@ namespace ProyectoFormativo.Modelos
                 .Border(1)
                 .BorderColor(Colors.Grey.Darken3)
                 .Padding(2);
-                
+
         }
 
         // Estilo para las celdas de etiquetas

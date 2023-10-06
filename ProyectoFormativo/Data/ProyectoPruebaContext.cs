@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
-using ProyectoFormativo.Modelos;
+using ProyectoFormativo.Modelos.AuthenticationM;
+using ProyectoFormativo.Modelos.InstructorM;
+using ProyectoFormativo.Modelos.PDFM;
+using ProyectoFormativo.Modelos.TrainingProgramM;
 
 namespace ProyectoFormativo.Data;
 

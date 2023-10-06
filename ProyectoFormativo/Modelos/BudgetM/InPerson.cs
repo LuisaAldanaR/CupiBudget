@@ -1,5 +1,4 @@
-﻿using ProyectoFormativo.Modelos;
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,8 +9,9 @@ using Newtonsoft.Json;
 using System.Collections.Generic;
 using Microsoft.OpenApi.Any;
 using System.Text.Json;
+using ProyectoFormativo.Modelos.InstructorM;
 
-namespace NetworkSimulator1
+namespace ProyectoFormativo.Modelos.BudgetM
 {
 
     public class InPerson

@@ -4,9 +4,9 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ProyectoFormativo.Data;
-using ProyectoFormativo.Modelos;
+using ProyectoFormativo.Modelos.InstructorM;
 
-namespace ProyectoFormativo.Controllers
+namespace ProyectoFormativo.Controllers.Instructor
 {
     [EnableCors("ReglasCors")]
     [Route("api/[controller]")]

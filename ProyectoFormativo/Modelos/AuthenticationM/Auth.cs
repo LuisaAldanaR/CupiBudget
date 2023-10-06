@@ -5,7 +5,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Security.Cryptography;
 
-namespace ProyectoFormativo.Modelos
+namespace ProyectoFormativo.Modelos.AuthenticationM
 {
     public class Auth
     {
@@ -46,7 +46,7 @@ namespace ProyectoFormativo.Modelos
         }
 
 
-        public void CreatePasswordHash(String password, out byte[] passwordHash, out byte[] passwordSalt)
+        public void CreatePasswordHash(string password, out byte[] passwordHash, out byte[] passwordSalt)
         {
             using (var hmac = new HMACSHA512())
             {

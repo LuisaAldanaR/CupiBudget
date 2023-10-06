@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
 
-namespace ProyectoFormativo.Modelos;
+namespace ProyectoFormativo.Modelos.InstructorM;
 
 public partial class Network
 {

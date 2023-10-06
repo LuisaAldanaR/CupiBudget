@@ -1,11 +1,11 @@
-﻿using ProyectoFormativo.Modelos;
+﻿using ProyectoFormativo.Modelos.InstructorM;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NetworkSimulator1
+namespace ProyectoFormativo.Modelos.BudgetM
 {
     public class NetworkReport
     {
@@ -33,22 +33,22 @@ namespace NetworkSimulator1
         {
             this.totalGoal = totalGoal;
             this.oldStudents = oldStudents;
-            this.courses[0] = 0;
-            this.courses[1] = 0;
-            this.courses[2] = 0;
-            this.courses[3] = 0;
+            courses[0] = 0;
+            courses[1] = 0;
+            courses[2] = 0;
+            courses[3] = 0;
 
             this.idNetwork = idNetwork;
-            this.oldCourses = oldStudents / 25;
+            oldCourses = oldStudents / 25;
             if (oldStudents % 25 >= 15)
                 oldCourses++;
 
-            this.newCourses = (totalGoal - oldStudents) / 30.0;
+            newCourses = (totalGoal - oldStudents) / 30.0;
             if ((totalGoal - oldStudents) % 30 > 18)
                 newCourses = Math.Ceiling(newCourses);
 
-            this.totalCourses = oldCourses + (int)newCourses;
-            this.fullTimeTotal = 0;
+            totalCourses = oldCourses + (int)newCourses;
+            fullTimeTotal = 0;
 
             goal70();
             goal80();
@@ -58,7 +58,7 @@ namespace NetworkSimulator1
             calculateInstructors(instructors, idNetwork);
 
 
-            this.newCourses = (totalGoal - oldStudents) / 30.0;
+            newCourses = (totalGoal - oldStudents) / 30.0;
             if ((totalGoal - oldStudents) % 30 > 18)
                 newCourses = Math.Ceiling(newCourses);
             else
@@ -73,14 +73,14 @@ namespace NetworkSimulator1
         }
         public void goal80()
         {
-            double f = (newCourses * 0.8);
+            double f = newCourses * 0.8;
             courses[1] = (int)f - courses[0];
             if (f * 30 % 30 >= 21)
                 courses[1]++;
         }
         public void goal90()
         {
-            double f = (newCourses * 0.9);
+            double f = newCourses * 0.9;
             courses[2] = (int)f - courses[0] - courses[1];
             if (f * 30 % 30 >= 21)
                 courses[2]++;
@@ -121,7 +121,7 @@ namespace NetworkSimulator1
                 fullTime[i] = temporalInstructorDisponible;
                 fullTimeTotal += fullTime[i];
                 contractT[i] = courses[i] - temporalInstructorDisponible;
-                contractT[i] = (contractT[i] < 0) ? 0 : contractT[i];
+                contractT[i] = contractT[i] < 0 ? 0 : contractT[i];
                 contractTotal += contractT[i];
             }
         }

@@ -3,12 +3,12 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Any;
-using NetworkSimulator1;
 using ProyectoFormativo.Data;
-using ProyectoFormativo.Modelos;
+using ProyectoFormativo.Modelos.BudgetM;
+using ProyectoFormativo.Modelos.InstructorM;
 using System.Text.Json;
 
-namespace ProyectoFormativo.Controllers
+namespace ProyectoFormativo.Controllers.Budget
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -46,7 +46,7 @@ namespace ProyectoFormativo.Controllers
                 // Devolver la lista de resultados en la respuesta JSON
                 return Ok(results);
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 return StatusCode(StatusCodes.Status200OK, new { mensaje = e.Message, response = lista });
             }

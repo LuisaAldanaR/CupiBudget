@@ -1,17 +1,16 @@
 ﻿using System;
 using System.Globalization;
 using System.Linq;
-using NetworkSimulator1;
 using ProyectoFormativo.Controllers;
 using ProyectoFormativo.Data;
-using ProyectoFormativo.Modelos;
 using QuestPDF.Fluent;
 using QuestPDF.Infrastructure;
 using QuestPDF.Helpers;
 using QuestPDF.Elements;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using ProyectoFormativo.Modelos.BudgetM;
 
-namespace PDFGenerator
+namespace ProyectoFormativo.Modelos.PDFM
 {
     public class PDFGenerator : IPDFGenerator
     {

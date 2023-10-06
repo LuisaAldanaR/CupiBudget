@@ -2,12 +2,12 @@
 using Microsoft.AspNetCore.Mvc;
 
 using Microsoft.EntityFrameworkCore;
-using ProyectoFormativo.Modelos;
 using Microsoft.AspNetCore.Cors;
 using ProyectoFormativo.Data;
 using Microsoft.AspNetCore.Authorization;
+using ProyectoFormativo.Modelos.InstructorM;
 
-namespace ProyectoFormativo.Controllers
+namespace ProyectoFormativo.Controllers.Instructor
 {
     [EnableCors("ReglasCors")]
     [Route("api/[controller]")]
@@ -19,14 +19,14 @@ namespace ProyectoFormativo.Controllers
 
         public ContractInstructorController(ProyectoPruebaContext dbcontext)
         {
-            _dbcontext = dbcontext; 
+            _dbcontext = dbcontext;
         }
 
         [HttpGet]
         [Route("List"), Authorize(Roles = "Admin, Regular")]
         public IActionResult Get()
         {
-            List<ContractInstructor> lista = new List<ContractInstructor>();  
+            List<ContractInstructor> lista = new List<ContractInstructor>();
 
             try
             {
@@ -84,7 +84,7 @@ namespace ProyectoFormativo.Controllers
             }
         }
 
-        
+
         [HttpPut]
         [Route("Edit"), Authorize(Roles = "Admin")]
         public IActionResult Editar([FromBody] ContractInstructor objeto)
@@ -125,7 +125,7 @@ namespace ProyectoFormativo.Controllers
         [Route("Delete/{idInstructor:int}"), Authorize(Roles = "Admin")]
         public IActionResult Eliminar(int idInstructor)
         {
-            
+
             ContractInstructor oInstructor = _dbcontext.ContractInstructors.Find(idInstructor);
 
             if (oInstructor == null)

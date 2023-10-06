@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace ProyectoFormativo.Modelos;
+namespace ProyectoFormativo.Modelos.InstructorM;
 
 public partial class FullTimeInstructor
 {

@@ -1,4 +1,4 @@
-﻿namespace ProyectoFormativo.Modelos
+﻿namespace ProyectoFormativo.Modelos.PDFM
 {
     public class ArchivoPDF
     {

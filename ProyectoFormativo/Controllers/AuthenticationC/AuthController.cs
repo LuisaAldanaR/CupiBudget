@@ -4,11 +4,12 @@ using Microsoft.EntityFrameworkCore.Internal;
 using Microsoft.IdentityModel.Tokens;
 using ProyectoFormativo.Data;
 using ProyectoFormativo.Modelos;
+using ProyectoFormativo.Modelos.AuthenticationM;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Security.Cryptography;
 
-namespace ParkingMentoring.Controllers
+namespace ProyectoFormativo.Controllers.Authentication
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -20,8 +21,8 @@ namespace ParkingMentoring.Controllers
         public readonly IConfiguration _configuration;
         private readonly ProyectoPruebaContext _context;
 
-        public AuthController(IConfiguration configuration, ProyectoPruebaContext context) 
-        {   
+        public AuthController(IConfiguration configuration, ProyectoPruebaContext context)
+        {
             _configuration = configuration;
             _context = context;
         }

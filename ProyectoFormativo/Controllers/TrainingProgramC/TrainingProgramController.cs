@@ -2,9 +2,9 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ProyectoFormativo.Data;
-using ProyectoFormativo.Modelos;
+using ProyectoFormativo.Modelos.TrainingProgramM;
 
-namespace ProyectoFormativo.Controllers
+namespace ProyectoFormativo.Controllers.TrainingProgramC
 {
     [Route("api/[controller]")]
     [ApiController]

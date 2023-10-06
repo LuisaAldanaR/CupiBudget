@@ -2,12 +2,13 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using NetworkSimulator1;
 using ProyectoFormativo.Data;
-using ProyectoFormativo.Modelos;
+using ProyectoFormativo.Modelos.BudgetM;
+using ProyectoFormativo.Modelos.InstructorM;
+using ProyectoFormativo.Modelos.PDFM;
 using System.Text.Json;
 
-namespace ProyectoFormativo.Controllers
+namespace ProyectoFormativo.Controllers.PDF
 {
 
     [ApiController]
@@ -25,14 +26,14 @@ namespace ProyectoFormativo.Controllers
         }
 
         [HttpPost]
-        [Route("Generate"), Authorize(Roles = "Admin") ]
+        [Route("Generate"), Authorize(Roles = "Admin")]
         public IActionResult GenerarPDF([FromBody] DataModel request)
         {
             List<FullTimeInstructor> lista = new List<FullTimeInstructor>();
 
             // Crear una lista para almacenar los resultados JSON
             var results = new List<object>();
-            List <NetworkReport> networks1;
+            List<NetworkReport> networks1;
             List<NetworkReport> networks2;
 
             try

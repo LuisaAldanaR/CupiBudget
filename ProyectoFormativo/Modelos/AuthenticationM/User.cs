@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
 
-namespace ProyectoFormativo.Modelos
+namespace ProyectoFormativo.Modelos.AuthenticationM
 {
     public class User
     {

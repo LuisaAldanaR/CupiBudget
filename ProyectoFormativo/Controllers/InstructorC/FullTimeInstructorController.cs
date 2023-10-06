@@ -5,13 +5,13 @@ using Microsoft.EntityFrameworkCore;
 
 
 using Microsoft.AspNetCore.Cors;
-using ProyectoFormativo.Modelos;
 using ProyectoFormativo.Data;
 using Microsoft.AspNetCore.Authorization;
 using System;
 using SkiaSharp;
+using ProyectoFormativo.Modelos.InstructorM;
 
-namespace ProyectoFormativo.Controllers
+namespace ProyectoFormativo.Controllers.Instructor
 {
 
     [EnableCors("ReglasCors")]
@@ -55,7 +55,7 @@ namespace ProyectoFormativo.Controllers
         {
             FullTimeInstructor oInstructor = _proyectoFormativoContext.FullTimeInstructors.Find(idInstructor);
 
-            if(oInstructor == null)
+            if (oInstructor == null)
             {
                 return BadRequest("Instructor no encontrado");
             }

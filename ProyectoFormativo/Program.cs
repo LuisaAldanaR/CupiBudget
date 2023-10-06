@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using ProyectoFormativo.Data;
-using ProyectoFormativo.Modelos;
+using ProyectoFormativo.Modelos.PDFM;
 using QuestPDF.Infrastructure;
 using Swashbuckle.AspNetCore.Filters;
 using System.Text;
@@ -39,7 +39,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJw
     };
 });
 
-builder.Services.AddScoped<IPDFGenerator, PDFGenerator.PDFGenerator>();
+builder.Services.AddScoped<IPDFGenerator, PDFGenerator>();
 builder.Services.AddDbContext<ProyectoPruebaContext>(opt => opt.UseSqlServer(builder.Configuration.GetConnectionString("cadenaSQL")));
 
 builder.Services.AddControllers().AddJsonOptions(opt =>

@@ -1,4 +1,4 @@
-﻿namespace ProyectoFormativo.Modelos
+﻿namespace ProyectoFormativo.Modelos.BudgetM
 {
     public class DataModel
     {
