@@ -95,7 +95,7 @@ function Login() {
         <hr className='underLine'></hr>
         <p className="welcomeText tracking-in-expand-forward-top">Bienvenido</p>
         </div>
-        <div id="formContainer" className='filter' >
+        <div id="formContainer">
           <div className="secondContainer" style={{marginTop:"5vh"}} >
             
             <label style={{marginBottom:"5vh", userSelect:"none"}} className='l1'>Iniciar Sesión </label>

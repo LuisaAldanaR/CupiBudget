@@ -273,7 +273,7 @@ $blue: #0000ff;
       flex-direction: row;
       max-height: 8vh; /* Establece una altura máxima para la lista */
       padding: 0; /* Elimina el espacio interno predeterminado de la lista */
-      margin: 2rem; /* Elimina el margen predeterminado de la lista */
+      margin: 0.3rem; /* Elimina el margen predeterminado de la lista */
     }
 
     ul {
@@ -309,6 +309,7 @@ $blue: #0000ff;
 
     .main-option.nav-link{
       width: 10rem;
+      margin-right: 0;
     }
 
     .sidebar-li{
@@ -584,7 +585,7 @@ textarea {
   padding: 2%; /* Utilizar unidades relativas */
   border-radius: 6%;
   max-height: 80vh; /* Usar viewport height en lugar de porcentaje */
-  max-width: 30vh;
+  max-width: 40vh;
   box-shadow: 0 2px 8px #000;
   border: 1px solid #ffffff40;
   background-color: #38a9009f;
@@ -658,7 +659,6 @@ textarea {
 
   html{
     width: 100%;
-    height: 100%;
     max-width: 799px;
     background-color: #f3f1f1;
   }
@@ -675,7 +675,7 @@ textarea {
     background-repeat: no-repeat;
     background-position: center;
     width: 100%;
-    min-width: 320px;
+    min-width: 1100px;
     height: 100%;
     position: absolute;
     top: 0;
@@ -753,7 +753,7 @@ textarea {
     padding: 2%;
     border-radius: 6%;
     max-height: 70vh;
-    max-width: 30vh;
+    max-width: 40vh;
     box-shadow: 0 2px 8px #000;
     border: 1px solid #ffffff40;
     background-color: #38a9009f;
