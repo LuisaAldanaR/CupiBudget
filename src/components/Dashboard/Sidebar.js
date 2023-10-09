@@ -109,11 +109,11 @@ const Sidebar = () => {
             <span style={{ marginLeft: "25px", fontWeight:"600" }}>Programación</span>{" "}
             {isOptionActive("option2") ? (
               <HiIcons.HiChevronDown
-                style={{ color: "green", marginLeft: "55px" }}
+                style={{ color: "green" }}
               />
             ) : (
               <HiIcons.HiChevronRight
-                style={{ color: "green", marginLeft: "55px" }}
+                style={{ color: "green"}}
               />
             )}
           </div>
