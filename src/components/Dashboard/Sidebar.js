@@ -52,26 +52,34 @@ const Sidebar = () => {
         </li>
 
         <li className="sidebar-li">
-          <div
-            style={{margin:0, padding:0}}
-            onMouseEnter={() => handleMouseEnter("option6")}
-            onMouseLeave={() => handleMouseLeave("option6")}
-            className={`main-option ${
-              isOptionActive("option6") ? "active" : ""
-            }`} 
-          > 
-            <FaIcons.FaBook style={{marginLeft:"10px"}} />{" "}
-            <span style={{ marginLeft: "25px", fontWeight:"600"}} >Planeación</span>{" "}
-            {isOptionActive("option6") ? (
-              <HiIcons.HiChevronDown
-                style={{ color: "green", marginLeft: "20px" }}
-              />
-            ) : (
-              <HiIcons.HiChevronRight
-                style={{ color: "green", marginLeft: "20px" }}
-              />
-            )}
-          </div>
+  <div
+    style={{ margin: 0, padding: 0 }}
+    onMouseEnter={() => handleMouseEnter("option6")}
+    onMouseLeave={() => handleMouseLeave("option6")}
+    className={`main-option ${
+      isOptionActive("option6") ? "active" : ""
+    }`}
+  >
+    <FaIcons.FaBook style={{ marginLeft: "10px" }} />{" "}
+    <span style={{ marginLeft: "25px", fontWeight: "600" }}>Planeación</span>{" "}
+    {isOptionActive("option6") ? (
+      <HiIcons.HiChevronDown
+        style={{
+          color: "green",
+          marginLeft: "1.5em", // Ajusta el margen izquierdo aquí
+          verticalAlign: "middle", // Alinea verticalmente en el centro
+        }}
+      />
+    ) : (
+      <HiIcons.HiChevronRight
+        style={{
+          color: "green",
+          marginLeft: "1.5em", // Ajusta el margen izquierdo aquí
+          verticalAlign: "middle", // Alinea verticalmente en el centro
+        }}
+      />
+    )}
+  </div>
           {isOptionActive("option6") && (
             <ul
               className="submenu"
@@ -109,11 +117,11 @@ const Sidebar = () => {
             <span style={{ marginLeft: "25px", fontWeight:"600" }}>Programación</span>{" "}
             {isOptionActive("option2") ? (
               <HiIcons.HiChevronDown
-                style={{ color: "green", marginLeft: "55px" }}
+                style={{ color: "green" }}
               />
             ) : (
               <HiIcons.HiChevronRight
-                style={{ color: "green", marginLeft: "55px" }}
+                style={{ color: "green"}}
               />
             )}
           </div>

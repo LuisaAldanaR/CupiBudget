@@ -71,7 +71,7 @@ $blue: #0000ff;
 }
 
 .custom-logo {
-  width: 130px;
+  width: 150px;
   height: auto; /* Ajusta la altura automáticamente según el ancho */
   max-width: 100%; /* Evita que la imagen sea más ancha que su contenedor */
 }
@@ -104,7 +104,7 @@ $blue: #0000ff;
   z-index: 2;
   width: 100%;
   min-width: 1100px;
-  height: 4rem;
+  height: 5rem;
 }
   /* Contenedor principal */
 .container {
@@ -581,12 +581,12 @@ textarea {
   justify-content: center;
   align-items: center;
   
-  left: 60%; /* Centro horizontalmente */
+  margin-left: 4em;
   top: 50%; /* Centro verticalmente */
   padding: 2%; /* Utilizar unidades relativas */
   border-radius: 6%;
   max-height: 80vh; /* Usar viewport height en lugar de porcentaje */
-  max-width: 40vh;
+  max-width: 42vh;
   box-shadow: 0 2px 8px #000;
   border: 1px solid #ffffff40;
   background-color: #38a9009f;
@@ -658,6 +658,12 @@ textarea {
 
 @media (max-width: 800px) {
 
+  // Define una variable para la altura de .maincontainer
+
+
+// Establece el estilo para html y body
+
+
   html{
     width: 100%;
     max-width: 799px;
@@ -675,9 +681,10 @@ textarea {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
+    
     width: 100%;
     min-width: 1100px;
-    height: 100%;
+    height: 300%;
     position: absolute;
     top: 0;
     left: 0;
@@ -685,6 +692,9 @@ textarea {
     
     
   }
+
+ 
+
   .welcome-container {
     order: 1;
     position: sticky;
@@ -694,10 +704,13 @@ textarea {
     width: 80%;
     max-width: 10%;
     height: 35vh;
-    margin-bottom: 7vh;
+    margin-bottom: 10vh;
+   
     .welcomeText {
       font-size: 3vh; /* Utilizar unidades relativas */
       animation: bounce-bottom 1.5s linear both;
+      margin-left: 5vh;
+      
     }
     @keyframes bounce-bottom {
       0% {
@@ -904,7 +917,7 @@ textarea {
   flex-basis: 200;
   justify-content: space-around;
   padding: 2vh 2vh;
-  border-radius: 2vh;
+  border-radius: 1vh;
   box-shadow: 0 0 1vh rgba(0, 0, 0, 0.2);
   background-color: #caf3b6;
   top: 100%;
@@ -919,7 +932,7 @@ textarea {
   flex-basis: 200;
   justify-content: space-around;
   padding: 8px 15px;
-  border-radius: 2vh;
+  border-radius: 1vh;
   box-shadow: 0 0 1vh rgba(0, 0, 0, 0.2);
   background-color: #a7c7b4;
   top: 100%;
