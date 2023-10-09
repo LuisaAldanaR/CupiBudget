@@ -8,15 +8,33 @@ const CrudTableGoals = ({ data, setDataToEdit, updateData, handleFormChange, for
         // Main container of the component
         <div className="">
             <div className="card-body background-gradient">
-                <div className="">
+                <div className="table-responsive">
                     {/* Table header for the first table */}
-                    <h2 className="h3Table">Datos de Redes Tecnológicas</h2>
+                    <h2 className="h3Table">Meta</h2>
                     <table className="table">
                         <thead className="text-center">
                             <tr>
-                                <th className="thLeft">Planta</th>
-                                <th className="thTable">Metas</th>
-                                <th className="thRight">Cupos Antiguos</th>
+                                <th className="thLeft">Nivel Formacion</th>
+                                <th className="thTable">Modalidad</th>
+                                <th className="thTable">Meta</th>
+                                <th className="thTable">Paso 2021 a 2022</th>
+                                <th className="thTable">%</th>
+
+                                <th className="thTable">Cupos</th>
+                                <th className="thTable">Total</th>
+                                <th className="thTable">%</th>
+                                
+                                <th className="thTable">Cupos</th>
+                                <th className="thTable">Total</th>
+                                <th className="thTable">%</th>
+                                
+                                <th className="thTable">Cupos</th>
+                                <th className="thTable">Total</th>
+                                <th className="thTable">%</th>
+
+                                <th className="thTable">Cupos</th>
+                                <th className="thTable">Total</th>
+                                <th className="thRight">%</th>
                             </tr>
                         </thead>
 

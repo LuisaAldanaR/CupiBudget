@@ -61,7 +61,7 @@ const Sidebar = () => {
             }`} 
           > 
             <FaIcons.FaBook style={{marginLeft:"10px"}} />{" "}
-            <span style={{ marginLeft: "25px", fontWeight:"600"}} >Planeación</span>{" "}
+            <span style={{ marginLeft: "25px", fontWeight:"600"}} >Programas</span>{" "}
             {isOptionActive("option6") ? (
               <HiIcons.HiChevronDown
                 style={{ color: "green", marginLeft: "20px" }}

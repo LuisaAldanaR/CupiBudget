@@ -6,7 +6,6 @@ import Loader from "./Loader"; // Import the loader component
 import Message from "./Message"; // Import the message component
 import "../../App.scss";
 import Swal from 'sweetalert2';
-import Login from "../pages/Login";
 
 const CrudApp = () => {
   // States for storing instructor data, edit data, errors, etc.
