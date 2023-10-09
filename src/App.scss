@@ -469,7 +469,13 @@ $blue: #0000ff;
 }
 
 
+
 ////////////////////////  LOGIN STYLES //////////////////////////////////
+
+
+
+
+
 
 /* Styles for text and form inputs */
 input[type="text"],
@@ -501,10 +507,21 @@ textarea {
   text-align: center;
 }
 
+.form-group {
+  position: relative;
+}
 
+.password-toggle {  
+  cursor: pointer;
+  margin-right: 57vh;
+  margin-top: 18.5vh;
+  width: 20vh;
+  height: 20vh;
+}
 
 /* En App.scss o en un archivo separado (por ejemplo, Login.css) */
 @media (min-width: 800px) {
+  
 .maincontainer {
   display: flex;
   flex-wrap: wrap;
@@ -589,7 +606,6 @@ textarea {
   flex-basis: 200;
   justify-content: center;
   align-items: center;
-  
   margin-left: 4em;
   top: 50%; /* Centro verticalmente */
   padding: 2%; /* Utilizar unidades relativas */
@@ -600,9 +616,9 @@ textarea {
   border: 1px solid #ffffff40;
   background-color: #38a9009f;
   z-index: 1;
+  height: 60vh;
   
-
-
+  
   /* Styles for labels l1 and l2 */
   .l1 {
     color: #000000;
@@ -661,6 +677,10 @@ textarea {
 }
 
 
+
+
+
+
 } 
 
 }
@@ -668,6 +688,8 @@ textarea {
 @media (max-width: 800px) {
 
   // Define una variable para la altura de .maincontainer
+
+
 
 
 // Establece el estilo para html y body
@@ -839,6 +861,16 @@ textarea {
     display: flex;
     flex-wrap: wrap;
   }
+
+  .password-toggle {
+    cursor: pointer;
+    color: #000000; /* Cambia el color del ícono */
+    z-index: 1; /* Coloca el ícono por encima del campo de contraseña */
+    position: absolute; /* Cambia la posición de fixed a absolute */
+    top: -11vh; /* Ajusta la posición del ícono a tu preferencia */
+    left: 16vh;
+    transform: translateY(-50%);
+  }
   
   
   } 
@@ -848,13 +880,13 @@ textarea {
 
 /* Estilo para el ícono del ojo */
 .password-toggle {
-  position: fixed;
-  top:30vh;
-  right: 9vh; /* Ajusta la posición del ícono a tu preferencia */
-  transform: translateY(-50%);
   cursor: pointer;
   color: #000000; /* Cambia el color del ícono */
   z-index: 1; /* Coloca el ícono por encima del campo de contraseña */
+  position: absolute; /* Cambia la posición de fixed a absolute */
+  top: -9vh; /* Ajusta la posición del ícono a tu preferencia */
+  left: 28vh;
+  transform: translateY(-50%);
 }
 
 

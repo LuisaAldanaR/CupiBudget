@@ -11,6 +11,8 @@ const baseUrl = "http://www.mendezmrf10.somee.com/api/Auth/login";
 const cookies = new Cookies();
 
 function Login() {
+
+  
   const [form, setForm] = useState({
     username: '',
     password: ''
@@ -29,7 +31,7 @@ function Login() {
   }
 
   const togglePasswordVisibility = () => {
-    setShowPassword(!showPassword); // Cambia el estado para mostrar/ocultar la contraseña
+    setShowPassword(!showPassword);
   };
 
   const iniciarSesion = async () => {
@@ -75,6 +77,7 @@ function Login() {
       console.error(error);
     }
   }
+  
 
   React.useEffect(() => {
     clearAuthentication();
@@ -87,8 +90,9 @@ function Login() {
     }
   };
 
+  
   return (
-    <div className="maincontainer" >
+    <div className="maincontainer"  >
       <div className="welcome-container" >
         <img src="/img/Logo-sena.png" alt="Logo" />
         <p style={{ marginLeft:"-3em",fontWeight:"400", width:"15em", fontSize:"3vh", marginTop:"10px"}}>Centro de comercio y servicios</p>
@@ -97,11 +101,11 @@ function Login() {
         <p className="welcomeText tracking-in-expand-forward-top">Bienvenido</p>
         </div>
         <div id="formContainer">
-          <div className="secondContainer" style={{marginTop:"5vh"}} >
+          <div className="secondContainer" style={{marginTop:"5vh"}}  >
             
             <label style={{marginBottom:"5vh", userSelect:"none"}} className='l1'>Iniciar Sesión </label>
             
-            <div className="form-group">
+            <div  className="form-group" >
               <input
                 placeholder="Usuario"
                 type="text"
@@ -109,9 +113,11 @@ function Login() {
                 onChange={handleChange}
                 onKeyDown={handleKeyDown}
                 className="rounded-input"
-                style={{userSelect: "none", }}
+                style={{userSelect: "none", height: "100%"}}
+                
                 
               />
+              
               <input
                 placeholder="Contraseña"
                 type={showPassword ? 'text' : 'password'}
@@ -120,25 +126,29 @@ function Login() {
                 value={form.password}
                 onChange={handleChange}
                 onKeyDown={handleKeyDown}
-                style={{userSelect: "none"}}         
+                style={{userSelect: "none", height: "80%", position:"absolute", marginTop:"5em"}}  
+                    
               />
+             <span style={{ userSelect:"none", width: '20px', height: '20px' }} className={`password-toggle ${showPassword ? 'active' : ''}`} onClick={togglePasswordVisibility}>
+             <FontAwesomeIcon icon={showPassword ? faEye : faEyeSlash} style={{width: '20px', height: '20px', marginTop:"2vh"  }} />
 
-              
-               
+              </span>
+       
             </div>
             
             <button
                 className="login-button"
-                style={{marginTop:"10vh", userSelect: "none"}}
+                style={{marginTop:"12vh", userSelect: "none"}}
                 onClick={iniciarSesion}>
                 Ingresar
             </button>
             <p style={{marginTop:"4vh", userSelect: "none"}} className='l2'>Cambiar contraseña </p>
           </div>
-        
+
       </div>
     </div>
   );
 }
 
 export default Login;
+
