@@ -91,8 +91,9 @@ function Login() {
     <div className="maincontainer" >
       <div className="welcome-container" >
         <img src="/img/Logo-sena.png" alt="Logo" />
+        <p style={{ marginLeft:"-1em",fontWeight:"600", width:"15em", fontSize:"2vh", marginTop:"10px"}}>Centro de comercio y servicios</p>
        
-        <hr className='underLine'></hr>
+        <hr className='underLine' style={{width:"16em", marginTop:"3em"}}></hr>
         <p className="welcomeText tracking-in-expand-forward-top">Bienvenido</p>
         </div>
         <div id="formContainer">

@@ -511,7 +511,7 @@ textarea {
   position: absolute;
   top: 0; /* Ajusta la posición vertical hacia arriba */
   left: 0;
-    
+  
   
 }
 .welcome-container {
@@ -524,6 +524,7 @@ textarea {
   max-width: 10%; /* Máximo ancho para mantener proporciones */
   height: auto; /* Para mantener proporciones */
   .welcomeText {
+    margin-left: 1.5em;
     font-size: 3vh; /* Utilizar unidades relativas */
     animation: bounce-bottom 1.5s linear both;
   }
@@ -681,6 +682,7 @@ textarea {
     top: 0;
     left: 0;
     z-index: 1;
+    
     
   }
   .welcome-container {
