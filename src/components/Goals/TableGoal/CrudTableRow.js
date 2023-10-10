@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../../App.scss";
+import "../../../App.scss";
 
 // Define an object with initial values for the form
 const initialForm = {
@@ -10,6 +10,8 @@ const CrudTableRow = ({ el }) => {
   // Destructure the properties of the 'el' object passed as an argument
   const [form, setForm] = useState(initialForm);
 
+  console.log(el);
+  
   // Function to handle changes in form fields
   const handleChange = (e) => {
     const { name, value } = e.target;

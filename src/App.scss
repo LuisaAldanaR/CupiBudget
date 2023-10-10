@@ -117,6 +117,8 @@ $blue: #0000ff;
 }
   /* Contenedor principal */
 .container {
+ 
+  overflow-x: auto; /* Habilita el desplazamiento horizontal */  
   background-color: #f3f1f1;
   display: flex;
   flex-wrap: wrap;

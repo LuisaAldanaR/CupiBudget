@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
-import CrudTableGoals from "./CrudTableGoals";
+import CrudTableGoals from './TableGoal/CrudTableGoals';
+import CrudTableTotalGoals from './TableResult/CrudTableTotalGoals';
 import { helpHttp } from "../../helpers/helpHttp"; // Ajusta la importación según tu estructura de archivos
 import Swal from "sweetalert2";
 
@@ -7,6 +8,7 @@ import Swal from "sweetalert2";
 const Goals = () => {
 
     const [db, setDb] = useState([]);
+    const [dbTotals, setDbTotals] = useState([]);
     const [dataToEdit, setDataToEdit] = useState(null);
     const [errorMessage, setErrorMessage] = useState(null);
     const [loading, setLoading] = useState(true);
@@ -41,33 +43,50 @@ const Goals = () => {
 
         setDb(nivelFormacion);
       };
+
+  useEffect(() => {
+    loadTableTotalsData(); // Load initial data when the component mounts
+  }, []);
+
+  // Function to load table data
+  const loadTableTotalsData = () => {
+    let totalEducacionSuperior = "Total Educación Superior";
+    let totalTecnicos = "Total Tecnicos y otros";
+
+    const totales = [
+      { nombre: totalEducacionSuperior },
+      { nombre: totalTecnicos },
+    ];
+
+    setDbTotals(totales);
+  };
     
-      // Function to create a new instructor
-    
-        const createData = (data) => {
-          let urlPost = "http://www.mendezmrf10.somee.com/api/ContractInstructor/Save";
-        
-          let options = {
-            body: data,
-            headers: { "content-type": "application/json",'Authorization': `Bearer ${token}`, },   
-          };
-        
-          api.post(urlPost, options).then((res) => {
-            if (!res.err) {
-              // Show a success SweetAlert message for the record addition
-              Swal.fire({
-                title: '¡Agregado!', // Translate: Added!
-                text: 'El registro ha sido agregado exitosamente.', // Translate: The record has been successfully added.
-                icon: 'success',
-                confirmButtonText: 'OK', // Translate: OK
-              })
-              // After adding a record, reload the data
-              loadTableData();
-            } else {
-              setError(res);
-            }
-          });
-        };
+  // Function to create a new instructor
+
+  const createData = (data) => {
+    let urlPost = "http://www.mendezmrf10.somee.com/api/Simulator/CalculateSimulator";
+
+    let options = {
+      body: data,
+      headers: { "content-type": "application/json", 'Authorization': `Bearer ${token}`, },
+    };
+
+    api.post(urlPost, options).then((res) => {
+      if (!res.err) {
+        // Show a success SweetAlert message for the record addition
+        Swal.fire({
+          title: '¡Exito!', // Translate: Added!
+          text: 'El metas desplegadas exitosamente.', // Translate: The record has been successfully added.
+          icon: 'success',
+          confirmButtonText: 'OK', // Translate: OK
+        })
+        // After adding a record, reload the data
+        loadTableData();
+      } else {
+        setError(res);
+      }
+    });
+  };
     
 
     return (  
@@ -82,9 +101,18 @@ const Goals = () => {
                 data={db}
                 setDataToEdit={setDataToEdit}
                 //updateData={updateData}
-                formData={formData} />
+                formData={formData}     
+            />
+
+            <CrudTableTotalGoals
+                dataTotals={dbTotals}
+                setDataToEdit={setDataToEdit}
+                //updateData={updateData}
+                formData={formData}     
+            />
         </div>
     );
 }
  
 export default Goals;
+
