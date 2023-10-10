@@ -31,6 +31,23 @@ const Goals = () => {
         let operarios = "Operarios";
         let laboralPresencial = "Laboral Presencial";
         let laboralVirtual = "Laboral Virtual";
+        let modality= "";
+        let target = 0;
+        let passes2021To2022= 0;
+        let percentage = 0;
+        let firstQuarterEnrollment = 0;
+        let firstQuarterTotal = 0;
+        let firstQuarterPercentage = 0;
+        let secondQuarterEnrollment =  0;
+        let secondQuarterTotal = 0;
+        let secondQuarterPercentage = 0;
+        let thirdQuarterEnrollment= 0;
+        let thirdQuarterTotal = 0;
+        let thirdQuarterPercentage = 0;
+        let fourthQuarterEnrollment= 0;
+        let fourthQuarterTotal = 0;
+        let fourthQuarterPercentage = 0;
+        let margin = 0;
 
         const nivelFormacion = [
             {name : presencial, id : 1},
@@ -39,6 +56,23 @@ const Goals = () => {
             {name : operarios, id : 4},
             {name : laboralPresencial, id : 5},
             {name : laboralVirtual, id : 6},
+            {modality},
+            {target},
+            {passes2021To2022},
+            {percentage},
+            {firstQuarterEnrollment},
+            {firstQuarterTotal},
+            {firstQuarterPercentage},
+            {secondQuarterEnrollment},
+            {secondQuarterTotal},
+            {secondQuarterPercentage},
+            {thirdQuarterEnrollment},
+            {thirdQuarterTotal},
+            {thirdQuarterPercentage},
+            {fourthQuarterEnrollment},  
+            {fourthQuarterTotal},
+            {fourthQuarterPercentage},
+            {margin},         
         ];
 
         setDb(nivelFormacion);
