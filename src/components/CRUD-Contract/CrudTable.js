@@ -1,12 +1,31 @@
-import React from "react";
+import React, { useState } from "react";
 import CrudTableRow from "./CrudTableRow";
 import "../../App.scss";
+import { useAccordionButton } from "react-bootstrap";
+
+
 
 // Definition of the CrudTable component
+ 
 const CrudTable = ({ data, setDataToEdit, deleteData, showFormView }) => {
+
+   
+
+  //Search Function
+
+   
+
+  //Filter Method
+
+    
+  
+
     return (
-        // Main container of the component
+
+          // Main container of the component
         <div className="">
+            <br></br>
+           
             <div className="card-body background-gradient">
                 <div className="table-responsive">
                     {/* Table header */}
@@ -43,6 +62,8 @@ const CrudTable = ({ data, setDataToEdit, deleteData, showFormView }) => {
                                     <td colSpan="3">Sin datos</td>
                                 </tr>
                             )}
+
+                            
                         </tbody>
                     </table>
                 </div>
