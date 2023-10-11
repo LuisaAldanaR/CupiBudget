@@ -59,7 +59,7 @@ const CrudTable = ({ data, setDataToEdit, deleteData, showFormView }) => {
                             ) : (
                                 // Display "No data" message if there are no elements in 'data'
                                 <tr>
-                                    <td colSpan="3">Sin datos</td>
+                                    <td colSpan="3">No se encuentran resultados</td>
                                 </tr>
                             )}
 

@@ -164,7 +164,9 @@ $blue: #0000ff;
   max-height: 12.5rem; /* Establece una altura máxima para la lista */
   padding: 0; /* Elimina el espacio interno predeterminado de la lista */
   margin: 0; /* Elimina el margen predeterminado de la lista */
-  margin-left: 7rem !important;
+  margin-left: 5rem !important;
+  
+  
   }
 
   ul {
@@ -285,6 +287,7 @@ $blue: #0000ff;
       max-height: 8vh; /* Establece una altura máxima para la lista */
       padding: 0; /* Elimina el espacio interno predeterminado de la lista */
       margin: 0.3rem; /* Elimina el margen predeterminado de la lista */
+      
     }
 
     ul {
@@ -410,11 +413,116 @@ $blue: #0000ff;
   margin-bottom: 2rem;
 }
 
+.searchBar{
+  position: relative;
+  width: 60px;
+  height: 45px;
+  background-color: #ffffff !important;
+  border-radius: 60px;
+  transition: 0.5s;
+  box-shadow: 0 0 0 2px #2573ef;
+  left: 10%;
+}
+
+.searchBar.active{
+  width: 360px;
+}
+
+.searchBar .iconSearch{
+
+  position:absolute;
+  top: 5%;
+  width: 60px;
+  height: 40px;
+  background-color: rgb(255, 255, 255) !important;
+  border-radius: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+  cursor: pointer;
+  
+}
+
+.searchBar .iconSearch::before
+{
+  content: '';
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  border: 3px solid #287dfc;
+  border-radius: 50%;
+  transform: translate(-2px, -2px);
+}
+
+.searchBar .iconSearch::after
+{
+  content: '';
+  position: absolute;
+  width: 3px;
+  height: 12px;
+  background-color: #287dfc;
+  transform: translate(6px, 6px) rotate(320deg);
+}
+
+.searchBar .inputSearch {
+   
+    width: 300px;
+    height: 60px;
+    left: 60px;
+    
+}
+
+.searchBar .inputSearch input{
+  position: absolute;
+  top: 0;
+  left: 20%;
+  width: 100%;
+  height: 100%;
+  border: none;
+  outline: navajowhite;
+}
+
+.clear{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 15px;
+  height: 15px;
+  right: 15px;
+  background-color: rgb(255, 255, 255);
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.clear::before 
+{
+  position: absolute;
+  content: '';
+  width: 1px;
+  height: 15px;
+  background-color: #999;
+  transform: rotate(45deg);
+}
+
+.clear::after 
+{
+  position: absolute;
+  content: '';
+  width: 1px;
+  height: 15px;
+  background-color: #999;
+  transform: rotate(315deg);
+}
+
 .addButton {
   background-color: #007bb8 !important;
   color: #ffffff !important;
   border-radius: 15px !important;
   font-family: "Raleway", sans-serif !important;
+  margin-left: 10%;
 }
 
 .showButton {
