@@ -3,7 +3,7 @@ import CrudTableRow from "./CrudTableRow";
 import "../../../App.scss";
 
 // Definition of the CrudTable component
-const CrudTableGoals = ({ data, setDataToEdit, updateData, handleFormChange, formData }) => {
+const CrudTableGoals = ({ data, updateFormData, setDataToEdit, updateData, handleFormChange, formData }) => {
     return (
         // Main container of the component
         <div className="">
@@ -58,7 +58,7 @@ const CrudTableGoals = ({ data, setDataToEdit, updateData, handleFormChange, for
                                     <td colSpan="3">Sin datos</td>
                                 </tr>
                             )}
-                        </tbody>       
+                        </tbody>        
                     </table>
                 </div>
             </div>

@@ -9,8 +9,6 @@ const initialForm = {
 const CrudTableRow = ({ elTotals }) => {
   // Destructure the properties of the 'elTotals' object passed as an argument
   const [form, setForm] = useState(initialForm);
-    
-  console.log(elTotals);
 
   // Function to handle changes in form fielTotalsds
   const handleChange = (e) => {
