@@ -49,6 +49,7 @@ const CrudApp = () => {
   // Function to create a new instructor
 
     const createData = (data) => {
+      console.log(data);
       let urlPost = "http://www.mendezmrf10.somee.com/api/ContractInstructor/Save";
     
       let options = {
