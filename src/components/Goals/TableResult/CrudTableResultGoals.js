@@ -35,7 +35,7 @@ const CrudTableRow = ({ elTotals }) => {
         {elTotals ? (
           elTotals.nombre
         ) : (
-          db.loading ? (<span>Cargando...</span>) : null // Check if the 'elTotals' object has a 'loading' property
+          elTotals.loading ? (<span>Cargando...</span>) : null // Check if the 'elTotals' object has a 'loading' property
         )}
       </td>
 

@@ -12,8 +12,9 @@ const CrudApp = () => {
   const [db, setDb] = useState([]); 
   const [dataToEdit, setDataToEdit] = useState(null); 
   const [error, setError] = useState(null); 
-  const [loading, setLoading] = useState(true); 
-
+  const [loading, setLoading] = useState(true);
+  const [search, setSearch] = useState("");
+  
   // States for showing/hiding the form and records
   const [showForm, setShowForm] = useState(false); 
   const [showRecords, setShowRecords] = useState(true); 
@@ -164,7 +165,26 @@ const CrudApp = () => {
     setShowRecords(true);
   };
 
+  // Search Func
+
+  const searcher = (e) => {
+    setSearch(e.target.value);
+    console.log(e.target.value);
+  }
+  
+  // Filter Method
+  let results = db;
+  
+  if (search) {
+    results = db.filter((info) =>
+      info.name.toLowerCase().includes(search.toLowerCase())
+    );
+  }
+  
+
+
   return (
+
     <div className="content">
       {showRecords && (
         <>
@@ -173,9 +193,13 @@ const CrudApp = () => {
             <button className="btn addButton" onClick={showFormView}>
               Registar Nuevo Instructor
             </button>
+            
           </div>
+          <input value={search} onChange={searcher} type="text" placeholder="Buscar" className="form-control" style={{backgroundColor:"white"}}></input>
         </>
       )}
+
+
 
       {showForm && (
         <CrudForm
@@ -189,7 +213,7 @@ const CrudApp = () => {
 
       {showRecords && !loading && !error && db && (
         <CrudTable
-          data={db}
+          data={results}
           setDataToEdit={setDataToEdit}
           deleteData={deleteData}
           showFormView={showFormView}
