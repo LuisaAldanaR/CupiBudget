@@ -1,139 +1,167 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import CrudTableGoals from './TableGoal/CrudTableGoals';
 import CrudTableTotalGoals from './TableResult/CrudTableTotalGoals';
-import { helpHttp } from "../../helpers/helpHttp"; // Ajusta la importación según tu estructura de archivos
-import Swal from "sweetalert2";
+import { helpHttp } from '../../helpers/helpHttp';
+import Swal from 'sweetalert2';
 
 const Goals = () => {
+  const [formData, setFormData] = useState({
+    goals1: [
+      {
+        modality: 'presencial',
+        target: 300,
+        passes2021To2022: 0,
+        firstQuarterEnrollment: 0,
+        secondQuarterEnrollment: 0,
+        thirdQuarterEnrollment: 0,
+        fourthQuarterEnrollment: 0,
+      },
+      {
+        modality: 'virtual',
+        target: 300,
+        passes2021To2022: 0,
+        firstQuarterEnrollment: 0,
+        secondQuarterEnrollment: 0,
+        thirdQuarterEnrollment: 0,
+        fourthQuarterEnrollment: 0,
+      },
+    ],
+    goals2: [
+      {
+        modality: 'auxiliar',
+        target: 300,
+        passes2021To2022: 0,
+        firstQuarterEnrollment: 0,
+        secondQuarterEnrollment: 0,
+        thirdQuarterEnrollment: 0,
+        fourthQuarterEnrollment: 0,
+      },
+      {
+        modality: 'operario',
+        target: 300,
+        passes2021To2022: 0,
+        firstQuarterEnrollment: 0,
+        secondQuarterEnrollment: 0,
+        thirdQuarterEnrollment: 0,
+        fourthQuarterEnrollment: 0,
+      },
+      {
+        modality: 'laboral presencial',
+        target: 300,
+        passes2021To2022: 0,
+        firstQuarterEnrollment: 0,
+        secondQuarterEnrollment: 0,
+        thirdQuarterEnrollment: 0,
+        fourthQuarterEnrollment: 0,
+      },
+      {
+        modality: 'laboral virtual',
+        target: 300,
+        passes2021To2022: 0,
+        firstQuarterEnrollment: 0,
+        secondQuarterEnrollment: 0,
+        thirdQuarterEnrollment: 0,
+        fourthQuarterEnrollment: 0,
+      },
+    ],
+  });
 
-  const [db, setDb] = useState([]);
+  const [db, setDb] = useState({
+    goals1: [
+      {
+        name: 'Presencial', // Nombre de la modalidad
+        id: 1, // ID u otro identificador
+      },
+      {
+        name: 'Virtual',
+        id: 2,
+      },
+    ],
+    goals2: [
+      {
+        name: 'Auxiliares',
+        id: 3,
+      },
+      {
+        name: 'Operarios',
+        id: 4,
+      },
+      {
+        name: 'Laboral Presencial',
+        id: 5,
+      },
+      {
+        name: 'Laboral Virtual',
+        id: 6,
+      },
+    ],
+  });
+
   const [dbTotals, setDbTotals] = useState([]);
-  const [dataToEdit, setDataToEdit] = useState(null);
-  const [errorMessage, setErrorMessage] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [formData, setFormData] = useState({}); // Nuevo estado para los datos de los formularios
   const [error, setError] = useState(null);
 
-  const token = localStorage.getItem("jwtToken"); // Recupera el token JWT del almacenamiento local
-  const api = helpHttp(); // Instancia de la utilidad de solicitud HTTP
+  const token = localStorage.getItem('jwtToken');
+  const api = helpHttp();
 
-// Function to handle changes in form fields
-const handleFormChange = (modality, name, value) => {
-  // Crear una copia del estado formData
-  const updatedFormData = { ...formData };
-
-  if (!updatedFormData[modality]) {
-    updatedFormData[modality] = {}; // Asegurarte de que el objeto modality exista
-  }
-
-  // Crear un objeto de datos para esta fila
-  updatedFormData[modality][name] = value;
-
-  // Actualizar el estado con los datos de esta fila
-  setFormData(updatedFormData);
-  console.log(updatedFormData);
-};
-
-const createData = () => {
-  const data = []; // Define un array para almacenar los datos de cada elemento del formulario
-
-  data.push(formData);
-  console.log(data);
-
-  // data ahora contiene los datos de todos los elementos del formulario
-
-  let urlPost = "http://www.mendezmrf10.somee.com/api/Simulator/CalculateSimulator";
-
-  let options = {
-    body: JSON.stringify(data), // Convierte el array 'data' a una cadena JSON válida
-    headers: { "content-type": "application/json", 'Authorization': `Bearer ${token}` },
+  const handleFormChange = (modality, name, value) => {
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      [modality]: {
+        ...prevFormData[modality],
+        [name]: value,
+      },
+    }));
   };
-
-  api.post(urlPost, options).then((res) => {
-    if (!res.err) {
-      // Show a success SweetAlert message for the record addition
-      Swal.fire({
-        title: '¡Exito!',
-        text: 'Metas desplegadas exitosamente.',
-        icon: 'success',
-        confirmButtonText: 'OK',
-      })
-      // After adding a record, reload the data
-      loadTableData();
-    } else {
-      setError(res);
+  
+  const createData = async () => {
+    let urlPost = 'http://www.mendezmrf10.somee.com/api/Simulator/CalculateSimulator';
+  
+    let options = {
+      body: formData,
+      headers: {
+        'content-type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
+    };
+  
+    try {
+      const res = await api.post(urlPost, options);
+  
+      if (!res.err) {
+        Swal.fire({
+          title: '¡Éxito!',
+          text: 'Metas desplegadas exitosamente.',
+          icon: 'success',
+          confirmButtonText: 'OK',
+        });
+  
+        setDb({
+          goals1: res.goals1,
+          goals2: res.goals2,
+        });
+  
+        console.log(res);
+        loadTableTotalsData();
+      } else {
+        setError(res);
+      }
+    } catch (error) {
+      console.error(error);
     }
-  });
-};
-
-
-  useEffect(() => {
-    loadTableData(); // Load initial data when the component mounts
-  }, []);
-
-  // Function to load table data
-  const loadTableData = () => {
-    let presencial = "Presencial";
-    let virtual = "Virtual";
-    let auxiliares = "Auxiliares";
-    let operarios = "Operarios";
-    let laboralPresencial = "Laboral Presencial";
-    let laboralVirtual = "Laboral Virtual";
-    let modality = "";
-    let target = 0;
-    let passes2021To2022 = 0;
-    let percentage = 0;
-    let firstQuarterEnrollment = 0;
-    let firstQuarterTotal = 0;
-    let firstQuarterPercentage = 0;
-    let secondQuarterEnrollment = 0;
-    let secondQuarterTotal = 0;
-    let secondQuarterPercentage = 0;
-    let thirdQuarterEnrollment = 0;
-    let thirdQuarterTotal = 0;
-    let thirdQuarterPercentage = 0;
-    let fourthQuarterEnrollment = 0;
-    let fourthQuarterTotal = 0;
-    let fourthQuarterPercentage = 0;
-    let margin = 0;
-
-    const nivelFormacion = [
-      { name: presencial, id: 1 },
-      { name: virtual, id: 2 },
-      { name: auxiliares, id: 3 },
-      { name: operarios, id: 4 },
-      { name: laboralPresencial, id: 5 },
-      { name: laboralVirtual, id: 6 },
-      { modality },
-      { target },
-      { passes2021To2022 },
-      { percentage },
-      { firstQuarterEnrollment },
-      { firstQuarterTotal },
-      { firstQuarterPercentage },
-      { secondQuarterEnrollment },
-      { secondQuarterTotal },
-      { secondQuarterPercentage },
-      { thirdQuarterEnrollment },
-      { thirdQuarterTotal },
-      { thirdQuarterPercentage },
-      { fourthQuarterEnrollment },
-      { fourthQuarterTotal },
-      { fourthQuarterPercentage },
-      { margin },
-    ];
-
-    setDb(nivelFormacion);
   };
+  
+  useEffect(() => {
+    // Este efecto se ejecutará cada vez que db cambie.
+    console.log(db);
+  }, [db]);
 
   useEffect(() => {
-    loadTableTotalsData(); // Load initial data when the component mounts
+    loadTableTotalsData();
   }, []);
 
-  // Function to load table data
   const loadTableTotalsData = () => {
-    let totalEducacionSuperior = "Total Educación Superior";
-    let totalTecnicos = "Total Tecnicos y otros";
+    let totalEducacionSuperior = 'Total Educación Superior';
+    let totalTecnicos = 'Total Tecnicos y otros';
 
     const totales = [
       { nombre: totalEducacionSuperior },
@@ -146,28 +174,25 @@ const createData = () => {
   return (
     <div className='content'>
       <div className='containerButtons'>
-        <button className="btn addButton btn-generate" onClick={(createData)}>
+        <button className='btn addButton btn-generate' onClick={createData}>
           Enviar Meta
         </button>
       </div>
 
       <CrudTableGoals
         data={db}
-        setDataToEdit={setDataToEdit}
-        //updateData={updateData}
+        setDataToEdit={() => {}}
         handleFormChange={handleFormChange}
         formData={formData}
       />
 
       <CrudTableTotalGoals
         dataTotals={dbTotals}
-        setDataToEdit={setDataToEdit}
-        //updateData={updateData}
+        setDataToEdit={() => {}}
         formData={formData}
       />
     </div>
   );
-}
+};
 
 export default Goals;
-

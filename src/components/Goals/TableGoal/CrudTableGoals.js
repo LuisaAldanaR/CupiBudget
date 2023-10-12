@@ -4,6 +4,9 @@ import "../../../App.scss";
 
 // Definition of the CrudTable component
 const CrudTableGoals = ({ data, updateFormData, setDataToEdit, updateData, handleFormChange, formData }) => {
+    const { goals1, goals2 } = data;
+    const combinedGoals = [...goals1, ...goals2]; // Combina los dos arrays en uno solo
+
     return (
         // Main container of the component
         <div className="">
@@ -40,9 +43,9 @@ const CrudTableGoals = ({ data, updateFormData, setDataToEdit, updateData, handl
 
                         <tbody>
                             {/* Conditional to handle the case when there is no data */}
-                            {data.length > 0 ? (
+                            {combinedGoals.length > 0 ? (
                                 // Mapping data to render table rows
-                                data.map((el) => (
+                                combinedGoals.map((el) => (
                                     <CrudTableRow
                                         key={el.id}
                                         el={el}
