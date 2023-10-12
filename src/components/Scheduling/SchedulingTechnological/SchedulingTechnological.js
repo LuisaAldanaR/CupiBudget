@@ -17,6 +17,9 @@ const SchedulingTechnological = () => {
   const [dbVirtual, setDbVirtual] = useState([]); 
   const [errorVirtual, setErrorVirtual] = useState(null); 
   const [loadingVirtual, setLoadingVirtual] = useState(true); 
+
+  const [search, setSearch] = useState("");
+  const [showSearch, setShowSearch] = useState(false);
   
   const token = localStorage.getItem('jwtToken'); // Recupera el token JWT del almacenamiento local
   let api = helpHttp(); // Instance of the HTTP request utility
@@ -71,17 +74,45 @@ const SchedulingTechnological = () => {
     });
   };
 
+   // Search Func
+
+   const searcher = (e) => {
+    setSearch(e.target.value);
+    console.log(e.target.value);
+  }
+
+  // Filter Method
+
+  const results = !search ? db : db.filter((info)=> info.name.toLowerCase().includes(search.toLowerCase()))
+  const clearInput = () => {
+    document.getElementById('mysearch').value = '';
+    setSearch(''); // Restablece la búsqueda a una cadena vacía
+  };
+
+  
+
+  const toggleSearch = () => {
+    setShowSearch(!showSearch); // Altern the search visibility
+  };
+
     return (  
         <div className='content'>
             <h1 className='h3Table'>Tecnológo Presencial</h1>
-
+            <div className={`searchBar ${showSearch ? 'active' : ''}`}>
+          <div className="iconSearch" onClick={toggleSearch}></div>
+          <div className="inputSearch">
+          <input  id="mysearch" value={search} onChange={searcher} type="text" placeholder="Buscar por nombre"></input>
+          <span className="clear" onClick={clearInput}></span>
+          </div>
+          </div>
             {!loading && !error && db && (
                 <CrudTable
-                    data={db}
+                    data={results}
                 />
             )}
 
             <h1 className='h3Table'>Tecnológo Virtual</h1>
+           
 
             {!loading && !errorVirtual && db && (
                 <CrudTableVirtual

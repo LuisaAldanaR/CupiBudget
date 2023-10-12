@@ -1,31 +1,31 @@
 import React, { useState } from "react";
 import CrudTableRow from "./CrudTableRow";
 import "../../App.scss";
-import { useAccordionButton } from "react-bootstrap";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSortAlphaDown, faSortAlphaUp } from "@fortawesome/free-solid-svg-icons";
 
-
-
-// Definition of the CrudTable component
- 
 const CrudTable = ({ data, setDataToEdit, deleteData, showFormView }) => {
+    const [isAscending, setIsAscending] = useState(true);
 
-   
+    // Función para alternar la dirección de ordenación
+    const toggleSortingDirection = () => {
+      setIsAscending(!isAscending);
+    };
 
-  //Search Function
-
-   
-
-  //Filter Method
-
-    
-  
+    // Función para ordenar los datos por nombre
+    const sortDataByName = () => {
+      const sortedData = [...data];
+      sortedData.sort((a, b) => {
+        const nameA = a.name.toLowerCase();
+        const nameB = b.name.toLowerCase();
+        return isAscending ? nameA.localeCompare(nameB) : nameB.localeCompare(nameA);
+      });
+      return sortedData;
+    };
 
     return (
-
-          // Main container of the component
         <div className="">
             <br></br>
-           
             <div className="card-body background-gradient">
                 <div className="table-responsive">
                     {/* Table header */}
@@ -34,7 +34,16 @@ const CrudTable = ({ data, setDataToEdit, deleteData, showFormView }) => {
                         <thead className="text-center">
                             <tr> 
                                 <th className="thLeft">Contrato Vencido</th>
-                                <th className="thTable">Nombre</th>
+                                <th className="thTable">
+                                    Nombre
+                                    <button style={{marginLeft:"1rem"}} onClick={toggleSortingDirection}>
+                                        {isAscending ? (
+                                          <FontAwesomeIcon icon={faSortAlphaDown} />
+                                        ) : (
+                                          <FontAwesomeIcon icon={faSortAlphaUp} />
+                                        )}
+                                    </button>
+                                </th>
                                 <th className="thTable">Fecha Inicio Contrato</th>
                                 <th className="thTable">Fecha Fin Contrato</th>
                                 <th className="thTable">Fecha Fin Curso</th>
@@ -42,28 +51,21 @@ const CrudTable = ({ data, setDataToEdit, deleteData, showFormView }) => {
                                 <th className="thRight">Acciones</th>
                             </tr>
                         </thead>
-
                         <tbody>
-                            {/* Conditional to handle the case when there is no data */}
-                            {data.length > 0 ? (
-                                // Mapping data to render table rows
-                                data.map((el) => (
-                                    <CrudTableRow
-                                        key={el.id}
-                                        el={el}
-                                        setDataToEdit={setDataToEdit}
-                                        deleteData={deleteData}
-                                        showFormView={showFormView} // Make sure to pass showFormView as a prop
-                                    />
-                                ))
-                            ) : (
-                                // Display "No data" message if there are no elements in 'data'
+                            {sortDataByName().map((el) => (
+                                <CrudTableRow
+                                  key={el.id}
+                                  el={el}
+                                  setDataToEdit={setDataToEdit}
+                                  deleteData={deleteData}
+                                  showFormView={showFormView}
+                                />
+                            ))}
+                            {data.length === 0 && (
                                 <tr>
-                                    <td colSpan="3">Sin datos</td>
+                                    <td colSpan="7">No se encuentran resultados</td>
                                 </tr>
                             )}
-
-                            
                         </tbody>
                     </table>
                 </div>
@@ -72,5 +74,4 @@ const CrudTable = ({ data, setDataToEdit, deleteData, showFormView }) => {
     );
 };
 
-// Export the CrudTable component for use in other parts of the application
 export default CrudTable;

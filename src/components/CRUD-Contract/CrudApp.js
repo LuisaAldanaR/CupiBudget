@@ -6,6 +6,26 @@ import Loader from "./Loader"; // Import the loader component
 import Message from "./Message"; // Import the message component
 import "../../App.scss";
 import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
+
+function show_alerta(mensaje, icono, foco='')
+{
+  onfocus(foco);
+  const MySwal = withReactContent(Swal);
+  MySwal.fire({
+    title:mensaje,
+    icon:icono
+  })
+}
+
+function onfocus(foco)
+{
+  if(foco !== '')
+  {
+    document.getElementById(foco).focus();
+  }
+}
+
 
 const CrudApp = () => {
   // States for storing instructor data, edit data, errors, etc.
@@ -14,6 +34,7 @@ const CrudApp = () => {
   const [error, setError] = useState(null); 
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState("");
+  const [showSearch, setShowSearch] = useState(false);
   
   // States for showing/hiding the form and records
   const [showForm, setShowForm] = useState(false); 
@@ -74,7 +95,8 @@ const CrudApp = () => {
           // After adding a record, reload the data
           loadTableData();
         } else {
-          setError(res);
+          
+          show_alerta('Acceso denegado', 'error');
         }
       });
     };
@@ -103,7 +125,8 @@ const CrudApp = () => {
           showTable();
         });
       } else {
-        setError(res);
+        
+        show_alerta('Acceso denegado', 'error');
       }
     });
   };
@@ -143,7 +166,8 @@ const CrudApp = () => {
               'success'
             );
           } else {
-            setError(res);
+           
+            show_alerta('Acceso denegado', 'error');
           }
         });
       }
@@ -172,17 +196,20 @@ const CrudApp = () => {
     setSearch(e.target.value);
     console.log(e.target.value);
   }
-  
+
   // Filter Method
-  let results = db;
-  
-  if (search) {
-    results = db.filter((info) =>
-      info.name.toLowerCase().includes(search.toLowerCase())
-    );
-  }
+
+  const results = !search ? db : db.filter((info)=> info.name.toLowerCase().includes(search.toLowerCase()))
+  const clearInput = () => {
+    document.getElementById('mysearch').value = '';
+    setSearch(''); // Restablece la búsqueda a una cadena vacía
+  };
+
   
 
+  const toggleSearch = () => {
+    setShowSearch(!showSearch); // Alternar la visibilidad de la barra de búsqueda
+  };
 
   return (
 
@@ -196,7 +223,13 @@ const CrudApp = () => {
             </button>
             
           </div>
-          <input value={search} onChange={searcher} type="text" placeholder="Buscar" className="form-control" style={{backgroundColor:"white"}}></input>
+          <div className={`searchBar ${showSearch ? 'active' : ''}`}>
+          <div className="iconSearch" onClick={toggleSearch}></div>
+          <div className="inputSearch">
+          <input  id="mysearch" value={search} onChange={searcher} type="text" placeholder="Buscar por nombre"></input>
+          <span className="clear" onClick={clearInput}></span>
+          </div>
+          </div>
         </>
       )}
 

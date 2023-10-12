@@ -6,6 +6,26 @@ import Loader from "./Loader";
 import Message from "./Message";
 import "../../App.scss";
 import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
+
+function show_alerta(mensaje, icono, foco='')
+{
+  onfocus(foco);
+  const MySwal = withReactContent(Swal);
+  MySwal.fire({
+    title:mensaje,
+    icon:icono
+  })
+}
+
+function onfocus(foco)
+{
+  if(foco !== '')
+  {
+    document.getElementById(foco).focus();
+  }
+}
+
 
 const CrudAppFullTimeInstructor = () => {
   const [db, setDb] = useState([]);
@@ -15,8 +35,12 @@ const CrudAppFullTimeInstructor = () => {
   const [showForm, setShowForm] = useState(false);
   const [showRecords, setShowRecords] = useState(true);
   const [totalRecords, setTotalRecords] = useState(0);
+  const [search, setSearch] = useState("");
+  const [showSearch, setShowSearch] = useState(false);
   const token = localStorage.getItem('jwtToken');
   let api = helpHttp();
+
+  
 
   useEffect(() => {
     loadTableData();
@@ -69,7 +93,8 @@ const CrudAppFullTimeInstructor = () => {
   
         loadTableData();
       } else {
-        setError(res);
+        
+        show_alerta('Acceso denegado', 'error');
       }
     });
   };
@@ -94,7 +119,8 @@ const CrudAppFullTimeInstructor = () => {
           showTable();
         });
       } else {
-        setError(res);
+       
+        show_alerta('Acceso denegado', 'error');
       }
     });
   };
@@ -127,7 +153,8 @@ const CrudAppFullTimeInstructor = () => {
               'success'
             );
           } else {
-            setError(res);
+            
+            show_alerta('Acceso denegado', 'error');
           }
         });
       }
@@ -146,6 +173,28 @@ const CrudAppFullTimeInstructor = () => {
     setShowForm(false);
     setShowRecords(true);
   };
+
+    // Search Func
+
+    const searcher = (e) => {
+      setSearch(e.target.value);
+      console.log(e.target.value);
+    }
+  
+    // Filter Method
+  
+    const results = !search ? db : db.filter((info)=> info.name.toLowerCase().includes(search.toLowerCase()))
+    const clearInput = () => {
+      document.getElementById('mysearch').value = '';
+      setSearch(''); // Restablece la búsqueda a una cadena vacía
+    };
+  
+    
+  
+    const toggleSearch = () => {
+      setShowSearch(!showSearch); // Alternar la visibilidad de la barra de búsqueda
+    };
+  
 
   if (loading) {
     return <Loader />;
@@ -167,6 +216,13 @@ const CrudAppFullTimeInstructor = () => {
               Registrar Nuevo Instructor
             </button>
           </div>
+          <div className={`searchBar ${showSearch ? 'active' : ''}`}>
+          <div className="iconSearch" onClick={toggleSearch}></div>
+          <div className="inputSearch">
+          <input  id="mysearch" value={search} onChange={searcher} type="text" placeholder="Buscar por nombre"></input>
+          <span className="clear" onClick={clearInput}></span>
+          </div>
+          </div>
         </>
       )}
 
@@ -182,7 +238,7 @@ const CrudAppFullTimeInstructor = () => {
   
       {showRecords && !loading && !error && db && (
         <CrudTable
-          data={db}
+          data={results}
           setDataToEdit={setDataToEdit}
           deleteData={deleteData}
           showFormViewFullTimeInstructor={showFormViewFullTimeInstructor}

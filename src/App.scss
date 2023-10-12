@@ -158,13 +158,17 @@ $blue: #0000ff;
   max-width: 14rem;
   box-shadow: 5px 0px 10px rgba(0, 0, 0, 0.2); /* Añadir sombra al lado derecho */
   padding-top: 2rem;
+  margin: 0;
   }
 
 .sidebar-ul {
   max-height: 12.5rem; /* Establece una altura máxima para la lista */
   padding: 0; /* Elimina el espacio interno predeterminado de la lista */
   margin: 0; /* Elimina el margen predeterminado de la lista */
-  margin-left: 7rem !important;
+  
+  margin-right: 0 !important;
+  width: 100%;
+  
   }
 
   ul {
@@ -173,8 +177,7 @@ $blue: #0000ff;
     position: sticky;
     top: 0;
     width: 20rem;
-    margin-left: 3rem !important;
-    margin-bottom: 4rem !important;
+   
   
     li {
       margin-bottom: 1rem;
@@ -203,7 +206,7 @@ $blue: #0000ff;
   }
 
   .sidebar-li{
-    width: 100%;
+    width: 50%;
     padding: 0; /* Elimina el espacio interno predeterminado de la lista */
     margin: 0; /* Elimina el margen predeterminado de la lista */
     margin-top: 1.5rem;
@@ -284,7 +287,8 @@ $blue: #0000ff;
       flex-direction: row;
       max-height: 8vh; /* Establece una altura máxima para la lista */
       padding: 0; /* Elimina el espacio interno predeterminado de la lista */
-      margin: 0.3rem; /* Elimina el margen predeterminado de la lista */
+      margin: 0; /* Elimina el margen predeterminado de la lista */
+      
     }
 
     ul {
@@ -324,7 +328,7 @@ $blue: #0000ff;
     }
 
     .sidebar-li{
-      width: 14rem;
+      width: 0;
       padding: 0; /* Elimina el espacio interno predeterminado de la lista */
       margin: 0; /* Elimina el margen predeterminado de la lista */
       margin-top: 1.5rem;
@@ -410,11 +414,116 @@ $blue: #0000ff;
   margin-bottom: 2rem;
 }
 
+.searchBar{
+  position: relative;
+  width: 60px;
+  height: 45px;
+  background-color: #ffffff !important;
+  border-radius: 60px;
+  transition: 0.5s;
+  box-shadow: 0 0 0 2px #2573ef;
+  margin-bottom: 15px;
+}
+
+.searchBar.active{
+  width: 360px;
+}
+
+.searchBar .iconSearch{
+
+  position:absolute;
+  top: 5%;
+  width: 60px;
+  height: 40px;
+  background-color: rgb(255, 255, 255) !important;
+  border-radius: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+  cursor: pointer;
+  
+}
+
+.searchBar .iconSearch::before
+{
+  content: '';
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  border: 3px solid #287dfc;
+  border-radius: 50%;
+  transform: translate(-2px, -2px);
+}
+
+.searchBar .iconSearch::after
+{
+  content: '';
+  position: absolute;
+  width: 3px;
+  height: 7px;
+  background-color: #287dfc;
+  transform: translate(6px, 6px) rotate(320deg);
+}
+
+.searchBar .inputSearch {
+   
+    width: 300px;
+    height: 60px;
+    left: 60px;
+    
+}
+
+.searchBar .inputSearch input{
+  position: absolute;
+  top: 0;
+  left: 20%;
+  width: 100%;
+  height: 100%;
+  border: none;
+  outline: navajowhite;
+}
+
+.clear{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 15px;
+  height: 15px;
+  right: 15px;
+  background-color: rgb(255, 255, 255);
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.clear::before 
+{
+  position: absolute;
+  content: '';
+  width: 2px;
+  height: 15px;
+  background-color: #999;
+  transform: rotate(45deg);
+}
+
+.clear::after 
+{
+  position: absolute;
+  content: '';
+  width: 2px;
+  height: 15px;
+  background-color: #999;
+  transform: rotate(315deg);
+}
+
 .addButton {
   background-color: #007bb8 !important;
   color: #ffffff !important;
   border-radius: 15px !important;
   font-family: "Raleway", sans-serif !important;
+
 }
 
 .showButton {
@@ -458,7 +567,7 @@ $blue: #0000ff;
 /* Estilo de sombreado gris claro para la opción principal activa */
 .main-option.active {
   background-color: #dcffe3; /* Puedes ajustar el color gris claro según tus preferencias */
-  width: 215px;
+  width: 222px;
   margin: 0;
   padding: 0;
   box-shadow: 1px 1px 0px 0px gray; /* Ajusta la sombra según sea necesario */
@@ -517,7 +626,7 @@ textarea {
 .password-toggle {  
   cursor: pointer;
   margin-right: 57vh;
-  margin-top: 18.5vh;
+  margin-top: 17vh;
   width: 20vh;
   height: 20vh;
 }

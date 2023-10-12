@@ -4,7 +4,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserPen } from "@fortawesome/free-solid-svg-icons";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 
-const CrudTableRow = ({ el, setDataToEdit, deleteData, showFormViewFullTimeInstructor }) => {
+const CrudTableRow = ({ el, setDataToEdit, deleteData, showFormViewFullTimeInstructor,  isRowSelected,
+  onRowSelect, }) => {
   // Destructure the properties of the 'el' object passed as an argument
   let { idInstructor, name, position, oNetwork, endDateCourse } = el;
   const endDateCourseAsDate = new Date(endDateCourse);
@@ -15,7 +16,8 @@ const CrudTableRow = ({ el, setDataToEdit, deleteData, showFormViewFullTimeInstr
   return (
     // Render a table row with data from the 'el' object
     <tr>
-      <td className="tdTableRow">{name}</td> 
+      <td className="tdTableRow">{name}
+      </td> 
       <td className="tdTableRow">{position}</td> 
       <td className="tdTableRow">{endDateCourseAsDate.toLocaleDateString('es-ES', options)}</td>
       {/* Render the network name ('oNetwork.networkName') or a loading message if not defined */}
@@ -36,7 +38,10 @@ const CrudTableRow = ({ el, setDataToEdit, deleteData, showFormViewFullTimeInstr
         <button className="btn btn-danger" onClick={() => deleteData(idInstructor, el)}>
         <FontAwesomeIcon icon={faTrash}/></button>
       </td> 
+      
     </tr>
+    
+    
   );
 };
 
