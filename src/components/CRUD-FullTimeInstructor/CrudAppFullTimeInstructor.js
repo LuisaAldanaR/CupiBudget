@@ -6,6 +6,26 @@ import Loader from "./Loader";
 import Message from "./Message";
 import "../../App.scss";
 import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
+
+function show_alerta(mensaje, icono, foco='')
+{
+  onfocus(foco);
+  const MySwal = withReactContent(Swal);
+  MySwal.fire({
+    title:mensaje,
+    icon:icono
+  })
+}
+
+function onfocus(foco)
+{
+  if(foco !== '')
+  {
+    document.getElementById(foco).focus();
+  }
+}
+
 
 const CrudAppFullTimeInstructor = () => {
   const [db, setDb] = useState([]);
@@ -19,6 +39,8 @@ const CrudAppFullTimeInstructor = () => {
   const [showSearch, setShowSearch] = useState(false);
   const token = localStorage.getItem('jwtToken');
   let api = helpHttp();
+
+  
 
   useEffect(() => {
     loadTableData();
@@ -71,7 +93,8 @@ const CrudAppFullTimeInstructor = () => {
   
         loadTableData();
       } else {
-        setError(res);
+        
+        show_alerta('Acceso denegado', 'error');
       }
     });
   };
@@ -96,7 +119,8 @@ const CrudAppFullTimeInstructor = () => {
           showTable();
         });
       } else {
-        setError(res);
+       
+        show_alerta('Acceso denegado', 'error');
       }
     });
   };
@@ -129,7 +153,8 @@ const CrudAppFullTimeInstructor = () => {
               'success'
             );
           } else {
-            setError(res);
+            
+            show_alerta('Acceso denegado', 'error');
           }
         });
       }

@@ -16,7 +16,8 @@ const CrudTableRow = ({ el, setDataToEdit, deleteData, showFormViewFullTimeInstr
   return (
     // Render a table row with data from the 'el' object
     <tr>
-      <td className="tdTableRow">{name}</td> 
+      <td className="tdTableRow">{name}
+      </td> 
       <td className="tdTableRow">{position}</td> 
       <td className="tdTableRow">{endDateCourseAsDate.toLocaleDateString('es-ES', options)}</td>
       {/* Render the network name ('oNetwork.networkName') or a loading message if not defined */}

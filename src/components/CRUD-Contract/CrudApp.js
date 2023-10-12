@@ -6,6 +6,26 @@ import Loader from "./Loader"; // Import the loader component
 import Message from "./Message"; // Import the message component
 import "../../App.scss";
 import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
+
+function show_alerta(mensaje, icono, foco='')
+{
+  onfocus(foco);
+  const MySwal = withReactContent(Swal);
+  MySwal.fire({
+    title:mensaje,
+    icon:icono
+  })
+}
+
+function onfocus(foco)
+{
+  if(foco !== '')
+  {
+    document.getElementById(foco).focus();
+  }
+}
+
 
 const CrudApp = () => {
   // States for storing instructor data, edit data, errors, etc.
@@ -75,7 +95,8 @@ const CrudApp = () => {
           // After adding a record, reload the data
           loadTableData();
         } else {
-          setError(res);
+          
+          show_alerta('Acceso denegado', 'error');
         }
       });
     };
@@ -104,7 +125,8 @@ const CrudApp = () => {
           showTable();
         });
       } else {
-        setError(res);
+        
+        show_alerta('Acceso denegado', 'error');
       }
     });
   };
@@ -144,7 +166,8 @@ const CrudApp = () => {
               'success'
             );
           } else {
-            setError(res);
+           
+            show_alerta('Acceso denegado', 'error');
           }
         });
       }
