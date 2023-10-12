@@ -1,20 +1,50 @@
-import React from "react";
+import React, { useState } from "react";
 import CrudTableRow from "./CrudTableRow";
 import "../../App.scss";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSortAlphaDown, faSortAlphaUp } from "@fortawesome/free-solid-svg-icons";
+
 
 // Definition of the CrudTable component
 const CrudTable = ({ data, setDataToEdit, deleteData, showFormViewFullTimeInstructor }) => {
+    const [isAscending, setIsAscending] = useState(true);
+
+    // Función para alternar la dirección de ordenación
+    const toggleSortingDirection = () => {
+      setIsAscending(!isAscending);
+    };
+
+    // Función para ordenar los datos por nombre
+    const sortDataByName = () => {
+      const sortedData = [...data];
+      sortedData.sort((a, b) => {
+        const nameA = a.name.toLowerCase();
+        const nameB = b.name.toLowerCase();
+        return isAscending ? nameA.localeCompare(nameB) : nameB.localeCompare(nameA);
+      });
+      return sortedData;
+    };
     return (
         // Main container of the component
         <div className="">
             <div className="card-body background-gradient">
-                <div className="">
+                <div className="table-responsive">
                     {/* Table header */}
                     <br></br>
                     <table className="table">
                         <thead className="text-center">
+                        
                             <tr>
-                                <th className="thLeft">Nombre</th> 
+                            <th className="thTable">
+                                    Nombre
+                                    <button style={{marginLeft:"1rem"}} onClick={toggleSortingDirection}>
+                                        {isAscending ? (
+                                          <FontAwesomeIcon icon={faSortAlphaDown} />
+                                        ) : (
+                                          <FontAwesomeIcon icon={faSortAlphaUp} />
+                                        )}
+                                    </button>
+                                </th>                              
                                 <th className="thTable">Posición</th> 
                                 <th className="thTable">Fecha Fin de Curso</th> 
                                 <th className="thTable">Nombre de la Red</th> 
@@ -23,24 +53,21 @@ const CrudTable = ({ data, setDataToEdit, deleteData, showFormViewFullTimeInstru
                         </thead>
 
                         <tbody>
-                            {/* Conditional to handle the case when there is no data */}
-                            {data.length > 0 ? (
-                                // Mapping of data to render table rows
-                                data.map((el) => (
+                        {sortDataByName().map((el) => (
                                     <CrudTableRow
                                         key={el.id}
                                         el={el}
                                         setDataToEdit={setDataToEdit}
                                         deleteData={deleteData}
                                         showFormViewFullTimeInstructor={showFormViewFullTimeInstructor} // Make sure to pass showFormView as a prop
+                                        sortDataByName
                                     />
-                                ))
-                            ) : (
-                                // Show "Sin datos" message if there are no elements in 'data'
-                                <tr>
-                                    <td colSpan="3">Sin datos</td>
-                                </tr>
-                            )}
+                                    ))}
+                                    {data.length === 0 && (
+                                        <tr>
+                                            <td colSpan="7">No se encuentran resultados</td>
+                                        </tr>
+                                    )}
                         </tbody>
                     </table>
                 </div>

@@ -4,7 +4,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserPen } from "@fortawesome/free-solid-svg-icons";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 
-const CrudTableRow = ({ el, setDataToEdit, deleteData, showFormViewFullTimeInstructor }) => {
+const CrudTableRow = ({ el, setDataToEdit, deleteData, showFormViewFullTimeInstructor,  isRowSelected,
+  onRowSelect, }) => {
   // Destructure the properties of the 'el' object passed as an argument
   let { idInstructor, name, position, oNetwork, endDateCourse } = el;
   const endDateCourseAsDate = new Date(endDateCourse);
@@ -36,7 +37,10 @@ const CrudTableRow = ({ el, setDataToEdit, deleteData, showFormViewFullTimeInstr
         <button className="btn btn-danger" onClick={() => deleteData(idInstructor, el)}>
         <FontAwesomeIcon icon={faTrash}/></button>
       </td> 
+      
     </tr>
+    
+    
   );
 };
 

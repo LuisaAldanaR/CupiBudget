@@ -422,7 +422,7 @@ $blue: #0000ff;
   border-radius: 60px;
   transition: 0.5s;
   box-shadow: 0 0 0 2px #2573ef;
-  
+  margin-bottom: 15px;
 }
 
 .searchBar.active{
@@ -502,7 +502,7 @@ $blue: #0000ff;
 {
   position: absolute;
   content: '';
-  width: 1px;
+  width: 2px;
   height: 15px;
   background-color: #999;
   transform: rotate(45deg);
@@ -512,7 +512,7 @@ $blue: #0000ff;
 {
   position: absolute;
   content: '';
-  width: 1px;
+  width: 2px;
   height: 15px;
   background-color: #999;
   transform: rotate(315deg);
@@ -523,7 +523,7 @@ $blue: #0000ff;
   color: #ffffff !important;
   border-radius: 15px !important;
   font-family: "Raleway", sans-serif !important;
-  margin-bottom: 15px;
+
 }
 
 .showButton {
@@ -567,7 +567,7 @@ $blue: #0000ff;
 /* Estilo de sombreado gris claro para la opción principal activa */
 .main-option.active {
   background-color: #dcffe3; /* Puedes ajustar el color gris claro según tus preferencias */
-  width: 215px;
+  width: 222px;
   margin: 0;
   padding: 0;
   box-shadow: 1px 1px 0px 0px gray; /* Ajusta la sombra según sea necesario */
