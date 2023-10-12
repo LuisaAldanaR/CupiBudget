@@ -158,14 +158,16 @@ $blue: #0000ff;
   max-width: 14rem;
   box-shadow: 5px 0px 10px rgba(0, 0, 0, 0.2); /* Añadir sombra al lado derecho */
   padding-top: 2rem;
+  margin: 0;
   }
 
 .sidebar-ul {
   max-height: 12.5rem; /* Establece una altura máxima para la lista */
   padding: 0; /* Elimina el espacio interno predeterminado de la lista */
   margin: 0; /* Elimina el margen predeterminado de la lista */
-  margin-left: 5rem !important;
   
+  margin-right: 0 !important;
+  width: 100%;
   
   }
 
@@ -175,8 +177,7 @@ $blue: #0000ff;
     position: sticky;
     top: 0;
     width: 20rem;
-    margin-left: 3rem !important;
-    margin-bottom: 4rem !important;
+   
   
     li {
       margin-bottom: 1rem;
@@ -205,7 +206,7 @@ $blue: #0000ff;
   }
 
   .sidebar-li{
-    width: 100%;
+    width: 50%;
     padding: 0; /* Elimina el espacio interno predeterminado de la lista */
     margin: 0; /* Elimina el margen predeterminado de la lista */
     margin-top: 1.5rem;
@@ -286,7 +287,7 @@ $blue: #0000ff;
       flex-direction: row;
       max-height: 8vh; /* Establece una altura máxima para la lista */
       padding: 0; /* Elimina el espacio interno predeterminado de la lista */
-      margin: 0.3rem; /* Elimina el margen predeterminado de la lista */
+      margin: 0; /* Elimina el margen predeterminado de la lista */
       
     }
 
@@ -327,7 +328,7 @@ $blue: #0000ff;
     }
 
     .sidebar-li{
-      width: 14rem;
+      width: 0;
       padding: 0; /* Elimina el espacio interno predeterminado de la lista */
       margin: 0; /* Elimina el margen predeterminado de la lista */
       margin-top: 1.5rem;
@@ -421,7 +422,7 @@ $blue: #0000ff;
   border-radius: 60px;
   transition: 0.5s;
   box-shadow: 0 0 0 2px #2573ef;
-  left: 10%;
+  
 }
 
 .searchBar.active{
@@ -460,7 +461,7 @@ $blue: #0000ff;
   content: '';
   position: absolute;
   width: 3px;
-  height: 12px;
+  height: 7px;
   background-color: #287dfc;
   transform: translate(6px, 6px) rotate(320deg);
 }
@@ -522,7 +523,7 @@ $blue: #0000ff;
   color: #ffffff !important;
   border-radius: 15px !important;
   font-family: "Raleway", sans-serif !important;
-  margin-left: 10%;
+  margin-bottom: 15px;
 }
 
 .showButton {
@@ -625,7 +626,7 @@ textarea {
 .password-toggle {  
   cursor: pointer;
   margin-right: 57vh;
-  margin-top: 18.5vh;
+  margin-top: 17vh;
   width: 20vh;
   height: 20vh;
 }
