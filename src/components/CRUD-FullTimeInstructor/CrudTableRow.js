@@ -18,6 +18,7 @@ const CrudTableRow = ({ el, setDataToEdit, deleteData, showFormViewFullTimeInstr
     <tr>
       <td className="tdTableRow">{name}
       </td> 
+      
       <td className="tdTableRow">{position}</td> 
       <td className="tdTableRow">{endDateCourseAsDate.toLocaleDateString('es-ES', options)}</td>
       {/* Render the network name ('oNetwork.networkName') or a loading message if not defined */}
@@ -28,6 +29,8 @@ const CrudTableRow = ({ el, setDataToEdit, deleteData, showFormViewFullTimeInstr
           el.loading ? (<span>Cargando...</span>) : null 
         )}
       </td>
+      
+  
       <td className="tdTableRow">
         {/* Edit button that calls the 'setDataToEdit' function with the 'el' object */}
         <button className="btn btn-warning" onClick={() => {

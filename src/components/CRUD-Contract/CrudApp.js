@@ -8,20 +8,17 @@ import "../../App.scss";
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
 
-function show_alerta(mensaje, icono, foco='')
-{
+function show_alerta(mensaje, icono, foco = '') {
   onfocus(foco);
   const MySwal = withReactContent(Swal);
   MySwal.fire({
-    title:mensaje,
-    icon:icono
+    title: mensaje,
+    icon: icono
   })
 }
 
-function onfocus(foco)
-{
-  if(foco !== '')
-  {
+function onfocus(foco) {
+  if (foco !== '') {
     document.getElementById(foco).focus();
   }
 }
@@ -29,16 +26,16 @@ function onfocus(foco)
 
 const CrudApp = () => {
   // States for storing instructor data, edit data, errors, etc.
-  const [db, setDb] = useState([]); 
-  const [dataToEdit, setDataToEdit] = useState(null); 
-  const [error, setError] = useState(null); 
+  const [db, setDb] = useState([]);
+  const [dataToEdit, setDataToEdit] = useState(null);
+  const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState("");
   const [showSearch, setShowSearch] = useState(false);
-  
+
   // States for showing/hiding the form and records
-  const [showForm, setShowForm] = useState(false); 
-  const [showRecords, setShowRecords] = useState(true); 
+  const [showForm, setShowForm] = useState(false);
+  const [showRecords, setShowRecords] = useState(true);
 
   const token = localStorage.getItem('jwtToken'); // Recupera el token JWT del almacenamiento local
   let api = helpHttp(); // Instance of the HTTP request utility
@@ -52,9 +49,9 @@ const CrudApp = () => {
     let urlGet = "http://www.mendezmrf10.somee.com/api/ContractInstructor/List";
 
     let options = {
-      headers: {'Authorization': `Bearer ${token}`, },   
+      headers: { 'Authorization': `Bearer ${token}`, },
     };
-    
+
     api.get(urlGet, options).then((res) => {
       if (!res.err) {
         setDb(res.response); // Store data in the 'db' state
@@ -70,46 +67,46 @@ const CrudApp = () => {
 
   // Function to create a new instructor
 
-    const createData = (data) => {
-      console.log(data);
-      let urlPost = "http://www.mendezmrf10.somee.com/api/ContractInstructor/Save";
-    
-      let options = {
-        body: data,
-        headers: { "content-type": "application/json",'Authorization': `Bearer ${token}`, },   
-      };
-    
-      api.post(urlPost, options).then((res) => {
-        if (!res.err) {
-          // Show a success SweetAlert message for the record addition
-          Swal.fire({
-            title: '¡Agregado!', // Translate: Added!
-            text: 'El registro ha sido agregado exitosamente.', // Translate: The record has been successfully added.
-            icon: 'success',
-            confirmButtonText: 'OK', // Translate: OK
-          }).then(() => {
-            // After the user clicks OK in the success message, redirect to the table view
-            showTable();
-          });
-    
-          // After adding a record, reload the data
-          loadTableData();
-        } else {
-          
-          show_alerta('Acceso denegado', 'error');
-        }
-      });
+  const createData = (data) => {
+    console.log(data);
+    let urlPost = "http://www.mendezmrf10.somee.com/api/ContractInstructor/Save";
+
+    let options = {
+      body: data,
+      headers: { "content-type": "application/json", 'Authorization': `Bearer ${token}`, },
     };
+
+    api.post(urlPost, options).then((res) => {
+      if (!res.err) {
+        // Show a success SweetAlert message for the record addition
+        Swal.fire({
+          title: '¡Agregado!', // Translate: Added!
+          text: 'El registro ha sido agregado exitosamente.', // Translate: The record has been successfully added.
+          icon: 'success',
+          confirmButtonText: 'OK', // Translate: OK
+        }).then(() => {
+          // After the user clicks OK in the success message, redirect to the table view
+          showTable();
+        });
+
+        // After adding a record, reload the data
+        loadTableData();
+      } else {
+
+        show_alerta('Acceso denegado', 'error');
+      }
+    });
+  };
 
   // Function to update an existing instructor
   const updateData = (data) => {
     let urlPut = "http://www.mendezmrf10.somee.com/api/ContractInstructor/Edit";
-  
-    let options = 
-    { 
-      body: data, headers: { "content-type": "application/json",'Authorization': `Bearer ${token}`, },       
+
+    let options =
+    {
+      body: data, headers: { "content-type": "application/json", 'Authorization': `Bearer ${token}`, },
     };
-  
+
     api.put(urlPut, options).then((res) => {
       if (!res.error) { // Corregir la verificación de error
         Swal.fire({
@@ -125,13 +122,13 @@ const CrudApp = () => {
           showTable();
         });
       } else {
-        
+
         show_alerta('Acceso denegado', 'error');
       }
     });
   };
-  
-  
+
+
 
   // Function to delete an instructor
   const deleteData = (idInstructor, data) => {
@@ -149,16 +146,17 @@ const CrudApp = () => {
       if (result.isConfirmed) {
         let urlDel = "http://www.mendezmrf10.somee.com/api/ContractInstructor/Delete";
         let endPoint = `${urlDel}/${idInstructor}`;
-  
-        let options = 
-        { headers: { "content-type": "application/json" ,'Authorization': `Bearer ${token}`,},
+
+        let options =
+        {
+          headers: { "content-type": "application/json", 'Authorization': `Bearer ${token}`, },
         };
-  
+
         api.del(endPoint, options).then((res) => {
           if (!res.err) {
             let newData = db.filter((el) => el.idInstructor !== idInstructor);
             setDb(newData); // Update 'db' by removing the instructor
-            
+
             // Show a success SweetAlert message
             Swal.fire(
               'Borrado!',
@@ -166,22 +164,22 @@ const CrudApp = () => {
               'success'
             );
           } else {
-           
+
             show_alerta('Acceso denegado', 'error');
           }
         });
       }
     });
   };
-  
+
   // Function to show the form
   const showFormView = () => {
-      if (dataToEdit) {
+    if (dataToEdit) {
       setDataToEdit(null);
     }
     setShowForm(true);
     setShowRecords(false);
-  
+
   };
 
   // Function to show the record table
@@ -199,13 +197,13 @@ const CrudApp = () => {
 
   // Filter Method
 
-  const results = !search ? db : db.filter((info)=> info.name.toLowerCase().includes(search.toLowerCase()))
+  const results = !search ? db : db.filter((info) => info.name.toLowerCase().includes(search.toLowerCase()))
   const clearInput = () => {
     document.getElementById('mysearch').value = '';
     setSearch(''); // Restablece la búsqueda a una cadena vacía
   };
 
-  
+
 
   const toggleSearch = () => {
     setShowSearch(!showSearch); // Alternar la visibilidad de la barra de búsqueda
@@ -221,14 +219,14 @@ const CrudApp = () => {
             <button className="btn addButton" onClick={showFormView}>
               Registar Nuevo Instructor
             </button>
-            
+
           </div>
           <div className={`searchBar ${showSearch ? 'active' : ''}`}>
-          <div className="iconSearch" onClick={toggleSearch}></div>
-          <div className="inputSearch">
-          <input  id="mysearch" value={search} onChange={searcher} type="text" placeholder="Buscar por nombre"></input>
-          <span className="clear" onClick={clearInput}></span>
-          </div>
+            <div className="iconSearch" onClick={toggleSearch}></div>
+            <div className="inputSearch">
+              <input id="mysearch" value={search} onChange={searcher} type="text" placeholder="Buscar por nombre"></input>
+              <span className="clear" onClick={clearInput}></span>
+            </div>
           </div>
         </>
       )}
@@ -254,11 +252,11 @@ const CrudApp = () => {
         />
       )}
       <div className="loader">
-      {loading && <Loader />}
+        {loading && <Loader />}
 
-      {error && (
-        <Message msg={`Error ${error.status}: ${error.statusText}`} bgColor="#dc3545" />
-      )}
+        {error && (
+          <Message msg={`Error ${error.status}: ${error.statusText}`} bgColor="#dc3545" />
+        )}
       </div>
     </div>
   );
