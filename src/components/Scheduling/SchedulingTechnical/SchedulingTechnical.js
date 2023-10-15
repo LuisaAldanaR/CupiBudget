@@ -98,11 +98,6 @@ const SchedulingTechnological = () => {
         <div className='content'>
             <h1 className='h3Table'>Técnico Presencial</h1>
             <div className={`searchBar ${showSearch ? 'active' : ''}`}>
-          <div className="iconSearch" onClick={toggleSearch}></div>
-          <div className="inputSearch">
-          <input  id="mysearch" value={search} onChange={searcher} type="text" placeholder="Buscar por nombre"></input>
-          <span className="clear" onClick={clearInput}></span>
-          </div>
           </div>
 
             {!loading && !error && db && (

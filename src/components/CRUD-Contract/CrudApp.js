@@ -188,27 +188,6 @@ const CrudApp = () => {
     setShowRecords(true);
   };
 
-  // Search Func
-
-  const searcher = (e) => {
-    setSearch(e.target.value);
-    console.log(e.target.value);
-  }
-
-  // Filter Method
-
-  const results = !search ? db : db.filter((info) => info.name.toLowerCase().includes(search.toLowerCase()))
-  const clearInput = () => {
-    document.getElementById('mysearch').value = '';
-    setSearch(''); // Restablece la búsqueda a una cadena vacía
-  };
-
-
-
-  const toggleSearch = () => {
-    setShowSearch(!showSearch); // Alternar la visibilidad de la barra de búsqueda
-  };
-
   return (
 
     <div className="content">
@@ -219,19 +198,9 @@ const CrudApp = () => {
             <button className="btn addButton" onClick={showFormView}>
               Registar Nuevo Instructor
             </button>
-
-          </div>
-          <div className={`searchBar ${showSearch ? 'active' : ''}`}>
-            <div className="iconSearch" onClick={toggleSearch}></div>
-            <div className="inputSearch">
-              <input id="mysearch" value={search} onChange={searcher} type="text" placeholder="Buscar por nombre"></input>
-              <span className="clear" onClick={clearInput}></span>
-            </div>
           </div>
         </>
       )}
-
-
 
       {showForm && (
         <CrudForm
@@ -245,7 +214,7 @@ const CrudApp = () => {
 
       {showRecords && !loading && !error && db && (
         <CrudTable
-          data={results}
+          data={db}
           setDataToEdit={setDataToEdit}
           deleteData={deleteData}
           showFormView={showFormView}
