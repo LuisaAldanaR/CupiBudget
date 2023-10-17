@@ -1,6 +1,6 @@
 // Goals.js
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import CrudTableGoals from './TableGoal/CrudTableGoals';
 import { helpHttp } from '../../helpers/helpHttp';
 import Swal from 'sweetalert2';
@@ -20,8 +20,44 @@ const Goals = () => {
         thirdQuarterEnrollment: 0,
         fourthQuarterEnrollment: 0,
       },
+      {
+        modality: '',
+        target: 0,
+        passes2021To2022: 0,
+        firstQuarterEnrollment: 0,
+        secondQuarterEnrollment: 0,
+        thirdQuarterEnrollment: 0,
+        fourthQuarterEnrollment: 0,
+      }
     ],
     goals2: [
+      {
+        modality: '',
+        target: 0,
+        passes2021To2022: 0,
+        firstQuarterEnrollment: 0,
+        secondQuarterEnrollment: 0,
+        thirdQuarterEnrollment: 0,
+        fourthQuarterEnrollment: 0,
+      },
+      {
+        modality: '',
+        target: 0,
+        passes2021To2022: 0,
+        firstQuarterEnrollment: 0,
+        secondQuarterEnrollment: 0,
+        thirdQuarterEnrollment: 0,
+        fourthQuarterEnrollment: 0,
+      },
+      {
+        modality: '',
+        target: 0,
+        passes2021To2022: 0,
+        firstQuarterEnrollment: 0,
+        secondQuarterEnrollment: 0,
+        thirdQuarterEnrollment: 0,
+        fourthQuarterEnrollment: 0,
+      },
       {
         modality: '',
         target: 0,
@@ -52,17 +88,17 @@ const Goals = () => {
   const handleSendGoals = async () => {
     try {
       const urlPost = 'http://www.mendezmrf10.somee.com/api/Simulator/CalculateSimulator';
-
+  
       const options = {
-        body: data,
+        body: data, // Aquí estás enviando los datos actuales al servidor
         headers: {
           'content-type': 'application/json',
           Authorization: `Bearer ${token}`,
         },
       };
-
+  
       const res = await api.post(urlPost, options);
-
+  
       if (!res.err) {
         Swal.fire({
           title: '¡Éxito!',
@@ -70,8 +106,10 @@ const Goals = () => {
           icon: 'success',
           confirmButtonText: 'OK',
         });
-
+  
+        // Actualiza el estado 'data' con los nuevos datos de la API
         setData(res);
+        console.log(res);
       } else {
         console.error('Error en la respuesta de la API:', res);
       }
@@ -79,6 +117,12 @@ const Goals = () => {
       console.error('Error al llamar a la API:', error);
     }
   };
+
+  useEffect(() => {
+    // Este efecto se ejecutará cada vez que db cambie.
+    console.log(data);
+  }, [data]);
+  
 
   return (
     <div className='content'>

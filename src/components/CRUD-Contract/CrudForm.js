@@ -107,7 +107,7 @@ const CrudForm = ({ createData, updateData, dataToEdit, setDataToEdit, showTable
         }
       }
 
-      if (dataToEdit || dataToEdit.idInstructor && dataToEdit.endDateCourse) {
+      else if (dataToEdit || dataToEdit.idInstructor && dataToEdit.endDateCourse) {
         if (!isEndDateCourseAvaliable || !isEndDateAvaliable || !isStartDateValid) {
           Swal.fire({
             icon: 'error',

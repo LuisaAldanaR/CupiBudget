@@ -5,6 +5,9 @@ import CrudTableRow from './CrudTableRow';
 import '../../../App.scss';
 
 const CrudTableGoals = ({ data, handleFormChange }) => {
+
+    console.log(data);
+    
     return (
         <div className="">
             <div className="card-body background-gradient">
