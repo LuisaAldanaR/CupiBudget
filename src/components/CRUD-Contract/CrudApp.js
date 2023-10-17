@@ -119,6 +119,7 @@ const CrudApp = () => {
             el.idInstructor === data.idInstructor ? data : el
           );
           setDb(newData); // Actualizar 'db' con los nuevos datos
+          loadTableData();
           showTable();
         });
       } else {
