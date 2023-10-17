@@ -747,8 +747,11 @@ $blue: #0000ff;
 
 /* Styles for text and form inputs */
 input[type="text"],
+input[type="date"],
 input[type="email"],
-textarea {
+
+
+textarea, .select-net{
   border: thin solid #dedede;
   border-radius: 5vh;
   padding: 1vh;
@@ -758,9 +761,10 @@ textarea {
   width: 100%;
   line-height: 1;
   background-color: transparent;
+  
 }
 
-textarea {
+textarea, .select-net{
   font-family: inherit;
   resize: none;
 }
