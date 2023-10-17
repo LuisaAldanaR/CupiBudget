@@ -1,18 +1,14 @@
-import React from "react";
-import CrudTableRow from "./CrudTableRow";
-import "../../../App.scss";
+// CrudTableGoals.js
 
-// Definition of the CrudTable component
-const CrudTableGoals = ({ data, updateFormData, setDataToEdit, updateData, handleFormChange, formData }) => {
-    const { goals1, goals2 } = data;
-    const combinedGoals = [...goals1, ...goals2]; // Combina los dos arrays en uno solo
+import React from 'react';
+import CrudTableRow from './CrudTableRow';
+import '../../../App.scss';
 
+const CrudTableGoals = ({ data, handleFormChange }) => {
     return (
-        // Main container of the component
         <div className="">
             <div className="card-body background-gradient">
                 <div className="table-responsive">
-                    {/* Table header for the first table */}
                     <h2 className="h3Table">Meta</h2>
                     <table className="table">
                         <thead className="text-center">
@@ -26,11 +22,11 @@ const CrudTableGoals = ({ data, updateFormData, setDataToEdit, updateData, handl
                                 <th className="thTable">Cupos</th>
                                 <th className="thTable">Total</th>
                                 <th className="thTable">%</th>
-                                
+
                                 <th className="thTable">Cupos</th>
                                 <th className="thTable">Total</th>
                                 <th className="thTable">%</th>
-                                
+
                                 <th className="thTable">Cupos</th>
                                 <th className="thTable">Total</th>
                                 <th className="thTable">%</th>
@@ -40,28 +36,26 @@ const CrudTableGoals = ({ data, updateFormData, setDataToEdit, updateData, handl
                                 <th className="thRight">%</th>
                             </tr>
                         </thead>
-
                         <tbody>
-                            {/* Conditional to handle the case when there is no data */}
-                            {combinedGoals.length > 0 ? (
-                                // Mapping data to render table rows
-                                combinedGoals.map((el) => (
-                                    <CrudTableRow
-                                        key={el.id}
-                                        el={el}
-                                        setDataToEdit={setDataToEdit}
-                                        //updateData={updateData}
-                                        handleFormChange={handleFormChange}
-                                        formData={formData}
-                                    />
-                                ))
-                            ) : (
-                                // Display "No data" message if there are no elements in 'data'
-                                <tr>
-                                    <td colSpan="3">Sin datos</td>
-                                </tr>
-                            )}
-                        </tbody>        
+                            {data.goals1.map((goal, index) => (
+                                <CrudTableRow
+                                    key={index}
+                                    goal={goal}
+                                    index={index}
+                                    goalsKey="goals1"
+                                    handleFormChange={handleFormChange}
+                                />
+                            ))}
+                            {data.goals2.map((goal, index) => (
+                                <CrudTableRow
+                                    key={index}
+                                    goal={goal}
+                                    index={index}
+                                    goalsKey="goals2"
+                                    handleFormChange={handleFormChange}
+                                />
+                            ))}
+                        </tbody>
                     </table>
                 </div>
             </div>
@@ -69,5 +63,4 @@ const CrudTableGoals = ({ data, updateFormData, setDataToEdit, updateData, handl
     );
 };
 
-// Export the CrudTable component for use in other parts of the application
 export default CrudTableGoals;

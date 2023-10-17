@@ -99,15 +99,6 @@ const CrudForm = ({ createData, updateData, dataToEdit, setDataToEdit, showTable
         console.log(dataToEdit);
       }
 
-      // Verifica si el nombre ya existe en la lista de nombres de instructores
-    if (instructorNames.includes(form.name)) {
-      Swal.fire({
-        icon: 'error',
-        title: 'El instructor ya existe',
-        text: '',
-      });
-      return; // Detén la ejecución si el nombre ya existe
-    }
       handleReset(); // Clear the form
     } 
   };

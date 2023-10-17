@@ -1,132 +1,68 @@
-import React, { useEffect, useState } from 'react';
+// Goals.js
+
+import React, { useState } from 'react';
 import CrudTableGoals from './TableGoal/CrudTableGoals';
-import CrudTableTotalGoals from './TableResult/CrudTableTotalGoals';
 import { helpHttp } from '../../helpers/helpHttp';
 import Swal from 'sweetalert2';
 
 const Goals = () => {
-  const [formData, setFormData] = useState({
-    goals1: [
-      {
-        modality: 'presencial',
-        target: 300,
-        passes2021To2022: 0,
-        firstQuarterEnrollment: 0,
-        secondQuarterEnrollment: 0,
-        thirdQuarterEnrollment: 0,
-        fourthQuarterEnrollment: 0,
-      },
-      {
-        modality: 'virtual',
-        target: 300,
-        passes2021To2022: 0,
-        firstQuarterEnrollment: 0,
-        secondQuarterEnrollment: 0,
-        thirdQuarterEnrollment: 0,
-        fourthQuarterEnrollment: 0,
-      },
-    ],
-    goals2: [
-      {
-        modality: 'auxiliar',
-        target: 300,
-        passes2021To2022: 0,
-        firstQuarterEnrollment: 0,
-        secondQuarterEnrollment: 0,
-        thirdQuarterEnrollment: 0,
-        fourthQuarterEnrollment: 0,
-      },
-      {
-        modality: 'operario',
-        target: 300,
-        passes2021To2022: 0,
-        firstQuarterEnrollment: 0,
-        secondQuarterEnrollment: 0,
-        thirdQuarterEnrollment: 0,
-        fourthQuarterEnrollment: 0,
-      },
-      {
-        modality: 'laboral presencial',
-        target: 300,
-        passes2021To2022: 0,
-        firstQuarterEnrollment: 0,
-        secondQuarterEnrollment: 0,
-        thirdQuarterEnrollment: 0,
-        fourthQuarterEnrollment: 0,
-      },
-      {
-        modality: 'laboral virtual',
-        target: 300,
-        passes2021To2022: 0,
-        firstQuarterEnrollment: 0,
-        secondQuarterEnrollment: 0,
-        thirdQuarterEnrollment: 0,
-        fourthQuarterEnrollment: 0,
-      },
-    ],
-  });
-
-  const [db, setDb] = useState({
-    goals1: [
-      {
-        name: 'Presencial', // Nombre de la modalidad
-        id: 1, // ID u otro identificador
-      },
-      {
-        name: 'Virtual',
-        id: 2,
-      },
-    ],
-    goals2: [
-      {
-        name: 'Auxiliares',
-        id: 3,
-      },
-      {
-        name: 'Operarios',
-        id: 4,
-      },
-      {
-        name: 'Laboral Presencial',
-        id: 5,
-      },
-      {
-        name: 'Laboral Virtual',
-        id: 6,
-      },
-    ],
-  });
-
-  const [dbTotals, setDbTotals] = useState([]);
-  const [error, setError] = useState(null);
-
   const token = localStorage.getItem('jwtToken');
   const api = helpHttp();
 
-  const handleFormChange = (modality, name, value) => {
-    setFormData((prevFormData) => ({
-      ...prevFormData,
-      [modality]: {
-        ...prevFormData[modality],
-        [name]: value,
+  const [data, setData] = useState({
+    goals1: [
+      {
+        modality: '',
+        target: 0,
+        passes2021To2022: 0,
+        firstQuarterEnrollment: 0,
+        secondQuarterEnrollment: 0,
+        thirdQuarterEnrollment: 0,
+        fourthQuarterEnrollment: 0,
       },
-    }));
-  };
-  
-  const createData = async () => {
-    let urlPost = 'http://www.mendezmrf10.somee.com/api/Simulator/CalculateSimulator';
-  
-    let options = {
-      body: formData,
-      headers: {
-        'content-type': 'application/json',
-        Authorization: `Bearer ${token}`,
+    ],
+    goals2: [
+      {
+        modality: '',
+        target: 0,
+        passes2021To2022: 0,
+        firstQuarterEnrollment: 0,
+        secondQuarterEnrollment: 0,
+        thirdQuarterEnrollment: 0,
+        fourthQuarterEnrollment: 0,
       },
+    ],
+  });
+
+  const handleFormChange = (e, index, goalsKey) => {
+    const { name, value } = e.target;
+
+    // Crear una copia de los datos existentes
+    const newData = { ...data };
+
+    // Actualizar los datos según el índice y la clave de los objetivos
+    newData[goalsKey][index] = {
+      ...newData[goalsKey][index],
+      [name]: value,
     };
-  
+
+    setData(newData);
+  };
+
+  const handleSendGoals = async () => {
     try {
+      const urlPost = 'http://www.mendezmrf10.somee.com/api/Simulator/CalculateSimulator';
+
+      const options = {
+        body: data,
+        headers: {
+          'content-type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+      };
+
       const res = await api.post(urlPost, options);
-  
+
       if (!res.err) {
         Swal.fire({
           title: '¡Éxito!',
@@ -134,63 +70,24 @@ const Goals = () => {
           icon: 'success',
           confirmButtonText: 'OK',
         });
-  
-        setDb({
-          goals1: res.goals1,
-          goals2: res.goals2,
-        });
-  
-        console.log(res);
-        loadTableTotalsData();
+
+        setData(res);
       } else {
-        setError(res);
+        console.error('Error en la respuesta de la API:', res);
       }
     } catch (error) {
-      console.error(error);
+      console.error('Error al llamar a la API:', error);
     }
-  };
-  
-  useEffect(() => {
-    // Este efecto se ejecutará cada vez que db cambie.
-    console.log(db);
-  }, [db]);
-
-  useEffect(() => {
-    loadTableTotalsData();
-  }, []);
-
-  const loadTableTotalsData = () => {
-    let totalEducacionSuperior = 'Total Educación Superior';
-    let totalTecnicos = 'Total Tecnicos y otros';
-
-    const totales = [
-      { nombre: totalEducacionSuperior },
-      { nombre: totalTecnicos },
-    ];
-
-    setDbTotals(totales);
   };
 
   return (
     <div className='content'>
       <div className='containerButtons'>
-        <button className='btn addButton btn-generate' onClick={createData}>
-          Enviar Meta
+        <button className='btn addButton btn-generate' onClick={handleSendGoals}>
+          Enviar Metas
         </button>
       </div>
-
-      <CrudTableGoals
-        data={db}
-        setDataToEdit={() => {}}
-        handleFormChange={handleFormChange}
-        formData={formData}
-      />
-
-      <CrudTableTotalGoals
-        dataTotals={dbTotals}
-        setDataToEdit={() => {}}
-        formData={formData}
-      />
+      <CrudTableGoals data={data} handleFormChange={handleFormChange} />
     </div>
   );
 };

@@ -85,16 +85,6 @@ const CrudForm = ({ createData, updateData, dataToEdit, setDataToEdit, showTable
     const isStartDateAvaliable = inputStartDate > currentDate;
     const isStartDateValid = inputStartDate < inputEndDate;
 
-     // Verifica si el nombre ya existe en la lista de nombres de instructores
-     if (instructorNames.includes(form.name)) {
-      Swal.fire({
-        icon: 'error',
-        title: 'El instructor ya existe',
-        text: '',
-      });
-      return; // Detén la ejecución si el nombre ya existe
-    }
-
     if (token){
       if (!form.name.trim() || !form.startDate.trim() || !form.endDate.trim()) {
       
@@ -106,14 +96,15 @@ const CrudForm = ({ createData, updateData, dataToEdit, setDataToEdit, showTable
         return;
       }
       
-      if (!isEndDateCourseAvaliable || !isEndDateAvaliable || !isStartDateAvaliable || !isStartDateValid)
-      {
-        Swal.fire({
-          icon: 'error',
-          title: 'La fecha digitada no puede ser anterior a la fecha actual',
-          text: '',
-        })
-        return;
+      if (dataToEdit === null || dataToEdit.idInstructor === undefined || dataToEdit.endDateCourse) {
+        if (!isEndDateCourseAvaliable || !isEndDateAvaliable || !isStartDateAvaliable || !isStartDateValid) {
+          Swal.fire({
+            icon: 'error',
+            title: 'La fecha digitada no puede ser anterior a la fecha actual',
+            text: '',
+          })
+          return;
+        }
       }
   
       // Call 'createData' or 'updateData' depending on whether it's creating or updating
@@ -133,8 +124,6 @@ const CrudForm = ({ createData, updateData, dataToEdit, setDataToEdit, showTable
       })
     }    
   };
-  
-  
 
   // Function to clear the form and edit data
   const handleReset = (e) => {

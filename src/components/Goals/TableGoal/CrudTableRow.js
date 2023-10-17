@@ -1,100 +1,79 @@
-import React, { useState } from "react";
-import "../../../App.scss";
+// CrudTableRow.js
 
-const CrudTableRow = ({ el, formData, handleFormChange }) => {
-  let tecnologo = "Tecnologo";
-  let tecnico = "Tecnicos Laborales y otros";
+import React from 'react';
+import '../../../App.scss';
 
-  let valorNivel = el.id <= 2 ? tecnologo : tecnico;
+const CrudTableRow = ({ goal, index, goalsKey, handleFormChange }) => {
+  const handleChange = (e) => {
+    handleFormChange(e, index, goalsKey);
+  };
 
   return (
     <tr>
-      <td className="tdTableRow">{valorNivel}</td>
       <td className="tdTableRow">
-        {el ? (
-          el.name
-        ) : (
-          el.loading ? (<span>Cargando...</span>) : null
-        )}
+        <input
+          type="text"
+          name="modality"
+          placeholder="Modalidad"
+          value={goal.modality || ''}
+          onChange={handleChange}
+        />
       </td>
-
       <td className="tdTableRow">
         <input
           type="number"
           name="target"
-          id={el.target}
           placeholder="Meta"
-          className="form-control"
-          onChange={(e) => handleFormChange(el.name, e.target.name, e.target.value)}
-          value={formData[el.name] ? formData[el.name].target : 0}
+          value={goal.target || ''}
+          onChange={handleChange}
         />
       </td>
-
       <td className="tdTableRow">
         <input
           type="number"
           name="passes2021To2022"
-          id={el.passes2021To2022}
-          placeholder="cupos Antiguos"
-          className="form-control"
-          onChange={(e) => handleFormChange(el.name, e.target.name, e.target.value)}
-          value={formData[el.name] ? formData[el.name].passes2021To2022 : 0}
+          value={goal.passes2021To2022 || ''}
+          onChange={handleChange}
         />
       </td>
 
-      <td className="tdTableRow">{el.percentage}</td>
       <td className="tdTableRow">
         <input
           type="number"
           name="firstQuarterEnrollment"
-          id={el.firstQuarterEnrollment}
-          placeholder="1er trimestre"
-          className="form-control"
-          onChange={(e) => handleFormChange(el.name, e.target.name, e.target.value)}
-          value={formData[el.name] ? formData[el.name].firstQuarterEnrollment : 0}
+          value={goal.firstQuarterEnrollment || ''}
+          onChange={handleChange}
         />
       </td>
-      <td className="tdTableRow">{el.firstQuarterTotal}</td>
-      <td className="tdTableRow">{el.firstQuarterPercentage}</td>
+
       <td className="tdTableRow">
         <input
           type="number"
           name="secondQuarterEnrollment"
-          id={el.secondQuarterEnrollment}
-          placeholder="2do trimestre"
-          className="form-control"
-          onChange={(e) => handleFormChange(el.name, e.target.name, e.target.value)}
-          value={formData[el.name] ? formData[el.name].secondQuarterEnrollment : 0}
+          value={goal.secondQuarterEnrollment || ''}
+          onChange={handleChange}
         />
-      </td>      
-      <td className="tdTableRow">{el.secondQuarterTotal}</td>
-      <td className="tdTableRow">{el.secondQuarterPercentage}</td>
+      </td>
+      
       <td className="tdTableRow">
         <input
           type="number"
           name="thirdQuarterEnrollment"
-          id={el.thirdQuarterEnrollment}
-          placeholder="3er trimestre"
-          className="form-control"
-          onChange={(e) => handleFormChange(el.name, e.target.name, e.target.value)}
-          value={formData[el.name] ? formData[el.name].thirdQuarterEnrollment : 0}
+          value={goal.thirdQuarterEnrollment || ''}
+          onChange={handleChange}
         />
-      </td>      
-      <td className="tdTableRow">{el.thirdQuarterTotal}</td>
-      <td className="tdTableRow">{el.thirdQuarterPercentage}</td>
+      </td>
+
       <td className="tdTableRow">
         <input
           type="number"
           name="fourthQuarterEnrollment"
-          id={el.fourthQuarterEnrollment}
-          placeholder="4to trimestre"
-          className="form-control"
-          onChange={(e) => handleFormChange(el.name, e.target.name, e.target.value)}
-          value={formData[el.name] ? formData[el.name].fourthQuarterEnrollment : 0}
+          value={goal.fourthQuarterEnrollment || ''}
+          onChange={handleChange}
         />
-      </td>      
-      <td className="tdTableRow">{el.fourthQuarterTotal}</td>
-      <td className="tdTableRow">{el.fourthQuarterPercentage}</td>
+      </td>
+      
+      {/* Agrega más campos de entrada para otros trimestres aquí */}
     </tr>
   );
 };
