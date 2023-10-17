@@ -165,11 +165,11 @@ const CrudTable = ({
                   }
                 />
               ))}
-              {data.length === 0 && (
-                <tr>
-                  <td colSpan="7">No se encuentran resultados</td>
-                </tr>
-              )}
+              {sortDataByName().length === 0 ? (
+                  <tr>
+                    <td colSpan="7" style={{color:"red"}} >No se encuentran resultados</td>
+                  </tr>
+                ) : null}
             </tbody>
           </table>
         </div>
