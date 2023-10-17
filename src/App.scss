@@ -277,14 +277,15 @@ $blue: #0000ff;
     max-height: 8vh; /* Establece una altura máxima para la lista */
     padding: 0; /* Elimina el espacio interno predeterminado de la lista */
     margin: 0; /* Elimina el margen predeterminado de la lista */
+    
   }
 
   ul {
     list-style: none;
     position: sticky;
     top: 0;
-    width: 20rem;
     margin-bottom: 4rem !important;
+    
 
     li {
       margin-bottom: 1rem;
@@ -308,6 +309,7 @@ $blue: #0000ff;
 
   .main-option {
     width: 14rem;
+    
   }
 
   .main-option.nav-link {
@@ -316,7 +318,7 @@ $blue: #0000ff;
   }
 
   .sidebar-li {
-    width: 0;
+    width: 13.5rem;
     padding: 0; /* Elimina el espacio interno predeterminado de la lista */
     margin: 0; /* Elimina el margen predeterminado de la lista */
     margin-top: 1.5rem;
@@ -1121,7 +1123,7 @@ textarea {
   z-index: 1; /* Coloca el ícono por encima del campo de contraseña */
   position: absolute; /* Cambia la posición de fixed a absolute */
   left: 16vh;
-  top: 8.5vh;
+  top: 8.8vh;
   margin-top: 1rem;
   height: 2px;
 
