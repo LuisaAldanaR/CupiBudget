@@ -12,6 +12,7 @@ const initialForm = {
   endDate: "",
   endDateCourse: "",
   networkId: null,
+  networkName:null,
 };
 
 const CrudForm = ({ createData, updateData, dataToEdit, setDataToEdit, showTable }) => {
@@ -82,7 +83,6 @@ const CrudForm = ({ createData, updateData, dataToEdit, setDataToEdit, showTable
 
     const isEndDateCourseAvaliable = inputEndDateCourse > currentDate;
     const isEndDateAvaliable = inputEndDate > currentDate;
-    const isStartDateAvaliable = inputStartDate > currentDate;
     const isStartDateValid = inputStartDate < inputEndDate;
 
     if (token){
@@ -96,8 +96,19 @@ const CrudForm = ({ createData, updateData, dataToEdit, setDataToEdit, showTable
         return;
       }
       
-      if (dataToEdit === null || dataToEdit.idInstructor === undefined || dataToEdit.endDateCourse) {
-        if (!isEndDateCourseAvaliable || !isEndDateAvaliable || !isStartDateAvaliable || !isStartDateValid) {
+      if (dataToEdit === null || dataToEdit.idInstructor === undefined && dataToEdit.endDateCourse) {
+        if (!isEndDateCourseAvaliable || !isEndDateAvaliable || !isStartDateValid) {
+          Swal.fire({
+            icon: 'error',
+            title: 'La fecha digitada no puede ser anterior a la fecha actual',
+            text: '',
+          })
+          return;
+        }
+      }
+
+      if (dataToEdit || dataToEdit.idInstructor && dataToEdit.endDateCourse) {
+        if (!isEndDateCourseAvaliable || !isEndDateAvaliable || !isStartDateValid) {
           Swal.fire({
             icon: 'error',
             title: 'La fecha digitada no puede ser anterior a la fecha actual',
