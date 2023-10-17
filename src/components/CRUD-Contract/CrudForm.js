@@ -3,6 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'; // Import Bootstrap styles
 import { helpHttp } from "../../helpers/helpHttp"; // Import a utility for making HTTP requests
 import "../../App.scss";
 import Swal from 'sweetalert2';
+import { renderIntoDocument } from "react-dom/test-utils";
 
 
 // Define an object with initial values for the form
@@ -164,10 +165,11 @@ const CrudForm = ({ createData, updateData, dataToEdit, setDataToEdit, showTable
             <input
               type="text"
               name="name"
-              placeholder="Name"
+              placeholder="Nombre"
               className="form-control inputForm"
               onChange={handleChange}
               value={form.name}
+              style={{paddingRight:"20px", paddingLeft:"20px"}}
             />
           </div>
           <div className="mb-3">
@@ -181,6 +183,7 @@ const CrudForm = ({ createData, updateData, dataToEdit, setDataToEdit, showTable
               className="form-control"
               onChange={handleChange}
               value={form.startDate}
+              style={{paddingRight:"20px", paddingLeft:"20px"}}
             />
           </div>
           <div className="mb-3">
@@ -194,6 +197,7 @@ const CrudForm = ({ createData, updateData, dataToEdit, setDataToEdit, showTable
               className="form-control"
               onChange={handleChange}
               value={form.endDate}
+              style={{paddingRight:"20px", paddingLeft:"20px"}}
             />
           </div>
           <div className="mb-3">
@@ -207,17 +211,19 @@ const CrudForm = ({ createData, updateData, dataToEdit, setDataToEdit, showTable
               className="form-control"
               onChange={handleChange}
               value={form.endDateCourse}
+              style={{paddingRight:"20px", paddingLeft:"20px"}}
             />
           </div>
           <div className="mb-3">
           <label className="label">
             Red
               </label>
-            <select
+            <select 
               name="networkId"
-              className="form-select"
+              className="select-net"
               onChange={handleChange}
               value={form.networkId}
+              style={{paddingRight:"20px", paddingLeft:"20px"}}
             >
               <option value="">Selecciona una red</option>
               {networkOptions && networkOptions.map((option) => (

@@ -131,9 +131,10 @@ const CrudForm = ({ createData, updateData, dataToEdit, setDataToEdit, showTable
                 type="text"
                 name="name"
                 placeholder="Nombre"
-                className="form-control"
+                className="select-net"
                 onChange={handleChange}
                 value={form.name}
+                style={{paddingRight:"20px", paddingLeft:"20px"}}
               />
             </div>
             <div className="mb-3">
@@ -144,9 +145,10 @@ const CrudForm = ({ createData, updateData, dataToEdit, setDataToEdit, showTable
               type="date"
               name="endDateCourse"
               placeholder="Fecha fin de Ficha"
-              className="form-control"
+              className="select-net"
               onChange={handleChange}
               value={form.endDateCourse}
+              style={{paddingRight:"20px", paddingLeft:"20px"}}
             />
           </div>
             <div className="mb-3">
@@ -155,9 +157,10 @@ const CrudForm = ({ createData, updateData, dataToEdit, setDataToEdit, showTable
               </label>
               <select
                 name="position"
-                className="form-select"
+                className="select-net"
                 onChange={handleChange}
                 value={form.position}
+                style={{paddingRight:"20px", paddingLeft:"20px"}}
               >
                 <option value="">Selecciona una posición</option> 
                 <option>Instructor</option>
@@ -173,9 +176,10 @@ const CrudForm = ({ createData, updateData, dataToEdit, setDataToEdit, showTable
               </label>
               <select
                 name="networkId"
-                className="form-select"
+                className="select-net"
                 onChange={handleChange}
                 value={form.networkId}
+                style={{paddingRight:"20px", paddingLeft:"20px"}}
               >
                 <option value="">Selecciona una red</option> 
                 {networkOptions &&
