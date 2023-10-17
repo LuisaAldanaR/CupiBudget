@@ -129,8 +129,8 @@ function Login() {
                 style={{userSelect: "none", height: "80%", position:"absolute", marginTop:"5em"}}  
                     
               />
-             <span style={{ userSelect:"none", width: '20px', height: '20px' }} className={`password-toggle ${showPassword ? 'active' : ''}`} onClick={togglePasswordVisibility}>
-             <FontAwesomeIcon icon={showPassword ? faEye : faEyeSlash} style={{width: '20px', height: '1rem', marginTop:"2em"  }} />
+             <span style={{ userSelect:"none"}} className={`password-toggle ${showPassword ? 'active' : ''}`} onClick={togglePasswordVisibility}>
+             <FontAwesomeIcon icon={showPassword ? faEye : faEyeSlash} />
 
               </span>
        
