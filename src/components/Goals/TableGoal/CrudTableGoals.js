@@ -1,13 +1,9 @@
-// CrudTableGoals.js
-
 import React from 'react';
 import CrudTableRow from './CrudTableRow';
 import '../../../App.scss';
 
 const CrudTableGoals = ({ data, handleFormChange }) => {
 
-    console.log(data);
-    
     return (
         <div className="">
             <div className="card-body background-gradient">
@@ -36,7 +32,8 @@ const CrudTableGoals = ({ data, handleFormChange }) => {
 
                                 <th className="thTable">Cupos</th>
                                 <th className="thTable">Total</th>
-                                <th className="thRight">%</th>
+                                <th className="thTable">%</th>
+                                <th className="thRight">Margen</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -45,7 +42,7 @@ const CrudTableGoals = ({ data, handleFormChange }) => {
                                     key={index}
                                     goal={goal}
                                     index={index}
-                                    goalsKey="goals1"
+                                    goalsKey="goals1" // Cambiar esto a "goals1"
                                     handleFormChange={handleFormChange}
                                 />
                             ))}
@@ -54,11 +51,12 @@ const CrudTableGoals = ({ data, handleFormChange }) => {
                                     key={index}
                                     goal={goal}
                                     index={index}
-                                    goalsKey="goals2"
+                                    goalsKey="goals2" // Cambiar esto a "goals2"
                                     handleFormChange={handleFormChange}
                                 />
                             ))}
                         </tbody>
+
                     </table>
                 </div>
             </div>

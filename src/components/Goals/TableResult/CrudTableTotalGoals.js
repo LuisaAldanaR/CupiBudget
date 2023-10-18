@@ -3,7 +3,10 @@ import CrudTableResultGoals from './CrudTableResultGoals';
 import "../../../App.scss";
 
 // Definition of the CrudTable component
-const CrudTableGoals = ({ dataTotals, setDataToEdit, updateData, handleFormChange, formData }) => {
+const CrudTableGoals = ({ data }) => {
+
+    console.log(data);
+
     return (
         // Main container of the component
         <div className="">
@@ -33,33 +36,28 @@ const CrudTableGoals = ({ dataTotals, setDataToEdit, updateData, handleFormChang
 
                                 <th className="thTable">Cupos</th>
                                 <th className="thTable">Total</th>
-                                <th className="thRight">%</th>
+                                <th className="thTable">%</th>
+                                <th className="thRight">Margin</th>
                             </tr>
                         </thead>
 
                         <tbody>
-                            {/* Conditional to handle the case when there is no data */}
-                            {dataTotals.length > 0 ? (
-                                // Mapping data to render table rows
-                                dataTotals.map((elTotals) => (
-                                    <CrudTableResultGoals
-                                        key={elTotals.id}
-                                        elTotals={elTotals}
-                                        setDataToEdit={setDataToEdit}
-                                        //updateData={updateData}
-                                        handleFormChange={handleFormChange}
-                                        formData={formData}
-                                    />
-                                ))
-                            ) : (
-                                // Display "No data" message if there are no elements in 'data'
-                                <tr>
-                                    <td colSpan="3">Sin datos</td>
-                                </tr>
-                            )}
-                        </tbody>
+                            {data.goal3.map((goal, index) => (
+                                <CrudTableResultGoals
+                                    key={index}
+                                    goal={goal}
+                                    goalsKey="goal3"
+                                />
+                            ))}
+                            {data.goal4.map((goal, index) => (
+                                <CrudTableResultGoals
+                                    key={index}
+                                    goal={goal}
+                                    goalsKey="goal4"
+                                />
+                            ))}
 
-                        
+                        </tbody>
                     </table>
                 </div>
             </div>
