@@ -129,7 +129,7 @@ const Goals = () => {
     ],
     goal3: [
       {
-        modality: '',
+        modality: 'Tecnologo',
         target: 0,
         passes2021To2022: 0,
         percentage: 0,  
@@ -150,7 +150,7 @@ const Goals = () => {
     ],
       goal4: [
       {
-        modality: '',
+        modality: 'Tecnico',
         target: 0,
         passes2021To2022: 0,
         percentage: 0,  

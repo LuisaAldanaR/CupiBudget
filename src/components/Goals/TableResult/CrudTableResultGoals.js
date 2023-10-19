@@ -2,13 +2,15 @@ import React from 'react';
 import '../../../App.scss';
 
 const CrudTableResultGoals = ({ goal, index, goalsKey }) => {
-  
+
+  console.log(goal);
+
   // Verifica la modalidad y asigna el nombre apropiado
-  const levelName = goal.modality === "Presencial" || goal.modality === "Virtual"
+  const levelName = goal.modality === "Tecnologo"
     ? "Tecnólogo"
     : "Técnico Laborales y Otros";
 
-  return (
+    return (
     <tr>
 
       <td className='tdTableRow'>{levelName}</td>
@@ -45,7 +47,6 @@ const CrudTableResultGoals = ({ goal, index, goalsKey }) => {
 
       <td className='tdTableRow'>{goal.margin}</td>
       
-      {/* Agrega más campos de entrada para otros trimestres aquí */}
     </tr>
   );
 };

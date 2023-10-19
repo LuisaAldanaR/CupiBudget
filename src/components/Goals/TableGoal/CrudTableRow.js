@@ -97,7 +97,6 @@ const CrudTableRow = ({ goal, index, goalsKey, handleFormChange }) => {
 
       <td className='tdTableRow'>{goal.margin}</td>
       
-      {/* Agrega más campos de entrada para otros trimestres aquí */}
     </tr>
   );
 };
