@@ -27,7 +27,9 @@ namespace ProyectoFormativo.Controllers.Authentication
             _context = context;
         }
 
-
+        // EndPoint to validate the login 
+        // We need a userDTO 
+        // Return a Json Web Token
         [HttpPost("login")]
         public async Task<ActionResult<string>> Login(UserDto request)
         {
@@ -45,6 +47,31 @@ namespace ProyectoFormativo.Controllers.Authentication
             }
             string token = auth.CreateToken(user);
             return Ok(token);
+        }
+
+        // EndPoint to register a new user
+        // We need a userDTO
+        // Return a statusCode with the message if it was successed. Otherwise it will return the exception 
+        [HttpPost("Register")]
+        public async Task<ActionResult<User>> Register(UserDto request)
+        {
+            var auth = new Auth(_context, _configuration);
+            auth.CreatePasswordHash(request.Password, out byte[] passwordHash, out byte[] passwordSalt);
+
+            user.Username = request.Username;
+            user.PasswordSalt = passwordSalt;
+            user.PasswordHash = passwordHash;
+
+            try
+            {
+                _context.Users.Add(user);
+                _context.SaveChanges();
+                return StatusCode(StatusCodes.Status200OK, new { mensaje = "User registered successed" });
+            }
+            catch (Exception e)
+            {
+                return StatusCode(StatusCodes.Status200OK, new { mensaje = e.Message });
+            }
         }
     }
 }

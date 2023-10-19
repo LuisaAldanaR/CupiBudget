@@ -65,12 +65,15 @@ namespace ProyectoFormativo.Modelos.BudgetM
                 newCourses = (int)newCourses;
         }
 
+        // Calculate the goal in 70%
         public void goal70()
         {
             courses[0] = (int)(newCourses * 0.7);
             if (newCourses % 30 >= 21)
                 courses[0]++;
         }
+
+        // Calculate the goal in 80%
         public void goal80()
         {
             double f = newCourses * 0.8;
@@ -78,6 +81,8 @@ namespace ProyectoFormativo.Modelos.BudgetM
             if (f * 30 % 30 >= 21)
                 courses[1]++;
         }
+
+        // Calculate the goal in 90%
         public void goal90()
         {
             double f = newCourses * 0.9;
@@ -85,6 +90,8 @@ namespace ProyectoFormativo.Modelos.BudgetM
             if (f * 30 % 30 >= 21)
                 courses[2]++;
         }
+
+        // Calculate the goal in 100%
         public void goal100()
         {
             courses[3] = (int)newCourses - (courses[0] + courses[1] + courses[2]);
@@ -111,10 +118,10 @@ namespace ProyectoFormativo.Modelos.BudgetM
                 for (int j = 0; j < instructores.Count; j++)
                 {
                     FullTimeInstructor aux = instructores[j];
-                    if (aux.NetworkId == idRed && aux.EndDateCourse < time && temporalInstructorDisponible < courses[i]) // Se valida que tenga la misma red y no tenga programa activo
+                    if (aux.NetworkId == idRed && aux.EndDateCourse < time && temporalInstructorDisponible < courses[i]) // It is validated that it has the same network and does not have an active program
                     {
                         temporalInstructorDisponible++;
-                        aux.EndDateCourse = aux.EndDateCourse.Value.AddYears(1); // Asigna el nuevo valor con un año agregado
+                        aux.EndDateCourse = aux.EndDateCourse.Value.AddYears(1); // Assigns the new value with an added year
                     }
                 }
                 time.AddMonths(3);

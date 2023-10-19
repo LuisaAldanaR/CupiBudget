@@ -21,6 +21,8 @@ namespace ProyectoFormativo.Controllers.Budget
             _proyectoFormativoContext = dbcontext;
         }
 
+        // Here you can calculate one NetworkReport
+        // Return the list of NetworkReports
         [HttpPost]
         [Route("List")]
         public IActionResult Get([FromBody] DataModel request)
@@ -31,19 +33,19 @@ namespace ProyectoFormativo.Controllers.Budget
             {
                 lista = _proyectoFormativoContext.FullTimeInstructors.Include(c => c.oNetwork).ToList();
                 InPerson inPerson = new InPerson(request.data1, lista);
-                // Obtener la lista de NetworkReport
+                // Get the list from NetworkReport
                 var networks = inPerson.GetNetworks();
 
-                // Crear una lista para almacenar los resultados JSON
+                // Create a list to store the JSON results
                 var results = new List<object>();
 
-                // Iterar a través de cada objeto NetworkReport y agregarlo a la lista de resultados
+                // Iterate through each NetworkReport object and add it to the results list
                 foreach (var network in networks)
                 {
                     results.Add(network);
                 }
 
-                // Devolver la lista de resultados en la respuesta JSON
+                // Return the list of results in the JSON response
                 return Ok(results);
             }
             catch (Exception e)

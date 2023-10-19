@@ -8,10 +8,10 @@
         public int totalTarget { get; set; }
         public int Passes2021To2022 { get; set; } // PASO 2021 A 2022
 
-        public int FirstQuarterEnrollment { get; set; } // PRIMER TRIMESTRE CUPOS
-        public int SecondQuarterEnrollment { get; set; } // PRIMER TRIMESTRE CUPOS
-        public int ThirdQuarterEnrollment { get; set; } // PRIMER TRIMESTRE CUPOS
-        public int FourthQuarterEnrollment { get; set; } // PRIMER TRIMESTRE CUPOS
+        public int FirstQuarterEnrollment { get; set; } // First quarter CUPOS
+        public int SecondQuarterEnrollment { get; set; } // Second quarter CUPOS
+        public int ThirdQuarterEnrollment { get; set; } // Third quarter CUPOS
+        public int FourthQuarterEnrollment { get; set; } // Fourth quarter CUPOS
 
 
         public TrainingLevelGoal(List<GoalDTO> goalsDTO)

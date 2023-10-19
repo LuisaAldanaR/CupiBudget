@@ -20,10 +20,10 @@ namespace ProyectoFormativo.Modelos.BudgetM
 
         public InPerson(List<NetworkData> networkData, List<FullTimeInstructor> instructors)
         {
-            // Inicializa la lista de NetworkReport
+            // Initialize the NetworkReport list
             networks = new List<NetworkReport>();
 
-            // Recorre la lista de NetworkData y construye objetos NetworkReport
+            // Loop through the NetworkData list and construct NetworkReport objects
             foreach (var data in networkData)
             {
                 int totalGoal = data.totalGoal;

@@ -21,6 +21,7 @@ namespace ProyectoFormativo.Controllers.Instructor
             _dbcontext = dbcontext;
         }
 
+        // Returns the list of networks from the database1
         [HttpGet]
         [Route("List"), Authorize(Roles = "Admin, Regular")]
         public IActionResult Get()
@@ -38,6 +39,7 @@ namespace ProyectoFormativo.Controllers.Instructor
             }
         }
 
+        // Returns a Networks by Id
         [HttpGet]
         [Route("GetId/{idNetwork:int}"), Authorize(Roles = "Admin")]
         public IActionResult Obtener(int idNetwork)
@@ -61,6 +63,8 @@ namespace ProyectoFormativo.Controllers.Instructor
             }
         }
 
+        // Register a network in our database
+        // Return a statusCode 200 if it was successed, otherwise return the exception
         [HttpPost]
         [Route("Save"), Authorize(Roles = "Admin")]
         public IActionResult Guardar([FromBody] Network oNetwork)
@@ -77,6 +81,8 @@ namespace ProyectoFormativo.Controllers.Instructor
             }
         }
 
+        // Delete a network in our database 
+        // Return a statusCode 200 if it was successed, otherwise return the exception
         [HttpDelete]
         [Route("Delete/{idNetwork:int}"), Authorize(Roles = "Admin")]
         public IActionResult Eliminar(int idNetwork)

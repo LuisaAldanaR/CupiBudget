@@ -22,6 +22,7 @@ namespace ProyectoFormativo.Controllers.Instructor
             _dbcontext = dbcontext;
         }
 
+        // Returns the list of contract instructors from the database
         [HttpGet]
         [Route("List"), Authorize(Roles = "Admin, Regular")]
         public IActionResult Get()
@@ -39,6 +40,7 @@ namespace ProyectoFormativo.Controllers.Instructor
             }
         }
 
+        // Returns a contract instructor by Id
         [HttpGet]
         [Route("GetId/{idInstructor:int}"), Authorize(Roles = "Admin,Regular")]
         public IActionResult Obtener(int idInstructor)
@@ -62,7 +64,9 @@ namespace ProyectoFormativo.Controllers.Instructor
             }
         }
 
-        [HttpPost]
+        // Register an instructor in our database
+        // Return a statusCode 200 if it was successed, otherwise return the exception
+        [HttpPost]  
         [Route("Save"), Authorize(Roles = "Admin")]
         public IActionResult Guardar([FromBody] ContractInstructor oInstructor)
         {
@@ -84,7 +88,8 @@ namespace ProyectoFormativo.Controllers.Instructor
             }
         }
 
-
+        // Edit an instructor in our database by Id
+        // Return a statusCode 200 if it was successed, otherwise return the exception
         [HttpPut]
         [Route("Edit"), Authorize(Roles = "Admin")]
         public IActionResult Editar([FromBody] ContractInstructor objeto)
@@ -121,6 +126,8 @@ namespace ProyectoFormativo.Controllers.Instructor
             }
         }
 
+        // Delete an instructor in our database 
+        // Return a statusCode 200 if it was successed, otherwise return the exception
         [HttpDelete]
         [Route("Delete/{idInstructor:int}"), Authorize(Roles = "Admin")]
         public IActionResult Eliminar(int idInstructor)

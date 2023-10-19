@@ -27,6 +27,7 @@ namespace ProyectoFormativo.Controllers.Instructor
             _proyectoFormativoContext = _context;
         }
 
+        // Returns the list of fullTimeInstructors from the database
         [HttpGet]
         [Route("List"), Authorize(Roles = "Admin,Regular")]
 
@@ -48,6 +49,7 @@ namespace ProyectoFormativo.Controllers.Instructor
             }
         }
 
+        // Returns a fullTimeInstructor by Id
         [HttpGet]
         [Route("GetId/{idInstructor:int}"), Authorize(Roles = "Admin, Regular")]
 
@@ -75,6 +77,8 @@ namespace ProyectoFormativo.Controllers.Instructor
             }
         }
 
+        // Register an instructor in our database
+        // Return a statusCode 200 if it was successed, otherwise return the exception
         [HttpPost]
         [Route("Save"), Authorize(Roles = "Admin")]
 
@@ -100,6 +104,8 @@ namespace ProyectoFormativo.Controllers.Instructor
             }
         }
 
+        // Edit an instructor in our database 
+        // Return a statusCode 200 if it was successed, otherwise return the exception
         [HttpPut]
         [Route("Edit"), Authorize(Roles = "Admin")]
 
@@ -137,6 +143,8 @@ namespace ProyectoFormativo.Controllers.Instructor
             }
         }
 
+        // Delete an instructor in our database by Id
+        // Return a statusCode 200 if it was successed, otherwise return the exception
         [HttpDelete]
         [Route("Delete/{idInstructor:int}"), Authorize(Roles = "Admin")]
 

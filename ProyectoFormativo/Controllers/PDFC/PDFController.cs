@@ -18,6 +18,7 @@ namespace ProyectoFormativo.Controllers.PDF
             _context = context;
         }
 
+        // Return a PDF by ID
         [HttpGet]
         public IActionResult DownloadPdf(int id)
         {
@@ -27,13 +28,13 @@ namespace ProyectoFormativo.Controllers.PDF
 
                 if (archivoPDF == null)
                 {
-                    return NotFound(); // Devolver un error 404 si no se encuentra el archivo
+                    return NotFound(); // Return a 404 error if the pdf doesn't exist
                 }
 
-                // Crear un MemoryStream a partir de los datos binarios del PDF
+                // Create a MemoryStream from the PDF binary data
                 var pdfStream = new MemoryStream(archivoPDF.PDFData);
 
-                // Devolver el archivo PDF como una respuesta
+                // Return de pdf file as a response
                 return File(pdfStream, "application/pdf", archivoPDF.NombreArchivo);
             }
             catch (Exception e)

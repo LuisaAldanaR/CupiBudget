@@ -12,12 +12,13 @@ namespace ProyectoFormativo.Modelos.AuthenticationM
         private readonly ProyectoPruebaContext _context;
         public readonly IConfiguration _configuration;
 
-
         public Auth(ProyectoPruebaContext context, IConfiguration configuration)
         {
             _context = context;
             _configuration = configuration;
         }
+
+        // Create a JSon Web Token
         public string CreateToken(User user)
         {
             List<Claim> claims = new List<Claim>
@@ -25,6 +26,8 @@ namespace ProyectoFormativo.Modelos.AuthenticationM
                 new Claim(ClaimTypes.Name, user.Username)
             };
 
+
+            // We add claims with the Role
             if (user.Role == "Admin")
                 claims.Add(new Claim(ClaimTypes.Role, "Admin"));
             else
@@ -37,7 +40,7 @@ namespace ProyectoFormativo.Modelos.AuthenticationM
 
             var token = new JwtSecurityToken(
                 claims: claims,
-                expires: DateTime.Now.AddDays(1),
+                expires: DateTime.Now.AddDays(1), 
                 signingCredentials: creds);
 
             var jwt = new JwtSecurityTokenHandler().WriteToken(token);
@@ -45,7 +48,7 @@ namespace ProyectoFormativo.Modelos.AuthenticationM
             return jwt;
         }
 
-
+        
         public void CreatePasswordHash(string password, out byte[] passwordHash, out byte[] passwordSalt)
         {
             using (var hmac = new HMACSHA512())

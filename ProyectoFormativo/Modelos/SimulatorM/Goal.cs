@@ -1,29 +1,29 @@
 ﻿namespace ProyectoFormativo.Modelos.SimulatorM
 {
     public class Goal
-    {
-        public string Modality { get; set; } // Modalidad
-        public int Target { get; set; } // META
-        public int Passes2021To2022 { get; set; } // PASO 2021 A 2022
+{
+        public string Modality { get; set; } // Modality
+        public int Target { get; set; } // TARGET
+        public int Passes2021To2022 { get; set; } // Pass 2021 A 2022
         public decimal Percentage { get; set; } // %
 
-        public int FirstQuarterEnrollment { get; set; } // PRIMER TRIMESTRE CUPOS
-        public int FirstQuarterTotal { get; set; } // PRIMER TRIMESTRE TOTAL
-        public decimal FirstQuarterPercentage { get; set; } // PRIMER TRIMESTRE %
+        public int FirstQuarterEnrollment { get; set; } // First quarter CUPOS
+        public int FirstQuarterTotal { get; set; } // First quarter TOTAL
+        public decimal FirstQuarterPercentage { get; set; } // First quarter %
 
-        public int SecondQuarterEnrollment { get; set; } // SEGUNDO TRIMESTRE CUPOS
-        public int SecondQuarterTotal { get; set; } // SEGUNDO TRIMESTRE TOTAL
-        public decimal SecondQuarterPercentage { get; set; } // SEGUNDO TRIMESTRE %
+        public int SecondQuarterEnrollment { get; set; } // Second quarter CUPOS
+        public int SecondQuarterTotal { get; set; } // Second quarter TOTAL
+        public decimal SecondQuarterPercentage { get; set; } // Second quarter %
 
-        public int ThirdQuarterEnrollment { get; set; } // TERCER TRIMESTRE CUPOS
-        public int ThirdQuarterTotal { get; set; } // TERCER TRIMESTRE TOTAL
-        public decimal ThirdQuarterPercentage { get; set; } // TERCER TRIMESTRE %
+        public int ThirdQuarterEnrollment { get; set; } // Third quarter CUPOS
+        public int ThirdQuarterTotal { get; set; } // Third quarter TOTAL
+        public decimal ThirdQuarterPercentage { get; set; } // Third quarter %
 
-        public int FourthQuarterEnrollment { get; set; } // CUARTO TRIMESTRE CUPOS
-        public int FourthQuarterTotal { get; set; } // CUARTO TRIMESTRE TOTAL
-        public decimal FourthQuarterPercentage { get; set; } // CUARTO TRIMESTRE %
+        public int FourthQuarterEnrollment { get; set; } // Fourth quarter CUPOS
+        public int FourthQuarterTotal { get; set; } // Fourth quarter TOTAL
+        public decimal FourthQuarterPercentage { get; set; } // Fourth quarter %
 
-        public int Margin { get; set; } // Margen de error
+        public int Margin { get; set; } // Margin of error
 
 
         public Goal(GoalDTO dto)

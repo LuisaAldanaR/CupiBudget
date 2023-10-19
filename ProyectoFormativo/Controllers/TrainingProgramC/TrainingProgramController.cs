@@ -18,6 +18,7 @@ namespace ProyectoFormativo.Controllers.TrainingProgramC
             _dbcontext = dbcontext;
         }
 
+        // Returns the list of programs from the database
         [HttpGet]
         [Route("List"), Authorize(Roles = "Admin, Regular")]
         public IActionResult Get()
@@ -34,6 +35,7 @@ namespace ProyectoFormativo.Controllers.TrainingProgramC
             }
         }
 
+        // Returns the list of programs technologist inPerson from the database
         [HttpGet]
         [Route("ListTechnologistInPerson"), Authorize(Roles = "Admin, Regular")]
         public IActionResult GetTechnologistInPerson()
@@ -50,6 +52,7 @@ namespace ProyectoFormativo.Controllers.TrainingProgramC
             }
         }
 
+        // Returns the list of programs technical inPerson from the database
         [HttpGet]
         [Route("ListTechnicalInPerson"), Authorize(Roles = "Admin, Regular")]
         public IActionResult GetTechnicalInPerson()
@@ -66,6 +69,7 @@ namespace ProyectoFormativo.Controllers.TrainingProgramC
             }
         }
 
+        // Returns the list of programs technicial virtual from the database
         [HttpGet]
         [Route("ListTechnicalVirtual"), Authorize(Roles = "Admin, Regular")]
         public IActionResult GetTechnicalVirtual()
@@ -82,6 +86,7 @@ namespace ProyectoFormativo.Controllers.TrainingProgramC
             }
         }
 
+        // Returns the list of programs Technologist virtual from the database
         [HttpGet]
         [Route("ListTechnologistInVirtual"), Authorize(Roles = "Admin, Regular")]
         public IActionResult GetTechnologistVirtual()
@@ -98,7 +103,8 @@ namespace ProyectoFormativo.Controllers.TrainingProgramC
             }
         }
 
-
+        // Register a´program in our database
+        // Return a statusCode 200 if it was successed, otherwise return the exception
         [HttpPost]
         [Route("Save"), Authorize(Roles = "Admin")]
         public IActionResult Guardar([FromBody] TrainingProgram oProgram)

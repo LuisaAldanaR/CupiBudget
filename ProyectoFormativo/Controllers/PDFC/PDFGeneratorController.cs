@@ -25,13 +25,14 @@ namespace ProyectoFormativo.Controllers.PDF
             _proyectoFormativoContext = proyectoPruebaContext;
         }
 
+        // Return a report in PDF
         [HttpPost]
         [Route("Generate"), Authorize(Roles = "Admin")]
         public IActionResult GenerarPDF([FromBody] DataModel request)
         {
             List<FullTimeInstructor> lista = new List<FullTimeInstructor>();
 
-            // Crear una lista para almacenar los resultados JSON
+            // Create a list to store JSON results
             var results = new List<object>();
             List<NetworkReport> networks1;
             List<NetworkReport> networks2;
@@ -40,17 +41,15 @@ namespace ProyectoFormativo.Controllers.PDF
             {
                 lista = _proyectoFormativoContext.FullTimeInstructors.Include(c => c.oNetwork).ToList();
 
-                // Clonar la lista
-
-                // Obtener la lista de NetworkReport para data1
+                // Get list of NetworkReport for data1
                 InPerson inPerson1 = new InPerson(request.data1, lista);
                 networks1 = inPerson1.GetNetworks();
 
-                // Obtener la lista de NetworkReport para data2
+                // Get list of NetworkReport for data2
                 InPerson inPerson2 = new InPerson(request.data2, lista);
                 networks2 = inPerson2.GetNetworks();
 
-                // Iterar a través de cada objeto NetworkReport y agregarlo a la lista de resultados
+                // Iterate through each NetworkReport object and add it to the results list
                 foreach (var network in networks1)
                 {
                     results.Add(network);
@@ -66,27 +65,26 @@ namespace ProyectoFormativo.Controllers.PDF
             }
 
 
-            // Generar el PDF
+            // Generate the PDF
             var data = _pdfGenerator.GeneratePDF(networks1, networks2);
 
-            // Crear un MemoryStream a partir de los datos del PDF
+            // Create a MemoryStream from PDF data
             var stream = new MemoryStream(data);
 
             int id = (int)DateTime.Now.Ticks;
-            // Crear un objeto que represente la entrada de la base de datos
+            // Create an object that represents the database entry
             var pdfEntry = new ArchivoPDF
             {
                 ID = id,
-                NombreArchivo = "Reporte.pdf", // Nombre del archivo PDF
-                PDFData = stream.ToArray() // Convierte el MemoryStream en un array de bytes
+                NombreArchivo = "Reporte.pdf", // Name of pdf file
+                PDFData = stream.ToArray() // Converts the MemoryStream to a byte array
             };
 
-            // Agregar el objeto a la base de datos
+            // Add the object to the database
             _proyectoFormativoContext.ArchivosPDF.Add(pdfEntry);
             //_proyectoFormativoContext.SaveChanges();
 
-            // Devolver alguna respuesta si es necesario
-
+            // Return some response if necessary
 
             return File(stream, "application/pdf", "Reporte.pdf");
         }

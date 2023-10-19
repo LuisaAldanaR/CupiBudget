@@ -8,7 +8,7 @@ namespace ProyectoFormativo.Modelos.PDFM
 {
     public static class DSLStyles
     {
-        // Estilo para las celdas con el nombre de las redes
+        // Style for cells with network names
         public static IContainer CellNet(this IContainer container)
         {
             return container
@@ -20,7 +20,7 @@ namespace ProyectoFormativo.Modelos.PDFM
 
         }
 
-        // Estilo para las celdas del total de presupuestos
+        // Style for budget total cells
         public static IContainer CellTotal(this IContainer container)
         {
             return container
@@ -30,7 +30,7 @@ namespace ProyectoFormativo.Modelos.PDFM
 
         }
 
-        // Estilo para las celdas de etiquetas
+        // Style for label cells
         public static IContainer CellLabel(this IContainer container)
         {
             return container
@@ -40,7 +40,7 @@ namespace ProyectoFormativo.Modelos.PDFM
                 .Padding(2);
         }
 
-        // Estilo para las celdas del nombre de los valores
+        // Style for value name cells
         public static IContainer CellLight(this IContainer container)
         {
             return container
@@ -50,7 +50,7 @@ namespace ProyectoFormativo.Modelos.PDFM
                 .PaddingLeft(3);
         }
 
-        // Estilo para las celdas de los valores
+        // Style for value cells
         public static IContainer CellValue(this IContainer container)
         {
             return container
