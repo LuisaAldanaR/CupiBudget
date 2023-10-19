@@ -32,7 +32,7 @@ const CrudApp = () => {
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState("");
   const [showSearch, setShowSearch] = useState(false);
-
+  const [totalRecords, setTotalRecords] = useState(0);
   // States for showing/hiding the form and records
   const [showForm, setShowForm] = useState(false);
   const [showRecords, setShowRecords] = useState(true);
@@ -54,11 +54,17 @@ const CrudApp = () => {
 
     api.get(urlGet, options).then((res) => {
       if (!res.err) {
-        setDb(res.response); // Store data in the 'db' state
-        setError(null); // Clear errors
+
+        try {
+          setDb(res.response);
+          setTotalRecords(res.response.length);
+          setError(null);
+        } catch (error) {
+          show_alerta('Error: Revisa tu conexión a Internet', 'error');
+        }
       } else {
         setDb([]); // Set an empty array in 'db' in case of an error
-        setError(`Error ${res.status}: ${res.statusText}`);
+        setTotalRecords(0);
       }
 
       setLoading(false); // Set 'loading' to false after data is loaded

@@ -46,17 +46,18 @@ const CrudTableGoals = ({ data }) => {
                                 <CrudTableResultGoals
                                     key={index}
                                     goal={goal}
-                                    goalsKey="goal3"
+                                    index={index}
+                                    goalsKey="goal3" // Cambiar esto a "goals1"
                                 />
                             ))}
                             {data.goal4.map((goal, index) => (
                                 <CrudTableResultGoals
                                     key={index}
                                     goal={goal}
-                                    goalsKey="goal4"
+                                    index={index}
+                                    goalsKey="goal4" // Cambiar esto a "goals2"
                                 />
                             ))}
-
                         </tbody>
                     </table>
                 </div>

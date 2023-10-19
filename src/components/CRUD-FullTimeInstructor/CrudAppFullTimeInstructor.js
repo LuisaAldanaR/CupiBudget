@@ -40,8 +40,6 @@ const CrudAppFullTimeInstructor = () => {
   const token = localStorage.getItem('jwtToken');
   let api = helpHttp();
 
-  
-
   useEffect(() => {
     loadTableData();
   }, []);
@@ -55,17 +53,18 @@ const CrudAppFullTimeInstructor = () => {
 
   api.get(urlGet, options).then((res) => {
     if (!res.err) {
-      setDb(res.response);
 
-      // Verifica si totalRecords se establece correctamente
-      console.log("Total de registros:", res.response.length);
+      try {
+        setDb(res.response);
+        setTotalRecords(res.response.length);
+        setError(null);
+      } catch (error) {
+        show_alerta('Error: Revisa tu conexión a Internet', 'error');
+      }
 
-      setTotalRecords(res.response.length);
-      setError(null);
     } else {
       setDb([]);
       setTotalRecords(0);
-      setError(`Error ${res.status}: ${res.statusText}`);
     }
 
     setLoading(false);

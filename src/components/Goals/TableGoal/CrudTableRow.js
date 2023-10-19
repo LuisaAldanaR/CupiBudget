@@ -19,7 +19,7 @@ const CrudTableRow = ({ goal, index, goalsKey, handleFormChange }) => {
       <td className='tdTableRow'>{goal.modality}</td>
 
       <td className="tdTableRow">
-        <input
+        <input className='select-net'
           type="number"
           name="target"
           placeholder="Meta"
@@ -28,9 +28,10 @@ const CrudTableRow = ({ goal, index, goalsKey, handleFormChange }) => {
         />
       </td>
       <td className="tdTableRow">
-        <input
+        <input className='select-net'
           type="number"
           name="passes2021To2022"
+          placeholder="Cupos Antiguos"
           value={goal.passes2021To2022 || ""}
           onChange={handleChange}
         />
@@ -39,9 +40,10 @@ const CrudTableRow = ({ goal, index, goalsKey, handleFormChange }) => {
       <td className='tdTableRow'>{goal.percentage}</td>
 
       <td className="tdTableRow">
-        <input
+        <input className='select-net'
           type="number"
           name="firstQuarterEnrollment"
+          placeholder="1er trimestre"
           value={goal.firstQuarterEnrollment || ''}
           onChange={handleChange}
         />
@@ -52,9 +54,10 @@ const CrudTableRow = ({ goal, index, goalsKey, handleFormChange }) => {
       <td className='tdTableRow'>{goal.firstQuarterPercentage}</td>
 
       <td className="tdTableRow">
-        <input
+        <input className='select-net'
           type="number"
           name="secondQuarterEnrollment"
+          placeholder="2do trimestre"
           value={goal.secondQuarterEnrollment || ''}
           onChange={handleChange}
         />
@@ -65,9 +68,10 @@ const CrudTableRow = ({ goal, index, goalsKey, handleFormChange }) => {
       <td className='tdTableRow'>{goal.secondQuarterPercentage}</td>
       
       <td className="tdTableRow">
-        <input
+        <input className='select-net'
           type="number"
           name="thirdQuarterEnrollment"
+          placeholder="3er trimestre"
           value={goal.thirdQuarterEnrollment || ''}
           onChange={handleChange}
         />
@@ -78,9 +82,10 @@ const CrudTableRow = ({ goal, index, goalsKey, handleFormChange }) => {
       <td className='tdTableRow'>{goal.thirdQuarterPercentage}</td>
 
       <td className="tdTableRow">
-        <input
+        <input className='select-net'
           type="number"
           name="fourthQuarterEnrollment"
+          placeholder="4to trimestre"
           value={goal.fourthQuarterEnrollment || ''}
           onChange={handleChange}
         />
