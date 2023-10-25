@@ -46,7 +46,7 @@ const CrudApp = () => {
 
   // Function to load table data
   const loadTableData = () => {
-    let urlGet = "http://www.mendezmrf10.somee.com/api/ContractInstructor/List";
+    let urlGet = "https://www.cupibudget.somee.com/api/ContractInstructor/List";
 
     let options = {
       headers: { 'Authorization': `Bearer ${token}`, },
@@ -75,7 +75,7 @@ const CrudApp = () => {
 
   const createData = (data) => {
     console.log(data);
-    let urlPost = "http://www.mendezmrf10.somee.com/api/ContractInstructor/Save";
+    let urlPost = "https://www.cupibudget.somee.com/api/ContractInstructor/Save";
 
     let options = {
       body: data,
@@ -106,7 +106,7 @@ const CrudApp = () => {
 
   // Function to update an existing instructor
   const updateData = (data) => {
-    let urlPut = "http://www.mendezmrf10.somee.com/api/ContractInstructor/Edit";
+    let urlPut = "https://www.cupibudget.somee.com/api/ContractInstructor/Edit";
 
     let options =
     {
@@ -151,7 +151,7 @@ const CrudApp = () => {
       cancelButtonText: 'Cancel',
     }).then((result) => {
       if (result.isConfirmed) {
-        let urlDel = "http://www.mendezmrf10.somee.com/api/ContractInstructor/Delete";
+        let urlDel = "https://www.cupibudget.somee.com/api/ContractInstructor/Delete";
         let endPoint = `${urlDel}/${idInstructor}`;
 
         let options =
