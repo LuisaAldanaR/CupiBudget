@@ -3,6 +3,7 @@ import CrudTableGoals from './TableGoal/CrudTableGoals';
 import CrudTableTotalGoals from './TableResult/CrudTableTotalGoals';
 import { helpHttp } from '../../helpers/helpHttp';
 import Swal from 'sweetalert2';
+import { Exception } from 'sass';
 
 const Goals = () => {
   const token = localStorage.getItem('jwtToken');

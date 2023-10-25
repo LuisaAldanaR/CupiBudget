@@ -1,10 +1,24 @@
 import React from 'react';
 import '../../../App.scss';
+import Swal from 'sweetalert2';
 
 const CrudTableRow = ({ goal, index, goalsKey, handleFormChange }) => {
+
   const handleChange = (e) => {
     handleFormChange(e, index, goalsKey);
+
+    if (e.target.name === 'target' && e.target.value.trim() === '') {
+      Swal.fire({
+        icon: 'error',
+        title: 'Datos Incompletos',
+        text: 'El campo de meta está vacío',
+      });
+    }
   };
+
+  if (!goal) {
+    return null; // Handling undefined data
+  }
 
   // Verifica la modalidad y asigna el nombre apropiado
   const levelName = goal.modality === "Presencial" || goal.modality === "Virtual"
@@ -23,7 +37,7 @@ const CrudTableRow = ({ goal, index, goalsKey, handleFormChange }) => {
           type="number"
           name="target"
           placeholder="Meta"
-          value={goal.target || ''}
+          value={goal.target !== undefined ? goal.target : "0"}
           onChange={handleChange}
         />
       </td>
@@ -32,7 +46,7 @@ const CrudTableRow = ({ goal, index, goalsKey, handleFormChange }) => {
           type="number"
           name="passes2021To2022"
           placeholder="Cupos Antiguos"
-          value={goal.passes2021To2022 || ""}
+          value={goal.passes2021To2022 !== undefined ? goal.passes2021To2022 : "0"}
           onChange={handleChange}
         />
       </td>
@@ -44,7 +58,7 @@ const CrudTableRow = ({ goal, index, goalsKey, handleFormChange }) => {
           type="number"
           name="firstQuarterEnrollment"
           placeholder="1er trimestre"
-          value={goal.firstQuarterEnrollment || ''}
+          value={goal.firstQuarterEnrollment !== undefined ? goal.firstQuarterEnrollment : "0"}
           onChange={handleChange}
         />
       </td>
@@ -58,7 +72,7 @@ const CrudTableRow = ({ goal, index, goalsKey, handleFormChange }) => {
           type="number"
           name="secondQuarterEnrollment"
           placeholder="2do trimestre"
-          value={goal.secondQuarterEnrollment || ''}
+          value={goal.secondQuarterEnrollment !== undefined ? goal.secondQuarterEnrollment : "0"}
           onChange={handleChange}
         />
       </td>
@@ -72,7 +86,7 @@ const CrudTableRow = ({ goal, index, goalsKey, handleFormChange }) => {
           type="number"
           name="thirdQuarterEnrollment"
           placeholder="3er trimestre"
-          value={goal.thirdQuarterEnrollment || ''}
+          value={goal.thirdQuarterEnrollment !== undefined ? goal.thirdQuarterEnrollment : "0"}
           onChange={handleChange}
         />
       </td>
@@ -86,7 +100,7 @@ const CrudTableRow = ({ goal, index, goalsKey, handleFormChange }) => {
           type="number"
           name="fourthQuarterEnrollment"
           placeholder="4to trimestre"
-          value={goal.fourthQuarterEnrollment || ''}
+          value={goal.fourthQuarterEnrollment !== undefined ? goal.fourthQuarterEnrollment : "0"}
           onChange={handleChange}
         />
       </td>

@@ -1,9 +1,28 @@
 import React from 'react';
 import CrudTableRow from './CrudTableRow';
 import '../../../App.scss';
+import withReactContent from 'sweetalert2-react-content';
+import Swal from 'sweetalert2';
 
 const CrudTableGoals = ({ data, handleFormChange }) => {
+    function show_alerta(mensaje, icono, foco = '') {
+        onfocus(foco);
+        const MySwal = withReactContent(Swal);
+        MySwal.fire({
+            title: mensaje,
+            icon: icono
+        })
+    }
 
+    function onfocus(foco) {
+        if (foco !== '') {
+            document.getElementById(foco).focus();
+        }
+    }
+    if (data.goals1 === undefined && data.goals2 === undefined) {
+        show_alerta('Error: Faltan datos por enviar', 'error');
+        return;
+    }
     return (
         <div className="">
             <div className="card-body background-gradient">

@@ -61,7 +61,7 @@ function App() {
 
   return (
     <Router>
-    <div className="">
+    <div >
       <Routes>
         {/* Route for the login page */}
         <Route path='/' element={<Login />} />
