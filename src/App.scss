@@ -783,10 +783,11 @@ textarea, .select-net{
 
 .password-toggle {
   cursor: pointer;
-  margin-right: 57vh;
+  position: absolute;
+  right: 35px;
+  top: 94px;
+  
  
-  width: 25vh;
-  height: 20vh;
 }
 
 /* En App.scss o en un archivo separado (por ejemplo, Login.css) */
@@ -1106,33 +1107,19 @@ textarea, .select-net{
 
     .password-toggle {
       cursor: pointer;
-      color: #000000; /* Cambia el color del ícono */
-      z-index: 1; /* Coloca el ícono por encima del campo de contraseña */
-      position: absolute; /* Cambia la posición de fixed a absolute */
-      left: 16vh;
-      width: 2vh;
-      height: 2vh;
+      position: relative;
+      right:35px;
+      top: 100px;
+     
+    }
     
-   
     
       
     }
   }
-}
 
-/* Estilo para el ícono del ojo */
-.password-toggle {
-  cursor: pointer;
-  color: #000000; /* Cambia el color del ícono */
-  z-index: 1; /* Coloca el ícono por encima del campo de contraseña */
-  position: absolute; /* Cambia la posición de fixed a absolute */
-  left: 16vh;
-  top: 8.8vh;
-  margin-top: 1rem;
-  height: 2px;
 
-  
-}
+
 
 /* Home.css */
 
