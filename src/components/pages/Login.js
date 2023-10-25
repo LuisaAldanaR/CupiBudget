@@ -7,7 +7,7 @@ import Swal from 'sweetalert2';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 
-const baseUrl = "http://www.mendezmrf10.somee.com/api/Auth/login";
+const baseUrl = "https://www.cupibudget.somee.com/api/Auth/login";
 const cookies = new Cookies();
 
 function Login() {

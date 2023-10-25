@@ -45,7 +45,7 @@ const CrudAppFullTimeInstructor = () => {
   }, []);
 
   const loadTableData = () => {
-    let urlGet = "http://www.mendezmrf10.somee.com/api/FullTimeInstructor/List";
+    let urlGet = "https://www.cupibudget.somee.com/api/FullTimeInstructor/List";
 
   let options = {
     headers: {'Authorization': `Bearer ${token}`, },   
@@ -72,7 +72,7 @@ const CrudAppFullTimeInstructor = () => {
 };
 
   const createData = (data) => {
-    let urlPost = "http://www.mendezmrf10.somee.com/api/FullTimeInstructor/Save";
+    let urlPost = "https://www.cupibudget.somee.com/api/FullTimeInstructor/Save";
   
     let options = {
       body: data,
@@ -99,7 +99,7 @@ const CrudAppFullTimeInstructor = () => {
   };
 
   const updateData = (data) => {
-    let urlPut = "http://www.mendezmrf10.somee.com/api/FullTimeInstructor/Edit";
+    let urlPut = "https://www.cupibudget.somee.com/api/FullTimeInstructor/Edit";
   
     let options = { body: data, headers: { "content-type": "application/json" ,'Authorization': `Bearer ${token}`,} };
   
@@ -136,7 +136,7 @@ const CrudAppFullTimeInstructor = () => {
       cancelButtonText: 'Cancelar',
     }).then((result) => {
       if (result.isConfirmed) {
-        let urlDel = "http://www.mendezmrf10.somee.com/api/FullTimeInstructor/Delete";
+        let urlDel = "https://www.cupibudget.somee.com/api/FullTimeInstructor/Delete";
         let endPoint = `${urlDel}/${idInstructor}`;
   
         let options = { headers: { "content-type": "application/json",'Authorization': `Bearer ${token}`, } };

@@ -68,7 +68,7 @@ const BudgetGenerator = () => {
       console.log("requestData:", requestData);
 
       const response = await fetch(
-        "http://www.mendezmrf10.somee.com/api/PDFGenerator/Generate",
+        "https://www.cupibudget.somee.com/api/PDFGenerator/Generate",
         {
           method: "POST",
           headers: {
@@ -116,7 +116,7 @@ const BudgetGenerator = () => {
 
   // Función para cargar datos en la tabla
   const loadTableData = () => {
-    let urlGet = "http://www.mendezmrf10.somee.com/api/Network/List";
+    let urlGet = "https://www.cupibudget.somee.com/api/Network/List";
 
     let options = {
       headers: { Authorization: `Bearer ${token}` },
@@ -142,7 +142,7 @@ const BudgetGenerator = () => {
 
   // Function to update an existing instructor
   const updateData = (data) => {
-    const urlPost = "http://www.mendezmrf10.somee.com/api/PDFGenerator/Generate";
+    const urlPost = "https://www.cupibudget.somee.com/api/PDFGenerator/Generate";
 
     let options = {
       body: data,

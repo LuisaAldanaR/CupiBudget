@@ -49,7 +49,7 @@ const CrudForm = ({ createData, updateData, dataToEdit, setDataToEdit, showTable
       headers: {'Authorization': `Bearer ${token}`, },   
     };
 
-    const urlNetwork = "http://www.mendezmrf10.somee.com/api/Network/List";
+    const urlNetwork = "https://www.cupibudget.somee.com/api/Network/List";
     
     api.get(urlNetwork, options).then((res) => {
       if (!res.err) {

@@ -16,8 +16,8 @@ const redirectToReporte = () => {
 };
 
 const Home = () => {
-  const urlGet = "http://www.mendezmrf10.somee.com/api/FullTimeInstructor/List";
-  const urlGetContract = "http://www.mendezmrf10.somee.com/api/ContractInstructor/List";
+  const urlGet = "https://www.cupibudget.somee.com/api/ContractInstructor/List";
+  const urlGetContract = "https://www.cupibudget.somee.com/api/FullTimeInstructor/List";
   const [totalRecords, setTotalRecords] = useState(0);
   const [totalRecordsContract, setTotalRecordsContract] = useState(0);
   const token = localStorage.getItem('jwtToken');

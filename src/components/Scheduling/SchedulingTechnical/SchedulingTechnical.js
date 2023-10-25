@@ -29,7 +29,7 @@ const SchedulingTechnological = () => {
 
   // Function to load table data
   const loadTableData = () => {
-    let urlGet = "http://www.mendezmrf10.somee.com/api/TrainingProgram/ListTechnicalInPerson";
+    let urlGet = "https://www.cupibudget.somee.com/api/TrainingProgram/ListTechnicalInPerson";
 
     let options = {
       headers: {'Authorization': `Bearer ${token}`, },   
@@ -54,7 +54,7 @@ const SchedulingTechnological = () => {
 
   // Function to load table data
   const loadTableDataVirtual = () => {
-    let urlGet = "http://www.mendezmrf10.somee.com/api/TrainingProgram/ListTechnicalVirtual";
+    let urlGet = "https://www.cupibudget.somee.com/api/TrainingProgram/ListTechnicalVirtual";
 
     let options = {
       headers: {'Authorization': `Bearer ${token}`, },   

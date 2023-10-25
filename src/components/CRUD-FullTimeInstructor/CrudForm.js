@@ -33,7 +33,7 @@ const CrudForm = ({ createData, updateData, dataToEdit, setDataToEdit, showTable
 
   // Effect to load network options from an API when the component mounts
   useEffect(() => {
-    const urlNetwork = "http://www.mendezmrf10.somee.com/api/Network/List";
+    const urlNetwork = "https://www.cupibudget.somee.com/api/Network/List";
   
     let options = {
       headers: {'Authorization': `Bearer ${token}`, },   

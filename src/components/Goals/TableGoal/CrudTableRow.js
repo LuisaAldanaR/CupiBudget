@@ -7,13 +7,6 @@ const CrudTableRow = ({ goal, index, goalsKey, handleFormChange }) => {
   const handleChange = (e) => {
     handleFormChange(e, index, goalsKey);
 
-    if (e.target.name === 'target' && e.target.value.trim() === '') {
-      Swal.fire({
-        icon: 'error',
-        title: 'Datos Incompletos',
-        text: 'El campo de meta está vacío',
-      });
-    }
   };
 
   if (!goal) {

@@ -189,7 +189,7 @@ const Goals = () => {
 
   const handleSendGoals = async () => {
     try {
-      const urlPost = 'http://www.mendezmrf10.somee.com/api/Simulator/CalculateSimulator';
+      const urlPost = 'https://www.cupibudget.somee.com/api/Simulator/CalculateSimulator';
   
       const options = {
         body: data, // Aquí estás enviando los datos actuales al servidor
