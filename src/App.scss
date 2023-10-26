@@ -82,8 +82,8 @@ $blue: #0000ff;
 }
 
 .custom-logo {
-  width: 150px;
-  height: auto; /* Ajusta la altura automáticamente según el ancho */
+  width: 9rem;
+  height: 6rem; /* Ajusta la altura automáticamente según el ancho */
   max-width: 100%; /* Evita que la imagen sea más ancha que su contenedor */
 }
 
@@ -253,7 +253,7 @@ $blue: #0000ff;
     z-index: 1;
     width: 100%; /* Cambia min-width a width */
     margin-left: 2rem; /* Agregar un margen izquierdo para el contenido */
-    margin-right: 2rem;
+    margin-right: 2rem; /* Agregar un margen izquierdo para el contenido */
     background-color: #f3f1f1;
   }
 
@@ -269,7 +269,6 @@ $blue: #0000ff;
     z-index: 1;
     box-shadow: 5px 0px 10px rgba(0, 0, 0, 0.2); /* Añadir sombra al lado derecho */
     transition: width 0.3s; /* Agrega una transición suave al ancho */
-    margin-bottom: 2rem;
   }
 
   .sidebar-ul {
@@ -278,7 +277,7 @@ $blue: #0000ff;
     max-height: 8vh; /* Establece una altura máxima para la lista */
     padding: 0; /* Elimina el espacio interno predeterminado de la lista */
     margin: 0; /* Elimina el margen predeterminado de la lista */
-    
+    margin-top: 1.2rem;
   }
 
   ul {
@@ -1111,15 +1110,9 @@ textarea, .select-net{
       right:-172px;
       top: 50px;
      
-    }
-    
-    
-      
+    }      
     }
   }
-
-
-
 
 /* Home.css */
 
@@ -1128,9 +1121,8 @@ textarea, .select-net{
   flex-wrap: wrap;
   padding: 5% 5%; /* En lugar de valores fijos, utiliza porcentajes */
   color: rgba(255, 255, 255, 0.95);
-  margin-left: 23%; /* En lugar de valores fijos, utiliza porcentajes */
   padding-bottom: 10%; /* En lugar de valores fijos, utiliza porcentajes */
-  padding-right: 5%; /* En lugar de valores fijos, utiliza porcentajes */
+  margin-right: 2rem;
 }
 
 .main-title {
@@ -1138,7 +1130,8 @@ textarea, .select-net{
   flex-basis: 200;
   justify-content: space-between;
   color: #000;
-  margin-top: 1rem;
+  margin-top: 3rem;
+  margin-bottom: 1rem;
 }
 
 .main-cards {
@@ -1225,7 +1218,7 @@ textarea, .select-net{
 
 @media (max-width: 768px) {
   .main-container {
-    margin-left: 12rem;
+    margin-left: 5rem;
     padding-right: 0;
   }
 
