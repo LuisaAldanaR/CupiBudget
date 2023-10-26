@@ -1,231 +1,60 @@
-import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import React from "react";
+import SideNav, { Toggle, NavItem, NavIcon, NavText } from '@trendmicro/react-sidenav';
+import '@trendmicro/react-sidenav/dist/react-sidenav.css';
 import * as FaIcons from "react-icons/fa";
 import * as ImIcons from "react-icons/im";
-import * as HiIcons from "react-icons/hi";
-import "../../App.scss";
+import { Link } from 'react-router-dom';
 
-const Sidebar = () => {
-  // Create state to control the visibility of each option
-  const [optionVisibility, setOptionVisibility] = useState({
-    option2: false,
-    option3: false,
-    option5: false,
-  });
-
-  // Handle the onMouseEnter event for each option
-  const handleMouseEnter = (option) => {
-    setOptionVisibility((prevState) => ({
-      ...prevState,
-      [option]: true,
-    }));
+function Sidebar() {
+  const linkStyles = {
+    textDecoration: 'none', // Elimina el subrayado
   };
-
-  // Handle the onMouseLeave event for each option
-  const handleMouseLeave = (option) => {
-    setOptionVisibility((prevState) => ({
-      ...prevState,
-      [option]: false,
-    }));
-  };
-
-  // Determine if an option is active
-  const isOptionActive = (option) => {
-    return optionVisibility[option];
-  };
-
   return (
-    <div className="sidebar">
-      <ul className="sidebar-ul">
-        <li className="sidebar-li">
-          {/* Utiliza NavLink para redirigir a "/ruta-de-home" al hacer clic en "Inicio" */}
-          <NavLink
-              to="./home"
-              className={`main-option ${
-                isOptionActive("option0") ? "active" : ""
-              } nav-link`}
-            >
-              <FaIcons.FaHome style={{marginLeft:"10px"}} />
-              <span style={{ marginLeft: "30px", color: 'black', fontWeight:"600"}}>Inicio</span>{" "}
-              
-            </NavLink>
-        </li>
-
-        <li className="sidebar-li">
-          <div
-            style={{margin:0, padding:0}}
-            onMouseEnter={() => handleMouseEnter("option6")}
-            onMouseLeave={() => handleMouseLeave("option6")}
-            className={`main-option ${
-              isOptionActive("option6") ? "active" : ""
-            }`} 
-          > 
-            <FaIcons.FaBook style={{marginLeft:"10px"}} />{" "}
-            <span style={{ marginLeft: "25px", fontWeight:"600"}} >Programas</span>{" "}
-            {isOptionActive("option6") ? (
-              <HiIcons.HiChevronDown
-                style={{ color: "green", marginLeft: "20px" }}
-              />
-            ) : (
-              <HiIcons.HiChevronRight
-                style={{ color: "green", marginLeft: "20px" }}
-              />
-            )}
-          </div>
-          {isOptionActive("option6") && (
-            <ul
-              className="submenu"
-              onMouseEnter={() => handleMouseEnter("option6")}
-              onMouseLeave={() => handleMouseLeave("option6")}
-            >
-              <li>
-                <NavLink
-                  to="/SchedulingTechnological"
-                  id="submenu"
-                  exact
-                  activeclassname ="active"
-                >
-                  <span style={{ color: "black", fontSize: "17px"}}>Tecnológo</span>
-                </NavLink>
-              </li>
-              <li>
-                <NavLink to="/SchedulingTechnical" exact activeclassname ="active">
-                  <span style={{ color: "black", fontSize: "17px" }}>Técnico</span>
-                </NavLink>
-              </li>
-            </ul>
-          )}
-        </li>
-
-        <li className="sidebar-li">
-          <div
-            onMouseEnter={() => handleMouseEnter("option2")}
-            onMouseLeave={() => handleMouseLeave("option2")}
-            className={`main-option ${
-              isOptionActive("option2") ? "active" : ""
-            }`}
-          >
-            <FaIcons.FaFileInvoiceDollar style={{marginLeft:"10px"}}  />{" "}
-            <span style={{ marginLeft: "25px", fontWeight:"600" }}>Programación</span>{" "}
-            {isOptionActive("option2") ? (
-              <HiIcons.HiChevronDown
-                style={{ color: "green" }}
-              />
-            ) : (
-              <HiIcons.HiChevronRight
-                style={{ color: "green"}}
-              />
-            )}
-          </div>
-          {isOptionActive("option2") && (
-            <ul
-              className="submenu"
-              onMouseEnter={() => handleMouseEnter("option2")}
-              onMouseLeave={() => handleMouseLeave("option2")}
-            >
-              <li>
-                <NavLink
-                  to="/BudgetGenerator"
-                  id="submenu"
-                  exact
-                  activeclassname ="active"
-                >
-                 <span style={{ color: "black", fontSize: "17px"}}>Programación</span>
-
-                </NavLink>
-              </li>
-            
-            </ul>
-          )}
-        </li>
-        <li className="sidebar-li">
-          <div
-            onMouseEnter={() => handleMouseEnter("option3")}
-            onMouseLeave={() => handleMouseLeave("option3")}
-            className={`main-option ${
-              isOptionActive("option3") ? "active" : ""
-            }`}
-          >
-            <ImIcons.ImTarget style={{marginLeft:"10px"}}/>{" "}
-            <span style={{ marginLeft: "25px", fontWeight:"600" }}>Metas</span>{" "}
-            {isOptionActive("option3") ? (
-              <HiIcons.HiChevronDown
-                style={{ color: "green", marginLeft: "69px" }}
-              />
-            ) : (
-              <HiIcons.HiChevronRight
-                style={{ color: "green", marginLeft: "69px" }}
-              />
-            )}
-          </div>
-          {isOptionActive("option3") && (
-            <ul 
-              className="submenu"
-              onMouseEnter={() => handleMouseEnter("option3")}
-              onMouseLeave={() => handleMouseLeave("option3")}
-            >
-              <li>
-                <NavLink
-                  to="/Goals"
-                  id="submenu"
-                  exact="true"
-                  activeclassname ="active"
-                >
-                  <span style={{ color: "black", fontSize: "17px"}}>Metas</span>
-                </NavLink>
-              </li>
-             
-            </ul>
-          )}
-        </li>
-        <li className="sidebar-li">
-          <div
-            style={{margin:0, padding:0}}
-            onMouseEnter={() => handleMouseEnter("option5")}
-            onMouseLeave={() => handleMouseLeave("option5")}
-            className={`main-option ${
-              isOptionActive("option5") ? "active" : ""
-            }`} 
-          > 
-            <FaIcons.FaUserTie style={{marginLeft:"10px"}} />{" "}
-            <span style={{ marginLeft: "25px", fontWeight:"600"}} >Instructores</span>{" "}
-            {isOptionActive("option5") ? (
-              <HiIcons.HiChevronDown
-                style={{ color: "green", marginLeft: "20px" }}
-              />
-            ) : (
-              <HiIcons.HiChevronRight
-                style={{ color: "green", marginLeft: "20px" }}
-              />
-            )}
-          </div>
-          {isOptionActive("option5") && (
-            <ul
-              className="submenu"
-              onMouseEnter={() => handleMouseEnter("option5")}
-              onMouseLeave={() => handleMouseLeave("option5")}
-            >
-              <li>
-                <NavLink
-                  to="/CrudAppFullTimeInstructor"
-                  id="submenu"
-                  exact
-                  activeclassname ="active"
-                >
-                  <span style={{ color: "black", fontSize: "17px"}}>Planta</span>
-                </NavLink>
-              </li>
-              <li>
-                <NavLink to="/CrudApp" exact activeclassname ="active">
-                  <span style={{ color: "black", fontSize: "17px" }}>Contrato</span>
-                </NavLink>
-              </li>
-            </ul>
-          )}
-        </li>
-      </ul>
-    </div>
+    <SideNav className="CustomNavbar" style={{ backgroundColor: "#39a900", top:"4.8rem", height:"100%", position:"fixed", zIndex:"2" }}>
+      <SideNav.Toggle />
+      <SideNav.Nav defaultSelected="home">
+        <NavItem eventKey="home">
+          <NavIcon><FaIcons.FaHome style={{ fontSize: "1.5em" }} /></NavIcon>
+          <NavText style={{ fontSize: "1.5em"}} ><Link to="/Home" style={linkStyles}> Home</Link></NavText>
+        </NavItem>
+        <NavItem eventKey="programas">
+          <NavIcon><FaIcons.FaBook style={{ fontSize: "1.5em" }} /></NavIcon>
+          <NavText style={{ fontSize: "1.5em" }}>Programas</NavText>
+          <NavItem eventKey="tecnico">
+            <NavText style={{ fontSize: "1.2em" }} eventKey="tecnico"><Link to="/SchedulingTechnical" style={linkStyles}>Tecnico</Link></NavText>
+          </NavItem>
+          <NavItem eventKey="tecnologo">
+            <NavText style={{ fontSize: "1.2em" }} eventKey="tecnologo"><Link to="/SchedulingTechnological" style={linkStyles}>Tecnologo</Link></NavText>
+          </NavItem>
+        </NavItem>
+        <NavItem eventKey="programacion">
+          <NavIcon><FaIcons.FaFileInvoiceDollar style={{ fontSize: "1.5em" }} /></NavIcon>
+          <NavText style={{ fontSize: "1.5em" }}>Programación</NavText>
+          <NavItem eventKey="reporte">
+            <NavText style={{ fontSize: "1.2em" }} eventKey="reporte"><Link to="/BudgetGenerator" style={linkStyles}>Reporte</Link></NavText>
+          </NavItem>
+        </NavItem>
+        <NavItem eventKey="metas">
+          <NavIcon><ImIcons.ImTarget style={{ fontSize: "1.5em" }} /></NavIcon>
+          <NavText style={{ fontSize: "1.5em" }}><Link to="/Goals" style={linkStyles}> Metas</Link></NavText>
+        </NavItem>
+        <NavItem eventKey="instructores">
+          <NavIcon><FaIcons.FaUserTie style={{ fontSize: "1.5em" }} /></NavIcon>
+          
+          <NavText style={{ fontSize: "1.5em" }}>Instructores </NavText>
+        
+          <NavItem eventKey="FullTimeInstructor">
+                  <NavText style={{ fontSize: "1.2em"}} eventKey="planta">
+          <Link to="/CrudAppFullTimeInstructor" style={{ textDecoration: "none" }}>Planta</Link>
+        </NavText>
+          </NavItem>
+          <NavItem eventKey="contrato">
+            <NavText  style={{ fontSize: "1.2em" }} eventKey="contrato"><Link to="/CrudApp" style={linkStyles}> Contrato</Link></NavText>
+          </NavItem>
+        </NavItem>
+      </SideNav.Nav>
+    </SideNav>
   );
-};
+}
 
 export default Sidebar;

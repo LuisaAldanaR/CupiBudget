@@ -3,6 +3,11 @@
 
 /* General styles */
 
+.CustomNavbar{
+  background-color: #39a900 !important;
+  
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -159,6 +164,8 @@ $blue: #0000ff;
     padding-top: 2rem;
     margin: 0;
   }
+
+
 
   .sidebar-ul {
     max-height: 12.5rem; /* Establece una altura máxima para la lista */
