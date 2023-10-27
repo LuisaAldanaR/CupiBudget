@@ -10,7 +10,7 @@ function Sidebar() {
     textDecoration: 'none', // Elimina el subrayado
   };
   return (
-    <SideNav className="CustomNavbar" style={{ backgroundColor: "#39a900", top:"4.8rem", height:"100%", position:"fixed", zIndex:"2", top:0,  marginTop: "70px"}}>
+    <SideNav className="CustomNavbar" style={{ backgroundColor: "#39a900", top:"4.8rem", height:"100%", position:"fixed", zIndex:"2" }}>
       <SideNav.Toggle />
       <SideNav.Nav defaultSelected="home">
         <NavItem eventKey="home">

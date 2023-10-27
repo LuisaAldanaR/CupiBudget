@@ -5,7 +5,14 @@
 
 .CustomNavbar{
   background-color: #39a900 !important;
-  
+  flex-direction: column;
+  top:5rem;
+  position:fixed; 
+  z-index:2;
+  align-items: center;
+  justify-content: flex-start;
+  height: 100%;
+
 }
 
 * {
@@ -164,8 +171,6 @@ $blue: #0000ff;
     padding-top: 2rem;
     margin: 0;
   }
-
-
 
   .sidebar-ul {
     max-height: 12.5rem; /* Establece una altura máxima para la lista */
