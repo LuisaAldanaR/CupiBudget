@@ -10,12 +10,12 @@ function Sidebar() {
     textDecoration: 'none', // Elimina el subrayado
   };
   return (
-    <SideNav className="CustomNavbar" style={{ backgroundColor: "#39a900", top:"4.8rem", height:"100%", position:"fixed", zIndex:"2" }}>
+    <SideNav className="CustomNavbar" style={{ backgroundColor: "#39a900", top:"4.8rem", height:"100%", position:"fixed", zIndex:"2", top:0,  marginTop: "70px"}}>
       <SideNav.Toggle />
       <SideNav.Nav defaultSelected="home">
         <NavItem eventKey="home">
           <NavIcon><FaIcons.FaHome style={{ fontSize: "1.5em" }} /></NavIcon>
-          <NavText style={{ fontSize: "1.5em"}} ><Link to="/Home" style={linkStyles}> Home</Link></NavText>
+          <NavText style={{ fontSize: "1.5em"}} ><Link to="/Home" style={linkStyles}>Inicio</Link></NavText>
         </NavItem>
         <NavItem eventKey="programas">
           <NavIcon><FaIcons.FaBook style={{ fontSize: "1.5em" }} /></NavIcon>
@@ -35,7 +35,9 @@ function Sidebar() {
           </NavItem>
         </NavItem>
         <NavItem eventKey="metas">
-          <NavIcon><ImIcons.ImTarget style={{ fontSize: "1.5em" }} /></NavIcon>
+          <NavIcon>
+            <ImIcons.ImTarget style={{ fontSize: "1.5em" }}  />
+          </NavIcon>
           <NavText style={{ fontSize: "1.5em" }}><Link to="/Goals" style={linkStyles}> Metas</Link></NavText>
         </NavItem>
         <NavItem eventKey="instructores">
