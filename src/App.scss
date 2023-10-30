@@ -14,6 +14,18 @@
   height: 100%
 }
 
+
+
+.content {
+  transition: all 0.3s; /* Agrega una transición suave para el efecto de opacidad */
+}
+
+.sidebar-open .content {
+  opacity: 100; /* Cambia la opacidad cuando el sidebar está abierto */
+  pointer-events: none; /* Evita la interacción con el contenido subyacente */
+}
+
+
 * {
   margin: 0;
   padding: 0;

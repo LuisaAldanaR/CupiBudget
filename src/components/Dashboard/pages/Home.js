@@ -74,14 +74,14 @@ const Home = () => {
               <p style={{ color: 'black', fontWeight: "bold"  }}>INSTRUCTORES DE PLANTA</p>
               <FaIcons.FaClipboardUser className='card_icon' style={{ color: 'black', marginLeft: "25vh", marginTop: '8px'}}  />
             </div>
-            <h1 style={{ color: 'black' }}>{totalRecords}</h1>
+            <h1 style={{ color: 'black' }}>{totalRecordsContract}</h1>
           </div>
           <div className='card1'>
             <div className='card-inner'>
               <p style={{ color: 'black', fontWeight: "bold"  }}>INSTRUCTORES DE CONTRATO</p>
               <FaIcons.FaClipboardUser className='card_icon' style={{ color: 'black', marginLeft: "25vh", marginTop: '8px'}}  />
             </div>
-            <h1 style={{ color: 'black' }}>{totalRecordsContract}</h1>
+            <h1 style={{ color: 'black' }}>{totalRecords}</h1>
           </div>
           <div className='card1' onClick={redirectToReporte} style={{cursor:"pointer"}}>
             <div className='card-inner' > 
