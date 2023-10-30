@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom';
 function Sidebar() {
   const linkStyles = {
     textDecoration: 'none', // Elimina el subrayado
+    color: "black"
   };
   return (
     <SideNav className="CustomNavbar" style={{ backgroundColor: "#39a900", height:"100%", position:"fixed", zIndex:"2" }}>
@@ -15,7 +16,7 @@ function Sidebar() {
       <SideNav.Nav defaultSelected="home">
         <NavItem eventKey="home">
           <NavIcon><FaIcons.FaHome style={{ fontSize: "1.5em" }} /></NavIcon>
-          <NavText style={{ fontSize: "1.5em"}} ><Link to="/Home" style={linkStyles}>Inicio</Link></NavText>
+          <NavText style={{ fontSize: "1.5em"}} ><Link to="/Home" style={{textDecoration:"none"}}>Inicio</Link></NavText>
         </NavItem>
         <NavItem eventKey="programas">
           <NavIcon><FaIcons.FaBook style={{ fontSize: "1.5em" }} /></NavIcon>
@@ -35,10 +36,11 @@ function Sidebar() {
           </NavItem>
         </NavItem>
         <NavItem eventKey="metas">
-          <NavIcon>
-            <ImIcons.ImTarget style={{ fontSize: "1.5em" }}  />
-          </NavIcon>
-          <NavText style={{ fontSize: "1.5em" }}><Link to="/Goals" style={linkStyles}> Metas</Link></NavText>
+          <NavIcon><ImIcons.ImTarget style={{ fontSize: "1.5em" }} /></NavIcon>
+          <NavText style={{ fontSize: "1.5em" }}>Metas</NavText>
+          <NavItem eventKey="metas">
+            <NavText style={{ fontSize: "1.2em" }} eventKey="reporte"><Link to="/goals" style={linkStyles}>Metas</Link></NavText>
+          </NavItem>
         </NavItem>
         <NavItem eventKey="instructores">
           <NavIcon><FaIcons.FaUserTie style={{ fontSize: "1.5em" }} /></NavIcon>
@@ -47,11 +49,11 @@ function Sidebar() {
         
           <NavItem eventKey="FullTimeInstructor">
                   <NavText style={{ fontSize: "1.2em"}} eventKey="planta">
-          <Link to="/CrudAppFullTimeInstructor" style={{ textDecoration: "none" }}>Planta</Link>
+          <Link to="/CrudAppFullTimeInstructor" style={{ textDecoration: "none", color:"black" }}>Planta</Link>
         </NavText>
           </NavItem>
           <NavItem eventKey="contrato">
-            <NavText  style={{ fontSize: "1.2em" }} eventKey="contrato"><Link to="/CrudApp" style={linkStyles}> Contrato</Link></NavText>
+            <NavText  style={{ fontSize: "1.2em"}} eventKey="contrato"><Link to="/CrudApp" style={linkStyles}> Contrato</Link></NavText>
           </NavItem>
         </NavItem>
       </SideNav.Nav>
