@@ -1,11 +1,14 @@
 import React, { useState } from "react";
 import { useNavigate } from 'react-router-dom';
-import SideNav, { Toggle, NavItem, NavIcon, NavText,  SubNav } from '@trendmicro/react-sidenav';
+import SideNav, { NavItem, NavIcon, NavText  } from '@trendmicro/react-sidenav';
 import '@trendmicro/react-sidenav/dist/react-sidenav.css';
 import * as FaIcons from "react-icons/fa";
 import * as ImIcons from "react-icons/im";
 import { Link } from 'react-router-dom';
-import { Tooltip } from 'react-tooltip';
+
+
+
+
 
 function Sidebar() {
   const linkStyles = {
@@ -14,13 +17,18 @@ function Sidebar() {
     userSelect:"none" 
   };
 
+
+
   const navigate = useNavigate();
 
   const handleClick = (route) => {
     navigate(route);
   };
+
   
+
   return (
+    
     <SideNav className="CustomNavbar" style={{ backgroundColor: '#39a900', height: '100%', position: 'fixed', zIndex: '2' }}>
       <SideNav.Toggle />
       <SideNav.Nav defaultSelected="home">
@@ -68,7 +76,6 @@ function Sidebar() {
             Metas
           </NavText>
         </NavItem>
-        
         <NavItem eventKey="instructores">
           <NavIcon><FaIcons.FaUserTie style={{ fontSize: "1.5em", color: '#FEFEC2'}} /></NavIcon>   
           <NavText style={{ fontSize: "1.5em", userSelect:"none"  }}>Instructores</NavText>
