@@ -137,14 +137,14 @@ function Login() {
             </div>
             
             <button
+                type= "button"
                 className="login-button"
                 style={{marginTop:"12vh", userSelect: "none"}}
                 onClick={iniciarSesion}>
                 Ingresar
             </button>
             <p style={{marginTop:"4vh", userSelect: "none"}} className='l2'>Cambiar contraseña </p>
-          </div>
-
+          </div>         
       </div>
     </div>
   );

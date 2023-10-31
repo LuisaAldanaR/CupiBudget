@@ -10,7 +10,7 @@
   position:fixed; 
   z-index:2;
   align-items: center;
-  justify-content: flex-start;
+
   height: 100%
 }
 
@@ -128,7 +128,7 @@ $blue: #0000ff;
 
   /* Top navigation bar */
   #navbar {
-    overflow-x: auto; /* Habilita el desplazamiento horizontal */
+
     background-color: #39a900 !important;
     padding: 1rem 2rem;
     border-bottom: 1px solid #aca7a7;
