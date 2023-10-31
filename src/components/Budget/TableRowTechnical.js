@@ -6,7 +6,7 @@ const initialForm = {
   networkId: null,
 };
 
-const CrudTableRow2 = ({ el }) => {
+const TableRowTechnical = ({ el }) => {
   let { networkName } = el;
   const [form, setForm] = useState(initialForm);
 
@@ -55,4 +55,4 @@ const CrudTableRow2 = ({ el }) => {
   );
 };
 
-export default CrudTableRow2;
+export default TableRowTechnical;

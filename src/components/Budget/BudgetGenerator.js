@@ -56,6 +56,18 @@ const BudgetGenerator = () => {
           idNetwork: Number(el.idNetwork),
         };
 
+        const rowData3 = {
+          totalGoal: totalGoalValueTechnological,
+          oldStudents: oldStudentsValueTechnological,
+          idNetwork: Number(el.idNetwork),
+        };
+
+        const rowData4 = {
+          totalGoal: totalGoalValueTechnical, // Cambia esta línea si deseas diferentes valores para data2
+          oldStudents: oldStudentsValueTechnical, // Cambia esta línea si deseas diferentes valores para data2
+          idNetwork: Number(el.idNetwork),
+        };
+
         data1.push(rowData1);
         data2.push(rowData2);
       });
@@ -64,6 +76,8 @@ const BudgetGenerator = () => {
         data1,
         data2,
       };
+
+      console.log(requestData);
 
       console.log("requestData:", requestData);
 

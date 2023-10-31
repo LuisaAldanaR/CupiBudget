@@ -46,18 +46,23 @@ const CrudTableGoals = ({ data }) => {
                                 <th className="thTable">Cupos</th>
                                 <th className="thTable">Total</th>
                                 <th className="thTable">%</th>
+                                <th className="thTable">Fichas</th>
                                 
                                 <th className="thTable">Cupos</th>
                                 <th className="thTable">Total</th>
                                 <th className="thTable">%</th>
-                                
-                                <th className="thTable">Cupos</th>
-                                <th className="thTable">Total</th>
-                                <th className="thTable">%</th>
+                                <th className="thTable">Fichas</th>
 
                                 <th className="thTable">Cupos</th>
                                 <th className="thTable">Total</th>
                                 <th className="thTable">%</th>
+                                <th className="thTable">Fichas</th>
+
+                                <th className="thTable">Cupos</th>
+                                <th className="thTable">Total</th>
+                                <th className="thTable">%</th>                                
+                                <th className="thTable">Fichas</th>
+
                                 <th className="thRight">Margin</th>
                             </tr>
                         </thead>

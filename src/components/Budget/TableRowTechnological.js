@@ -8,7 +8,7 @@ const initialForm = {
   networkId: null,
 };
 
-const CrudTableRow = ({ el }) => {
+const TableRowTechnological = ({ el }) => {
   // Destructure the properties of the 'el' object passed as an argument
   let { networkName } = el;
   const [form, setForm] = useState(initialForm);
@@ -63,4 +63,4 @@ const CrudTableRow = ({ el }) => {
 };
 
 // Export the CrudTableRow component for use in other parts of the application
-export default CrudTableRow;
+export default TableRowTechnological;

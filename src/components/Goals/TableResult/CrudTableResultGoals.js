@@ -27,11 +27,15 @@ const CrudTableResultGoals = ({ goal, index, goalsKey }) => {
 
       <td className='tdTableRow'>{goal.firstQuarterPercentage}</td>
 
+      <td className='tdTableRow'>{goal.firstQuarterGroups}</td>
+
       <td className='tdTableRow'>{goal.secondQuarterEnrollment}</td>
 
       <td className='tdTableRow'>{goal.secondQuarterTotal}</td>
 
       <td className='tdTableRow'>{goal.secondQuarterPercentage}</td>
+
+      <td className='tdTableRow'>{goal.secondQuarterGroups}</td>
       
       <td className='tdTableRow'>{goal.thirdQuarterEnrollment}</td>
 
@@ -39,11 +43,15 @@ const CrudTableResultGoals = ({ goal, index, goalsKey }) => {
 
       <td className='tdTableRow'>{goal.thirdQuarterPercentage}</td>
 
+      <td className='tdTableRow'>{goal.thirdQuarterGroups}</td>
+
       <td className='tdTableRow'>{goal.fourthQuarterEnrollment}</td>
 
       <td className='tdTableRow'>{goal.fourthQuarterTotal}</td>
 
       <td className='tdTableRow'>{goal.fourthQuarterPercentage}</td>
+
+      <td className='tdTableRow'>{goal.fourthQuarterGroups}</td>
 
       <td className='tdTableRow'>{goal.margin}</td>
       

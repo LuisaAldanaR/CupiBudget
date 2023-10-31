@@ -19,10 +19,7 @@ const CrudTableGoals = ({ data, handleFormChange }) => {
             document.getElementById(foco).focus();
         }
     }
-    if (data.goals1 === undefined && data.goals2 === undefined) {
-        show_alerta('Error: Faltan datos por enviar', 'error');
-        return;
-    }
+   
     return (
         <div className="">
             <div className="card-body background-gradient">
@@ -37,21 +34,26 @@ const CrudTableGoals = ({ data, handleFormChange }) => {
                                 <th className="thTable">Paso 2021 a 2022</th>
                                 <th className="thTable">%</th>
 
-                                <th className="thTable">Cupos</th>
+                                <th className="thTable">Cupos 1T</th>
                                 <th className="thTable">Total</th>
                                 <th className="thTable">%</th>
+                                <th className="thTable">Fichas</th>
 
-                                <th className="thTable">Cupos</th>
+                                <th className="thTable">Cupos 2T</th>
                                 <th className="thTable">Total</th>
                                 <th className="thTable">%</th>
+                                <th className="thTable">Fichas</th>
 
-                                <th className="thTable">Cupos</th>
+                                <th className="thTable">Cupos 3T</th>
                                 <th className="thTable">Total</th>
                                 <th className="thTable">%</th>
+                                <th className="thTable">Fichas</th>
 
-                                <th className="thTable">Cupos</th>
+                                <th className="thTable">Cupos 4T</th>
                                 <th className="thTable">Total</th>
                                 <th className="thTable">%</th>
+                                <th className="thTable">Fichas</th>
+
                                 <th className="thRight">Margen</th>
                             </tr>
                         </thead>

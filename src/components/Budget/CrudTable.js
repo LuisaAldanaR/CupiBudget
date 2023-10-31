@@ -1,6 +1,6 @@
 import React from "react";
-import CrudTableRow from "./CrudTableRow";
-import CrudTableRowContract from "./CrudTableRowContract";
+import CrudTableRow from "./TableRowTechnological";
+import CrudTableRowContract from "./TableRowTechnical";
 import "../../App.scss";
 
 // Definition of the CrudTable component
@@ -11,7 +11,7 @@ const CrudTable = ({ data, setDataToEdit, updateData, handleFormChange, formData
             <div className="card-body background-gradient">
                 <div className="">
                     {/* Table header for the first table */}
-                    <h2 className="h3Table">Datos de Redes Tecnológicas</h2>
+                    <h2 className="h3Table">Datos de Redes Tecnológicas Presenciales</h2>
                     <table className="table">
                         <thead className="text-center">
                             <tr>
@@ -45,7 +45,7 @@ const CrudTable = ({ data, setDataToEdit, updateData, handleFormChange, formData
                     </table>
 
                     {/* Table header for the second table */}
-                    <h2 className="h3Table">Datos de Redes Técnicas</h2>
+                    <h2 className="h3Table">Datos de Redes Técnicas Presenciales</h2>
                     <table className="table">
                         <thead className="text-center">
                             <tr>
