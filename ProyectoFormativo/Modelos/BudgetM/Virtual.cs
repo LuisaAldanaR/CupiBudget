@@ -14,14 +14,16 @@ using ProyectoFormativo.Modelos.InstructorM;
 namespace ProyectoFormativo.Modelos.BudgetM
 {
 
-    public class InPerson
+    public class Virtual
     {
-        private List<NetworkReportInPerson> networks;
+        private List<NetworkReportVirtual> networks;
+        private List<FullTimeInstructor> emptyInstructors;
 
-        public InPerson(List<NetworkData> networkData, List<FullTimeInstructor> instructors)
+        public Virtual(List<NetworkData> networkData)
         {
             // Initialize the NetworkReport list
-            networks = new List<NetworkReportInPerson>();
+            networks = new List<NetworkReportVirtual>();
+            emptyInstructors = new List<FullTimeInstructor>();
 
             // Loop through the NetworkData list and construct NetworkReport objects
             foreach (var data in networkData)
@@ -30,12 +32,11 @@ namespace ProyectoFormativo.Modelos.BudgetM
                 int oldStudents = data.oldStudents;
                 int idNetwork = data.idNetwork;
 
-                networks.Add(new NetworkReportInPerson(totalGoal, oldStudents, instructors, idNetwork));
+                networks.Add(new NetworkReportVirtual(totalGoal, oldStudents, idNetwork));
             }
         }
 
-
-        public List<NetworkReportInPerson> GetNetworks()
+        public List<NetworkReportVirtual> GetNetworks()
         {
             return networks;
         }

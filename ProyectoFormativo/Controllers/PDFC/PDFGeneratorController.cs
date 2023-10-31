@@ -34,8 +34,10 @@ namespace ProyectoFormativo.Controllers.PDF
 
             // Create a list to store JSON results
             var results = new List<object>();
-            List<NetworkReport> networks1;
-            List<NetworkReport> networks2;
+            List<NetworkReportInPerson> networks1;
+            List<NetworkReportInPerson> networks2;
+            List<NetworkReportVirtual> networks3;
+            List<NetworkReportVirtual> networks4;
 
             try
             {
@@ -48,6 +50,14 @@ namespace ProyectoFormativo.Controllers.PDF
                 // Get list of NetworkReport for data2
                 InPerson inPerson2 = new InPerson(request.data2, lista);
                 networks2 = inPerson2.GetNetworks();
+
+                // Get list of NetworkReport for data2
+                Virtual virtual1 = new Virtual(request.data3);
+                networks3 = virtual1.GetNetworks();
+
+                // Get list of NetworkReport for data2
+                Virtual virtual2 = new Virtual(request.data4);
+                networks4 = virtual2.GetNetworks();
 
                 // Iterate through each NetworkReport object and add it to the results list
                 foreach (var network in networks1)
@@ -66,7 +76,7 @@ namespace ProyectoFormativo.Controllers.PDF
 
 
             // Generate the PDF
-            var data = _pdfGenerator.GeneratePDF(networks1, networks2);
+            var data = _pdfGenerator.GeneratePDF(networks1, networks2, networks3, networks4);
 
             // Create a MemoryStream from PDF data
             var stream = new MemoryStream(data);

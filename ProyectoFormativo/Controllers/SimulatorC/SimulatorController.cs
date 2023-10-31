@@ -8,22 +8,44 @@ namespace ProyectoFormativo.Controllers.SimulatorC
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
     public class SimulatorController : ControllerBase
     {
         // Return the calculates
         [HttpPost]
-        [Route("CalculateSimulator"), Authorize(Roles = "Admin,Regular")]
+        [Route("CalculateSimulator")]
+        [Authorize(Roles = "Admin,Regular")]
         public IActionResult CalculatorSimulator([FromBody] SimulatorDTO request)
         {
             try
             {
-                var goal1 = new TrainingLevelGoal(request.goals1).goals;
+                var filteredGoals = new List<GoalDTO>(); // Reemplaza "YourObjectType" con el tipo real de los objetos en goals1
+
+                foreach (var goal in request.goals1)
+                {
+                    if (goal.Target != 0)
+                    {
+                        filteredGoals.Add(goal);
+                    }
+                }
+
+                // La lista "filteredGoals" ahora contiene los objetos que cumplen con la condición "Target != 0".
+                    
+                var goal1 = new TrainingLevelGoal(filteredGoals).goals;
+
                 var total1 = new List<Goal>();
                 total1.Add(new TrainingLevelGoal(request.goals1).totalGoal);
-                //total1 = new TrainingLevelGoal(request.goals1).totalGoal;
 
-                var goal2 = new TrainingLevelGoal(request.goals2).goals;
+                filteredGoals = new List<GoalDTO>(); // Reemplaza "YourObjectType" con el tipo real de los objetos en goals1
+
+                foreach (var goal in request.goals2)
+                {
+                    if (goal.Target != 0)
+                    {
+                        filteredGoals.Add(goal);
+                    }
+                }
+                var goal2 = new TrainingLevelGoal(filteredGoals).goals;
+
                 var total2 = new List<Goal>();
                 total2.Add(new TrainingLevelGoal(request.goals2).totalGoal);
 

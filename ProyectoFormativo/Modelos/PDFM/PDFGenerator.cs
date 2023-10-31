@@ -21,7 +21,7 @@ namespace ProyectoFormativo.Modelos.PDFM
             _proyectoFormativoContext = proyectoFormativoContext;
         }
 
-        public byte[] GeneratePDF(List<NetworkReport> networks1, List<NetworkReport> networks2)
+        public byte[] GeneratePDF(List<NetworkReportInPerson> networks1, List<NetworkReportInPerson> networks2, List<NetworkReportVirtual> networks3, List<NetworkReportVirtual> networks4)
         {
             var imagePath = "wwwroot/images/logo.png";
             var networkList = _proyectoFormativoContext.Networks.ToList();
@@ -171,6 +171,220 @@ namespace ProyectoFormativo.Modelos.PDFM
                         for (int i = 0; i < networks2.Count; i++)
                         {
                             var net = networks2[i];
+                            if (net.totalGoal == 0)
+                                continue;
+
+                            if (i == 4)
+                            {
+                                col1.Item().PageBreak();
+                            }
+
+
+                            col1.Item().Table(table =>
+                            {
+                                table.ColumnsDefinition(columns =>
+                                {
+                                    columns.RelativeColumn();
+                                    columns.RelativeColumn();
+                                    columns.RelativeColumn();
+                                    columns.RelativeColumn();
+                                    columns.RelativeColumn();
+                                    columns.RelativeColumn();
+                                });
+
+                                table.Cell().Column(1).Row(1).ColumnSpan(6).NetCell(networkList[i].NetworkName);
+
+                                table.Cell().Column(1).Row(2).LightCell("Meta");
+                                table.Cell().Column(2).Row(2).ValueCell(net.totalGoal.ToString());
+
+                                table.Cell().Column(1).Row(3).LightCell("Cupos Pasan");
+                                table.Cell().Column(2).Row(3).ValueCell(net.oldStudents.ToString());
+
+                                table.Cell().Column(3).Row(2).LightCell("Fichas Antiguas");
+                                table.Cell().Column(4).Row(2).ValueCell(net.oldCourses.ToString());
+
+                                table.Cell().Column(3).Row(3).LightCell("Fichas Nuevas");
+                                table.Cell().Column(4).Row(3).ValueCell(net.newCourses.ToString());
+
+                                table.Cell().Column(5).Row(2).RowSpan(2)
+                                .Border(1)
+                                .BorderColor(Colors.Grey.Darken3)
+                                .Background(Colors.Green.Accent1)
+                                .AlignMiddle()
+                                .PaddingLeft(3)
+                                .Text("Fichas Totales")
+                                .FontColor(Colors.Grey.Darken3);
+
+                                table.Cell().Column(6).Row(2).RowSpan(2)
+                                .Border(1)
+                                .BorderColor(Colors.Grey.Darken3)
+                                .AlignMiddle().AlignCenter()
+                                .Text(net.totalCourses.ToString());
+
+                                table.Cell().Column(1).Row(4).LabelCell("Trimestre");
+                                table.Cell().Column(2).Row(4).LabelCell("Fichas");
+                                table.Cell().Column(3).Row(4).LabelCell("Instr Planta");
+                                table.Cell().Column(4).Row(4).LabelCell("Instr Contrato");
+                                table.Cell().Column(5).ColumnSpan(2).Row(4).LabelCell("Presupuesto");
+
+                                table.Cell().Column(1).Row(5).LightCell("Primero");
+                                table.Cell().Column(2).Row(5).ValueCell(net.courses[0].ToString());
+                                table.Cell().Column(3).Row(5).ValueCell(net.fullTime[0].ToString());
+                                table.Cell().Column(4).Row(5).ValueCell(net.contractT[0].ToString());
+                                table.Cell().Column(5).ColumnSpan(2).Row(5).ValueCell($"$ {net.budget1T.ToString("N0", cultureInfo)}");
+
+                                table.Cell().Column(1).Row(6).LightCell("Segundo");
+                                table.Cell().Column(2).Row(6).ValueCell(net.courses[1].ToString());
+                                table.Cell().Column(3).Row(6).ValueCell(net.fullTime[1].ToString());
+                                table.Cell().Column(4).Row(6).ValueCell(net.contractT[1].ToString());
+                                table.Cell().Column(5).ColumnSpan(2).Row(6).ValueCell($"$ {net.budget2T.ToString("N0", cultureInfo)}");
+
+                                table.Cell().Column(1).Row(7).LightCell("Tercero");
+                                table.Cell().Column(2).Row(7).ValueCell(net.courses[2].ToString());
+                                table.Cell().Column(3).Row(7).ValueCell(net.fullTime[2].ToString());
+                                table.Cell().Column(4).Row(7).ValueCell(net.contractT[2].ToString());
+                                table.Cell().Column(5).ColumnSpan(2).Row(7).ValueCell($"$ {net.budget3T.ToString("N0", cultureInfo)}");
+
+                                table.Cell().Column(1).Row(8).LightCell("Cuarto");
+                                table.Cell().Column(2).Row(8).ValueCell(net.courses[3].ToString());
+                                table.Cell().Column(3).Row(8).ValueCell(net.fullTime[3].ToString());
+                                table.Cell().Column(4).Row(8).ValueCell(net.contractT[3].ToString());
+                                table.Cell().Column(5).ColumnSpan(2).Row(8).ValueCell($"$ {net.budget4T.ToString("N0", cultureInfo)}");
+
+                                table.Cell().Column(4).Row(9).Background(Colors.Yellow.Accent1).TotalCell("Total");
+
+                                table.Cell().Column(5).ColumnSpan(2).Row(9).Background(Colors.Yellow.Accent1).TotalCell($"$ {net.annualBudget.ToString("N0", cultureInfo)}");
+
+                            });
+                            col1.Spacing(10);
+                        }
+
+                        col1.Item().PageBreak();
+
+                        col1.Item().Column(col3 =>
+                        {
+                            col3.Item().Text("Reporte Tecnólogos - Virtual").Bold();
+
+                            col3.Item().Text(txt =>
+                            {
+                                txt.Span("Coordinadora Académica: ").SemiBold().FontSize(10);
+                                txt.Span("Yolanda Cardenas Villamarín").FontSize(10);
+                            });
+
+                        });
+
+                        col1.Item().LineHorizontal(0.5f);
+
+                        for (int i = 0; i < networks3.Count; i++)
+                        {
+                            var net = networks3[i];
+                            if (net.totalGoal == 0)
+                                continue;
+
+                            if (i == 4)
+                            {
+                                col1.Item().PageBreak();
+                            }
+
+
+                            col1.Item().Table(table =>
+                            {
+                                table.ColumnsDefinition(columns =>
+                                {
+                                    columns.RelativeColumn();
+                                    columns.RelativeColumn();
+                                    columns.RelativeColumn();
+                                    columns.RelativeColumn();
+                                    columns.RelativeColumn();
+                                    columns.RelativeColumn();
+                                });
+
+                                table.Cell().Column(1).Row(1).ColumnSpan(6).NetCell(networkList[i].NetworkName);
+
+                                table.Cell().Column(1).Row(2).LightCell("Meta");
+                                table.Cell().Column(2).Row(2).ValueCell(net.totalGoal.ToString());
+
+                                table.Cell().Column(1).Row(3).LightCell("Cupos Pasan");
+                                table.Cell().Column(2).Row(3).ValueCell(net.oldStudents.ToString());
+
+                                table.Cell().Column(3).Row(2).LightCell("Fichas Antiguas");
+                                table.Cell().Column(4).Row(2).ValueCell(net.oldCourses.ToString());
+
+                                table.Cell().Column(3).Row(3).LightCell("Fichas Nuevas");
+                                table.Cell().Column(4).Row(3).ValueCell(net.newCourses.ToString());
+
+                                table.Cell().Column(5).Row(2).RowSpan(2)
+                                .Border(1)
+                                .BorderColor(Colors.Grey.Darken3)
+                                .Background(Colors.Green.Accent1)
+                                .AlignMiddle()
+                                .PaddingLeft(3)
+                                .Text("Fichas Totales")
+                                .FontColor(Colors.Grey.Darken3);
+
+                                table.Cell().Column(6).Row(2).RowSpan(2)
+                                .Border(1)
+                                .BorderColor(Colors.Grey.Darken3)
+                                .AlignMiddle().AlignCenter()
+                                .Text(net.totalCourses.ToString());
+
+                                table.Cell().Column(1).Row(4).LabelCell("Trimestre");
+                                table.Cell().Column(2).Row(4).LabelCell("Fichas");
+                                table.Cell().Column(3).Row(4).LabelCell("Instr Planta");
+                                table.Cell().Column(4).Row(4).LabelCell("Instr Contrato");
+                                table.Cell().Column(5).ColumnSpan(2).Row(4).LabelCell("Presupuesto");
+
+                                table.Cell().Column(1).Row(5).LightCell("Primero");
+                                table.Cell().Column(2).Row(5).ValueCell(net.courses[0].ToString());
+                                table.Cell().Column(3).Row(5).ValueCell(net.fullTime[0].ToString());
+                                table.Cell().Column(4).Row(5).ValueCell(net.contractT[0].ToString());
+                                table.Cell().Column(5).ColumnSpan(2).Row(5).ValueCell($"$ {net.budget1T.ToString("N0", cultureInfo)}");
+
+                                table.Cell().Column(1).Row(6).LightCell("Segundo");
+                                table.Cell().Column(2).Row(6).ValueCell(net.courses[1].ToString());
+                                table.Cell().Column(3).Row(6).ValueCell(net.fullTime[1].ToString());
+                                table.Cell().Column(4).Row(6).ValueCell(net.contractT[1].ToString());
+                                table.Cell().Column(5).ColumnSpan(2).Row(6).ValueCell($"$ {net.budget2T.ToString("N0", cultureInfo)}");
+
+                                table.Cell().Column(1).Row(7).LightCell("Tercero");
+                                table.Cell().Column(2).Row(7).ValueCell(net.courses[2].ToString());
+                                table.Cell().Column(3).Row(7).ValueCell(net.fullTime[2].ToString());
+                                table.Cell().Column(4).Row(7).ValueCell(net.contractT[2].ToString());
+                                table.Cell().Column(5).ColumnSpan(2).Row(7).ValueCell($"$ {net.budget3T.ToString("N0", cultureInfo)}");
+
+                                table.Cell().Column(1).Row(8).LightCell("Cuarto");
+                                table.Cell().Column(2).Row(8).ValueCell(net.courses[3].ToString());
+                                table.Cell().Column(3).Row(8).ValueCell(net.fullTime[3].ToString());
+                                table.Cell().Column(4).Row(8).ValueCell(net.contractT[3].ToString());
+                                table.Cell().Column(5).ColumnSpan(2).Row(8).ValueCell($"$ {net.budget4T.ToString("N0", cultureInfo)}");
+
+                                table.Cell().Column(4).Row(9).Background(Colors.Yellow.Accent1).TotalCell("Total");
+
+                                table.Cell().Column(5).ColumnSpan(2).Row(9).Background(Colors.Yellow.Accent1).TotalCell($"$ {net.annualBudget.ToString("N0", cultureInfo)}");
+
+                            });
+                            col1.Spacing(10);
+                        }
+
+                        col1.Item().PageBreak();
+
+                        col1.Item().Column(col3 =>
+                        {
+                            col3.Item().Text("Reporte Técnicos - Virtual").Bold();
+
+                            col3.Item().Text(txt =>
+                            {
+                                txt.Span("Coordinadora Académica: ").SemiBold().FontSize(10);
+                                txt.Span("Yolanda Cardenas Villamarín").FontSize(10);
+                            });
+
+                        });
+
+                        col1.Item().LineHorizontal(0.5f);
+
+                        for (int i = 0; i < networks4.Count; i++)
+                        {
+                            var net = networks4[i];
                             if (net.totalGoal == 0)
                                 continue;
 

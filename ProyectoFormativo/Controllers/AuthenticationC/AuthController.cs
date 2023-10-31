@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Internal;
 using Microsoft.IdentityModel.Tokens;
@@ -12,10 +13,10 @@ using System.Security.Cryptography;
 namespace ProyectoFormativo.Controllers.Authentication
 {
     [Route("api/[controller]")]
+    [Authorize]
     [ApiController]
     public class AuthController : ControllerBase
     {
-
         public static User user = new User();
 
         public readonly IConfiguration _configuration;
@@ -30,11 +31,11 @@ namespace ProyectoFormativo.Controllers.Authentication
         // EndPoint to validate the login 
         // We need a userDTO 
         // Return a Json Web Token
-        [HttpPost("login")]
+        [HttpPost("login"), AllowAnonymous]
         public async Task<ActionResult<string>> Login(UserDto request)
         {
             var auth = new Auth(_context, _configuration);
-            var user = _context.Users.FirstOrDefault(u => u.Username == request.Username);
+            var user = await _context.Users.FindAsync(new object[] { request.Username });
 
             if (user == null)
             {
@@ -52,7 +53,9 @@ namespace ProyectoFormativo.Controllers.Authentication
         // EndPoint to register a new user
         // We need a userDTO
         // Return a statusCode with the message if it was successed. Otherwise it will return the exception 
-        [HttpPost("Register")]
+        
+        [HttpPost]
+        [Route("Register"), Authorize(Roles = "Admin")]
         public async Task<ActionResult<User>> Register(UserDto request)
         {
             var auth = new Auth(_context, _configuration);

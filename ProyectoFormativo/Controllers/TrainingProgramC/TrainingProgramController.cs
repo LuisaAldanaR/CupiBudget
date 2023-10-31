@@ -52,6 +52,40 @@ namespace ProyectoFormativo.Controllers.TrainingProgramC
             }
         }
 
+        // Returns the list of programs AuxiliarInPerson from the database
+        [HttpGet]
+        [Route("ListAuxiliarInPerson"), Authorize(Roles = "Admin, Regular")]
+        public IActionResult GetAuxiliarInPerson()
+        {
+            try
+            {
+                var list = _dbcontext.Programs.Where(p => p.Level == "AUXILIAR");
+
+                return StatusCode(StatusCodes.Status200OK, new { mensaje = "ok", response = list });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        // Returns the list of programs MachinistOperator In Person from the database
+        [HttpGet]
+        [Route("ListMachinistOperatorInPerson"), Authorize(Roles = "Admin, Regular")]
+        public IActionResult GetMachinistOperatorInPerson()
+        {
+            try
+            {
+                var list = _dbcontext.Programs.Where(p => p.Level == "OPERARIO");
+
+                return StatusCode(StatusCodes.Status200OK, new { mensaje = "ok", response = list });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
         // Returns the list of programs technical inPerson from the database
         [HttpGet]
         [Route("ListTechnicalInPerson"), Authorize(Roles = "Admin, Regular")]

@@ -9,6 +9,6 @@ namespace ProyectoFormativo.Modelos.PDFM
 {
     public interface IPDFGenerator
     {
-        byte[] GeneratePDF(List<NetworkReport> networks1, List<NetworkReport> networks2);
+        byte[] GeneratePDF(List<NetworkReportInPerson> networks1, List<NetworkReportInPerson> networks2, List<NetworkReportVirtual> networks3, List<NetworkReportVirtual> networks4 );
     }
 }

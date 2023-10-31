@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ProyectoFormativo.Modelos.BudgetM
 {
-    public class NetworkReport
+    public class NetworkReportInPerson
     {
         public int totalGoal { get; set; }
         public int oldStudents { get; set; }
@@ -29,7 +29,7 @@ namespace ProyectoFormativo.Modelos.BudgetM
         public double newCourses { get; set; }
         public int totalCourses { get; set; }
 
-        public NetworkReport(int totalGoal, int oldStudents, List<FullTimeInstructor> instructors, int idNetwork)
+        public NetworkReportInPerson(int totalGoal, int oldStudents, List<FullTimeInstructor> instructors, int idNetwork)
         {
             this.totalGoal = totalGoal;
             this.oldStudents = oldStudents;

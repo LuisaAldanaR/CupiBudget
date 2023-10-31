@@ -31,7 +31,7 @@ namespace TestProject.Models.BudgetMTests
 
             // Assert
             // Verifica que result sea una lista de NetworkReport
-            Assert.IsType<List<NetworkReport>>(result);
+            Assert.IsType<List<NetworkReportInPerson>>(result);
 
             // Verifica que la lista resultante tenga la misma cantidad de elementos que networkData
             Assert.Equal(networkData.Count, result.Count);

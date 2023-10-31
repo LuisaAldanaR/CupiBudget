@@ -51,8 +51,17 @@
                 FourthQuarterEnrollment += item.FourthQuarterEnrollment;
             }
 
-            var aux = new GoalDTO("", totalTarget, Passes2021To2022, FirstQuarterEnrollment, SecondQuarterEnrollment, ThirdQuarterEnrollment, FourthQuarterEnrollment);
-            totalGoal = new Goal(aux);
+            if (goals.Count() == 2)
+            {
+                var aux = new GoalDTO("", totalTarget, Passes2021To2022, FirstQuarterEnrollment, SecondQuarterEnrollment, ThirdQuarterEnrollment, FourthQuarterEnrollment);
+                totalGoal = new Goal(aux, goals[0], goals[1]);
+            }
+            else
+            {
+                var aux = new GoalDTO("", totalTarget, Passes2021To2022, FirstQuarterEnrollment, SecondQuarterEnrollment, ThirdQuarterEnrollment, FourthQuarterEnrollment);
+                totalGoal = new Goal(aux);
+            }
+            
         }
 
     }
