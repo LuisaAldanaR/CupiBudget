@@ -147,6 +147,7 @@ $blue: #0000ff;
     width: 100% !important; /* Full width en pantallas más pequeñas */
     min-width: 1100px;
     z-index: 1;
+    justify-content: center;
   }
 
   /* Main content */
@@ -172,12 +173,12 @@ $blue: #0000ff;
   .main-container {
     display: flex;
     flex-wrap: wrap;
-    padding: 5% 5%; /* En lugar de valores fijos, utiliza porcentajes */
     color: rgba(255, 255, 255, 0.95);
-    margin-left: 7%; /* En lugar de valores fijos, utiliza porcentajes */
-    padding-bottom: 10%; /* En lugar de valores fijos, utiliza porcentajes */
-    padding-right: 5%; /* En lugar de valores fijos, utiliza porcentajes */
-    min-width: 1100px;
+    max-width: 900px;
+    align-items: center;
+    justify-content: center;
+    margin-top: 4rem;
+    margin-left: 7rem;
   }
 
   .main-cards {
@@ -187,6 +188,9 @@ $blue: #0000ff;
     justify-content: center;
     gap: 3vh;
     margin: 2vh 0;
+    max-width: 1000px;
+    margin-left: 1rem;
+    margin-top: 3.5rem;
   }
 }
 
@@ -245,11 +249,9 @@ $blue: #0000ff;
   .main-container {
     display: flex;
     flex-wrap: wrap;
-    padding: 5% 5%; /* En lugar de valores fijos, utiliza porcentajes */
     color: rgba(255, 255, 255, 0.95);
     margin-left: 7%; /* En lugar de valores fijos, utiliza porcentajes */
     padding-bottom: 10%; /* En lugar de valores fijos, utiliza porcentajes */
-    padding-right: 5%; /* En lugar de valores fijos, utiliza porcentajes */
     min-width: 1100px;
   }
 
@@ -260,6 +262,8 @@ $blue: #0000ff;
     justify-content: center;
     gap: 3vh;
     margin: 2vh 0;
+    margin-top: 3.5rem;
+    margin-left: 6rem;
   }
   
 }
@@ -1061,7 +1065,8 @@ textarea, .select-net{
   font-family: "Raleway", sans-serif;
   color: #000;
   margin-top: 3rem;
-  margin-bottom: 1rem;
+  margin-bottom: 1.3rem;
+  max-height: 2rem;
 }
 
 .card1 {
