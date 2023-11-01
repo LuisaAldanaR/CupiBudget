@@ -867,6 +867,8 @@ textarea, .select-net{
       height: 10.9%;
     }
 
+   
+
     .form-group {
       display: flex;
       flex-wrap: wrap;
@@ -918,11 +920,15 @@ textarea, .select-net{
     max-width: 10%;
     height: 35vh;
     margin-bottom: 2rem;
-
+    margin-right: 10rem;
+    p.centroText{
+      
+     }
     .welcomeText {
       font-size: 3vh; /* Utilizar unidades relativas */
       animation: bounce-bottom 1.5s linear both;
       margin-left: 5vh;
+     
     }
     @keyframes bounce-bottom {
       0% {
@@ -965,7 +971,7 @@ textarea, .select-net{
     .underLine {
       border: 1.5px solid rgb(0, 0, 0);
       width: 125%; /* Utilizar unidades relativas */
-      margin-left: -10%; /* Ajusta según tu preferencia */
+      margin-left: -70%; /* Ajusta según tu preferencia */
       color: rgba(0, 0, 0, 0);
     }
   }
@@ -987,6 +993,7 @@ textarea, .select-net{
     margin-left: 5vh;
     margin-top: 3.5rem;
     margin-bottom: 3rem;
+    margin-right: 2rem;
 
     /* Styles for labels l1 and l2 */
     .l1 {
