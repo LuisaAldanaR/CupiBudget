@@ -8,7 +8,7 @@ import GoalsDashboard from '../src/components/Dashboard/pages/Goals';
 import Instructors from '../src/components/Dashboard/pages/Instructors';
 import Programs from '../src/components/Dashboard/pages/Programs';
 import BudgetGenerator from "./components/Budget/BudgetGenerator";
-import Login from "./components/pages/Login";
+import Login from "./components/Login/Login";
 import CrudApp from "./components/CRUD-Contract/CrudApp";
 import CrudForm from "./components/CRUD-FullTimeInstructor/CrudForm";
 import CrudAppFullTimeInstructor from "./components/CRUD-FullTimeInstructor/CrudAppFullTimeInstructor";
