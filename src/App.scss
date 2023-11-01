@@ -147,7 +147,6 @@ $blue: #0000ff;
     width: 100% !important; /* Full width en pantallas más pequeñas */
     min-width: 1100px;
     z-index: 1;
-    justify-content: center;
   }
 
   /* Main content */
@@ -178,7 +177,7 @@ $blue: #0000ff;
     align-items: center;
     justify-content: center;
     margin-top: 4rem;
-    margin-left: 7rem;
+    margin-left: 25%;
   }
 
   .main-cards {
@@ -188,7 +187,7 @@ $blue: #0000ff;
     justify-content: center;
     gap: 3vh;
     margin: 2vh 0;
-    max-width: 1000px;
+    min-width: 1250px;
     margin-left: 1rem;
     margin-top: 3.5rem;
   }
@@ -248,10 +247,12 @@ $blue: #0000ff;
 
   .main-container {
     display: flex;
+    position: sticky;
     flex-wrap: wrap;
     color: rgba(255, 255, 255, 0.95);
     margin-left: 7%; /* En lugar de valores fijos, utiliza porcentajes */
     padding-bottom: 10%; /* En lugar de valores fijos, utiliza porcentajes */
+    margin-top: 4rem;
     min-width: 1100px;
   }
 
