@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../../App.scss";
+import "../../../App.scss";
 
 // Define an object with initial values for the form
 const initialForm = {
@@ -8,7 +8,7 @@ const initialForm = {
   networkId: null,
 };
 
-const TableRowTechnological = ({ el }) => {
+const TechnologicalInPerson = ({ el }) => {
   // Destructure the properties of the 'el' object passed as an argument
   let { networkName } = el;
   const [form, setForm] = useState(initialForm);
@@ -37,24 +37,24 @@ const TableRowTechnological = ({ el }) => {
       <td className="tdTableRow">
   <input
     type="number"
-    name={`totalGoalTechnological${el.idNetwork}`} 
-    id={`totalGoalTechnological${el.idNetwork}`}
+    name={`totalGoalTechnologicalInPerson${el.idNetwork}`} 
+    id={`totalGoalTechnologicalInPerson${el.idNetwork}`}
     placeholder="Meta del trimestre"
     className="form-control"
     onChange={handleChange}
-    value={form[`totalGoalTechnological${el.idNetwork}`]} 
+    value={form[`totalGoalTechnologicalInPerson${el.idNetwork}`]} 
   />
 </td>
 
 <td className="tdTableRow">
   <input
     type="number"
-    name={`oldStudentsTechnological${el.idNetwork}`} 
-    id={`oldStudentsTechnological${el.idNetwork}`}
+    name={`oldStudentsTechnologicalInPerson${el.idNetwork}`} 
+    id={`oldStudentsTechnologicalInPerson${el.idNetwork}`}
     placeholder="cupos Antiguos"
     className="form-control"
     onChange={handleChange}
-    value={form[`oldStudentsTechnological${el.idNetwork}`]} // Cambia el valor para la tabla 1
+    value={form[`oldStudentsTechnologicalInPerson${el.idNetwork}`]} // Cambia el valor para la tabla 1
   />
 </td>
 
@@ -63,4 +63,4 @@ const TableRowTechnological = ({ el }) => {
 };
 
 // Export the CrudTableRow component for use in other parts of the application
-export default TableRowTechnological;
+export default TechnologicalInPerson;

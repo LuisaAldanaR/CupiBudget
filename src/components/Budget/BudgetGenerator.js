@@ -21,6 +21,8 @@ const BudgetGenerator = () => {
     try {
       const data1 = [];
       const data2 = [];
+      const data3 = [];
+      const data4 = [];
 
       // Obtén el mes actual como una cadena (por ejemplo, "enero", "febrero", etc.)
       const monthNames = [
@@ -30,51 +32,78 @@ const BudgetGenerator = () => {
       const currentMonth = monthNames[new Date().getMonth()];
 
       db.forEach((el) => {
-        const totalGoalInputTechnological = document.getElementById(`totalGoalTechnological${el.idNetwork}`);
-        const oldStudentsInputTechnological = document.getElementById(`oldStudentsTechnological${el.idNetwork}`);
 
-        // Obtén el valor del campo de entrada o establece 0 si está vacío
-        const totalGoalValueTechnological = totalGoalInputTechnological.value.trim() !== '' ? parseFloat(totalGoalInputTechnological.value) : 0;
-        const oldStudentsValueTechnological = oldStudentsInputTechnological.value.trim() !== '' ? parseFloat(oldStudentsInputTechnological.value) : 0;
+        //TECHNOLOGICAL
 
-        const totalGoalInputTechnical = document.getElementById(`totalGoalTechnical${el.idNetwork}`);
-        const oldStudentsInputTechnical = document.getElementById(`oldStudentsTechnical${el.idNetwork}`);
+          //INPERSON
 
-        // Obtén el valor del campo de entrada o establece 0 si está vacío
-        const totalGoalValueTechnical = totalGoalInputTechnical.value.trim() !== '' ? parseFloat(totalGoalInputTechnical.value) : 0;
-        const oldStudentsValueTechnical = oldStudentsInputTechnical.value.trim() !== '' ? parseFloat(oldStudentsInputTechnical.value) : 0;
+        const totalGoalInputTechnologicalInPerson = document.getElementById(`totalGoalTechnologicalInPerson${el.idNetwork}`);
+        const oldStudentsInputTechnologicalInPerson = document.getElementById(`oldStudentsTechnologicalInPerson${el.idNetwork}`);
 
-        const rowData1 = {
-          totalGoal: totalGoalValueTechnological,
-          oldStudents: oldStudentsValueTechnological,
+        const totalGoalValueTechnologicalInPerson = totalGoalInputTechnologicalInPerson.value.trim() !== '' ? parseFloat(totalGoalInputTechnologicalInPerson.value) : 0;
+        const oldStudentsValueTechnologicalInPerson = oldStudentsInputTechnologicalInPerson.value.trim() !== '' ? parseFloat(oldStudentsInputTechnologicalInPerson.value) : 0;
+          
+          //VIRTUAL
+
+        const totalGoalInputTechnologicalVirtual = document.getElementById(`totalGoalTechnologicalVirtual${el.idNetwork}`);
+        const oldStudentsInputTechnologicalVirtual = document.getElementById(`oldStudentsTechnologicalVirtual${el.idNetwork}`);
+
+        const totalGoalValueTechnologicalVirtual = totalGoalInputTechnologicalVirtual.value.trim() !== '' ? parseFloat(totalGoalInputTechnologicalVirtual.value) : 0;
+        const oldStudentsValueTechnologicalVirtual = oldStudentsInputTechnologicalVirtual.value.trim() !== '' ? parseFloat(oldStudentsInputTechnologicalVirtual.value) : 0;
+        
+        
+        //TECHNICAL
+
+          //INPERSON
+        const totalGoalInputTechnicalInPerson = document.getElementById(`totalGoalTechnicalInPerson${el.idNetwork}`);
+        const oldStudentsInputTechnicalInPerson = document.getElementById(`oldStudentsTechnicalInPerson${el.idNetwork}`);
+
+        const totalGoalValueTechnicalInPerson = totalGoalInputTechnicalInPerson.value.trim() !== '' ? parseFloat(totalGoalInputTechnicalInPerson.value) : 0;
+        const oldStudentsValueTechnicalInPerson = oldStudentsInputTechnicalInPerson.value.trim() !== '' ? parseFloat(oldStudentsInputTechnicalInPerson.value) : 0;
+
+          //VIRTUAL
+
+        const totalGoalInputTechnicalVirtual = document.getElementById(`totalGoalTechnicalVirtual${el.idNetwork}`);
+        const oldStudentsInputTechnicalVirtual = document.getElementById(`oldStudentsTechnicalVirtual${el.idNetwork}`);
+  
+        const totalGoalValueTechnicalVirtual = totalGoalInputTechnicalVirtual.value.trim() !== '' ? parseFloat(totalGoalInputTechnicalVirtual.value) : 0;
+        const oldStudentsValueTechnicalVirtual = oldStudentsInputTechnicalVirtual.value.trim() !== '' ? parseFloat(oldStudentsInputTechnicalVirtual.value) : 0;
+        
+          const rowData1 = {
+          totalGoal: totalGoalValueTechnologicalInPerson,
+          oldStudents: oldStudentsValueTechnologicalInPerson,
           idNetwork: Number(el.idNetwork),
         };
 
         const rowData2 = {
-          totalGoal: totalGoalValueTechnical, // Cambia esta línea si deseas diferentes valores para data2
-          oldStudents: oldStudentsValueTechnical, // Cambia esta línea si deseas diferentes valores para data2
+          totalGoal: totalGoalValueTechnicalInPerson, 
+          oldStudents: oldStudentsValueTechnicalInPerson, 
           idNetwork: Number(el.idNetwork),
         };
 
         const rowData3 = {
-          totalGoal: totalGoalValueTechnological,
-          oldStudents: oldStudentsValueTechnological,
+          totalGoal: totalGoalValueTechnologicalVirtual,
+          oldStudents: oldStudentsValueTechnologicalVirtual,
           idNetwork: Number(el.idNetwork),
         };
 
         const rowData4 = {
-          totalGoal: totalGoalValueTechnical, // Cambia esta línea si deseas diferentes valores para data2
-          oldStudents: oldStudentsValueTechnical, // Cambia esta línea si deseas diferentes valores para data2
+          totalGoal: totalGoalValueTechnicalVirtual, 
+          oldStudents: oldStudentsValueTechnicalVirtual, 
           idNetwork: Number(el.idNetwork),
         };
 
         data1.push(rowData1);
         data2.push(rowData2);
+        data3.push(rowData3);
+        data4.push(rowData4);
       });
 
       const requestData = {
         data1,
         data2,
+        data3,
+        data4,
       };
 
       console.log(requestData);

@@ -87,7 +87,7 @@ const CrudTable = ({
           <table className="table">
             <thead className="text-center">
               <tr>
-                <th className="thTable">
+                <th className="thLeft">
                   Nombre
                   <button
                     style={{ marginLeft: "1rem" }}

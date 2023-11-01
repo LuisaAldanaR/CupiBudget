@@ -6,7 +6,7 @@ const initialForm = {
   networkId: null,
 };
 
-const TableRowTechnical = ({ el }) => {
+const TechnicalInPerson = ({ el }) => {
   let { networkName } = el;
   const [form, setForm] = useState(initialForm);
 
@@ -30,24 +30,24 @@ const TableRowTechnical = ({ el }) => {
       <td className="tdTableRow">
   <input
     type="number"
-    name={`totalGoalTechnical${el.idNetwork}`} 
-    id={`totalGoalTechnical${el.idNetwork}`}
+    name={`totalGoalTechnicalInPerson${el.idNetwork}`} 
+    id={`totalGoalTechnicalInPerson${el.idNetwork}`}
     placeholder="Meta del trimestre"
     className="form-control"
     onChange={handleChange}
-    value={form[`totalGoalTechnical${el.idNetwork}`]} 
+    value={form[`totalGoalTechnicalInPerson${el.idNetwork}`]} 
   />
 </td>
 
 <td className="tdTableRow">
   <input
     type="number"
-    name={`oldStudentsTechnical${el.idNetwork}`} 
-    id={`oldStudentsTechnical${el.idNetwork}`}
+    name={`oldStudentsTechnicalInPerson${el.idNetwork}`} 
+    id={`oldStudentsTechnicalInPerson${el.idNetwork}`}
     placeholder="cupos Antiguos"
     className="form-control"
     onChange={handleChange}
-    value={form[`oldStudentsTechnical${el.idNetwork}`]} 
+    value={form[`oldStudentsTechnicalInPerson${el.idNetwork}`]} 
   />
 </td>
 
@@ -55,4 +55,4 @@ const TableRowTechnical = ({ el }) => {
   );
 };
 
-export default TableRowTechnical;
+export default TechnicalInPerson;
