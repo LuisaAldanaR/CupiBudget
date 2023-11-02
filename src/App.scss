@@ -1113,9 +1113,11 @@ textarea, .select-net{
   background-color: #caf3b6;
   top: 100%;
   left: 0;
-  max-width: 70vh;
+  max-width: 42rem;
   height: 17vh;
   margin-top: 2.7vh;
+  justify-content: space-around;
+  padding: 1vh 2vh;
 }
 
 .card-go {
@@ -1128,9 +1130,11 @@ textarea, .select-net{
   background-color: #a7c7b4;
   top: 100%;
   left: 0;
-  max-width: 70vh;
+  max-width: 42rem;
   height: 17vh;
   margin-top: 5.2vh;
+  justify-content: space-around;
+  padding: 1vh 2vh;
 }
 
 /* Agrega estos estilos a tu archivo CSS */
@@ -1139,6 +1143,7 @@ textarea, .select-net{
   margin-right: 20vh;
   width: 50vh;
   font-size: 1.8vh;
+  max-height: 10rem;
 }
 .card-inner {
   flex-grow: 1;
@@ -1161,7 +1166,19 @@ textarea, .select-net{
     width: 100%; /* Ocupa todo el ancho disponible en pantallas pequeñas */
     margin-right: 0;
   }
+
+  .card-go{
+      
+    width: 100% !important;
+    margin-right: 6rem;
+  }
+   .card-special{
+    width: 100% !important;
+    margin-right: 6rem;
+     
+  }
 }
+
 
 /* End Main  */
 

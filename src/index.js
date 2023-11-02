@@ -12,7 +12,7 @@ root.render(
 );
 
 // Cambiar el título de la ventana del navegador
-document.title = 'Gestion de Instructores Contratistas';
+document.title = 'Gestion y programacion SENA';
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
