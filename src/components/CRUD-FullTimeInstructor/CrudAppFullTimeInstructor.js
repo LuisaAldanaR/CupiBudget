@@ -115,6 +115,7 @@ const CrudAppFullTimeInstructor = () => {
             el.idInstructor === data.idInstructor ? data : el
           );
           setDb(newData);
+          loadTableData();
           showTable();
         });
       } else {
