@@ -27,6 +27,7 @@ function onfocus(foco) {
 const CrudApp = () => {
   // States for storing instructor data, edit data, errors, etc.
   const [db, setDb] = useState([]);
+  const [networkOptions, setNetworkOptions] = useState([]);
   const [dataToEdit, setDataToEdit] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -42,7 +43,25 @@ const CrudApp = () => {
 
   useEffect(() => {
     loadTableData(); // Load initial data when the component mounts
+    loadNetworkOptions();
   }, []);
+
+
+   // Función para cargar las opciones de red desde la API
+   const loadNetworkOptions = () => {
+    const urlNetwork = "https://www.cupibudget.somee.com/api/Network/List";
+    const options = {
+      headers: {'Authorization': `Bearer ${token}`},
+    };
+
+    api.get(urlNetwork, options).then((res) => {
+      if (!res.err) {
+        setNetworkOptions(res.response);
+      } else {
+        console.error("Error al obtener las opciones de red:", res.err);
+      }
+    });
+  };
 
   // Function to load table data
   const loadTableData = () => {
@@ -215,7 +234,8 @@ const CrudApp = () => {
           updateData={updateData}
           dataToEdit={dataToEdit}
           setDataToEdit={setDataToEdit}
-          showTable={showTable} // Pass the showTable function to the CrudForm component
+          showTable={showTable}
+          networkOptions={networkOptions}
         />
       )}
 

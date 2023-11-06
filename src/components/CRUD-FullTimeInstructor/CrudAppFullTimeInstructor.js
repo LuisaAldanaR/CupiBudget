@@ -29,6 +29,7 @@ function onfocus(foco)
 
 const CrudAppFullTimeInstructor = () => {
   const [db, setDb] = useState([]);
+  const [networkOptions, setNetworkOptions] = useState([]);
   const [dataToEdit, setDataToEdit] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -42,7 +43,24 @@ const CrudAppFullTimeInstructor = () => {
 
   useEffect(() => {
     loadTableData();
+    loadNetworkOptions();
   }, []);
+
+  // Función para cargar las opciones de red desde la API
+  const loadNetworkOptions = () => {
+    const urlNetwork = "https://www.cupibudget.somee.com/api/Network/List";
+    const options = {
+      headers: {'Authorization': `Bearer ${token}`},
+    };
+
+    api.get(urlNetwork, options).then((res) => {
+      if (!res.err) {
+        setNetworkOptions(res.response);
+      } else {
+        console.error("Error al obtener las opciones de red:", res.err);
+      }
+    });
+  };
 
   const loadTableData = () => {
     let urlGet = "https://www.cupibudget.somee.com/api/FullTimeInstructor/List";
@@ -204,6 +222,7 @@ const CrudAppFullTimeInstructor = () => {
           dataToEdit={dataToEdit}
           setDataToEdit={setDataToEdit}
           showTable={showTable}
+          networkOptions={networkOptions}
         />
       )}
   

@@ -16,11 +16,9 @@ const initialForm = {
   networkName:null,
 };
 
-const CrudForm = ({ createData, updateData, dataToEdit, setDataToEdit, showTable }) => {
+const CrudForm = ({ createData, updateData, dataToEdit, setDataToEdit, showTable, networkOptions }) => {
   // Define states for the form and network options
   const [form, setForm] = useState(initialForm);
-  const [networkOptions, setNetworkOptions] = useState([]);
-  const [instructorNames, setInstructorNames] = useState([]); // Estado para almacenar los nombres de los instructores
   const api = helpHttp(); // Instance of the HTTP request utility
 
   const token = localStorage.getItem('jwtToken'); // Recupera el token JWT del almacenamiento local
@@ -42,24 +40,6 @@ const CrudForm = ({ createData, updateData, dataToEdit, setDataToEdit, showTable
       setForm(initialForm); // If there's no edit data, reset the form
     }
   }, [dataToEdit]);
-
-  // Effect that loads network options from an API when the component mounts
-  useEffect(() => {
-    let options = {
-      headers: {'Authorization': `Bearer ${token}`, },   
-    };
-
-    const urlNetwork = "https://www.cupibudget.somee.com/api/Network/List";
-    
-    api.get(urlNetwork, options).then((res) => {
-      if (!res.err) {
-        setNetworkOptions(res.response); // Store network options in the state
-      } else {
-        console.error("Error fetching network options:", res.err);
-      }
-    });
-  }, [api]);
-  
 
   // Function to handle changes in form fields
   const handleChange = (e) => {
