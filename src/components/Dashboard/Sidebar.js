@@ -31,11 +31,12 @@ function Sidebar() {
     >
       <SideNav.Toggle />
       <SideNav.Nav defaultSelected="home">
-        <NavItem eventKey="home" onClick={() => handleClick("/home")}>
+        <NavItem  eventKey="home" onClick={() => handleClick("/home")} title="Inicio" >
           <NavIcon>
             <Link to="/Home" style={linkStyles}>
               <FaIcons.FaHome style={{ fontSize: "1.5em", color: "#FEFEC2" }} />
             </Link>
+            
           </NavIcon>
           <NavText style={{ fontSize: "1.5em" }}>
             <Link
@@ -107,10 +108,12 @@ function Sidebar() {
             </NavText>
           </NavItem>
         </NavItem>
-        
+
         <NavItem
           eventKey="programacion"
           onClick={() => handleClick("/budgetGenerator")}
+          title="Programacion"
+         
         >
           <NavIcon>
             <Link to="/budgetGenerator" style={linkStyles}>
@@ -119,15 +122,18 @@ function Sidebar() {
               />
             </Link>
           </NavIcon>
-          <NavText style={{ fontSize: "1.5em", userSelect: "none" }}>
+          <NavText
+            style={{ fontSize: "1.5em", userSelect: "none" }}
+          >
             Programación
           </NavText>
         </NavItem>
-        <NavItem eventKey="goals" onClick={() => handleClick("/goals")}>
+        <NavItem  eventKey="goals" onClick={() => handleClick("/goals")} title="Metas">
           <NavIcon>
             <Link to="/Goals" style={linkStyles}>
               <ImIcons.ImTarget
                 style={{ fontSize: "1.5em", color: "#FEFEC2" }}
+                
               />
             </Link>
           </NavIcon>
@@ -136,61 +142,57 @@ function Sidebar() {
           </NavText>
         </NavItem>
         <NavItem eventKey="instructores">
-  <NavIcon>
-    <FaIcons.FaUserTie style={{ fontSize: "1.5em", color: '#FEFEC2' }} />
-  </NavIcon>
-  <NavText style={{ fontSize: "1.5em", userSelect: "none" }}>
-    Instructores
-  </NavText>
-  <NavItem eventKey="FullTimeInstructor">
-    <NavText
-      style={{
-        fontSize: "1.2em",
-        outline: "none",
-       
-      }}
-      eventKey="planta"
-      onClick={() => handleClick("/CrudAppFullTimeInstructor")}
-    >
-      <Link
-        to="/CrudAppFullTimeInstructor"
-        style={{
-          textDecoration: "none",
-          color: "black",
-          userSelect: "none",          
-        }}
-      >
-        Planta
-      </Link>
-    </NavText>
-  </NavItem>
-  <NavItem eventKey="contractInstructor">
-    <NavText
-      style={{
-        fontSize: "1.2em",
-        outline: "none",
-    
-        
-      }}
-      eventKey="contractInstructor"
-      onClick={() => handleClick("/CrudApp")}
-    >
-      <Link
-        to="/CrudApp"
-        style={{
-          textDecoration: "none",
-          color: "black",
-          userSelect: "none",
-          
-        }}
-      >
-        Contrato
-      </Link>
-    </NavText>
-  </NavItem>
-
-</NavItem>
-
+          <NavIcon>
+            <FaIcons.FaUserTie
+              style={{ fontSize: "1.5em", color: "#FEFEC2" }}
+            />
+          </NavIcon>
+          <NavText style={{ fontSize: "1.5em", userSelect: "none" }}>
+            Instructores
+          </NavText>
+          <NavItem eventKey="FullTimeInstructor">
+            <NavText
+              style={{
+                fontSize: "1.2em",
+                outline: "none",
+              }}
+              eventKey="planta"
+              onClick={() => handleClick("/CrudAppFullTimeInstructor")}
+            >
+              <Link
+                to="/CrudAppFullTimeInstructor"
+                style={{
+                  textDecoration: "none",
+                  color: "black",
+                  userSelect: "none",
+                }}
+              >
+                Planta
+              </Link>
+            </NavText>
+          </NavItem>
+          <NavItem eventKey="contractInstructor">
+            <NavText
+              style={{
+                fontSize: "1.2em",
+                outline: "none",
+              }}
+              eventKey="contractInstructor"
+              onClick={() => handleClick("/CrudApp")}
+            >
+              <Link
+                to="/CrudApp"
+                style={{
+                  textDecoration: "none",
+                  color: "black",
+                  userSelect: "none",
+                }}
+              >
+                Contrato
+              </Link>
+            </NavText>
+          </NavItem>
+        </NavItem>
       </SideNav.Nav>
     </SideNav>
   );
