@@ -22,8 +22,10 @@ const redirectToReporte = () => {
 const Home = () => {
   const urlGet = "https://www.cupibudget.somee.com/api/ContractInstructor/List";
   const urlGetContract = "https://www.cupibudget.somee.com/api/FullTimeInstructor/List";
+  const urlGetPrograms = "https://www.cupibudget.somee.com/api/TrainingProgram/List";
   const [totalRecords, setTotalRecords] = useState(0);
   const [totalRecordsContract, setTotalRecordsContract] = useState(0);
+  const [totalRecordsPrograms, setTotalRecordsPrograms] = useState(0);
   const token = localStorage.getItem('jwtToken');
   let api = helpHttp();
   const [loading, setLoading] = useState(true);
@@ -34,7 +36,7 @@ const Home = () => {
 
   useEffect(() => {
     setLoading(true);
-
+  
     api.get(urlGet, options)
       .then((res) => {
         if (!res.err) {
@@ -45,11 +47,8 @@ const Home = () => {
       })
       .catch((error) => {
         console.error("API request error:", error);
-      })
-      .finally(() => {
-        setLoading(false);
       });
-
+  
     api.get(urlGetContract, options)
       .then((res) => {
         if (!res.err) {
@@ -61,7 +60,23 @@ const Home = () => {
       .catch((error) => {
         console.error("API request error:", error);
       });
-  }, [urlGet, urlGetContract]);
+  
+    api.get(urlGetPrograms, options)
+      .then((res) => {
+        if (!res.err) {
+          setTotalRecordsPrograms(res.response.length);
+        } else {
+          console.error("Error in API response");
+        }
+      })
+      .catch((error) => {
+        console.error("API request error:", error);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  }, [urlGet, urlGetContract, urlGetPrograms]);
+
 
   return (
     <>
@@ -95,7 +110,7 @@ const Home = () => {
                     <h3>Programas</h3>
                     <div style={{ fontSize:"30px", marginLeft:"8vh"}}><FaIcons.FaFileContract/></div>
                 </div>
-                <h1>33</h1>
+                <h1 style={{ color: 'black' }}>{totalRecordsPrograms}</h1>
             </div>
             <div className='card' onClick={redirectToInstructoresPlanta} style={{cursor:"pointer"}} >
                 <div className='card-inner'>
@@ -133,3 +148,5 @@ const Home = () => {
 
     
   export default Home;
+
+
