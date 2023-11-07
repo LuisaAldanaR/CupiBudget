@@ -4,6 +4,9 @@ import { helpHttp } from "../../../helpers/helpHttp";
 import Loader from "./Loader";
 
 
+
+
+
 const redirectToInstructoresPlanta = () => {
   window.location.href = 'CrudAppFullTimeInstructor';
 };
@@ -35,7 +38,7 @@ const Home = () => {
     api.get(urlGet, options)
       .then((res) => {
         if (!res.err) {
-          setTotalRecords(res.response.length);
+          setTotalRecordsContract(res.response.length);
         } else {
           console.error("Error in API response");
         }
@@ -50,7 +53,7 @@ const Home = () => {
     api.get(urlGetContract, options)
       .then((res) => {
         if (!res.err) {
-          setTotalRecordsContract(res.response.length);
+          setTotalRecords(res.response.length);
         } else {
           console.error("Error in API response");
         }
@@ -61,76 +64,72 @@ const Home = () => {
   }, [urlGet, urlGetContract]);
 
   return (
-    <main className='main-container'>
-        <meta
-          name="viewport"
-          content="width=device-width, initial-scale=1"
-        />
-    
-      <div className='main-title' style={{ marginBottom: '50px', marginTop:"-60px" }}>
-        <h3 className='main-title' style={{fontSize: "3vh"}}>TABLERO GENERAL</h3>
-      </div>
-
-      {loading ? (
-        <Loader /> // Display Loader when loading is true
-      ) : (
-        <div className='main-cards'>
-          <div className='card1'>
-            <div className='card-inner'>
-              <p style={{ color: 'black', fontWeight: "bold", fontSize: "2vh"  }}>INSTRUCTORES DE PLANTA</p>
-              <FaIcons.FaClipboardUser className='card_icon' style={{ color: 'black', marginLeft: "25vh", marginTop: '8px'}}  />
-            </div>
-            <h1 style={{ color: 'black' }}>{totalRecordsContract}</h1>
-          </div>
-          <div className='card1'>
-            <div className='card-inner'>
-              <p style={{ color: 'black', fontWeight: "bold", fontSize: "2vh"  }}>INSTRUCTORES DE CONTRATO</p>
-              <FaIcons.FaClipboardUser className='card_icon' style={{ color: 'black', marginLeft: "25vh", marginTop: '8px'}}  />
-            </div>
-            <h1 style={{ color: 'black' }}>{totalRecords}</h1>
-          </div>
-          <div className='card1' onClick={redirectToReporte} style={{cursor:"pointer"}}>
-            <div className='card-inner' > 
-              <p style={{ color: 'black', fontSize: "2vh", fontWeight: "bold"  }}>PROGRAMACIÓN</p>
-              <FaIcons.FaFileContract className='card_icon' style={{ color: 'black', marginLeft: "25vh", marginTop: '5vh'}}  />
-            </div>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <p className='card-description' style={{marginTop:"0.5vh"}}> Puedes generar un reporte PDF</p>
-          </div>
-          <div className='card1'>
-            <div className='card-inner'>
-              <p style={{ color: 'black', fontWeight: "bold", fontSize: "2vh" }}>PROGRAMAS</p>
-              <FaIcons.FaFileContract className='card_icon' style={{ color: 'black', marginLeft: "25vh", marginTop: '1vh'}} />
-            </div>
-            <h1 style={{ color: 'black' }}>120</h1>
-          </div>
-          <div className='shortcuts' >
-            <div className='card-special'  onClick={redirectToInstructoresPlanta} style={{cursor:"pointer"}}>
-              <div className='card-inner' >
-                <a  style={{ color: 'black',  marginTop: '2vh', fontWeight: 'bold', fontSize:"2vh" }}>IR A INSTRUCTORES DE PLANTA</a>
-               
-              </div>
-              <p className='card-description' style={{fontSize:"1.4vh", marginTop:"20px"}} >Visualiza, elimina o edita información de instructor.  <FaIcons.FaArrowRightToBracket className='card_icon' style={{ color: 'black', marginLeft: "17vh", marginTop: '4vh', fontSize:"2vh" }} /></p>
-            </div>
-          
-            <div className='card-go'  onClick={redirectToInstructoresContratistas} style={{cursor:"pointer"}}>
-              <div className='card-inner' >
-                <a  style={{ color: 'black',  marginTop: '2vh', fontWeight: 'bold', fontSize:"2vh" }}>IR A INSTRUCTORES CONTRATISTAS</a>
-               
-              </div>
-              <p className='card-description' style={{fontSize:"1.4vh", marginTop:"20px"}} >Visualiza, elimina o edita información de instructor. <FaIcons.FaArrowRightToBracket className='card_icon' style={{ color: 'black', marginLeft: "17vh", marginTop: '4vh', fontSize:"2vh" }} /></p>
-            </div>
-          </div>
+    <>
+      <main className='main-container'>
+        <div className='main-title'>
+          <h3>TABLERO GENERAL</h3>
         </div>
-      )}
-      <div className='shortcuts'></div>
-    </main>
-    
+        {loading ? (
+          <Loader /> // Display Loader when loading is true
+        ) : (
+          <div className='main-cards'>
+            <div className='main-cards'>
+            <div className='card'>
+                <div className='card-inner'>
+                    <h3>Instructores de planta</h3>
+                    <div style={{ fontSize:"30px", marginLeft:"8vh"}}><FaIcons.FaClipboardUser/></div>
+                </div>
+                <h1 style={{ color: 'black' }}>{totalRecords}</h1>
+            </div>
+            
+            <div className='card'>
+                <div className='card-inner'>
+                    <h3>Instructores de contrato</h3>
+                    <div style={{ fontSize:"30px", marginLeft:"8vh"}}><FaIcons.FaClipboardUser/></div>
+                </div>
+                <h1 style={{ color: 'black' }}>{totalRecordsContract}</h1>
+            </div>
+            
+            <div className='card'>
+                <div className='card-inner'>
+                    <h3>Programas</h3>
+                    <div style={{ fontSize:"30px", marginLeft:"8vh"}}><FaIcons.FaFileContract/></div>
+                </div>
+                <h1>33</h1>
+            </div>
+            <div className='card' onClick={redirectToInstructoresPlanta} style={{cursor:"pointer"}} >
+                <div className='card-inner'>
+                <h3 style={{ marginLeft:"4vh"}}>Ir a instructores de planta</h3>
+                    <div style={{ fontSize:"30px", marginLeft:"8vh"}}><FaIcons.FaArrowRightToBracket/></div>
+                </div>
+                <p style={{marginTop:"10px", marginRight:"10px"}}>Visualiza, edita o elimina información de instructor.</p>
+            </div>
+            <div className='card' onClick={redirectToInstructoresContratistas} style={{cursor:"pointer"}}>
+                <div className='card-inner'>
+                <h3 style={{ marginLeft:"2vh"}}>Ir a instructores de contrato</h3>
+                    <div style={{ fontSize:"30px", marginLeft:"8vh"}}><FaIcons.FaArrowRightToBracket/></div>
+                </div>
+                <p style={{marginTop:"10px", marginRight:"10px"}}>Visualiza, edita o elimina información de instructor.</p>
+            </div>
+            <div className='card' onClick={redirectToReporte} style={{cursor:"pointer"}}>
+                <div className='card-inner'>
+                    <h3 style={{ marginLeft:"5vh"}}>Programación</h3>
+                    <div style={{ fontSize:"30px", marginLeft:"3vh"}}><FaIcons.FaArrowRightToBracket/></div>
+                </div>
+                <p style={{marginTop:"10px"}}>Puedes generar un reporte PDF</p>                
+            </div>   
+        </div>
+          </div>
+        )}
+      </main>
+    </>
   );
+ 
+  
+  
+  
 
 };
+
     
   export default Home;
