@@ -79,6 +79,9 @@ const CrudTable = ({ data, setDataToEdit, deleteData, showFormView }) => {
     return sortedData;
   };
 
+
+
+
   return (
     <div className="">
       <br></br>
@@ -107,7 +110,7 @@ const CrudTable = ({ data, setDataToEdit, deleteData, showFormView }) => {
                 <th className="thTable">Fecha Inicio Contrato</th>
                 <th className="thTable">Fecha Fin Contrato</th>
                 <th className="thTable">Fecha Fin Curso</th>
-                <th className="thTable">Nombre de la Red</th>
+                <th className="thTable">Nombre de la Red</th>        
                 <th className="thRight">Acciones</th>
               </tr>
             </thead>

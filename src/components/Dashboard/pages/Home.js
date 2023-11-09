@@ -77,7 +77,19 @@ const Home = () => {
       });
   }, [urlGet, urlGetContract, urlGetPrograms]);
 
+  let role = "";
 
+  function isTokenExpired(token) {
+    const arrayToken = token.split(".");
+    const tokenPayload = JSON.parse(atob(arrayToken[1]));
+    role =
+      tokenPayload[
+        "http://schemas.microsoft.com/ws/2008/06/identity/claims/role"
+      ];
+    return Math.floor(new Date().getTime / 1000) >= tokenPayload?.sub;
+  }
+
+  isTokenExpired(token);
   return (
     <>
       <main className='main-container'>
@@ -126,13 +138,17 @@ const Home = () => {
                 </div>
                 <p style={{marginTop:"10px", marginRight:"10px"}}>Visualiza, edita o elimina información de instructor.</p>
             </div>
+            {role==='Admin' && (
+            <>
             <div className='card' onClick={redirectToReporte} style={{cursor:"pointer"}}>
                 <div className='card-inner'>
                     <h3 style={{ marginLeft:"5vh"}}>Programación</h3>
                     <div style={{ fontSize:"30px", marginLeft:"3vh"}}><FaIcons.FaArrowRightToBracket/></div>
                 </div>
                 <p style={{marginTop:"10px"}}>Puedes generar un reporte PDF</p>                
-            </div>   
+            </div> 
+            </>  
+            )}
         </div>
           </div>
         )}

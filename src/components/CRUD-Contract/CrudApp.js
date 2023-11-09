@@ -214,6 +214,18 @@ const CrudApp = () => {
     setShowRecords(true);
   };
 
+  let role = "";
+
+  function isTokenExpired(token)
+      {
+          const arrayToken = token.split('.');
+          const tokenPayload = JSON.parse(atob(arrayToken[1]));
+          role = (tokenPayload["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"]);
+          return Math.floor(new Date().getTime / 1000) >= tokenPayload?.sub;
+      }
+  
+    isTokenExpired(token);
+
   return (
 
     <div className="content">
@@ -221,9 +233,13 @@ const CrudApp = () => {
         <>
           <h3 className="h3Table">Instructores Contratistas</h3>
           <div className="containerButtons">
+          {role === 'Admin' && (
+            <>
             <button className="btn addButton" onClick={showFormView}>
               Registar Nuevo Instructor
             </button>
+          </>
+          )}
           </div>
         </>
       )}

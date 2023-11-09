@@ -30,7 +30,6 @@ const CrudTable = ({
       .toLowerCase();
   };
 
-
   const searcher = (e) => {
     setSearch(e.target.value);
   };
@@ -78,6 +77,7 @@ const CrudTable = ({
     }
     return sortedData;
   };
+
 
   return (
     <div className="">
@@ -166,10 +166,12 @@ const CrudTable = ({
                 />
               ))}
               {sortDataByName().length === 0 ? (
-                  <tr>
-                    <td colSpan="7" style={{color:"red"}} >No se encuentran resultados</td>
-                  </tr>
-                ) : null}
+                <tr>
+                  <td colSpan="7" style={{ color: "red" }}>
+                    No se encuentran resultados
+                  </td>
+                </tr>
+              ) : null}
             </tbody>
           </table>
         </div>

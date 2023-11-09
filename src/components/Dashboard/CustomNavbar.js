@@ -5,6 +5,20 @@ import Nav from "react-bootstrap/Nav";
 import "../../App.scss";
 import * as FaIcons from "react-icons/fa";
 
+let role = "";
+const token = localStorage.getItem('jwtToken');
+
+function isTokenExpired(token)
+{
+    const arrayToken = token.split('.');
+    const tokenPayload = JSON.parse(atob(arrayToken[1]));
+    role = (tokenPayload["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name"]);
+    console.log(role);
+    return Math.floor(new Date().getTime / 1000) >= tokenPayload?.sub;
+} 
+
+isTokenExpired(token)
+
 function CustomNavbar() {
   return (
     <Navbar id="navbar">
@@ -26,7 +40,7 @@ function CustomNavbar() {
               <span>
                 <FaIcons.FaUserAlt style={{ width: "40px", color: "white", fontSize: "20px", marginBottom: "5px" }} />{" "}
                 <span className="oscar-text" style={{ marginRight: "10px"}}>
-                    Oscar Peña
+                    {role}
                   </span>
               </span>
             }
