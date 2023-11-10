@@ -48,6 +48,21 @@ function App() {
     // Si no hay token o ha expirado, el usuario no está autenticado
     return false;
   };
+
+  let role = "";
+  const token = localStorage.getItem("jwtToken");
+
+  function isTokenExpired(token) {
+    const arrayToken = token.split(".");
+    const tokenPayload = JSON.parse(atob(arrayToken[1]));
+    role =
+      tokenPayload[
+        "http://schemas.microsoft.com/ws/2008/06/identity/claims/role"
+      ];
+    return Math.floor(new Date().getTime / 1000) >= tokenPayload?.sub;
+  }
+
+  isTokenExpired(token);
   
 
   // Componente de ruta protegida que verifica si el usuario ha iniciado sesión
@@ -58,6 +73,8 @@ function App() {
       <Navigate to="/" /> // Redirige al usuario a la página de inicio de sesión si no ha iniciado sesión
     );
   };
+
+  
 
   return (
     <Router>
@@ -80,7 +97,11 @@ function App() {
                       path='/home'
                       element={<Home />} // Renderizar la página Home directamente aquí
                     />
+                    {role==='Admin' && (
+                    <>
                     <Route path="/BudgetGenerator" element={<ProtectedRoute element={<BudgetGenerator />} />} />
+                    </>
+                    )}
                     {/* Otras rutas protegidas */}
                     <Route path="/goals" element={<ProtectedRoute element={<Goals />} />} />
                     <Route path="/programs" element={<ProtectedRoute element={<Programs />} />} />
