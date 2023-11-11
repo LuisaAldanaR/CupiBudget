@@ -4,9 +4,17 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 import Nav from "react-bootstrap/Nav";
 import "../../App.scss";
 import * as FaIcons from "react-icons/fa";
-
+function CustomNavbar() {
+  
 let role = "";
 const token = localStorage.getItem('jwtToken');
+
+if (!token) {
+  console.error("Token is null or undefined");
+  // Handle the case where the token is not present
+  // You might want to redirect the user to the login page or take appropriate action
+  return null;
+}
 
 function isTokenExpired(token)
 {
@@ -19,7 +27,7 @@ function isTokenExpired(token)
 
 isTokenExpired(token)
 
-function CustomNavbar() {
+
   return (
     <Navbar id="navbar">
       <img

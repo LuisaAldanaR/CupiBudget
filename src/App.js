@@ -16,12 +16,33 @@ import Goals from "./components/Goals/Goals";
 import SchedulingTechnological from "./components/Scheduling/SchedulingTechnological/SchedulingTechnological";
 import SchedulingTechnical from "./components/Scheduling/SchedulingTechnical/SchedulingTechnical";
 
+
+
 /**
  * The main application component.
  * @returns {JSX.Element} The rendered application.
  */
 function App() {
+
   const jwtToken = localStorage.getItem('jwtToken');
+  let role = "";
+
+  function isTokenExpired(jwtToken) {
+    if (!jwtToken) {
+      // Handle the case where jwtToken is null or undefined
+      return false;
+    }
+  
+    const arrayToken = jwtToken.split(".");
+    const tokenPayload = JSON.parse(atob(arrayToken[1]));
+    role =
+      tokenPayload[
+        "http://schemas.microsoft.com/ws/2008/06/identity/claims/role"
+      ];
+    return Math.floor(new Date().getTime / 1000) >= tokenPayload?.sub;
+  }
+  
+  isTokenExpired(jwtToken);
 
   // Función para verificar si el usuario ha iniciado sesión
   const isAuthenticated = () => {
@@ -44,65 +65,60 @@ function App() {
         console.error('Error al decodificar el token JWT:', error);
       }
     }
+
+    
   
     // Si no hay token o ha expirado, el usuario no está autenticado
     return false;
-  };
 
-  let role = "";
-  const token = localStorage.getItem("jwtToken");
-
-  function isTokenExpired(token) {
-    const arrayToken = token.split(".");
-    const tokenPayload = JSON.parse(atob(arrayToken[1]));
-    role =
-      tokenPayload[
-        "http://schemas.microsoft.com/ws/2008/06/identity/claims/role"
-      ];
-    return Math.floor(new Date().getTime / 1000) >= tokenPayload?.sub;
-  }
-
-  isTokenExpired(token);
-  
-
-  // Componente de ruta protegida que verifica si el usuario ha iniciado sesión
-  const ProtectedRoute = ({ element, ...props }) => {
-    return isAuthenticated() ? (
-      element
-    ) : (
-      <Navigate to="/" /> // Redirige al usuario a la página de inicio de sesión si no ha iniciado sesión
-    );
+    
   };
 
   
+  
+// ...
 
-  return (
-    <Router>
-    <div >
+// ...
+
+const ProtectedRoute = ({ element, path, ...props }) => {
+  return isAuthenticated() ? (
+    // Check if the user has the 'Admin' role before rendering the element
+    (role === 'Admin' || path !== '/BudgetGenerator') ? element : <Navigate to="/home" /> 
+  ) : (
+    <Navigate to="/" /> // Redirect to login if not authenticated
+  );
+};
+
+return (
+  <Router>
+    <div>
       <Routes>
         {/* Route for the login page */}
         <Route path='/' element={<Login />} />
+
         {/* Default route with the sidebar and navbar */}
         <Route
           path='/*'
           element={
             isAuthenticated() ? (
               <div className="">
-                  <CustomNavbar />
-                  <Sidebar />
-                <div className="container min-vw-100" style={{padding:"0", margin:"0"}}>
+                <CustomNavbar />
+                <Sidebar />
+                <div className="container min-vw-100" style={{ padding: "0", margin: "0" }}>
                   <Routes>
-                    {/* Ruta para la página Home */}
+                    {/* Route for the home page */}
                     <Route
                       path='/home'
-                      element={<Home />} // Renderizar la página Home directamente aquí
+                      element={<Home />}
                     />
-                    {role==='Admin' && (
-                    <>
-                    <Route path="/BudgetGenerator" element={<ProtectedRoute element={<BudgetGenerator />} />} />
-                    </>
-                    )}
-                    {/* Otras rutas protegidas */}
+
+                    {/* Protected route for BudgetGenerator */}
+                    <Route
+                      path="/BudgetGenerator"
+                      element={<ProtectedRoute element={<BudgetGenerator />} path="/BudgetGenerator" />}
+                    />
+
+                    {/* Other protected routes */}
                     <Route path="/goals" element={<ProtectedRoute element={<Goals />} />} />
                     <Route path="/programs" element={<ProtectedRoute element={<Programs />} />} />
                     <Route path="/instructors" element={<ProtectedRoute element={<Instructors />} />} />
@@ -115,15 +131,16 @@ function App() {
                 </div>
               </div>
             ) : (
-              <Navigate to="/" /> // Redirige al usuario a la página de inicio de sesión si no ha iniciado sesión
+              <Navigate to="/" /> // Redirect to login if not authenticated
             )
           }
         />
       </Routes>
     </div>
   </Router>
-  
 );
+
+
 
 }
 
