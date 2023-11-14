@@ -28,7 +28,7 @@ const CrudTableGoals = ({ data, handleFormChange }) => {
                     <table className="table">
                         <thead className="text-center">
                             <tr>
-                                <th className="thLeft">Nivel Formacion</th>
+                                <th className="thLeft">Nivel Formación</th>
                                 <th className="thTable">Modalidad</th>
                                 <th className="thTable">Meta</th>
                                 <th className="thTable">Paso 2021 a 2022</th>

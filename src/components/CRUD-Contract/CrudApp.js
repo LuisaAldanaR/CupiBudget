@@ -185,8 +185,8 @@ const CrudApp = () => {
 
             // Show a success SweetAlert message
             Swal.fire(
-              'Borrado!',
-              'El registro fue borrado exitosamente.',
+              'Eliminado!',
+              'El registro fue eliminado exitosamente.',
               'success'
             );
           } else {
@@ -236,7 +236,7 @@ const CrudApp = () => {
           {role === 'Admin' && (
             <>
             <button className="btn addButton" onClick={showFormView}>
-              Registar Nuevo Instructor
+              Registrar Nuevo Instructor
             </button>
           </>
           )}

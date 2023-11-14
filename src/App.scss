@@ -319,7 +319,7 @@ $blue: #0000ff;
   margin: 16px;
 }
 
-.card {
+.card-form {
   display: flex;
   justify-content: center; /* Centrar horizontalmente */
   align-items: center; /* Centrar verticalmente */
@@ -328,6 +328,7 @@ $blue: #0000ff;
   width: 32rem;
   margin-top: 4rem;
   padding: 2rem;
+
 }
 
 .containerButtons {
