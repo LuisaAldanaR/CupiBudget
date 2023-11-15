@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css'; // Importar estilos de Bootstrap
-import { helpHttp } from "../../helpers/helpHttp"; // Importar una utilidad para hacer solicitudes HTTP
 import Swal from 'sweetalert2';
 
 const initialForm = {
@@ -12,9 +11,20 @@ const initialForm = {
 
 const CrudForm = ({ createData, updateData, dataToEdit, setDataToEdit, showTable, networkOptions  }) => {
   const [form, setForm] = useState(initialForm);
-  const api = helpHttp();
   const token = localStorage.getItem('jwtToken');
 
+  console.log(dataToEdit);
+
+  useEffect(() => {
+    // Si hay datos para editar, establece el formulario con esos datos
+    if (dataToEdit) {
+      setForm(dataToEdit);
+    } else {
+      setForm(initialForm);
+    }
+  }, [dataToEdit]);
+
+  
   const handleChange = (e) => {
     const { name, value } = e.target;
     setForm({

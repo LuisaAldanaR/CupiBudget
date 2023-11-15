@@ -1,7 +1,7 @@
 import React from 'react';
 import '../../../App.scss';
 
-const CrudTableResultGoals = ({ goal, index, goalsKey }) => {
+const CrudTableResultGoals = ({ goal, }) => {
 
   console.log(goal);
 

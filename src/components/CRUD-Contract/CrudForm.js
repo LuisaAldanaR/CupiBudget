@@ -3,7 +3,6 @@ import 'bootstrap/dist/css/bootstrap.min.css'; // Import Bootstrap styles
 import { helpHttp } from "../../helpers/helpHttp"; // Import a utility for making HTTP requests
 import "../../App.scss";
 import Swal from 'sweetalert2';
-import { renderIntoDocument } from "react-dom/test-utils";
 
 
 // Define an object with initial values for the form
@@ -20,6 +19,8 @@ const CrudForm = ({ createData, updateData, dataToEdit, setDataToEdit, showTable
   // Define states for the form and network options
   const [form, setForm] = useState(initialForm);
   const api = helpHttp(); // Instance of the HTTP request utility
+
+  console.log(dataToEdit);
 
   const token = localStorage.getItem('jwtToken'); // Recupera el token JWT del almacenamiento local
 
@@ -102,8 +103,10 @@ const CrudForm = ({ createData, updateData, dataToEdit, setDataToEdit, showTable
       // Call 'createData' or 'updateData' depending on whether it's creating or updating
       if (dataToEdit === null || dataToEdit.idInstructor === undefined) {
         createData(form);
+        console.log(dataToEdit);
       } else {
         updateData(form);
+        console.log(dataToEdit);
       }
     
       // Clear the form and reset dataToEdit to null

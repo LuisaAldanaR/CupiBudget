@@ -3,7 +3,7 @@ import CrudTableRow from "./CrudTableRow";
 import "../../../App.scss";
 
 // Definition of the CrudTable component
-const CrudTable = ({ data, setDataToEdit, deleteData, showFormView }) => {
+const CrudTable = ({ data,}) => {
     return (
         // Main container of the component
         <div className="">
@@ -14,13 +14,13 @@ const CrudTable = ({ data, setDataToEdit, deleteData, showFormView }) => {
                     <table className="table">
                         <thead className="text-center">
                             <tr> 
-                                <th className="thLeft">Nivel de Formacion</th>
+                                <th className="thLeft">Nivel de Formación</th>
                                 <th className="thTable">Modalidad</th>
                                 <th className="thTable">Nombre</th>
                                 <th className="thTable">Valido Hasta</th>
-                                <th className="thTable">SniesCode</th>
-                                <th className="thTable">Numero de Resolucion</th>
-                                <th className="thRight">Fecha de Resolucion</th>
+                                <th className="thTable">SniesCodigo</th>
+                                <th className="thTable">Numero de Resolución</th>
+                                <th className="thRight">Fecha de Resolución</th>
                             </tr>
                         </thead>
 

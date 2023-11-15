@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "../../App.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUserPen } from "@fortawesome/free-solid-svg-icons";
+import { faPen } from "@fortawesome/free-solid-svg-icons";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { faCircle } from "@fortawesome/free-solid-svg-icons";
 
@@ -90,7 +90,7 @@ const CrudTableRow = ({ el, setDataToEdit, deleteData, showFormView }) => {
                 showFormView(); // Call the 'showFormView' function to display the form
               }}
             >
-              <FontAwesomeIcon icon={faUserPen} />
+              <FontAwesomeIcon icon={faPen} />
             </button>
             &nbsp;
             {/* Delete button that calls the 'deleteData' function with 'idInstructor' as an argument */}

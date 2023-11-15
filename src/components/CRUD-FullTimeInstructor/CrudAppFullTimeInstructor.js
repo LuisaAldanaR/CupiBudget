@@ -36,8 +36,6 @@ const CrudAppFullTimeInstructor = () => {
   const [showForm, setShowForm] = useState(false);
   const [showRecords, setShowRecords] = useState(true);
   const [totalRecords, setTotalRecords] = useState(0);
-  const [search, setSearch] = useState("");
-  const [showSearch, setShowSearch] = useState(false);
   const token = localStorage.getItem('jwtToken');
   let api = helpHttp();
 
@@ -180,11 +178,13 @@ const CrudAppFullTimeInstructor = () => {
   };
 
   const showFormViewFullTimeInstructor = () => {
-    setShowForm(true);
-    setShowRecords(false);
+    
     if (dataToEdit) {
       setDataToEdit(null);
     }
+    
+    setShowForm(true);
+    setShowRecords(false);
   };
 
   const showTable = () => {
