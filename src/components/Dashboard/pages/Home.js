@@ -4,9 +4,6 @@ import { helpHttp } from "../../../helpers/helpHttp";
 import Loader from "./Loader";
 
 
-
-
-
 const redirectToInstructoresPlanta = () => {
   window.location.href = 'CrudAppFullTimeInstructor';
 };
@@ -108,14 +105,14 @@ const Home = () => {
                 </div>
                 <h1 style={{ color: 'black' }}>{totalRecords}</h1>
             </div>
-            
-            <div className='card'>
+            <div className='card' onClick={redirectToInstructoresPlanta} style={{cursor:"pointer"}} >
                 <div className='card-inner'>
-                    <h3>Instructores de contrato</h3>
-                    <div style={{ fontSize:"30px", marginLeft:"8vh"}}><FaIcons.FaClipboardUser/></div>
+                <h3 style={{ marginLeft:"4vh"}}>Ir a instructores de planta</h3>
+                    <div style={{ fontSize:"30px", marginLeft:"8vh"}}><FaIcons.FaArrowRightToBracket/></div>
                 </div>
-                <h1 style={{ color: 'black' }}>{totalRecordsContract}</h1>
+                <p style={{marginTop:"10px", marginRight:"10px"}}>Visualiza, edita o elimina información de instructor.</p>
             </div>
+            
             
             <div className='card'>
                 <div className='card-inner'>
@@ -124,19 +121,23 @@ const Home = () => {
                 </div>
                 <h1 style={{ color: 'black' }}>{totalRecordsPrograms}</h1>
             </div>
-            <div className='card' onClick={redirectToInstructoresPlanta} style={{cursor:"pointer"}} >
-                <div className='card-inner'>
-                <h3 style={{ marginLeft:"4vh"}}>Ir a instructores de planta</h3>
-                    <div style={{ fontSize:"30px", marginLeft:"8vh"}}><FaIcons.FaArrowRightToBracket/></div>
-                </div>
-                <p style={{marginTop:"10px", marginRight:"10px"}}>Visualiza, edita o elimina información de instructor.</p>
-            </div>
+
             <div className='card' onClick={redirectToInstructoresContratistas} style={{cursor:"pointer"}}>
                 <div className='card-inner'>
                 <h3 style={{ marginLeft:"2vh"}}>Ir a instructores de contrato</h3>
                     <div style={{ fontSize:"30px", marginLeft:"8vh"}}><FaIcons.FaArrowRightToBracket/></div>
                 </div>
                 <p style={{marginTop:"10px", marginRight:"10px"}}>Visualiza, edita o elimina información de instructor.</p>
+            </div>
+            
+            
+            
+            <div className='card'>
+                <div className='card-inner'>
+                    <h3>Instructores de contrato</h3>
+                    <div style={{ fontSize:"30px", marginLeft:"8vh"}}><FaIcons.FaClipboardUser/></div>
+                </div>
+                <h1 style={{ color: 'black' }}>{totalRecordsContract}</h1>
             </div>
             {role==='Admin' && (
             <>

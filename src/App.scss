@@ -3,6 +3,10 @@
 
 /* General styles */
 
+
+
+
+
 .CustomNavbar{
   background-color: #39a900 !important;
   flex-direction: column;
@@ -335,6 +339,28 @@ $blue: #0000ff;
   margin-top: 1.2rem;
   margin-bottom: 2rem;
 }
+
+/////////////////////////// SEARCHBARS ///////////////////////////////////
+
+input[type="text"],
+input[type="date"],
+input[type="email"],
+
+
+textarea, .select-net{
+  border: thin solid #dedede;
+  border-radius: 5vh;
+  padding: 2vh;
+  margin-bottom: 1vh;
+  outline: none;
+  display: flex;
+  width: 100%;
+  line-height: 1;
+  background-color: transparent;
+  
+}
+
+
 
 .searchBarContractName {
   position: relative;
@@ -678,556 +704,9 @@ $blue: #0000ff;
   font-size: 15px;
 }
 
-////////////////////////  LOGIN STYLES //////////////////////////////////
-
-/* Styles for text and form inputs */
-input[type="text"],
-input[type="date"],
-input[type="email"],
-
-
-textarea, .select-net{
-  border: thin solid #dedede;
-  border-radius: 5vh;
-  padding: 1vh;
-  margin-bottom: 1vh;
-  outline: none;
-  display: flex;
-  width: 100%;
-  line-height: 1;
-  background-color: transparent;
-  
-}
-
-textarea, .select-net{
-  font-family: inherit;
-  resize: none;
-}
-
-/* Styling for the main container */
-/* Styling for the main container */
-
-/* Styling for the second container */
-.secondContainer {
-  text-align: center;
-}
-
-.form-group {
-  position: relative;
-}
-
-.password-toggle {
-  cursor: pointer;
-  position: absolute;
-  right: 35px;
-  top: 93px;
-  
-}
-
-/* En App.scss o en un archivo separado (por ejemplo, Login.css) */
-@media (min-width: 800px) {
-  .maincontainer {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    background-image: url("../public/img/background-login.png"); /* Reemplaza 'fondo.jpg' con la URL de tu imagen de fondo */
-    background-size: cover; /* Ajusta el tamaño de la imagen para cubrir todo el contenedor */
-    background-repeat: no-repeat; /* Evita que la imagen de fondo se repita */
-    background-position: center; /* Centra la imagen de fondo horizontal y verticalmente */
-    width: 100%;
-    min-width: 320px;
-    height: 100%;
-    position: absolute;
-    top: 0; /* Ajusta la posición vertical hacia arriba */
-    left: 0;
-  }
-  .welcome-container {
-    flex-grow: 1;
-    flex-basis: 200;
-    align-items: center;
-    justify-content: center;
-    margin-right: 15vh;
-    width: 80%; /* Utilizar unidades relativas */
-    max-width: 10%; /* Máximo ancho para mantener proporciones */
-    height: auto; /* Para mantener proporciones */
-    .welcomeText {
-      margin-left: 1.5em;
-      font-size: 3vh; /* Utilizar unidades relativas */
-      animation: bounce-bottom 1.5s linear both;
-    }
-    @keyframes bounce-bottom {
-      0% {
-        animation-timing-function: ease-in;
-        opacity: 1;
-      }
-      24% {
-        opacity: 1;
-      }
-      40% {
-        transform: translateY(24px);
-        animation-timing-function: ease-in;
-      }
-      65% {
-        transform: translateY(12px);
-        animation-timing-function: ease-in;
-      }
-      82% {
-        transform: translateY(6px);
-        animation-timing-function: ease-in;
-      }
-      93% {
-        transform: translateY(4px);
-        animation-timing-function: ease-in;
-      }
-      25%,
-      55%,
-      75%,
-      87% {
-        transform: translateY(0);
-        animation-timing-function: ease-out;
-      }
-      100% {
-        transform: translateY(0);
-        animation-timing-function: ease-out;
-        opacity: 1;
-      }
-    }
-
-    .underLine {
-      border: 1.5px solid rgb(0, 0, 0);
-      width: 125%; /* Utilizar unidades relativas */
-      margin-left: -10%; /* Ajusta según tu preferencia */
-      color: rgba(0, 0, 0, 0);
-    }
-  }
-
-  #formContainer {
-    flex-grow: 1;
-    flex-basis: 200;
-    justify-content: center;
-    align-items: center;
-    margin-left: 4em;
-    top: 50%; /* Centro verticalmente */
-    padding: 2%; /* Utilizar unidades relativas */
-    border-radius: 6%;
-    max-height: 80vh; /* Usar viewport height en lugar de porcentaje */
-    max-width: 42vh;
-    box-shadow: 0 2px 8px #000;
-    border: 1px solid #ffffff40;
-    background-color: #38a9009f;
-    z-index: 1;
-    height: 60vh;
-
-    /* Styles for labels l1 and l2 */
-    .l1 {
-      color: #000000;
-      font-weight: 500;
-      font-size: 3.5vh; /* Utilizar unidades relativas */
-    }
-
-    .l2 {
-      color: #000000;
-      font-weight: 400;
-      font-size: 1.8vh; /* Utilizar unidades relativas */
-    }
-
-    /* Styling for the login button */
-    .login-button {
-      border-radius: 1vh;
-      background-color: rgba(251, 251, 226, 0.7);
-      color: #000000;
-      border: none;
-      padding: 5% 10%; /* Utilizar unidades relativas */
-      font-size: 2vh;
-      font-weight: 600;
-    }
-
-    /* Styling for rounded inputs */
-    .rounded-input {
-      border-radius: 1vh; /* Utilizar unidades relativas */
-      background-color: white;
-      padding: 5%; /* Utilizar unidades relativas */
-      border: 1px solid #ccc;
-      width: 88%;
-      margin-left: 6%;
-      position: "fixed";
-
-      /* Otros estilos según tus preferencias */
-    }
-
-    .form-control {
-      position: fixed;
-      border-radius: 1vh; /* Utilizar unidades relativas */
-      background-color: white;
-      padding: 4%; /* Utilizar unidades relativas */
-      border: 1px solid #ccc;
-      width: 72.5%;
-      margin-left: 5.2%;
-      height: 10.9%;
-    }
-
-   
-
-    .form-group {
-      display: flex;
-      flex-wrap: wrap;
-    }
-  }
-}
-
-@media (max-width: 800px)  {
-
-
-  // Define una variable para la altura de .maincontainer
-
-  // Establece el estilo para html y body
-
-  html {
-    width: 100%;
-    max-width: 799px;
-    background-color: #f3f1f1;
-  }
-
-  .maincontainer {
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column; /* Stack the child containers vertically */
-    align-items: center;
-    justify-content: center;
-    background-image: url("../public/img/background-login.png");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    width: 100%;
-    max-width: 400px;
-    max-height: 850px;
-    height: 300%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 1;
-  }
-
-  .welcome-container {
-    order: 1;
-    position: sticky;
-    align-items: center;
-    z-index: 1;
-    margin-right: 15vh;
-    width: 80%;
-    max-width: 10%;
-    height: 35vh;
-    margin-bottom: 2rem;
-    margin-right: 10rem;
-    p.centroText{
-        font-size: 20px !important;
-     }
-    .welcomeText {
-      font-size: 3vh; /* Utilizar unidades relativas */
-      animation: bounce-bottom 1.5s linear both;
-      margin-left: 5vh;
-     
-    }
-    @keyframes bounce-bottom {
-      0% {
-        animation-timing-function: ease-in;
-        opacity: 1;
-      }
-      24% {
-        opacity: 1;
-      }
-      40% {
-        transform: translateY(24px);
-        animation-timing-function: ease-in;
-      }
-      65% {
-        transform: translateY(12px);
-        animation-timing-function: ease-in;
-      }
-      82% {
-        transform: translateY(6px);
-        animation-timing-function: ease-in;
-      }
-      93% {
-        transform: translateY(4px);
-        animation-timing-function: ease-in;
-      }
-      25%,
-      55%,
-      75%,
-      87% {
-        transform: translateY(0);
-        animation-timing-function: ease-out;
-      }
-      100% {
-        transform: translateY(0);
-        animation-timing-function: ease-out;
-        opacity: 1;
-      }
-    }
-
-    .underLine {
-      border: 1.5px solid rgb(0, 0, 0);
-      width: 125%; /* Utilizar unidades relativas */
-      margin-left: -70%; /* Ajusta según tu preferencia */
-      color: rgba(0, 0, 0, 0);
-    }
-  }
-
-  #formContainer {
-    order: 2;
-    align-items: center;
-    justify-content: center;
-    left: 60%;
-    top: 50%;
-    padding: 2%;
-    border-radius: 6%;
-    max-height: 30rem;
-    max-width: 40vh;
-    box-shadow: 0 2px 8px #000;
-    border: 1px solid #ffffff40;
-    background-color: #38a9009f;
-    z-index: 1;
-    margin-left: 5vh;
-    margin-top: 3.5rem;
-    margin-bottom: 3rem;
-    margin-right: 2rem;
-
-    /* Styles for labels l1 and l2 */
-    .l1 {
-      color: #000000;
-      font-weight: 500;
-      font-size: 3.5vh; /* Utilizar unidades relativas */
-    }
-
-    .l2 {
-      color: #000000;
-      font-weight: 400;
-      font-size: 1.8vh; /* Utilizar unidades relativas */
-    }
-
-    /* Styling for the login button */
-    .login-button {
-      border-radius: 1vh;
-      background-color: rgba(251, 251, 226, 0.7);
-      color: #000000;
-      border: none;
-      padding: 5% 10%; /* Utilizar unidades relativas */
-      font-size: 2vh;
-      font-weight: 600;
-    }
-
-    /* Styling for rounded inputs */
-    .rounded-input {
-      border-radius: 1vh; /* Utilizar unidades relativas */
-      background-color: white;
-      padding: 5%; /* Utilizar unidades relativas */
-      border: 1px solid #ccc;
-      width: 88%;
-      margin-left: 6%;
-      position: relative;
-
-      /* Otros estilos según tus preferencias */
-    }
-
-    .form-control {
-      position: fixed;
-      border-radius: 1vh; /* Utilizar unidades relativas */
-      background-color: white;
-      padding: 4%; /* Utilizar unidades relativas */
-      border: 1px solid #ccc;
-      width: 72.5%;
-      margin-left: 5.2%;
-      height: 10.9%;
-      
-    }
-
-    .form-group {
-      display: flex;
-      flex-wrap: wrap;
-    }
-
-    .password-toggle {
-      cursor: pointer;
-      position: relative;
-      right:-172px;
-      top: 50px;
-     
-    }      
-    }
-  }
-
-/* Home.css */
 
 
 
-.main-title {
-  flex-grow: 1;
-  flex-basis: 200;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  font-family: "Raleway", sans-serif;
-  color: #000;
-  margin-top: 3rem;
-  margin-bottom: 1.3rem;
-  max-height: 2rem;
-}
-
-.card1 {
-  flex-grow: 1;
-  flex-basis: 200;
-  justify-content: space-around;
-  padding: 1vh 2vh;
-  border-radius: 1vh;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  background-color: #fefec2;
-  max-width: 33.6vh; /* Limit the maximum width */
-  max-height: 40vh; /* Limit the maximum height */
-
-}
-
-.card1:nth-child(2) {
-  background-color: #efd6d1;
-}
-
-.card1:nth-child(4) {
-  background-color: #ffda9b;
-}
-
-.card1:nth-child(3) {
-  margin-top: 2.5vh;
-  order: 2;
-  background-color: #d9f5fa;
-  height: 39.5vh;
-}
-
-.card-special {
-  flex-grow: 1;
-  flex-basis: 200;
-  justify-content: space-around;
-  padding: 2vh 2vh;
-  border-radius: 1vh;
-  box-shadow: 0 0 1vh rgba(0, 0, 0, 0.2);
-  background-color: #caf3b6;
-  top: 100%;
-  left: 0;
-  max-width: 42rem;
-  height: 17vh;
-  margin-top: 2.7vh;
-  justify-content: space-around;
-  padding: 1vh 2vh;
-}
-
-.card-go {
-  flex-grow: 1;
-  flex-basis: 200;
-  justify-content: space-around;
-  padding: 8px 15px;
-  border-radius: 1vh;
-  box-shadow: 0 0 1vh rgba(0, 0, 0, 0.2);
-  background-color: #a7c7b4;
-  top: 100%;
-  left: 0;
-  max-width: 42rem;
-  height: 17vh;
-  margin-top: 5.2vh;
-  justify-content: space-around;
-  padding: 1vh 2vh;
-}
-
-/* Agrega estos estilos a tu archivo CSS */
-.card-description {
-  color: black;
-  margin-right: 20vh;
-  width: 50vh;
-  font-size: 1.8vh;
-  max-height: 10rem;
-}
-.card-inner {
-  flex-grow: 1;
-  flex-basis: 200;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.card-inner > .card_icon {
-  font-size: 3vh;
-}
-
-@media (max-width: 768px) {
-  .main-container {
-    margin-left: 5rem;
-    padding-right: 0;
-  }
-
-  .card-description {
-    width: 100%; /* Ocupa todo el ancho disponible en pantallas pequeñas */
-    margin-right: 0;
-  }
-
-  .card-go{
-      
-    width: 100% !important;
-    margin-right: 6rem;
-  }
-   .card-special{
-    width: 100% !important;
-    margin-right: 6rem;
-     
-  }
-}
-
-
-/* End Main  */
-
-/* Medium <= 992px */
-
-@media screen and (max-width: 992px) {
-  .grid-container {
-    grid-template-columns: 1fr;
-    grid-template-rows: 0.2fr 3fr;
-    grid-template-areas:
-      "header"
-      "main";
-  }
-
-  #sidebar {
-    display: none;
-  }
-
-  .menu-icon {
-    display: inline;
-  }
-
-  .sidebar-title > span {
-    display: inline;
-  }
-}
-/* Small <= 768px */
-
-@media screen and (max-width: 768px) {
-  .main-cards {
-    grid-template-columns: 1fr;
-    gap: 10px;
-    margin-bottom: 0;
-  }
-
-  .charts {
-    grid-template-columns: 1fr;
-    margin-top: 30px;
-  }
-}
-
-/* Extra Small <= 576px */
-
-@media screen and (max-width: 576px) {
-  .hedaer-left {
-    display: none;
-  }
-}
 
 /* HOME TEST */
 
@@ -1242,8 +721,9 @@ textarea, .select-net{
 .main-title {
   display: flex;
   justify-content: space-between;
-  margin-left: 15em; /* Usando unidades 'em' */
+  margin-right: 10em; /* Usando unidades 'em' */
   margin-top: -1em;
+  color: black;
 }
 
 .main-cards {
@@ -1261,6 +741,7 @@ textarea, .select-net{
   justify-content: space-around;
   padding: 0.5em 1em; /* Usando unidades 'em' */
   border-radius: 0.5em; /* Usando unidades 'em' */
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.3); 
 }
 
 .card:first-child {
@@ -1314,6 +795,16 @@ textarea, .select-net{
 
 }
 
+@media screen and (max-width: 1920px) {
+
+  .main-cards {
+        margin-right: 4em !important;
+        margin-top: 1em;
+  }
+
+  
+}
+
 
 
 /* Medium <= 992px */
@@ -1349,5 +840,196 @@ textarea, .select-net{
 /* Extra Small <= 576px */
 
 @media screen and (max-width: 576px) {
+
+}
+
+////////////////////////////////////////////////// LOGIN STYLES ////////////////////////////////////////////////////////////////////////////////
+
+
+@media (max-width: 800px)  {
+html {
+  width: 100%;
+  max-width: 799px;
+  background-color: #f3f1f1;
+}
+
+}
+
+
+.underline-container{
+  display: flex;
+  justify-content: center;
+}
+.subtitle {
+  color: rgb(218, 218, 218);
+  text-align: center;
+  font-size: 30px;
+  margin-bottom: 2rem;
+  color: #39a900;
+  
+}
+
+.title {
+  color: rgb(218, 218, 218);
+  text-align: center;
+  font-size: 32px;
+  margin-bottom: 1rem;
+  color: #39a900;
+}
+
+.eye-button
+{
+    position: relative;
+    bottom: 60px;
+    left: 428px;
+    z-index: 1000;
+    cursor: pointer;
+}
+
+
+.inputs_container {
+  display: flex;
+  flex-direction: column;
+  
+}
+
+.inputs_container input {
+  width: 95%;
+  margin: 1.5rem auto;
+  padding: 1rem;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-family: inherit;
+  outline: 0;
+  border: 0;
+ 
+}
+
+.inputLogin{
+    background-color: #e9e9e9;
+    
+}
+.login_button {
+  display: block;
+  margin: 3rem auto 1rem auto;
+  width: 55%;
+  padding: 0.75rem 1rem;
+  border-radius: 12px;
+  outline: 0;
+  font-size: 1.2rem;
+  font-family: inherit;
+  cursor: pointer;
+  background-color: #39a900;
+  color: white;
+  border: 2px solid transparent;
+}
+
+.login_button:hover {
+  border: 2px solid #39a900;
+  background-color: #000000		;
+}
+
+.link_container {
+  display: flex;
+  justify-content: center;
+}
+
+
+@media only screen and (max-width: 620px) {
+  .inputs_container input {
+    width: 100%;
+ 
+  }
+
+  .login_button {
+    width: 100%;
+    
+  }
+
+  .eye-button
+{
+   
+    left: 34vh;
+    
+    
+}
+
+
+
+
+
+}
+
+
+
+
+@media only screen and (max-height: 670px) {
+
+  
+  
+  .subtitle {
+    margin-bottom: 2rem;
+    
+  }
+
+  .small {
+    margin-bottom: 3rem;
+  }
+
+  .login_button{
+    margin-top: 0.2rem;
+  }
+
+  
+}
+
+.image-login-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+.maincontainer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  background-image: url("../public/img/background-login.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 100%;
+  min-width: 320px;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  /* Añade una capa con opacidad verde */
+  background-color: rgba(0, 128, 0, 0.288); /* Cambia los valores de 0, 128, 0 según tu preferencia de verde */
+}
+
+@media only screen and (max-width: 620px) {
+  .maincontainer {
+    
+    height: 120%;
+    
+  }
+}
+
+@media only screen and (max-height: 750px) {
+  .maincontainer {
+
+    height: 150%;
+
+  }
 
 }

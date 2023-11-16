@@ -1,0 +1,43 @@
+.cardLogin {
+  width: 550px;
+  background-color: #ffffff;
+  height: 740px;
+  border-radius: 2rem;
+  padding: 2rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); 
+  animation: blur-in 0.7s linear both;
+}
+
+@keyframes blur-in {
+  0% {
+    filter: blur(12px);
+    opacity: 0;
+  }
+  100% {
+    filter: blur(0);
+    opacity: 1;
+  }
+}
+
+
+@media only screen and (max-width: 600px) {
+  .cardLogin {
+    width: 90vw;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+   
+    
+  }
+  
+  
+}
+
+
+@media only screen and (max-height: 670px) {
+  .cardLogin {
+    height: 740px;
+  }
+  
+}
+
+
