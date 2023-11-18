@@ -355,7 +355,6 @@ textarea, .select-net{
   outline: none;
   display: flex;
   width: 100%;
-  line-height: 1;
   background-color: transparent;
   
 }
@@ -818,13 +817,6 @@ textarea, .select-net{
       'main';
   }
 
-  .menu-icon {
-    display: inline;
-  }
-
-  .sidebar-title > span {
-    display: inline;
-  }
 }
 /* Small <= 768px */
   
@@ -834,6 +826,13 @@ textarea, .select-net{
     gap: 10px;
     margin-bottom: 0;
   }
+
+  .main-title {
+    
+    margin-left: 20em !important; /* Usando unidades 'em' */
+
+  }
+  
 
 }
 
@@ -948,11 +947,14 @@ html {
 
   .eye-button
 {
-   
-    left: 34vh;
+    margin-top: 5px;
+    left: 34.5vh;
     
     
+
 }
+
+
 
 
 
@@ -1025,11 +1027,63 @@ html {
   }
 }
 
-@media only screen and (max-height: 750px) {
-  .maincontainer {
+@media screen and (max-height: 768px) {
 
-    height: 150%;
-
+  .form-login{
+      margin-top: -3rem;
   }
 
+  .subtitle{
+    margin-top: -1rem;
+  }
+
+  .login_button{
+    margin-top: 0.3rem;
+  }
+
+  .underline-container{
+    margin-bottom: 1rem;
+  }
 }
+
+@media screen and (max-height: 800px) {
+
+  .title{
+    font-size: 22px;
+  }
+
+  .subtitle{
+    font-size: 20px;
+  
+  }
+
+  .login_button{
+    margin-top: 0.3rem;
+  }
+
+  .underline-container{
+    margin-bottom: 1rem;
+  }
+
+  .inputs_container input {
+    width: 100%;
+    height: 44px;
+  }
+
+  .login_button{
+   
+    margin-top: -1.8rem;
+    
+  }
+
+  .loginElements{
+     margin-top: -2rem !important;
+  }
+
+  .form-login{
+    margin-top: -2rem;
+  }
+
+ 
+}
+

@@ -94,8 +94,9 @@ function Login() {
   return (
     <div className="maincontainer">
       <CardLogin>
+        <div className="loginElements">
         <div className="image-login-container">
-          <img src="/img/Logo-sena.png" alt="Logo" style={{ width: "140px" }} />
+          <img src="/img/Logo-sena.png" alt="Logo" className="logo-login" style={{ width: "140px" }} />
         </div>
         <p className="title">Centro de comercio y servicios</p>
         <div className="underline-container">
@@ -104,7 +105,8 @@ function Login() {
           />
         </div>
         <p className="subtitle">Iniciar Sesión</p>
-        <form>
+        </div>
+        <form className="form-login">
           <div className="inputs_container">
             <input
               placeholder="Usuario"
