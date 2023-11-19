@@ -101,10 +101,10 @@ return (
           path='/*'
           element={
             isAuthenticated() ? (
-              <div className="">
+              <div>
                 <CustomNavbar />
                 <Sidebar />
-                <div className="container min-vw-100" style={{ padding: "0", margin: "0" }}>
+                <div className="container min-vw-100" id="container-dad" style={{ padding: "0", margin: "0" }}>
                   <Routes>
                     {/* Route for the home page */}
                     <Route

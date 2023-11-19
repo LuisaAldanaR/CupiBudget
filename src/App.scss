@@ -18,6 +18,21 @@
   height: 100%
 }
 
+@media only screen and (max-width: 600px) {
+
+  .CustomNavbar{
+    height: 60% !important
+  }
+
+  html {
+    width: 100%;
+    max-width: 799px;
+    background-color: #f3f1f1;
+  }
+
+
+}
+
 
 .content {
   transition: all 0.3s; /* Agrega una transición suave para el efecto de opacidad */
@@ -960,6 +975,8 @@ html {
 
 
 
+
+
 }
 
 
@@ -1066,13 +1083,13 @@ html {
   }
 
   .inputs_container input {
-    width: 100%;
+    width: 95%;
     height: 44px;
   }
 
   .login_button{
    
-    margin-top: -1.8rem;
+    margin-top: -0.2rem;
     
   }
 
