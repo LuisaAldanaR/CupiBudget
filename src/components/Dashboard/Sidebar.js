@@ -9,6 +9,7 @@ import ClickOutside from "./ClickOutside";
 
 function Sidebar() {
   const [expanded, setExpanded] = useState(false);
+  const [selectedItem, setSelectedItem] = useState("");
   const linkStyles = {
     textDecoration: "none",
     color: "black",
@@ -17,11 +18,11 @@ function Sidebar() {
 
   const navigate = useNavigate();
 
-  const handleClick = (route) => {
+  const handleClick = (eventKey, route) => {
     navigate(route);
-
-   
+    setSelectedItem(eventKey);
   };
+
   let role = "";
   const token = localStorage.getItem("jwtToken");
 
@@ -32,7 +33,7 @@ function Sidebar() {
       tokenPayload[
         "http://schemas.microsoft.com/ws/2008/06/identity/claims/role"
       ];
-    return Math.floor(new Date().getTime / 1000) >= tokenPayload?.sub;
+    return Math.floor(new Date().getTime() / 1000) >= tokenPayload?.sub;
   }
 
   isTokenExpired(token);
@@ -51,15 +52,18 @@ function Sidebar() {
           position: "fixed",
           zIndex: "2",
         }}
-        expanded={expanded} // Añade esta línea
+        expanded={expanded}
         onToggle={(expanded) => setExpanded(expanded)}
       >
         <SideNav.Toggle />
-        <SideNav.Nav defaultSelected="home">
+        <SideNav.Nav defaultSelected={selectedItem}>
           <NavItem
             eventKey="home"
-            onClick={() => handleClick("/home")}
+            onClick={() => handleClick("home", "/Home")}
             title="Inicio"
+            style={{
+              backgroundColor: selectedItem === "home" ? "#006400" : "",
+            }}
           >
             <NavIcon>
               <Link to="/Home" style={linkStyles}>
@@ -81,7 +85,7 @@ function Sidebar() {
               </Link>
             </NavText>
           </NavItem>
-          <NavItem eventKey="programas" style={{ backgroundColor: "" }}>
+          <NavItem eventKey="programas" style={{  }}>
             <NavIcon>
               <FaIcons.FaBook style={{ fontSize: "1.5em", color: "#FEFEC2" }} />
             </NavIcon>
@@ -90,10 +94,11 @@ function Sidebar() {
             </NavText>
             <NavItem
               eventKey="tecnico"
-              onClick={() => handleClick("/SchedulingTechnical")}
+              onClick={() => handleClick("tecnico", "/SchedulingTechnical")}
+
             >
               <NavText
-                style={{ fontSize: "1.2em", userSelect: "none" }}
+                style={{ fontSize: "1.2em", userSelect: "none"}}
                 eventKey="tecnico"
               >
                 <Link to="/SchedulingTechnical" style={linkStyles}>
@@ -103,7 +108,7 @@ function Sidebar() {
             </NavItem>
             <NavItem
               eventKey="tecnologo"
-              onClick={() => handleClick("/SchedulingTechnological")}
+              onClick={() => handleClick("tecnologo","/SchedulingTechnological")}
             >
               <NavText style={{ fontSize: "1.2em" }} eventKey="tecnologo">
                 <Link to="/SchedulingTechnological" style={linkStyles}>
@@ -138,30 +143,37 @@ function Sidebar() {
               </NavText>
             </NavItem>
           </NavItem>
-          {role=== 'Admin' && (
-          <>
-          <NavItem
-            eventKey="programacion"
-            onClick={() => handleClick("/budgetGenerator")}
-            title="Programacion"
-          >
-            <NavIcon>
-              <Link to="/budgetGenerator" style={linkStyles}>
-                <FaIcons.FaFileInvoiceDollar
-                  style={{ fontSize: "1.5em", color: "#FEFEC2" }}
-                />
-              </Link>
-            </NavIcon>
-            <NavText style={{ fontSize: "1.5em", userSelect: "none" }}>
-              Programación
-            </NavText>
-          </NavItem>
-          </>
+          {role === "Admin" && (
+            <>
+              <NavItem
+                eventKey="programacion"
+                onClick={() => handleClick("programacion", "/budgetGenerator")}
+                title="Programacion"
+                style={{
+                  backgroundColor:
+                    selectedItem === "programacion" ? "#006400" : "",
+                }}
+              >
+                <NavIcon>
+                  <Link to="/budgetGenerator" style={linkStyles}>
+                    <FaIcons.FaFileInvoiceDollar
+                      style={{ fontSize: "1.5em", color: "#FEFEC2" }}
+                    />
+                  </Link>
+                </NavIcon>
+                <NavText style={{ fontSize: "1.5em", userSelect: "none" }}>
+                  Programación
+                </NavText>
+              </NavItem>
+            </>
           )}
           <NavItem
             eventKey="goals"
-            onClick={() => handleClick("/goals")}
+            onClick={() => handleClick("goals", "/Goals")}
             title="Metas"
+            style={{
+              backgroundColor: selectedItem === "goals" ? "#006400" : "",
+            }}
           >
             <NavIcon>
               <Link to="/Goals" style={linkStyles}>
@@ -190,7 +202,7 @@ function Sidebar() {
                   outline: "none",
                 }}
                 eventKey="planta"
-                onClick={() => handleClick("/CrudAppFullTimeInstructor")}
+                onClick={() => handleClick( "planta", "/CrudAppFullTimeInstructor")}
               >
                 <Link
                   to="/CrudAppFullTimeInstructor"
@@ -211,7 +223,7 @@ function Sidebar() {
                   outline: "none",
                 }}
                 eventKey="contractInstructor"
-                onClick={() => handleClick("/CrudApp")}
+                onClick={() => handleClick("contractInstructor", "/CrudApp")}
               >
                 <Link
                   to="/CrudApp"
