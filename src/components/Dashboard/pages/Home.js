@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import * as FaIcons from 'react-icons/fa6';
 import { helpHttp } from "../../../helpers/helpHttp";
 import Loader from "./Loader";
-
+import { Helmet } from 'react-helmet';
 
 const redirectToInstructoresPlanta = () => {
   window.location.href = 'CrudAppFullTimeInstructor';
@@ -89,6 +89,9 @@ const Home = () => {
   isTokenExpired(token);
   return (
     <>
+      <Helmet>
+        <meta name="viewport" content="width=device-width, height=device-height, initial-scale=0.6, maximum-scale=1.0, user-scalable=no" />
+      </Helmet>
       <main className='main-container'>
         <div className='main-title'>
           <h3>TABLERO GENERAL</h3>
