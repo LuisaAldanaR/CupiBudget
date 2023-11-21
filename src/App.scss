@@ -14,6 +14,11 @@
   height: 100%
 }
 
+.sidebar-icons{
+  font-size: 1.8rem !important;
+}
+
+
 @media only screen and (max-width: 600px) {
 
   .CustomNavbar{
@@ -21,10 +26,7 @@
     height: 100% !important
   }
 
-  .sidebar-icons{
-      font-size: 2rem !important;
-  }
-
+ 
   html {
     width: 100%;
     max-width: 799px;
@@ -783,7 +785,7 @@ textarea, .select-net{
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  padding: 1.5em 1em; /* Usando unidades 'em' */
+  padding: 1.5em 1.5em; /* Usando unidades 'em' */
   border-radius: 0.5em; /* Usando unidades 'em' */
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.3); 
   color: #000;
@@ -857,7 +859,7 @@ textarea, .select-net{
 @media screen and (max-width: 992px) {
   .grid-container {
     grid-template-columns: 1fr;
-    grid-template-rows: 0.2fr 3fr;
+    grid-template-rows: 0.2fr 0.2fr;
     grid-template-areas:
       'header'
       'main';

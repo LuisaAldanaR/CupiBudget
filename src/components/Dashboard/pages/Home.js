@@ -108,7 +108,7 @@ const Home = () => {
                 </div>
                 <h1 style={{ color: 'black' }}>{totalRecords}</h1>
             </div>
-            <div className='card-home' onClick={redirectToInstructoresPlanta} style={{cursor:"pointer"}} >
+            <div className='card-home' onClick={redirectToInstructoresPlanta} style={{cursor:"pointer", padding:"1.7em"}} >
                 <div className='card-inner'>
                 <h3> Ir a instructores de planta</h3>
                     <div style={{ fontSize:"30px", marginLeft:"8vh"}}><FaIcons.FaArrowRightToBracket/></div>
@@ -125,7 +125,7 @@ const Home = () => {
                 <h1 style={{ color: 'black' }}>{totalRecordsPrograms}</h1>
             </div>
 
-            <div className='card-home' onClick={redirectToInstructoresContratistas} style={{cursor:"pointer"}}>
+            <div className='card-home' onClick={redirectToInstructoresContratistas} style={{cursor:"pointer", padding:"1.7em"}}>
                 <div className='card-inner'>
                 <h3>Ir a instructores de contrato</h3>
                     <div style={{ fontSize:"30px", marginLeft:"8vh"}}><FaIcons.FaArrowRightToBracket/></div>
@@ -144,10 +144,10 @@ const Home = () => {
             </div>
             {role==='Admin' && (
             <>
-            <div className='card-home' onClick={redirectToReporte} style={{cursor:"pointer"}}>
+            <div className='card-home' onClick={redirectToReporte} style={{cursor:"pointer", padding:"1.7em"}}>
                 <div className='card-inner'>
                     <h3>Programación</h3>
-                    <div style={{ fontSize:"30px", marginLeft:"3vh"}}><FaIcons.FaArrowRightToBracket/></div>
+                    <div style={{ fontSize:"30px", marginLeft:"8vh"}}><FaIcons.FaArrowRightToBracket/></div>
                 </div>
                 <p style={{marginTop:"10px", marginRight:"20rem !important"}}> Puedes generar un reporte PDF.</p>                
             </div> 
