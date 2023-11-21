@@ -7,6 +7,7 @@ import Swal from "sweetalert2";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import CardLogin from "./Card/CardLogin";
+import { Helmet } from 'react-helmet';
 
 const baseUrl = "https://www.cupibudget.somee.com/api/Auth/login";
 const cookies = new Cookies();
@@ -92,7 +93,11 @@ function Login() {
   };
 
   return (
+    
     <div className="maincontainer">
+      <Helmet>
+        <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+      </Helmet>
       <CardLogin>
         <div className="loginElements">
         <div className="image-login-container">
