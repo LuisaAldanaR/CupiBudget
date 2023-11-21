@@ -21,6 +21,10 @@
     height: 100% !important
   }
 
+  .sidebar-icons{
+      font-size: 2rem !important;
+  }
+
   html {
     width: 100%;
     max-width: 799px;
@@ -748,7 +752,7 @@ textarea, .select-net{
 
 
 
-/* HOME TEST */
+/* HOME STYLES */
 
 /* Main */
 .main-container {
@@ -775,36 +779,37 @@ textarea, .select-net{
   
 }
 
-.card {
+.card-home {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  padding: 0.5em 1em; /* Usando unidades 'em' */
+  padding: 1.5em 1em; /* Usando unidades 'em' */
   border-radius: 0.5em; /* Usando unidades 'em' */
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.3); 
+  color: #000;
 }
 
-.card:first-child {
+.card-home:first-child {
   background-color: #fefec2;
 }
 
-.card:nth-child(2) {
+.card-home:nth-child(2) {
   background-color: #efd6d1;
 }
 
-.card:nth-child(3) {
+.card-home:nth-child(3) {
   background-color: #ffda9b;
 }
 
-.card:nth-child(4) {
+.card-home:nth-child(4) {
   background-color: #caf3b6;
 }
 
-.card:nth-child(5) {
+.card-home:nth-child(5) {
   background-color: #a7c7b4;
 }
 
-.card:nth-child(6) {
+.card-home:nth-child(6) {
   background-color: #d9f5fa;
 }
 
@@ -866,11 +871,12 @@ textarea, .select-net{
     grid-template-columns: 1fr;
     gap: 10px;
     margin-bottom: 0;
+    margin-right: 17rem !important;
   }
 
   .main-title {
     
-    margin-left: 15em !important; 
+    margin-left: 10em; 
     margin-bottom: 2em;
 
   }

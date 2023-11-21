@@ -101,23 +101,23 @@ const Home = () => {
         ) : (
           <div className='main-cards'>
             <div className='main-cards'>
-            <div className='card'>
+            <div className='card-home'>
                 <div className='card-inner'>
                     <h3>Instructores de planta</h3>
                     <div style={{ fontSize:"30px", marginLeft:"8vh"}}><FaIcons.FaClipboardUser/></div>
                 </div>
                 <h1 style={{ color: 'black' }}>{totalRecords}</h1>
             </div>
-            <div className='card' onClick={redirectToInstructoresPlanta} style={{cursor:"pointer"}} >
+            <div className='card-home' onClick={redirectToInstructoresPlanta} style={{cursor:"pointer"}} >
                 <div className='card-inner'>
-                <h3 style={{ marginLeft:"4vh"}}>Ir a instructores de planta</h3>
+                <h3> Ir a instructores de planta</h3>
                     <div style={{ fontSize:"30px", marginLeft:"8vh"}}><FaIcons.FaArrowRightToBracket/></div>
                 </div>
                 <p style={{marginTop:"10px", marginRight:"10px"}}>Visualiza, edita o elimina información de instructor.</p>
             </div>
             
             
-            <div className='card'>
+            <div className='card-home'>
                 <div className='card-inner'>
                     <h3>Programas</h3>
                     <div style={{ fontSize:"30px", marginLeft:"8vh"}}><FaIcons.FaFileContract/></div>
@@ -125,9 +125,9 @@ const Home = () => {
                 <h1 style={{ color: 'black' }}>{totalRecordsPrograms}</h1>
             </div>
 
-            <div className='card' onClick={redirectToInstructoresContratistas} style={{cursor:"pointer"}}>
+            <div className='card-home' onClick={redirectToInstructoresContratistas} style={{cursor:"pointer"}}>
                 <div className='card-inner'>
-                <h3 style={{ marginLeft:"2vh"}}>Ir a instructores de contrato</h3>
+                <h3>Ir a instructores de contrato</h3>
                     <div style={{ fontSize:"30px", marginLeft:"8vh"}}><FaIcons.FaArrowRightToBracket/></div>
                 </div>
                 <p style={{marginTop:"10px", marginRight:"10px"}}>Visualiza, edita o elimina información de instructor.</p>
@@ -135,7 +135,7 @@ const Home = () => {
             
             
             
-            <div className='card'>
+            <div className='card-home'>
                 <div className='card-inner'>
                     <h3>Instructores de contrato</h3>
                     <div style={{ fontSize:"30px", marginLeft:"8vh"}}><FaIcons.FaClipboardUser/></div>
@@ -144,12 +144,12 @@ const Home = () => {
             </div>
             {role==='Admin' && (
             <>
-            <div className='card' onClick={redirectToReporte} style={{cursor:"pointer"}}>
+            <div className='card-home' onClick={redirectToReporte} style={{cursor:"pointer"}}>
                 <div className='card-inner'>
-                    <h3 style={{ marginLeft:"5vh"}}>Programación</h3>
+                    <h3>Programación</h3>
                     <div style={{ fontSize:"30px", marginLeft:"3vh"}}><FaIcons.FaArrowRightToBracket/></div>
                 </div>
-                <p style={{marginTop:"10px"}}>Puedes generar un reporte PDF</p>                
+                <p style={{marginTop:"10px", marginRight:"20rem !important"}}> Puedes generar un reporte PDF.</p>                
             </div> 
             </>  
             )}

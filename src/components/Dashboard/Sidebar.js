@@ -57,7 +57,7 @@ function Sidebar() {
         expanded={expanded}
         onToggle={(expanded) => setExpanded(expanded)}
       >
-        <SideNav.Toggle />
+        <SideNav.Toggle/>
         <SideNav.Nav defaultSelected={selectedItem}>
           <NavItem
             eventKey="home"
@@ -71,6 +71,7 @@ function Sidebar() {
               <Link to="/Home" style={linkStyles}>
                 <FaIcons.FaHome
                   style={{ fontSize: "1.5em", color: "#FEFEC2" }}
+                  className="sidebar-icons"
                 />
               </Link>
             </NavIcon>
@@ -89,7 +90,7 @@ function Sidebar() {
           </NavItem>
           <NavItem eventKey="programas" style={{  }}>
             <NavIcon>
-              <FaIcons.FaBook style={{ fontSize: "1.5em", color: "#FEFEC2" }} />
+              <FaIcons.FaBook className="sidebar-icons" style={{ fontSize: "1.5em", color: "#FEFEC2" }} />
             </NavIcon>
             <NavText style={{ fontSize: "1.5em", userSelect: "none" }}>
               Programas
@@ -160,6 +161,7 @@ function Sidebar() {
                   <Link to="/budgetGenerator" style={linkStyles}>
                     <FaIcons.FaFileInvoiceDollar
                       style={{ fontSize: "1.5em", color: "#FEFEC2" }}
+                      className="sidebar-icons"
                     />
                   </Link>
                 </NavIcon>
@@ -181,6 +183,7 @@ function Sidebar() {
               <Link to="/Goals" style={linkStyles}>
                 <ImIcons.ImTarget
                   style={{ fontSize: "1.5em", color: "#FEFEC2" }}
+                  className="sidebar-icons"
                 />
               </Link>
             </NavIcon>
@@ -191,6 +194,7 @@ function Sidebar() {
           <NavItem eventKey="instructores">
             <NavIcon>
               <FaIcons.FaUserTie
+                className="sidebar-icons"
                 style={{ fontSize: "1.5em", color: "#FEFEC2" }}
               />
             </NavIcon>
