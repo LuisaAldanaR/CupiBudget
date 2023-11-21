@@ -3,10 +3,6 @@
 
 /* General styles */
 
-
-
-
-
 .CustomNavbar{
   background-color: #39a900 !important;
   flex-direction: column;
@@ -56,6 +52,7 @@ body {
   font-family: "Raleway", sans-serif; /* Use Raleway font as the second option */
   margin: 0;
   padding: 0;
+  overflow-x: hidden;
 }
 
 /* Define un fondo con un gradiente lineal */
@@ -112,23 +109,6 @@ $blue: #0000ff;
   color: $light !important;
 }
 
-/* Custom styling for a logo image */
-.sena-title {
-  font-size: 25px;
-  color: #ffffff;
-  white-space: nowrap; /* Evita que el texto se divida en varias líneas */
-  overflow: hidden; /* Oculta cualquier contenido desbordado */
-  text-overflow: ellipsis; /* Añade puntos suspensivos (...) si el texto se desborda */
-  margin-left: 1rem;
-  margin-top: 1rem;
-}
-
-.custom-logo {
-  width: 9rem;
-  height: 6rem; /* Ajusta la altura automáticamente según el ancho */
-  max-width: 100%; /* Evita que la imagen sea más ancha que su contenedor */
-}
-
 .navbar-container {
   width: 100vw;
   min-width: 100%;
@@ -157,6 +137,24 @@ $blue: #0000ff;
     width: 100%;
     height: 5rem;
   }
+
+    /* Custom styling for a logo image */
+  .sena-title {
+    font-size: 25px;
+    color: #ffffff;
+    white-space: nowrap; /* Evita que el texto se divida en varias líneas */
+    overflow: hidden; /* Oculta cualquier contenido desbordado */
+    text-overflow: ellipsis; /* Añade puntos suspensivos (...) si el texto se desborda */
+    margin-left: 1rem;
+    margin-top: 1rem;
+  }
+
+  .custom-logo {
+    width: 9rem;
+    height: 6rem; /* Ajusta la altura automáticamente según el ancho */
+    max-width: 100%; /* Evita que la imagen sea más ancha que su contenedor */
+  }
+
   /* Contenedor principal */
   .container {
     overflow-x:auto; /* Habilita el desplazamiento horizontal */
@@ -177,10 +175,10 @@ $blue: #0000ff;
     min-height: 61rem;
     top: 0;
     z-index: 1;
-    width: 100%; /* Cambia min-width a width */
+    width: 100%;
     min-width: 1100px;
-    margin-left: 7%; /* Ajustar según el ancho de la barra lateral */
-    padding-left: 2rem; /* Agregar un margen izquierdo para el contenido */
+    margin-left: 7%; 
+    padding-left: 2rem; 
     margin-right: 2rem;
   }
 
@@ -210,6 +208,16 @@ $blue: #0000ff;
     margin-left: 1rem;
     margin-top: 3.5rem;
   }
+
+  .center-table-form {
+    display: flex;
+    justify-content: center; /* Centrar horizontalmente */
+    align-items: center; /* Centrar verticalmente */
+    text-align: center;
+    margin: 16px;
+    margin-top: 5rem;
+  }
+
 }
 
 @media (max-width: 800px) {
@@ -224,17 +232,34 @@ $blue: #0000ff;
     top: 0;
     z-index: 2;
     width: 100%;
-    min-width: 1250px !important;
     height: 5rem;
   }
+
+  /* Custom styling for a logo image */
+  .sena-title {
+    font-size: 17.5px;
+    color: #ffffff;
+    white-space: nowrap; 
+    overflow: hidden; 
+    text-overflow: ellipsis; 
+    margin-left: 1rem;
+    margin-top: 1rem;
+  }
+
+  .custom-logo {
+    width: 7rem;
+    height: 5rem; 
+    max-width: 100%; 
+  }
+
   /* Contenedor principal */
   .container {
     display: flex;
     flex-wrap: wrap;
-    width: 100% !important; /* Full width en pantallas más pequeñas */
+    width: 100% !important; 
     z-index: 1;
-    min-width: 500px;
     background-color: #f3f1f1;
+   
   }
 
   /* Main content */
@@ -244,14 +269,13 @@ $blue: #0000ff;
     justify-content: center;
     background-size: 100%;
     min-height: 61rem;
-    position: sticky;
     top: 0;
     z-index: 1;
     width: 100%; /* Cambia min-width a width */
-    min-width: 1100px;
-    max-width: 1100px;
+    min-width: 500px;
     margin-left: 6rem; /* Agregar un margen izquierdo para el contenido */
     margin-right: 1.3rem; /* Agregar un margen izquierdo para el contenido */
+    margin-bottom: 2rem;
     background-color: #f3f1f1;
   }
 
@@ -279,7 +303,15 @@ $blue: #0000ff;
     gap: 3vh;
     margin: 2vh 0;
     margin-top: 3.5rem;
+  }
 
+  .center-table-form {
+    display: flex;
+    justify-content: center; /* Centrar horizontalmente */
+    align-items: center; /* Centrar verticalmente */
+    text-align: center;
+    margin: 16px;
+    margin-top: 10rem;
   }
   
 }
@@ -330,14 +362,6 @@ $blue: #0000ff;
   align-items: center; /* Centrar verticalmente */
   height: 60rem; /* Ajusta la altura según tu diseño */
   text-align: center;
-}
-
-.center-table-form {
-  display: flex;
-  justify-content: center; /* Centrar horizontalmente */
-  align-items: center; /* Centrar verticalmente */
-  text-align: center;
-  margin: 16px;
 }
 
 .card-form {

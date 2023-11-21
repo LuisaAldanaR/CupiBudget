@@ -16,8 +16,6 @@ import Goals from "./components/Goals/Goals";
 import SchedulingTechnological from "./components/Scheduling/SchedulingTechnological/SchedulingTechnological";
 import SchedulingTechnical from "./components/Scheduling/SchedulingTechnical/SchedulingTechnical";
 
-
-
 /**
  * The main application component.
  * @returns {JSX.Element} The rendered application.
@@ -73,12 +71,6 @@ function App() {
 
     
   };
-
-  
-  
-// ...
-
-// ...
 
 const ProtectedRoute = ({ element, path, ...props }) => {
   return isAuthenticated() ? (

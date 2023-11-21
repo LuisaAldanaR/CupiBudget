@@ -50,6 +50,8 @@ function Sidebar() {
           backgroundColor: "#39a900",
           height: "100%",
           position: "fixed",
+          left: 0,
+          top: 0,
           zIndex: "2",
         }}
         expanded={expanded}

@@ -39,10 +39,7 @@ isTokenExpired(token)
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="ms-auto">
-          <FaIcons.FaBell
-            className="notibell"
-            style={{ marginRight: "45px", marginTop: "13px", color: "white", fontSize: "20px" }}
-          />
+         
           <NavDropdown
             title={
               <span>
