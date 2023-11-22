@@ -27,6 +27,9 @@ function isTokenExpired(token)
 
 isTokenExpired(token)
 
+const redirectToHome = () => {
+  window.location.href = 'home';
+};
 
   return (
     <Navbar id="navbar">
@@ -34,6 +37,8 @@ isTokenExpired(token)
         src="/img/logo-sena-white.png"
         className="custom-logo"
         alt="SENA Logo"
+        onClick={redirectToHome}
+        style={{cursor:"pointer"}}
       />
       <p className="sena-title">Servicio Nacional De Aprendizaje</p>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
