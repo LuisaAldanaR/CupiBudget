@@ -21,9 +21,6 @@ const CrudTableRow = ({ el}) => {
       <th className="tdTableRow">{level}</th>
       <th className="tdTableRow">{mode}</th>
       <th className="tdTableRow">{name}</th>
-      <th className="tdTableRow">{validUntil}</th>
-      <th className="tdTableRow">{sniesCode}</th>
-      <th className="tdTableRow">{resolutionNumber}</th>
       <td className="tdTableRow">{endDateCourseAsDate.toLocaleDateString('es-ES', options)}</td>
     </tr>
   );

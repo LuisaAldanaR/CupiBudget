@@ -3,7 +3,7 @@ import CrudTableRow from "./CrudTableRow";
 import "../../../App.scss";
 
 // Definition of the CrudTable component
-const CrudTable = ({ data, }) => {
+const CrudTable = ({ data,  }) => {
     return (
         // Main container of the component
         <div className="">
@@ -17,10 +17,8 @@ const CrudTable = ({ data, }) => {
                                 <th className="thLeft">Nivel de Formación</th>
                                 <th className="thTable">Modalidad</th>
                                 <th className="thTable">Nombre</th>
-                                <th className="thRight">Fecha de Resolución</th>
                             </tr>
                         </thead>
-
                         <tbody>
                             {/* Conditional to handle the case when there is no data */}
                             {data.length > 0 ? (

@@ -15,6 +15,7 @@ import CrudAppFullTimeInstructor from "./components/CRUD-FullTimeInstructor/Crud
 import Goals from "./components/Goals/Goals";
 import SchedulingTechnological from "./components/Scheduling/SchedulingTechnological/SchedulingTechnological";
 import SchedulingTechnical from "./components/Scheduling/SchedulingTechnical/SchedulingTechnical";
+import SchedulingAssistant from "./components/Scheduling/SchedulingAssistant/SchedulingAssistant";
 
 /**
  * The main application component.
@@ -119,6 +120,7 @@ return (
                     <Route path="/CrudForm" element={<ProtectedRoute element={<CrudForm />} />} />
                     <Route path="/SchedulingTechnological" element={<ProtectedRoute element={<SchedulingTechnological />} />} />
                     <Route path="/SchedulingTechnical" element={<ProtectedRoute element={<SchedulingTechnical />} />} />
+                    <Route path="/SchedulingAssistant" element={<ProtectedRoute element={<SchedulingAssistant />} />} />
                   </Routes>
                 </div>
               </div>
