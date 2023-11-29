@@ -14,9 +14,6 @@ const CrudTable = ({ data, }) => {
                                 <th className="thLeft">Nivel de Formación</th>
                                 <th className="thTable">Modalidad</th>
                                 <th className="thTable">Nombre</th>
-                                <th className="thTable">Valido Hasta</th>
-                                <th className="thTable">SniesCodigo</th>
-                                <th className="thTable">Numero de Resolución</th>
                                 <th className="thRight">Fecha de Resolución</th>
                             </tr>
                         </thead>

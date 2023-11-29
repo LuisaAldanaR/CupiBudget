@@ -57,7 +57,7 @@ function Sidebar() {
         expanded={expanded}
         onToggle={(expanded) => setExpanded(expanded)}
       >
-        <SideNav.Toggle/>
+        <SideNav.Toggle />
         <SideNav.Nav defaultSelected={selectedItem}>
           <NavItem
             eventKey="home"
@@ -88,9 +88,12 @@ function Sidebar() {
               </Link>
             </NavText>
           </NavItem>
-          <NavItem eventKey="programas" style={{  }}>
+          <NavItem eventKey="programas" style={{fontSize:"1.1em"}}>
             <NavIcon>
-              <FaIcons.FaBook className="sidebar-icons" style={{ fontSize: "1.5em", color: "#FEFEC2" }} />
+              <FaIcons.FaBook
+                className="sidebar-icons"
+                style={{ fontSize: "1.5em", color: "#FEFEC2" }}
+              />
             </NavIcon>
             <NavText style={{ fontSize: "1.5em", userSelect: "none" }}>
               Programas
@@ -98,54 +101,61 @@ function Sidebar() {
             <NavItem
               eventKey="tecnico"
               onClick={() => handleClick("tecnico", "/SchedulingTechnical")}
-
             >
               <NavText
-                style={{ fontSize: "1.2em", userSelect: "none"}}
+                style={{
+                  fontSize: "1.4em",
+                  outline: "none",
+                }}
                 eventKey="tecnico"
+                onClick={() => handleClick("tecnico", "/SchedulingTechnical")}
               >
-                <Link to="/SchedulingTechnical" style={linkStyles}>
-                  Tecnico
-                </Link>
+                <Link to="/CrudApp"></Link>
+                Tecnico
               </NavText>
             </NavItem>
             <NavItem
               eventKey="tecnologo"
-              onClick={() => handleClick("tecnologo","/SchedulingTechnological")}
+              onClick={() =>
+                handleClick("tecnologo", "/SchedulingTechnological")
+              }
             >
-              <NavText style={{ fontSize: "1.2em" }} eventKey="tecnologo">
-                <Link to="/SchedulingTechnological" style={linkStyles}>
-                  Tecnologo
-                </Link>
+              <NavText
+                style={{
+                  fontSize: "1.4em",
+                  outline: "none",
+                }}
+                eventKey="tecnologo"
+                onClick={() =>
+                  handleClick("tecnologo", "/SchedulingTechnological")
+                }
+              >
+                <Link to="/CrudApp"></Link>
+                Tecnologo
               </NavText>
-            </NavItem>
-            <NavItem
+              </NavItem>
+              <NavItem
               eventKey="auxiliar"
-              onClick={() => handleClick("/SchedulingTechnical")}
+              onClick={() =>
+                handleClick("auxiliar", "/SchedulingAssistant")
+              }
             >
               <NavText
-                style={{ fontSize: "1.2em", userSelect: "none" }}
+                style={{
+                  fontSize: "1.4em",
+                  outline: "none",
+                }}
                 eventKey="auxiliar"
+                onClick={() =>
+                  handleClick("auxiliar", "/SchedulingAssistant")
+                }
               >
-                <Link to="/SchedulingTechnical" style={linkStyles}>
-                  Auxiliares
-                </Link>
+                <Link to="/CrudApp"></Link>
+                Operarios
               </NavText>
-            </NavItem>
-            <NavItem
-              eventKey="operario"
-              onClick={() => handleClick("/SchedulingTechnical")}
-            >
-              <NavText
-                style={{ fontSize: "1.2em", userSelect: "none" }}
-                eventKey="operario"
-              >
-                <Link to="/SchedulingTechnical" style={linkStyles}>
-                  Operarios
-                </Link>
-              </NavText>
-            </NavItem>
+              </NavItem>
           </NavItem>
+  
           {role === "Admin" && (
             <>
               <NavItem
@@ -191,7 +201,7 @@ function Sidebar() {
               Metas
             </NavText>
           </NavItem>
-          <NavItem eventKey="instructores">
+          <NavItem eventKey="instructores" style={{fontSize:"1.1em"}}>
             <NavIcon>
               <FaIcons.FaUserTie
                 className="sidebar-icons"
@@ -204,43 +214,32 @@ function Sidebar() {
             <NavItem eventKey="FullTimeInstructor">
               <NavText
                 style={{
-                  fontSize: "1.2em",
+                  fontSize: "1.4em",
                   outline: "none",
                 }}
-                eventKey="planta"
-                onClick={() => handleClick( "planta", "/CrudAppFullTimeInstructor")}
+                eventKey="contractInstructor"
+                onClick={() =>
+                  handleClick(
+                    "FullTimeInstructor",
+                    "/CrudAppFullTimeInstructor"
+                  )
+                }
               >
-                <Link
-                  to="/CrudAppFullTimeInstructor"
-                  style={{
-                    textDecoration: "none",
-                    color: "black",
-                    userSelect: "none",
-                  }}
-                >
-                  Planta
-                </Link>
+                <Link to="/CrudApp"></Link>
+                Planta
               </NavText>
             </NavItem>
             <NavItem eventKey="contractInstructor">
-              <NavText
+              <NavText 
                 style={{
-                  fontSize: "1.2em",
+                  fontSize: "1.4em",
                   outline: "none",
                 }}
                 eventKey="contractInstructor"
                 onClick={() => handleClick("contractInstructor", "/CrudApp")}
               >
-                <Link
-                  to="/CrudApp"
-                  style={{
-                    textDecoration: "none",
-                    color: "black",
-                    userSelect: "none",
-                  }}
-                >
-                  Contrato
-                </Link>
+                <Link to="/CrudApp"></Link>
+                Contrato
               </NavText>
             </NavItem>
           </NavItem>

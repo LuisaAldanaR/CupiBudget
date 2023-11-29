@@ -124,14 +124,14 @@ const CrudForm = ({ createData, updateData, dataToEdit, setDataToEdit, showTable
 
 
   return (
-    <div className="center-table-form">
-      <div className="card" style={{ padding: "1rem" }}>
-        <div className="">
-          <h3 className="h3Table">{dataToEdit ? "Editar" : "Agregar"}</h3>
-          <br></br>
-          <form onSubmit={handleSubmit}>
-            <div className="mb-3">
-              <label className="label">
+  <div className="center-table-form">
+    <div className="card" style={{padding:"1rem"}}>
+      <div className="">
+        <h3 className="h3Table">{dataToEdit ? "Editar instructor de contrato" : "Agregar instructor de contrato"}</h3>
+        <br></br>
+        <form onSubmit={handleSubmit}>
+          <div className="mb-3">
+          <label className="label">
                 Nombre
               </label>
               <input
