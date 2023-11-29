@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import CrudForm from "./CrudForm"; // Import the form component
-import CrudTable from "./CrudTable"; // Import the table component
-import { helpHttp } from "../../helpers/helpHttp"; // Adjust the import path
-import Loader from "./Loader"; // Import the loader component
-import Message from "./Message"; // Import the message component
+import CrudForm from "./CrudForm";
+import CrudTable from "./CrudTable";
+import { helpHttp } from "../../helpers/helpHttp";
+import Loader from "./Loader";
+import Message from "./Message";
 import "../../App.scss";
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
@@ -25,7 +25,6 @@ function onfocus(foco) {
 
 
 const CrudApp = () => {
-  // States for storing instructor data, edit data, errors, etc.
   const [db, setDb] = useState([]);
   const [networkOptions, setNetworkOptions] = useState([]);
   const [dataToEdit, setDataToEdit] = useState(null);
@@ -34,24 +33,23 @@ const CrudApp = () => {
   const [search, setSearch] = useState("");
   const [showSearch, setShowSearch] = useState(false);
   const [totalRecords, setTotalRecords] = useState(0);
-  // States for showing/hiding the form and records
   const [showForm, setShowForm] = useState(false);
   const [showRecords, setShowRecords] = useState(true);
 
-  const token = localStorage.getItem('jwtToken'); // Recupera el token JWT del almacenamiento local
-  let api = helpHttp(); // Instance of the HTTP request utility
+  const token = localStorage.getItem('jwtToken');
+  let api = helpHttp();
 
   useEffect(() => {
-    loadTableData(); // Load initial data when the component mounts
+    loadTableData();
     loadNetworkOptions();
   }, []);
 
 
-   // Función para cargar las opciones de red desde la API
-   const loadNetworkOptions = () => {
+  // Function to load the NetworkOptions from the API
+  const loadNetworkOptions = () => {
     const urlNetwork = "https://www.cupibudget.somee.com/api/Network/List";
     const options = {
-      headers: {'Authorization': `Bearer ${token}`},
+      headers: { 'Authorization': `Bearer ${token}` },
     };
 
     api.get(urlNetwork, options).then((res) => {
@@ -82,11 +80,11 @@ const CrudApp = () => {
           show_alerta('Error: Revisa tu conexión a Internet', 'error');
         }
       } else {
-        setDb([]); // Set an empty array in 'db' in case of an error
+        setDb([]);
         setTotalRecords(0);
       }
 
-      setLoading(false); // Set 'loading' to false after data is loaded
+      setLoading(false);
     });
   };
 
@@ -103,18 +101,15 @@ const CrudApp = () => {
 
     api.post(urlPost, options).then((res) => {
       if (!res.err) {
-        // Show a success SweetAlert message for the record addition
         Swal.fire({
           title: '¡Agregado!', // Translate: Added!
           text: 'El registro ha sido agregado exitosamente.', // Translate: The record has been successfully added.
           icon: 'success',
           confirmButtonText: 'OK', // Translate: OK
         }).then(() => {
-          // After the user clicks OK in the success message, redirect to the table view
           showTable();
         });
 
-        // After adding a record, reload the data
         loadTableData();
       } else {
 
@@ -133,9 +128,9 @@ const CrudApp = () => {
     };
 
     api.put(urlPut, options).then((res) => {
-      if (!res.error) { // Corregir la verificación de error
+      if (!res.error) {
         Swal.fire({
-          title: '¡Editado!', // Corregir el mensaje de éxito
+          title: '¡Editado!',
           text: 'El registro ha sido editado exitosamente.',
           icon: 'success',
           confirmButtonText: 'OK',
@@ -143,7 +138,7 @@ const CrudApp = () => {
           let newData = db.map((el) =>
             el.idInstructor === data.idInstructor ? data : el
           );
-          setDb(newData); // Actualizar 'db' con los nuevos datos
+          setDb(newData);
           loadTableData();
           showTable();
         });
@@ -155,10 +150,8 @@ const CrudApp = () => {
   };
 
 
-
   // Function to delete an instructor
   const deleteData = (idInstructor, data) => {
-    // Use SweetAlert to show a confirmation dialog
     Swal.fire({
       title: 'Estas seguro?',
       text: `Estas seguro de borrar al Instructor: '${data.name}'?`,
@@ -181,9 +174,8 @@ const CrudApp = () => {
         api.del(endPoint, options).then((res) => {
           if (!res.err) {
             let newData = db.filter((el) => el.idInstructor !== idInstructor);
-            setDb(newData); // Update 'db' by removing the instructor
+            setDb(newData);
 
-            // Show a success SweetAlert message
             Swal.fire(
               'Eliminado!',
               'El registro fue eliminado exitosamente.',
@@ -216,15 +208,15 @@ const CrudApp = () => {
 
   let role = "";
 
-  function isTokenExpired(token)
-      {
-          const arrayToken = token.split('.');
-          const tokenPayload = JSON.parse(atob(arrayToken[1]));
-          role = (tokenPayload["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"]);
-          return Math.floor(new Date().getTime / 1000) >= tokenPayload?.sub;
-      }
-  
-    isTokenExpired(token);
+  // Function to verify if the token is active
+  function isTokenExpired(token) {
+    const arrayToken = token.split('.');
+    const tokenPayload = JSON.parse(atob(arrayToken[1]));
+    role = (tokenPayload["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"]);
+    return Math.floor(new Date().getTime / 1000) >= tokenPayload?.sub;
+  }
+
+  isTokenExpired(token);
 
   return (
 
@@ -233,13 +225,13 @@ const CrudApp = () => {
         <>
           <h3 className="h3Table">Instructores Contratistas</h3>
           <div className="containerButtons">
-          {role === 'Admin' && (
-            <>
-            <button className="btn addButton" onClick={showFormView}>
-              Registrar Nuevo Instructor
-            </button>
-          </>
-          )}
+            {role === 'Admin' && (
+              <>
+                <button className="btn addButton" onClick={showFormView}>
+                  Registrar Nuevo Instructor
+                </button>
+              </>
+            )}
           </div>
         </>
       )}

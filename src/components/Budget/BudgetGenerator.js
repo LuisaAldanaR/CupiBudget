@@ -1,22 +1,22 @@
 import React, { useState, useEffect } from "react";
 import CrudTable from "./CrudTable";
-import { helpHttp } from "../../helpers/helpHttp"; // Ajusta la importación según tu estructura de archivos
+import { helpHttp } from "../../helpers/helpHttp"; 
 import Swal from "sweetalert2";
-import Loader from "./Loader"; // Import the loader component
-import Message from "./Message"; // Import the message component
+import Loader from "./Loader"; 
+import Message from "./Message"; 
 
 const BudgetGenerator = () => {
   const [db, setDb] = useState([]);
   const [dataToEdit, setDataToEdit] = useState(null);
   const [errorMessage, setErrorMessage] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [formData, setFormData] = useState({}); // Nuevo estado para los datos de los formularios
+  const [formData, setFormData] = useState({}); 
 
-  const token = localStorage.getItem("jwtToken"); // Recupera el token JWT del almacenamiento local
-  const api = helpHttp(); // Instancia de la utilidad de solicitud HTTP
+  const token = localStorage.getItem("jwtToken"); 
+  const api = helpHttp(); 
   const [pdfLink, setPdfLink] = useState(null);
   
-
+  //This function sends a request to a server to generate a budget report based on the user-inputted data in the interface.
   const generateBudget = async () => {
     try {
       const data1 = [];
@@ -128,7 +128,6 @@ const BudgetGenerator = () => {
 
         const pdfFileName = `Reporte_${currentMonth}.pdf`;
 
-        // Forzar la descarga del archivo PDF
         const a = document.createElement("a");
         a.style.display = "none";
         a.href = url;
@@ -157,7 +156,7 @@ const BudgetGenerator = () => {
 
 
 
-  // Función para cargar datos en la tabla
+  // Function to load data table
   const loadTableData = () => {
     let urlGet = "https://www.cupibudget.somee.com/api/Network/List";
 
@@ -167,19 +166,19 @@ const BudgetGenerator = () => {
 
     api.get(urlGet, options).then((res) => {
       if (!res.err) {
-        setDb(res.response); // Store data in the 'db' state
-        setErrorMessage(null); // Clear errors
+        setDb(res.response); 
+        setErrorMessage(null); 
       } else {
-        setDb([]); // Set an empty array in 'db' in case of an error
+        setDb([]); 
         setErrorMessage(`Error ${res.status}: ${res.statusText}`);
       }
 
-      setLoading(false); // Set 'loading' to false after data is loaded
+      setLoading(false); 
     });
   };
 
   useEffect(() => {
-    loadTableData(); // Carga los datos iniciales cuando el componente se monta
+    loadTableData();
   }, []);
 
 
@@ -195,7 +194,7 @@ const BudgetGenerator = () => {
     api.post(urlPost, options).then((res) => {
       if (!res.error) {
         Swal.fire({
-          title: "Enviado!", // Corregir el mensaje de éxito
+          title: "Enviado!", 
           text: "Datos enviados correctamente.",
           icon: "success",
           confirmButtonText: "OK",
@@ -203,7 +202,7 @@ const BudgetGenerator = () => {
           let newData = db.map((el) =>
             el.idInstructor === data.idInstructor ? data : el
           );
-          setDb(newData); // Actualizar 'db' con los nuevos datos
+          setDb(newData); 
         });
       } else {
         setErrorMessage(res);
@@ -213,19 +212,15 @@ const BudgetGenerator = () => {
 
   // Function to handle changes in form fields
   const handleFormChange = (idNetwork, name, value) => {
-    // Crear una copia del estado formData
     const updatedFormData = { ...formData };
 
-    // Crear un objeto de datos para esta fila
     const rowData = {
       ...updatedFormData[idNetwork],
       [name]: value,
     };
 
-    // Actualizar el estado con los datos de esta fila
     updatedFormData[idNetwork] = rowData;
 
-    // Actualizar el estado formData con los nuevos datos
     setFormData(updatedFormData);
 
   };

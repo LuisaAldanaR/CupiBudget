@@ -19,10 +19,12 @@ const CrudTable = ({
   const [searchNetwork, setSearchNetwork] = useState("");
   const [showSearchNetwork, setShowSearchNetwork] = useState(false);
 
+    // Function to toggle the sorting direction
   const toggleSortingDirection = () => {
     setIsAscending(!isAscending);
   };
 
+    //Function to remove accents in the searching
   const removeAccents = (str) => {
     return str
       .normalize("NFD")
@@ -30,6 +32,7 @@ const CrudTable = ({
       .toLowerCase();
   };
 
+    // Function to search 
   const searcher = (e) => {
     setSearch(e.target.value);
   };

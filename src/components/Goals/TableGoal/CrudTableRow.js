@@ -1,6 +1,5 @@
 import React from 'react';
 import '../../../App.scss';
-import Swal from 'sweetalert2';
 
 const CrudTableRow = ({ goal, index, goalsKey, handleFormChange }) => {
 
@@ -10,10 +9,9 @@ const CrudTableRow = ({ goal, index, goalsKey, handleFormChange }) => {
   };
 
   if (!goal) {
-    return null; // Handling undefined data
+    return null; 
   }
 
-  // Verifica la modalidad y asigna el nombre apropiado
   const levelName = goal.modality === "Presencial" || goal.modality === "Virtual"
     ? "Tecnólogo"
     : "Técnico Laborales y Otros";

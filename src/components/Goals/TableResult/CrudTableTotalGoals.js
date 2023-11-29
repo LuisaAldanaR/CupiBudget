@@ -4,7 +4,6 @@ import "../../../App.scss";
 import withReactContent from 'sweetalert2-react-content';
 import Swal from 'sweetalert2';
 
-// Definition of the CrudTable component
 const CrudTableGoals = ({ data }) => {
 
     function show_alerta(mensaje, icono, foco = '') {
@@ -29,11 +28,9 @@ const CrudTableGoals = ({ data }) => {
     console.log(data);
 
     return (
-        // Main container of the component
         <div className="">
             <div className="card-body background-gradient">
                 <div className="table-responsive">
-                    {/* Table header for the first table */}
                     <h2 className="h3Table">Total</h2>
                     <table className="table">
                     <thead className="text-center">
@@ -73,7 +70,7 @@ const CrudTableGoals = ({ data }) => {
                                     key={index}
                                     goal={goal}
                                     index={index}
-                                    goalsKey="goal3" // Cambiar esto a "goals1"
+                                    goalsKey="goal3" 
                                 />
                             ))}
                             {data.goal4.map((goal, index) => (
@@ -81,7 +78,7 @@ const CrudTableGoals = ({ data }) => {
                                     key={index}
                                     goal={goal}
                                     index={index}
-                                    goalsKey="goal4" // Cambiar esto a "goals2"
+                                    goalsKey="goal4" 
                                 />
                             ))}
                         </tbody>
@@ -92,7 +89,6 @@ const CrudTableGoals = ({ data }) => {
     );
 };
 
-// Export the CrudTable component for use in other parts of the application
 export default CrudTableGoals;
 
 

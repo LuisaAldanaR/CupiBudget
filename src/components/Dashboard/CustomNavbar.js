@@ -11,8 +11,7 @@ const token = localStorage.getItem('jwtToken');
 
 if (!token) {
   console.error("Token is null or undefined");
-  // Handle the case where the token is not present
-  // You might want to redirect the user to the login page or take appropriate action
+  
   return null;
 }
 

@@ -8,24 +8,20 @@ import "../../App.scss";
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
 
-function show_alerta(mensaje, icono, foco='')
-{
+function show_alerta(mensaje, icono, foco = '') {
   onfocus(foco);
   const MySwal = withReactContent(Swal);
   MySwal.fire({
-    title:mensaje,
-    icon:icono
+    title: mensaje,
+    icon: icono
   })
 }
 
-function onfocus(foco)
-{
-  if(foco !== '')
-  {
+function onfocus(foco) {
+  if (foco !== '') {
     document.getElementById(foco).focus();
   }
 }
-
 
 const CrudAppFullTimeInstructor = () => {
   const [db, setDb] = useState([]);
@@ -44,11 +40,11 @@ const CrudAppFullTimeInstructor = () => {
     loadNetworkOptions();
   }, []);
 
-  // Función para cargar las opciones de red desde la API
+  // Function to load the NetworkOptions from the API
   const loadNetworkOptions = () => {
     const urlNetwork = "https://www.cupibudget.somee.com/api/Network/List";
     const options = {
-      headers: {'Authorization': `Bearer ${token}`},
+      headers: { 'Authorization': `Bearer ${token}` },
     };
 
     api.get(urlNetwork, options).then((res) => {
@@ -60,41 +56,44 @@ const CrudAppFullTimeInstructor = () => {
     });
   };
 
+  // Function to load table data
   const loadTableData = () => {
     let urlGet = "https://www.cupibudget.somee.com/api/FullTimeInstructor/List";
 
-  let options = {
-    headers: {'Authorization': `Bearer ${token}`, },   
-  };
+    let options = {
+      headers: { 'Authorization': `Bearer ${token}`, },
+    };
 
-  api.get(urlGet, options).then((res) => {
-    if (!res.err) {
+    api.get(urlGet, options).then((res) => {
+      if (!res.err) {
 
-      try {
-        setDb(res.response);
-        setTotalRecords(res.response.length);
-        setError(null);
-      } catch (error) {
-        show_alerta('Error: Revisa tu conexión a Internet', 'error');
+        try {
+          setDb(res.response);
+          setTotalRecords(res.response.length);
+          setError(null);
+        } catch (error) {
+          show_alerta('Error: Revisa tu conexión a Internet', 'error');
+        }
+
+      } else {
+        setDb([]);
+        setTotalRecords(0);
       }
 
-    } else {
-      setDb([]);
-      setTotalRecords(0);
-    }
+      setLoading(false);
+    });
+  };
 
-    setLoading(false);
-  });
-};
+  // Function to create a new instructor
 
   const createData = (data) => {
     let urlPost = "https://www.cupibudget.somee.com/api/FullTimeInstructor/Save";
-  
+
     let options = {
       body: data,
-      headers: { "content-type": "application/json",'Authorization': `Bearer ${token}`, },
+      headers: { "content-type": "application/json", 'Authorization': `Bearer ${token}`, },
     };
-  
+
     api.post(urlPost, options).then((res) => {
       if (!res.err) {
         Swal.fire({
@@ -105,20 +104,22 @@ const CrudAppFullTimeInstructor = () => {
         }).then(() => {
           showTable();
         });
-  
+
         loadTableData();
       } else {
-        
+
         show_alerta('Acceso denegado', 'error');
       }
     });
   };
 
+  // Function to update an existing instructor
+
   const updateData = (data) => {
     let urlPut = "https://www.cupibudget.somee.com/api/FullTimeInstructor/Edit";
-  
-    let options = { body: data, headers: { "content-type": "application/json" ,'Authorization': `Bearer ${token}`,} };
-  
+
+    let options = { body: data, headers: { "content-type": "application/json", 'Authorization': `Bearer ${token}`, } };
+
     api.put(urlPut, options).then((res) => {
       if (!res.error) {
         Swal.fire({
@@ -135,11 +136,13 @@ const CrudAppFullTimeInstructor = () => {
           showTable();
         });
       } else {
-       
+
         show_alerta('Acceso denegado', 'error');
       }
     });
   };
+
+  // Function to delete an instructor
 
   const deleteData = (idInstructor, data) => {
     Swal.fire({
@@ -155,21 +158,21 @@ const CrudAppFullTimeInstructor = () => {
       if (result.isConfirmed) {
         let urlDel = "https://www.cupibudget.somee.com/api/FullTimeInstructor/Delete";
         let endPoint = `${urlDel}/${idInstructor}`;
-  
-        let options = { headers: { "content-type": "application/json",'Authorization': `Bearer ${token}`, } };
-  
+
+        let options = { headers: { "content-type": "application/json", 'Authorization': `Bearer ${token}`, } };
+
         api.del(endPoint, options).then((res) => {
           if (!res.err) {
             let newData = db.filter((el) => el.idInstructor !== idInstructor);
             setDb(newData);
-  
+
             Swal.fire(
               '¡Eliminado!',
               'El registro ha sido eliminado exitosamente.',
               'success'
             );
           } else {
-            
+
             show_alerta('Acceso denegado', 'error');
           }
         });
@@ -177,16 +180,18 @@ const CrudAppFullTimeInstructor = () => {
     });
   };
 
+  // Function to show the form
   const showFormViewFullTimeInstructor = () => {
-    
+
     if (dataToEdit) {
       setDataToEdit(null);
     }
-    
+
     setShowForm(true);
     setShowRecords(false);
   };
 
+  // Function to show the record table
   const showTable = () => {
     setShowForm(false);
     setShowRecords(true);
@@ -195,39 +200,39 @@ const CrudAppFullTimeInstructor = () => {
   if (loading) {
     return <Loader />;
   }
-  
+
   if (error) {
     return <Message msg={`Error ${error.status}: ${error.statusText}`} bgColor="#dc3545" />;
   }
 
   let role = "";
 
-  function isTokenExpired(token)
-      {
-          const arrayToken = token.split('.');
-          const tokenPayload = JSON.parse(atob(arrayToken[1]));
-          role = (tokenPayload["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"]);
-          return Math.floor(new Date().getTime / 1000) >= tokenPayload?.sub;
-      }
-  
-    isTokenExpired(token);
+  // Function to verify if the token is active
+  function isTokenExpired(token) {
+    const arrayToken = token.split('.');
+    const tokenPayload = JSON.parse(atob(arrayToken[1]));
+    role = (tokenPayload["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"]);
+    return Math.floor(new Date().getTime / 1000) >= tokenPayload?.sub;
+  }
+
+  isTokenExpired(token);
 
   return (
     <div className="content">
       {showRecords && (
         <>
-          
+
           <h3 className="h3Table">Instructores de Planta</h3>
-          
+
           <div className="containerButtons">
             {role === 'Admin' && (
-            <>
-            <button className="btn addButton" onClick={showFormViewFullTimeInstructor}>
-              Registrar Nuevo Instructor
-            </button>
-            </>
-          )}
-          </div> 
+              <>
+                <button className="btn addButton" onClick={showFormViewFullTimeInstructor}>
+                  Registrar Nuevo Instructor
+                </button>
+              </>
+            )}
+          </div>
         </>
       )}
 
@@ -241,7 +246,7 @@ const CrudAppFullTimeInstructor = () => {
           networkOptions={networkOptions}
         />
       )}
-  
+
       {showRecords && !loading && !error && db && (
         <CrudTable
           data={db}
@@ -250,16 +255,16 @@ const CrudAppFullTimeInstructor = () => {
           showFormViewFullTimeInstructor={showFormViewFullTimeInstructor}
         />
       )}
-  
+
       <div className="loader">
         {loading && <Loader />}
-  
+
         {error && (
           <Message msg={`Error ${error.status}: ${error.statusText}`} bgColor="#dc3545" />
         )}
       </div>
 
-      
+
 
     </div>
   );

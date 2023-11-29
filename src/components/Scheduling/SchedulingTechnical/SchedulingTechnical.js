@@ -2,12 +2,10 @@ import React , {useEffect, useState} from 'react';
 import { helpHttp } from '../../../helpers/helpHttp';
 import CrudTable from '../SchedulingTechnical/CrudTable';
 import CrudTableVirtual from './CrudTableVirtual';
-import Loader from "./Loader"; // Import the loader component
-import Message from "./Message"; // Import the message component
+import Loader from "./Loader"; 
+import Message from "./Message"; 
 
 const SchedulingTechnological = () => {
-
-    // States for storing instructor data, edit data, errors, etc.
   const [db, setDb] = useState([]); 
   const [error, setError] = useState(null); 
   const [loading, setLoading] = useState(true); 
@@ -20,14 +18,14 @@ const SchedulingTechnological = () => {
   const [search, setSearch] = useState("");
   const [showSearch, setShowSearch] = useState(false);
   
-  const token = localStorage.getItem('jwtToken'); // Recupera el token JWT del almacenamiento local
-  let api = helpHttp(); // Instance of the HTTP request utility
+  const token = localStorage.getItem('jwtToken'); 
+  let api = helpHttp(); 
 
   useEffect(() => {
-    loadTableData(); // Load initial data when the component mounts
+    loadTableData(); 
   }, []);
 
-  // Function to load table data
+  // Function to load table data of List Technical InPerson
   const loadTableData = () => {
     let urlGet = "https://www.cupibudget.somee.com/api/TrainingProgram/ListTechnicalInPerson";
 
@@ -37,22 +35,22 @@ const SchedulingTechnological = () => {
     
     api.get(urlGet, options).then((res) => {
       if (!res.err) {
-        setDb(res.response); // Store data in the 'db' state
-        setError(null); // Clear errors
+        setDb(res.response); 
+        setError(null); 
       } else {
-        setDb([]); // Set an empty array in 'db' in case of an error
+        setDb([]); 
         setError(`Error ${res.status}: ${res.statusText}`);
       }
 
-      setLoading(false); // Set 'loading' to false after data is loaded
+      setLoading(false); 
     });
   };
 
   useEffect(() => {
-    loadTableDataVirtual(); // Load initial data when the component mounts
+    loadTableDataVirtual(); 
   }, []);
 
-  // Function to load table data
+  // Function to load table data List Technical Virtual
   const loadTableDataVirtual = () => {
     let urlGet = "https://www.cupibudget.somee.com/api/TrainingProgram/ListTechnicalVirtual";
 
@@ -62,18 +60,18 @@ const SchedulingTechnological = () => {
     
     api.get(urlGet, options).then((res) => {
       if (!res.err) {
-        setDbVirtual(res.response); // Store data in the 'db' state
-        setErrorVirtual(null); // Clear errors
+        setDbVirtual(res.response); 
+        setErrorVirtual(null); 
       } else {
-        setDbVirtual([]); // Set an empty array in 'db' in case of an error
+        setDbVirtual([]); 
         setErrorVirtual(`Error ${res.status}: ${res.statusText}`);
       }
 
-      setLoadingVirtual(false); // Set 'loading' to false after data is loaded
+      setLoadingVirtual(false); 
     });
   };
 
-    // Search Func
+    // Search Function
 
     const searcher = (e) => {
       setSearch(e.target.value);
@@ -91,7 +89,7 @@ const SchedulingTechnological = () => {
     
   
     const toggleSearch = () => {
-      setShowSearch(!showSearch); // Alternar la visibilidad de la barra de búsqueda
+      setShowSearch(!showSearch); 
     };
 
     return (  

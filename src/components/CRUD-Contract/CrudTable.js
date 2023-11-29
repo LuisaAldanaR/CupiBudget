@@ -14,12 +14,12 @@ const CrudTable = ({ data, setDataToEdit, deleteData, showFormView }) => {
   const [searchNetwork, setSearchNetwork] = useState("");
   const [showSearchNetwork, setShowSearchNetwork] = useState(false);
 
-  // Función para alternar la dirección de ordenación
+  // Function to toggle the sorting direction
   const toggleSortingDirection = () => {
     setIsAscending(!isAscending);
   };
-  
 
+  //Function to remove accents in the searching
   const removeAccents = (str) => {
     return str
       .normalize("NFD")
@@ -27,20 +27,20 @@ const CrudTable = ({ data, setDataToEdit, deleteData, showFormView }) => {
       .toLowerCase();
   };
 
+  // Function to search 
   const searcher = (e) => {
     setSearch(e.target.value);
-    console.log(e.target.value);
   };
 
   // Filter Method
 
   const clearInput = () => {
     document.getElementById("mysearch").value = "";
-    setSearch(""); // Restablece la búsqueda a una cadena vacía
+    setSearch("");
   };
 
   const toggleSearch = () => {
-    setShowSearch(!showSearch); // Alternar la visibilidad de la barra de búsqueda
+    setShowSearch(!showSearch);
   };
 
   const searcherNetwork = (e) => {
@@ -79,15 +79,11 @@ const CrudTable = ({ data, setDataToEdit, deleteData, showFormView }) => {
     return sortedData;
   };
 
-
-
-
   return (
     <div className="">
       <br></br>
       <div className="card-body background-gradient">
         <div className="table-responsive">
-          {/* Table header */}
           <br></br>
           <table className="table">
             <thead className="text-center">
@@ -110,7 +106,7 @@ const CrudTable = ({ data, setDataToEdit, deleteData, showFormView }) => {
                 <th className="thTable">Fecha Inicio Contrato</th>
                 <th className="thTable">Fecha Fin Contrato</th>
                 <th className="thTable">Fecha Fin Curso</th>
-                <th className="thTable">Nombre de la Red</th>        
+                <th className="thTable">Nombre de la Red</th>
                 <th className="thRight">Acciones</th>
               </tr>
             </thead>
@@ -120,9 +116,8 @@ const CrudTable = ({ data, setDataToEdit, deleteData, showFormView }) => {
                 <td></td>
                 <td>
                   <div
-                    className={`searchBarContractName ${
-                      showSearch ? "active" : ""
-                    }`}
+                    className={`searchBarContractName ${showSearch ? "active" : ""
+                      }`}
                   >
                     <div className="iconSearch" onClick={toggleSearch}></div>
                     <div className="inputSearch">
@@ -142,9 +137,8 @@ const CrudTable = ({ data, setDataToEdit, deleteData, showFormView }) => {
                 <td> </td>
                 <td>
                   <div
-                    className={`searchBarContractNetwork ${
-                      showSearchNetwork ? "active" : ""
-                    }`}
+                    className={`searchBarContractNetwork ${showSearchNetwork ? "active" : ""
+                      }`}
                   >
                     <div
                       className="iconSearch"
@@ -176,11 +170,11 @@ const CrudTable = ({ data, setDataToEdit, deleteData, showFormView }) => {
                   showFormView={showFormView}
                 />
               ))}
-                  {sortDataByName().length === 0 ? (
-                  <tr>
-                    <td colSpan="7" style={{color:"red"}} >No se encuentran resultados</td>
-                  </tr>
-                ) : null}
+              {sortDataByName().length === 0 ? (
+                <tr>
+                  <td colSpan="7" style={{ color: "red" }} >No se encuentran resultados</td>
+                </tr>
+              ) : null}
             </tbody>
           </table>
         </div>

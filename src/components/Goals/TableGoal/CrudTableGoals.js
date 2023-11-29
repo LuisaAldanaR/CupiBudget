@@ -63,7 +63,7 @@ const CrudTableGoals = ({ data, handleFormChange }) => {
                                     key={index}
                                     goal={goal}
                                     index={index}
-                                    goalsKey="goals1" // Cambiar esto a "goals1"
+                                    goalsKey="goals1" 
                                     handleFormChange={handleFormChange}
                                 />
                             ))}
@@ -72,7 +72,7 @@ const CrudTableGoals = ({ data, handleFormChange }) => {
                                     key={index}
                                     goal={goal}
                                     index={index}
-                                    goalsKey="goals2" // Cambiar esto a "goals2"
+                                    goalsKey="goals2"
                                     handleFormChange={handleFormChange}
                                 />
                             ))}

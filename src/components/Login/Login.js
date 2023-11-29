@@ -13,6 +13,7 @@ const baseUrl = "https://www.cupibudget.somee.com/api/Auth/login";
 const cookies = new Cookies();
 
 function Login() {
+
   const [form, setForm] = useState({
     username: "",
     password: "",
@@ -29,7 +30,7 @@ function Login() {
     localStorage.removeItem("jwtToken");
   };
 
-  const iniciarSesion = async () => {
+  const authentication = async () => {
     const { post } = helpHttp();
 
     try {
@@ -47,7 +48,6 @@ function Login() {
       if (response.length > 0) {
         const respuesta = response[0];
         cookies.set("id", respuesta.id, { path: "/" });
-        // ... (other cookie settings)
 
         localStorage.setItem("jwtToken", response);
 
@@ -83,7 +83,7 @@ function Login() {
   const handleKeyDown = (event) => {
     if (event.key === "Enter") {
       event.preventDefault(); // Prevent form submission
-      iniciarSesion();
+      authentication();
     }
   };
 
@@ -148,7 +148,7 @@ function Login() {
             type="button"
             value="Ingresar"
             className="login_button"
-            onClick={() => iniciarSesion()}
+            onClick={() => authentication()}
           />
         </form>
       </CardLogin>

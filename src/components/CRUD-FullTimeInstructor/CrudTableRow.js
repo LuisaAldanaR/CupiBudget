@@ -9,9 +9,8 @@ const CrudTableRow = ({
   setDataToEdit,
   deleteData,
   showFormViewFullTimeInstructor,
- 
+
 }) => {
-  // Destructure the properties of the 'el' object passed as an argument
   let { idInstructor, name, position, oNetwork, endDateCourse } = el;
   const endDateCourseAsDate = new Date(endDateCourse);
 
@@ -26,12 +25,13 @@ const CrudTableRow = ({
   let role = "";
   const token = localStorage.getItem("jwtToken");
 
+  // Function to verify if the token is active
   function isTokenExpired(token) {
     const arrayToken = token.split(".");
     const tokenPayload = JSON.parse(atob(arrayToken[1]));
     role =
       tokenPayload[
-        "http://schemas.microsoft.com/ws/2008/06/identity/claims/role"
+      "http://schemas.microsoft.com/ws/2008/06/identity/claims/role"
       ];
     return Math.floor(new Date().getTime / 1000) >= tokenPayload?.sub;
   }
@@ -39,7 +39,6 @@ const CrudTableRow = ({
   isTokenExpired(token);
 
   return (
-    // Render a table row with data from the 'el' object
     <tr>
       <td className="tdTableRow">{name}</td>
 
@@ -47,7 +46,6 @@ const CrudTableRow = ({
       <td className="tdTableRow">
         {endDateCourseAsDate.toLocaleDateString("es-ES", options)}
       </td>
-      {/* Render the network name ('oNetwork.networkName') or a loading message if not defined */}
       <td className="tdTableRow">
         {oNetwork ? (
           oNetwork.networkName
@@ -59,18 +57,16 @@ const CrudTableRow = ({
       <td className="tdTableRow">
         {role === "Admin" && (
           <>
-            {/* Edit button that calls the 'setDataToEdit' function with the 'el' object */}
             <button
               className="btn btn-warning"
               onClick={() => {
-                setDataToEdit(el); // Set the 'el' object as the data to edit
-                showFormViewFullTimeInstructor(); // Call the 'showFormViewFullTimeInstructor' function to show the form
+                setDataToEdit(el);
+                showFormViewFullTimeInstructor();
               }}
             >
               <FontAwesomeIcon icon={faPen} />
             </button>
             &nbsp;
-            {/* Delete button that calls the 'deleteData' function with 'idInstructor' as an argument */}
             <button
               className="btn btn-danger"
               onClick={() => deleteData(idInstructor, el)}
@@ -84,5 +80,4 @@ const CrudTableRow = ({
   );
 };
 
-// Export the CrudTableRow component for use in other parts of the application
 export default CrudTableRow;

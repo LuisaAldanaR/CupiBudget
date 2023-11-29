@@ -31,6 +31,7 @@ const Home = () => {
     headers: { 'Authorization': `Bearer ${token}` },
   };
 
+  //Effect to 
   useEffect(() => {
     setLoading(true);
   
@@ -97,7 +98,7 @@ const Home = () => {
           <h3>TABLERO GENERAL</h3>
         </div>
         {loading ? (
-          <Loader /> // Display Loader when loading is true
+          <Loader /> 
         ) : (
           <div className='main-cards'>
             <div className='main-cards'>

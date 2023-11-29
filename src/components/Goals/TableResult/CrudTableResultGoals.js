@@ -5,7 +5,6 @@ const CrudTableResultGoals = ({ goal, }) => {
 
   console.log(goal);
 
-  // Verifica la modalidad y asigna el nombre apropiado
   const levelName = goal.modality === "Tecnologo"
     ? "Tecnólogo"
     : "Técnico Laborales y Otros";

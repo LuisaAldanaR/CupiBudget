@@ -21,5 +21,4 @@ const Message = ({ msg, bgColor }) => {
   );
 };
 
-// Export the Message component for use in other parts of the application
 export default Message;

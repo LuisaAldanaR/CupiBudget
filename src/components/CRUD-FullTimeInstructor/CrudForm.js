@@ -9,14 +9,13 @@ const initialForm = {
   networkId: null,
 };
 
-const CrudForm = ({ createData, updateData, dataToEdit, setDataToEdit, showTable, networkOptions  }) => {
+const CrudForm = ({ createData, updateData, dataToEdit, setDataToEdit, showTable, networkOptions }) => {
   const [form, setForm] = useState(initialForm);
   const token = localStorage.getItem('jwtToken');
 
   console.log(dataToEdit);
 
   useEffect(() => {
-    // Si hay datos para editar, establece el formulario con esos datos
     if (dataToEdit) {
       setForm(dataToEdit);
     } else {
@@ -24,7 +23,7 @@ const CrudForm = ({ createData, updateData, dataToEdit, setDataToEdit, showTable
     }
   }, [dataToEdit]);
 
-  
+  // Function to handle changes in form fields
   const handleChange = (e) => {
     const { name, value } = e.target;
     setForm({
@@ -33,6 +32,7 @@ const CrudForm = ({ createData, updateData, dataToEdit, setDataToEdit, showTable
     });
   };
 
+  // Function to handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -41,7 +41,7 @@ const CrudForm = ({ createData, updateData, dataToEdit, setDataToEdit, showTable
     const isEndDateCourseAvailable = inputDate > currentDate;
 
     if (!token) {
-      return; // Manejo adicional si no hay un token válido
+      return;
     }
 
     if (!form.name.trim() || !form.position.trim() || !form.networkId) {
@@ -75,11 +75,13 @@ const CrudForm = ({ createData, updateData, dataToEdit, setDataToEdit, showTable
     handleReset();
   };
 
+  // Function to clear the form and edit data
   const handleReset = (e) => {
     setForm(initialForm);
     setDataToEdit(null);
   };
 
+  // Function to cancel and return to the table view
   const handleCancel = () => {
     showTable();
     setForm(initialForm);
@@ -88,7 +90,7 @@ const CrudForm = ({ createData, updateData, dataToEdit, setDataToEdit, showTable
 
   return (
     <div className="center-table-form">
-      <div className="card" style={{padding:"1rem"}}>
+      <div className="card" style={{ padding: "1rem" }}>
         <div className="">
           <h3 className="h3Table">{dataToEdit ? "Editar" : "Agregar"}</h3>
           <br></br>
@@ -104,7 +106,7 @@ const CrudForm = ({ createData, updateData, dataToEdit, setDataToEdit, showTable
                 className="select-net"
                 onChange={handleChange}
                 value={form.name}
-                style={{paddingRight:"20px", paddingLeft:"20px"}}
+                style={{ paddingRight: "20px", paddingLeft: "20px" }}
               />
             </div>
             <div className="mb-3">
@@ -118,7 +120,7 @@ const CrudForm = ({ createData, updateData, dataToEdit, setDataToEdit, showTable
                 className="select-net"
                 onChange={handleChange}
                 value={form.endDateCourse}
-                style={{paddingRight:"20px", paddingLeft:"20px"}}
+                style={{ paddingRight: "20px", paddingLeft: "20px" }}
               />
             </div>
             <div className="mb-3">
@@ -130,7 +132,7 @@ const CrudForm = ({ createData, updateData, dataToEdit, setDataToEdit, showTable
                 className="select-net"
                 onChange={handleChange}
                 value={form.position}
-                style={{paddingRight:"20px", paddingLeft:"20px"}}
+                style={{ paddingRight: "20px", paddingLeft: "20px" }}
               >
                 <option value="">Selecciona una posición</option>
                 <option>Instructor</option>
@@ -149,7 +151,7 @@ const CrudForm = ({ createData, updateData, dataToEdit, setDataToEdit, showTable
                 className="select-net"
                 onChange={handleChange}
                 value={form.networkId}
-                style={{paddingRight:"20px", paddingLeft:"20px"}}
+                style={{ paddingRight: "20px", paddingLeft: "20px" }}
               >
                 <option value="">Selecciona una red</option>
                 {networkOptions.map((option) => (

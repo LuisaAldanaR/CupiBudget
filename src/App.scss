@@ -96,7 +96,6 @@ $blue: #0000ff;
 }
 
 /* Custom styling for navigation button */
-/* Custom styling for navigation button */
 #basic-nav-dropdown::after {
   content: "";
   display: inline-block;
@@ -120,8 +119,7 @@ $blue: #0000ff;
   min-width: 100%;
 }
 
-/* Sidebar */
-/* Estilos para la barra lateral */
+/* Styles to maximum width 800px */
 
 @media (min-width: 800px) {
   html {
@@ -144,30 +142,30 @@ $blue: #0000ff;
     height: 5rem;
   }
 
-    /* Custom styling for a logo image */
+  /* Custom styling for a logo image */
   .sena-title {
     font-size: 25px;
     color: #ffffff;
-    white-space: nowrap; /* Evita que el texto se divida en varias líneas */
-    overflow: hidden; /* Oculta cualquier contenido desbordado */
-    text-overflow: ellipsis; /* Añade puntos suspensivos (...) si el texto se desborda */
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis; 
     margin-left: 1rem;
     margin-top: 1rem;
   }
 
   .custom-logo {
     width: 9rem;
-    height: 6rem; /* Ajusta la altura automáticamente según el ancho */
-    max-width: 100%; /* Evita que la imagen sea más ancha que su contenedor */
+    height: 6rem;
+    max-width: 100%; 
   }
 
   /* Contenedor principal */
   .container {
-    overflow-x:auto; /* Habilita el desplazamiento horizontal */
+    overflow-x:auto; 
     background-color: #f3f1f1;
     display: flex;
     flex-wrap: wrap;
-    width: 100% !important; /* Full width en pantallas más pequeñas */
+    width: 100% !important; 
     min-width: 1100px;
     z-index: 1;
   }
@@ -217,8 +215,8 @@ $blue: #0000ff;
 
   .center-table-form {
     display: flex;
-    justify-content: center; /* Centrar horizontalmente */
-    align-items: center; /* Centrar verticalmente */
+    justify-content: center; 
+    align-items: center; 
     text-align: center;
     margin: 16px;
     margin-top: 5rem;
@@ -226,9 +224,9 @@ $blue: #0000ff;
 
 }
 
-@media (max-width: 800px) {
+/* Styles to minium width 800px */
 
-  
+@media (max-width: 800px) {
   /* Top navigation bar */
   #navbar {
     background-color: #39a900 !important;
@@ -277,10 +275,10 @@ $blue: #0000ff;
     min-height: 61rem;
     top: 0;
     z-index: 1;
-    width: 100%; /* Cambia min-width a width */
+    width: 100%; 
     min-width: 500px;
-    margin-left: 6rem; /* Agregar un margen izquierdo para el contenido */
-    margin-right: 1.3rem; /* Agregar un margen izquierdo para el contenido */
+    margin-left: 6rem; 
+    margin-right: 1.3rem; 
     margin-bottom: 2rem;
     background-color: #f3f1f1;
   }
@@ -294,8 +292,8 @@ $blue: #0000ff;
     position: sticky;
     flex-wrap: wrap;
     color: rgba(255, 255, 255, 0.95);
-    margin-left: 7%; /* En lugar de valores fijos, utiliza porcentajes */
-    padding-bottom: 10%; /* En lugar de valores fijos, utiliza porcentajes */
+    margin-left: 7%; 
+    padding-bottom: 10%; 
     margin-top: 4rem;
     min-width: 1100px;
     width: 100%;
@@ -313,8 +311,8 @@ $blue: #0000ff;
 
   .center-table-form {
     display: flex;
-    justify-content: center; /* Centrar horizontalmente */
-    align-items: center; /* Centrar verticalmente */
+    justify-content: center; 
+    align-items: center; 
     text-align: center;
     margin: 16px;
     margin-top: 10rem;
@@ -327,7 +325,7 @@ $blue: #0000ff;
   background-color: #c5e8fc !important;
   border-top-left-radius: 10px !important;
   font-family: "Raleway", sans-serif;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); /* Agrega una sombra */
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); 
 }
 
 .thRight {
@@ -339,7 +337,7 @@ $blue: #0000ff;
 .thTable {
   background-color: #c5e8fc !important;
   font-family: "Raleway", sans-serif;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); /* Agrega una sombra */
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); 
 }
 
 .tdTableRow {
@@ -351,9 +349,9 @@ $blue: #0000ff;
 
 .h3Table {
   flex-grow: 1;
-  flex-basis: 200; /* Stack elements vertically on smaller screens */
-  justify-content: center; /* Centrar horizontalmente */
-  align-items: center; /* Centrar verticalmente */
+  flex-basis: 200;
+  justify-content: center; 
+  align-items: center; 
   text-align: center;
   font-family: "Raleway", sans-serif;
   color: #000;
@@ -364,16 +362,16 @@ $blue: #0000ff;
 }
 
 .center-table {
-  justify-content: center; /* Centrar horizontalmente */
-  align-items: center; /* Centrar verticalmente */
-  height: 60rem; /* Ajusta la altura según tu diseño */
+  justify-content: center; 
+  align-items: center;
+  height: 60rem; 
   text-align: center;
 }
 
 .card-form {
   display: flex;
-  justify-content: center; /* Centrar horizontalmente */
-  align-items: center; /* Centrar verticalmente */
+  justify-content: center; 
+  align-items: center;
   text-align: center;
   height: 22rem;
   width: 32rem;
@@ -405,8 +403,6 @@ textarea, .select-net{
   background-color: transparent;
   
 }
-
-
 
 .searchBarContractName {
   position: relative;
@@ -707,7 +703,7 @@ textarea, .select-net{
 
 .btn-generate {
   margin-bottom: 2rem;
-  order: 1; /* Ordenar el botón "Generar Reporte" al principio */
+  order: 1; 
 }
 
 .background-gradient {
@@ -717,8 +713,8 @@ textarea, .select-net{
     #c5e8fc
   ); /* Color de fondo */
   background-repeat: no-repeat;
-  background-size: 100% 16px; /* Ancho del borde inferior y altura (ajusta según tus necesidades) */
-  background-position: 0 100%; /* Coloca el gradiente en la parte inferior */
+  background-size: 100% 16px; 
+  background-position: 0 100%; 
 }
 
 .loader {
@@ -736,13 +732,12 @@ textarea, .select-net{
   color: rgb(110, 110, 110);
 }
 
-/* Estilo de sombreado gris claro para la opción principal activa */
 .main-option.active {
-  background-color: #dcffe3; /* Puedes ajustar el color gris claro según tus preferencias */
+  background-color: #dcffe3; 
   width: 222px;
   margin: 0;
   padding: 0;
-  box-shadow: 1px 1px 0px 0px gray; /* Ajusta la sombra según sea necesario */
+  box-shadow: 1px 1px 0px 0px gray; 
   height: 30px;
 }
 
@@ -750,24 +745,20 @@ textarea, .select-net{
   font-size: 15px;
 }
 
-
-
-
-
 /* HOME STYLES */
 
 /* Main */
 .main-container {
   grid-area: main;
   overflow-y: visible;
-  padding: 1em 1em; /* Usando unidades 'em' */
+  padding: 1em 1em; 
   color: rgba(255, 255, 255, 0.95);
 }
 
 .main-title {
   display: flex;
   justify-content: space-between;
-  margin-right: 10em; /* Usando unidades 'em' */
+  margin-right: 10em; 
   margin-top: -1em;
   color: black;
 }
@@ -775,8 +766,8 @@ textarea, .select-net{
 .main-cards {
   display: grid;
   grid-template-columns: 1fr 1fr ;
-  gap: 1em; /* Usando unidades 'em' */
-  margin: 0.75em 0; /* Usando unidades 'em' */
+  gap: 1em; 
+  margin: 0.75em 0; 
   
   
 }
@@ -785,8 +776,8 @@ textarea, .select-net{
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  padding: 1.5em 1.5em; /* Usando unidades 'em' */
-  border-radius: 0.5em; /* Usando unidades 'em' */
+  padding: 1.5em 1.5em; 
+  border-radius: 0.5em; 
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.3); 
   color: #000;
 }
@@ -822,15 +813,15 @@ textarea, .select-net{
 }
 
 .card-inner > .card_icon {
-  font-size: 1.25em; /* Usando unidades 'em' */
+  font-size: 1.25em; 
 }
 
 .charts {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 1em; /* Usando unidades 'em' */
-  margin-top: 3em; /* Usando unidades 'em' */
-  height: 15em; /* Usando unidades 'em' */
+  gap: 1em; 
+  margin-top: 3em; 
+  height: 15em; 
 }
 
 
@@ -849,10 +840,7 @@ textarea, .select-net{
         margin-top: 1em;
   }
 
-  
 }
-
-
 
 /* Medium <= 992px */
   
@@ -889,8 +877,6 @@ textarea, .select-net{
 
   }
   
-  
-
 }
 
 /* Extra Small <= 576px */
@@ -910,7 +896,6 @@ html {
 }
 
 }
-
 
 .underline-container{
   display: flex;
@@ -941,7 +926,6 @@ html {
     z-index: 1000;
     cursor: pointer;
 }
-
 
 .inputs_container {
   display: flex;
@@ -1005,29 +989,13 @@ html {
   .eye-button
 {
     margin-top: 5px;
-    left: 33vh;
-    
-    
+    left: 33vh; 
 
 }
 
-
-
-
-
-
-
-
-
 }
 
-
-
-
-@media only screen and (max-height: 670px) {
-
-  
-  
+@media only screen and (max-height: 670px) { 
   .subtitle {
     margin-bottom: 2rem;
     
@@ -1040,8 +1008,7 @@ html {
   .login_button{
     margin-top: 0.2rem;
   }
-
-  
+ 
 }
 
 .image-login-container{
@@ -1050,13 +1017,11 @@ html {
   align-items: center;
 }
 
-
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-
 
 .maincontainer {
   display: flex;
@@ -1073,16 +1038,13 @@ html {
   position: absolute;
   top: 0;
   left: 0;
-
-  /* Añade una capa con opacidad verde */
-  background-color: rgba(0, 128, 0, 0.288); /* Cambia los valores de 0, 128, 0 según tu preferencia de verde */
+  background-color: rgba(0, 128, 0, 0.288); 
 }
 
 @media only screen and (max-width: 620px) {
   .maincontainer {
     
-    height: 120%;
-    
+    height: 120%; 
   }
 }
 
@@ -1143,5 +1105,4 @@ html {
     margin-top: -2rem;
   }
 
- 
 }
