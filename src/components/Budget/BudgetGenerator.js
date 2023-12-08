@@ -106,10 +106,6 @@ const BudgetGenerator = () => {
         data4,
       };
 
-      console.log(requestData);
-
-      console.log("requestData:", requestData);
-
       const response = await fetch(
         "https://www.cupibudget.somee.com/api/PDFGenerator/Generate",
         {

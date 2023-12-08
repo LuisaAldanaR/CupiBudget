@@ -153,13 +153,13 @@ const CrudApp = () => {
   // Function to delete an instructor
   const deleteData = (idInstructor, data) => {
     Swal.fire({
-      title: 'Estas seguro?',
-      text: `Estas seguro de borrar al Instructor: '${data.name}'?`,
+      title: '¿Estás seguro?',
+      text: `¿Estás seguro de eliminar al Instructor: '${data.name}'?`,
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
-      confirmButtonText: 'Si, Borralo',
+      confirmButtonText: 'Si, eliminarlo',
       cancelButtonText: 'Cancel',
     }).then((result) => {
       if (result.isConfirmed) {
